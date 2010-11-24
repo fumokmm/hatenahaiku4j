@@ -4,6 +4,7 @@ import hatenahaiku4j.Config;
 import hatenahaiku4j.HatenaHaikuAPI;
 import hatenahaiku4j.HatenaHaikuAPILight;
 import hatenahaiku4j.HatenaHaikuException;
+import hatenahaiku4j.Keyword;
 import hatenahaiku4j.LoginUser;
 import hatenahaiku4j.Status;
 import hatenahaiku4j.util.HatenaUtil;
@@ -87,10 +88,11 @@ public class Sample001 {
 		sb.append("【").append(status.getKeyword()).append("】");
 		sb.append(HatenaUtil.formatDate(status.getCreatedAt()));
 		sb.append("〔☆×").append(status.getFavorited()).append("〕");
-		sb.append(status.getText());
 		if (!StringUtil.isEmpty(status.getInReplyToStatusId())) {
-			sb.append(" reply to ").append(status.getInReplyToUserId());
+			sb.append(" @").append(status.getInReplyToUserId())
+			.append("(").append(status.getInReplyToStatusId()).append(")");
 		}
+		sb.append(" ").append(status.getText());
 		sb.append(" by ").append(status.getUserId());
 		sb.append(" from ").append(status.getSource());
 		if (!status.getReplies().isEmpty()) {
@@ -100,9 +102,25 @@ public class Sample001 {
 					replies.append(", ");
 				}
 				replies.append(reply.getUserId());
+				replies.append("(").append(reply.getStatusId()).append(")");
 			}
 			sb.append(" replied from ").append(replies);
 		}
+		System.out.println(sb.toString());
+	}
+
+	/**
+	 * キーワード情報を標準出力に出力します。
+	 * 
+	 * @param keyword キーワード情報
+	 */
+	public static void printKeyword(Keyword keyword) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("【").append(keyword.getTitle()).append("】");
+		sb.append("(" + keyword.getEntryCount() + ")");
+		sb.append(" cloud").append(keyword.getCloud());
+		sb.append(" ");
+		sb.append(keyword.getLink());
 		System.out.println(sb.toString());
 	}
 

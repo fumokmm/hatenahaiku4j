@@ -49,6 +49,18 @@ public class UserAPI extends EntityAPI {
 		this.apiLight = apiLight;
 	}
 
+	/**
+	 * 初期化します。
+	 * 
+	 * @param user ユーザ情報
+	 * @param apiHtml はてなハイクAPI（HTMLスクレイピング版）
+	 * @since v1.2.0
+	 */
+	void init(User user, HatenaHaikuAPIHTML apiHtml) {
+		this.user = user;
+		this.apiHtml = apiHtml;
+	}
+
 	// ------------------以下、認証が不要なAPI
 
 	/**

@@ -96,6 +96,18 @@ public class Status implements Entity<Status> {
 	}
 	
 	/**
+	 * インスタンスを取得します。（パッケージプライベート）
+	 * 
+	 * @param apiHtml はてなハイクAPI（HTMLスクレイピング版）
+	 * @since v1.2.0
+	 */
+	static Status create(HatenaHaikuAPIHTML apiHtml) {
+		Status status = new Status();
+		status.api.init(status, apiHtml);
+		return status;
+	}
+
+	/**
 	 * ステータスIDを取得します。
 	 * 
 	 * @return ステータスID 
@@ -203,8 +215,8 @@ public class Status implements Entity<Status> {
 	 * @since v0.1.0
 	 */
 	public List<Status> getReplies() {
-		// 自動更新するなら
-		if (api.apiLight.isAutoRefreshReplies()) {
+		// 自動更新するなら(APIHTMLでない場合のみ)
+		if (api.apiLight != null && api.apiLight.isAutoRefreshReplies()) {
 			if (shadow) {
 				try {
 					this.api.refreshReplies();
@@ -254,7 +266,7 @@ public class Status implements Entity<Status> {
 	 * @since v0.0.1
 	 */
 	public String getUserId() {
-		return user.getUserId();
+		return user == null ? "" : user.getUserId();
 	}
 
 	/**
@@ -265,7 +277,7 @@ public class Status implements Entity<Status> {
 	 * @since v0.2.0
 	 */
 	public String getUserIdNotation() {
-		return user.getUserIdNotation();
+		return user == null ? "" : user.getUserIdNotation();
 	}
 
 	/**

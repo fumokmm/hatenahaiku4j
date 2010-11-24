@@ -94,5 +94,31 @@ public class StringUtil {
 		return String.valueOf(System.currentTimeMillis())
 		+ String.valueOf(Math.random()).replaceAll("[-.]", "");
 	}
-
+	
+	/**
+	 * 一括置換を行います。<br/>
+	 * templateがnull, replaceがnullまたは長さが不正(2の倍数でない)場合、空文字を返却します。
+	 * 
+	 * @param template 置換を施すベースとなるテンプレート
+	 * @param replace 置換文字列
+	 * @return 一括置換された文字列
+	 * @since v1.2.0
+	 */
+	public static String lumpReplace(String template, String... replace) {
+		if (template == null) {
+			return "";
+		}
+		if (replace == null) {
+			return "";
+		}
+		if (replace.length < 2 || replace.length % 2 != 0) {
+			return "";
+		}
+		String result = template;
+		for (int i = 0; i < replace.length; i += 2) {
+			result = result.replaceAll(replace[i], replace[i + 1]);
+		}
+		return result;
+	}
+	
 }

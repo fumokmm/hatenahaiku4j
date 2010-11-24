@@ -1,4 +1,7 @@
-HatenaHaiku4J v1.1.4 2009-11-18 1.1.4
+HatenaHaiku4J v1.2.0 2010-05-07
+	・HatenaHaikuAPIHTML(HTMLスクレイピング版)を追加した。
+
+HatenaHaiku4J v1.1.4 2009-11-18
 	・StringUtil#encodeで「+」「.」「-」「*」「_」もURLエンコードするよう修正。
 
 HatenaHaiku4J v1.1.3 2009-11-07

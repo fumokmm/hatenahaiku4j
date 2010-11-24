@@ -1,6 +1,5 @@
 package hatenahaiku4j;
 
-import hatenahaiku4j.op.CollectOp;
 import hatenahaiku4j.op.ReduceOp;
 import hatenahaiku4j.util.DateUtil;
 import hatenahaiku4j.util.HttpUtil;
@@ -28,33 +27,33 @@ import org.xml.sax.SAXException;
  */
 public class HatenaHaikuAPILight {
 	/** URL: パブリックタイムライン(XML) */
-	protected static final String URL_PUBLIC_TIMELINE_XML		= "http://h.hatena.ne.jp/api/statuses/public_timeline.xml";
+	protected static final String URL_PUBLIC_TIMELINE_XML		= Const.API_BASE_URL + "statuses/public_timeline.xml";
 	/** URL: フレンドタイムライン */
-	protected static final String URL_FRIENDS_TIMELINE		= "http://h.hatena.ne.jp/api/statuses/friends_timeline/";
+	protected static final String URL_FRIENDS_TIMELINE		= Const.API_BASE_URL + "statuses/friends_timeline/";
 	/** URL: ユーザタイムライン */
-	protected static final String URL_USER_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/user_timeline/";
+	protected static final String URL_USER_TIMELINE			= Const.API_BASE_URL + "statuses/user_timeline/";
 	/** URL: キーワードタイムライン */
-	protected static final String URL_KEYWORD_TIMELINE		= "http://h.hatena.ne.jp/api/statuses/keyword_timeline/";
+	protected static final String URL_KEYWORD_TIMELINE		= Const.API_BASE_URL + "statuses/keyword_timeline/";
 	/** URL: アルバムタイムライン(XML) */
-	protected static final String URL_ALBUM_TIMELINE_XML		= "http://h.hatena.ne.jp/api/statuses/album.xml";
+	protected static final String URL_ALBUM_TIMELINE_XML		= Const.API_BASE_URL + "statuses/album.xml";
 	/** URL: アルバムタイムライン */
-	protected static final String URL_ALBUM_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/album/";
+	protected static final String URL_ALBUM_TIMELINE			= Const.API_BASE_URL + "statuses/album/";
 	/** URL: ステータス情報 */
-	protected static final String URL_STATUS					= "http://h.hatena.ne.jp/api/statuses/show/";
+	protected static final String URL_STATUS					= Const.API_BASE_URL + "statuses/show/";
 	/** URL: ユーザがフォローしているユーザのリスト */
-	protected static final String URL_FOLLOWING_LIST			= "http://h.hatena.ne.jp/api/statuses/friends/";
+	protected static final String URL_FOLLOWING_LIST			= Const.API_BASE_URL + "statuses/friends/";
 	/** URL: ユーザをフォローしているユーザのリスト */
-	protected static final String URL_FOLLOWERS_LIST			= "http://h.hatena.ne.jp/api/statuses/followers/";
+	protected static final String URL_FOLLOWERS_LIST			= Const.API_BASE_URL + "statuses/followers/";
 	/** URL: ユーザ情報 */
-	protected static final String URL_USER					= "http://h.hatena.ne.jp/api/friendships/show/";
+	protected static final String URL_USER					= Const.API_BASE_URL + "friendships/show/";
 	/** URL: ホットキーワードのリスト(XML) */
-	protected static final String URL_HOT_KEYWORD_LIST_XML	= "http://h.hatena.ne.jp/api/keywords/hot.xml";
+	protected static final String URL_HOT_KEYWORD_LIST_XML	= Const.API_BASE_URL + "keywords/hot.xml";
 	/** URL: キーワードのリスト(XML) */
-	protected static final String URL_KEYWORD_LIST_XML		= "http://h.hatena.ne.jp/api/keywords/list.xml";
+	protected static final String URL_KEYWORD_LIST_XML		= Const.API_BASE_URL + "keywords/list.xml";
 	/** URL: ユーザがフォローしているキーワードのリスト */
-	protected static final String URL_FOLLOWING_KEYWORD_LIST	= "http://h.hatena.ne.jp/api/statuses/keywords/";
+	protected static final String URL_FOLLOWING_KEYWORD_LIST	= Const.API_BASE_URL + "statuses/keywords/";
 	/** URL: キーワード情報 */
-	protected static final String URL_KEYWORD					= "http://h.hatena.ne.jp/api/keywords/show/";
+	protected static final String URL_KEYWORD					= Const.API_BASE_URL + "keywords/show/";
 
 	/** HTTP通信ログ出力要否 */
 	protected boolean needHttpLog;
@@ -176,7 +175,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getPublicTimeline(int page, Date since) throws HatenaHaikuException {
-		return getPublicTimeline(this.<Status>createCollectOp(), page, since);
+		return getPublicTimeline(EntityAPI.<Status>createCollectOp(), page, since);
 	}
 
 	/**
@@ -270,7 +269,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getFriendsTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return getFriendsTimeline(this.<Status>createCollectOp(), userId, page, count, since);
+		return getFriendsTimeline(EntityAPI.<Status>createCollectOp(), userId, page, count, since);
 	}
 	
 	/**
@@ -366,7 +365,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return getUserTimeline(this.<Status>createCollectOp(), userId, page, count, since);
+		return getUserTimeline(EntityAPI.<Status>createCollectOp(), userId, page, count, since);
 	}
 	
 	/**
@@ -446,7 +445,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotUserTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return getHotUserTimeline(this.<Status>createCollectOp(), userId, page, count, since);
+		return getHotUserTimeline(EntityAPI.<Status>createCollectOp(), userId, page, count, since);
 	}
 	
 	/**
@@ -484,7 +483,10 @@ public class HatenaHaikuAPILight {
 	 */
 	private <T> T _getUserTimeline(ReduceOp<Status, T> op, String userId, int page, int count, Date since, boolean isHot) throws HatenaHaikuException {
 		try {
-			QueryParameter param = new QueryParameter(isHot);
+			QueryParameter param = new QueryParameter();
+			if (isHot) {
+				param.setSort(QueryParameter.HOT);	// 人気順
+			}
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
@@ -561,7 +563,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return getIdTimeline(this.<Status>createCollectOp(), userId, page, count, since);
+		return getIdTimeline(EntityAPI.<Status>createCollectOp(), userId, page, count, since);
 	}
 	
 	/**
@@ -641,7 +643,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getKeywordTimeline(String keyword, int page, int count, Date since) throws HatenaHaikuException {
-		return getKeywordTimeline(this.<Status>createCollectOp(), keyword, page, count, since);
+		return getKeywordTimeline(EntityAPI.<Status>createCollectOp(), keyword, page, count, since);
 	}
 	
 	/**
@@ -721,7 +723,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotKeywordTimeline(String keyword, int page, int count, Date since) throws HatenaHaikuException {
-		return getHotKeywordTimeline(this.<Status>createCollectOp(), keyword, page, count, since);
+		return getHotKeywordTimeline(EntityAPI.<Status>createCollectOp(), keyword, page, count, since);
 	}
 
 	/**
@@ -759,7 +761,10 @@ public class HatenaHaikuAPILight {
 	 */
 	private <T> T _getKeywordTimeline(ReduceOp<Status, T> op, String keyword, int page, int count, Date since, boolean isHot) throws HatenaHaikuException {
 		try {
-			QueryParameter param = new QueryParameter(isHot);
+			QueryParameter param = new QueryParameter();
+			if (isHot) {
+				param.setSort(QueryParameter.HOT);	// 人気順
+			}
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
@@ -832,7 +837,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getAlbumTimeline(int page, int count, Date since) throws HatenaHaikuException {
-		return getAlbumTimeline(this.<Status>createCollectOp(), page, count, since);
+		return getAlbumTimeline(EntityAPI.<Status>createCollectOp(), page, count, since);
 	}
 
 	/**
@@ -927,7 +932,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getAlbumKeywordTimeline(String keyword, int page, int count, Date since) throws HatenaHaikuException {
-		return getAlbumKeywordTimeline(this.<Status>createCollectOp(), keyword, page, count, since);
+		return getAlbumKeywordTimeline(EntityAPI.<Status>createCollectOp(), keyword, page, count, since);
 	}
 	
 	/**
@@ -1028,7 +1033,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<User> getFollowingList(String userId, int page) throws HatenaHaikuException {
-		return getFollowingList(this.<User>createCollectOp(), userId, page);
+		return getFollowingList(EntityAPI.<User>createCollectOp(), userId, page);
 	}
 
 	/**
@@ -1073,7 +1078,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<User> getFollowersList(String userId) throws HatenaHaikuException {
-		return getFollowersList(this.<User>createCollectOp(), userId);
+		return getFollowersList(EntityAPI.<User>createCollectOp(), userId);
 	}
 
 	/**
@@ -1145,7 +1150,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Keyword> getHotKeywordList() throws HatenaHaikuException {
-		return getHotKeywordList(this.<Keyword>createCollectOp());
+		return getHotKeywordList(EntityAPI.<Keyword>createCollectOp());
 	}
 
 	/**
@@ -1218,7 +1223,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Keyword> getKeywordList(String searchWord, int page) throws HatenaHaikuException {
-		return getKeywordList(this.<Keyword>createCollectOp(), searchWord, page);
+		return getKeywordList(EntityAPI.<Keyword>createCollectOp(), searchWord, page);
 	}
 
 	/**
@@ -1265,7 +1270,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Keyword> getFollowingKeywordList(String userId) throws HatenaHaikuException {
-		return getFollowingKeywordList(this.<Keyword>createCollectOp(), userId);
+		return getFollowingKeywordList(EntityAPI.<Keyword>createCollectOp(), userId);
 	}
 
 	/**
@@ -1368,9 +1373,9 @@ public class HatenaHaikuAPILight {
 			status.setCreatedAt(DateUtil.toJSTDate(XmlUtil.getText(elemStatus, "created_at")));
 			// お気に入られ
 			status.setFavorited(Integer.parseInt(XmlUtil.getText(elemStatus, "favorited")));
-			// 返信先ステータスID
+			// 返信元ステータスID
 			status.setInReplyToStatusId(XmlUtil.getText(elemStatus, "in_reply_to_status_id"));
-			// 返信先ユーザID
+			// 返信元ユーザID
 			status.setInReplyToUserId(XmlUtil.getText(elemStatus, "in_reply_to_user_id"));
 			// キーワード
 			status.setKeyword(XmlUtil.getText(elemStatus, "keyword"));
@@ -1497,16 +1502,4 @@ public class HatenaHaikuAPILight {
 		return op.value();
 	}
 
-	/**
-	 * 標準の集合操作を返却します。<br/>
-	 * {@link java.util.ArrayList}にaddしていく。
-	 * 
-	 * @param <E> 集めるEntity
-	 * @return 指定したEntityのArrayListによる集合操作
-	 * @since v1.1.0
-	 */
-	protected <E extends Entity<E>> CollectOp<E, List<E>> createCollectOp() {
-		return new CollectOp<E, List<E>>(new ArrayList<E>());
-	}
-	
 }

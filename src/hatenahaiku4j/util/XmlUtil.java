@@ -37,13 +37,24 @@ public class XmlUtil {
 	 * @throws IOException
 	 * @since v0.0.1
 	 */
-	public static Element getRootElement(String resultXml) throws ParserConfigurationException, UnsupportedEncodingException, SAXException, IOException {
+	public static Element getRootElement(String resultXml)
+			throws ParserConfigurationException, UnsupportedEncodingException,
+			SAXException, IOException {
+		
 		// ドキュメントビルダーファクトリを生成
 		DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+		dbfactory.setIgnoringElementContentWhitespace(true); // 余分なホワイトスペースは削除
+		dbfactory.setIgnoringComments(true);                 // コメントノードは不要
+		
 		// ドキュメントビルダーを生成
 		DocumentBuilder builder = dbfactory.newDocumentBuilder();
+
 		// パースを実行してDocumentオブジェクトを取得
-		Document doc = builder.parse(new ByteArrayInputStream(resultXml.getBytes(Const.UTF8)));
+		Document doc = builder.parse(
+			new ByteArrayInputStream(
+				escapeAmp(removeIllegalChar(resultXml)).getBytes(Const.UTF8)
+			)
+		);
 
 		return doc.getDocumentElement();
 	}
@@ -143,4 +154,31 @@ public class XmlUtil {
 		}
 		return result;
 	}
+
+	/**
+	 * 0x1bを除去する。
+	 * 
+	 * @param source 元の文字列
+	 * @return 0x1bを除去後の文字列
+	 * @since v1.2.0
+	 */
+	private static String removeIllegalChar(String source) {
+		return source.replaceAll(new String(new char[]{ (char)0x1b }), "");
+	}
+
+	/**
+	 * &amp; を &amp;amp; に変換します。
+	 * 
+	 * @param source 元の文字列
+	 * @return 変換した文字列
+	 * @since v1.2.0
+	 */
+	private static String escapeAmp(String source) {
+		/*
+		 * thanks:
+		 * http://www.tipsblogger.com/2009/02/reference-to-entity-xx-must-end-with.html
+		 */
+		return source.replaceAll("&", "&amp;");
+	}
+
 }

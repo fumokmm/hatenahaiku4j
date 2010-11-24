@@ -73,6 +73,42 @@ public class User implements Entity<User> {
 	}
 
 	/**
+	 * インスタンスを取得します。（パッケージプライベート）
+	 * 
+	 * @param apiHtml はてなハイクAPI（HTMLスクレイピング版）
+	 * @since v1.2.0
+	 */
+	static User create(HatenaHaikuAPIHTML apiHtml) {
+		User user = new User();
+		user.api.init(user, apiHtml);
+		return user;
+	}
+
+	/**
+	 * ユーザIDから設定できる項目をある程度埋めたインスタンスを取得します。（パッケージプライベート）
+	 * 
+	 * @param apiHtml はてなハイクAPI（HTMLスクレイピング版）
+	 * @param userId ユーザID
+	 * @since v1.2.0
+	 */
+	static User create(HatenaHaikuAPIHTML apiHtml, String userId) {
+		User user = create(apiHtml);
+		// ユーザID
+		user.setUserId(userId);
+		// ユーザ名
+		user.setName(userId);
+		// ユーザプロフィール画像URL
+		user.setProfileImageUrl(Const.HATENA_ST_BASE_URL + "users"
+				+ Const.SLASH + userId.substring(0, 2) + Const.SLASH + userId
+				+ Const.SLASH + "profile.gif");
+		// ユーザ表示名
+		user.setScreenName(userId);
+		// ユーザのエントリページのURL
+		user.setUrl(Const.BASE_URL + userId + Const.SLASH);
+		return user;
+	}
+
+	/**
 	 * ユーザ名を取得します。
 	 * 
 	 * @return ユーザ名

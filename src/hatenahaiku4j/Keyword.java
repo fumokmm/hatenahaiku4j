@@ -22,6 +22,8 @@ public class Keyword implements Entity<Keyword> {
 	private List<String> relatedKeywords;
 	/** キーワードタイトル */
 	private String title;
+	/** クラウド */
+	private int cloud;
 
 	/**
 	 * キーワードAPI
@@ -73,6 +75,18 @@ public class Keyword implements Entity<Keyword> {
 	static Keyword create(HatenaHaikuAPILight apiLight) {
 		Keyword keyword = new Keyword();
 		keyword.api.init(keyword, apiLight);
+		return keyword;
+	}
+
+	/**
+	 * インスタンスを取得します。（パッケージプライベート）
+	 * 
+	 * @param apiHtml はてなハイクAPI（HTMLスクレイピング版）
+	 * @since v1.2.0
+	 */
+	static Keyword create(HatenaHaikuAPIHTML apiHtml) {
+		Keyword keyword = new Keyword();
+		keyword.api.init(keyword, apiHtml);
 		return keyword;
 	}
 
@@ -137,6 +151,32 @@ public class Keyword implements Entity<Keyword> {
 	}
 	
 	/**
+	 * クラウドを取得します。<br/>
+	 * クラウドはタグクラウド用の値(1～7)らしい。<br/>
+	 * 尚、当値は、{@link HatenaHaikuAPIHTML#getHotKeywordList()}にて<br/>
+	 * Keywordを取得時にしか設定されない値であることに注意されたい。<br/>
+	 * （未設定時は常に0が返却されます）
+	 * 
+	 * <table>
+	 * <tr><th>class名</th><th>重要度</th></tr>
+	 * <tr><td>cloud7</td><td rowspan="7">高<br/><br/>↑<br/>｜<br/>↓<br/><br/>低</td></tr>
+	 * <tr><td>cloud6</td></tr>
+	 * <tr><td>cloud5</td></tr>
+	 * <tr><td>cloud4</td></tr>
+	 * <tr><td>cloud3</td></tr>
+	 * <tr><td>cloud2</td></tr>
+	 * <tr><td>cloud1</td></tr>
+	 * </table>
+	 * 
+	 * 
+	 * @return cloudの値(数値)。未設定の場合0。
+	 * @since v1.2.0
+	 */
+	public int getCloud() {
+		return cloud;
+	}
+
+	/**
 	 * idページかどうかを取得します。
 	 * 
 	 * @return idページかどうか
@@ -194,6 +234,16 @@ public class Keyword implements Entity<Keyword> {
 	 */
 	void setTitle(String title) {
 		this.title = title;
+	}
+
+	/**
+	 * クラウドを設定します。
+	 * 
+	 * @param cloud クラウド
+	 * @since v1.2.0
+	 */
+	void setCloud(int cloud) {
+		this.cloud = cloud;
 	}
 
 	/**

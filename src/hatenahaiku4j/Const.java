@@ -10,7 +10,7 @@ public class Const {
 	/** API名 */
 	public static final String API_NAME = "HatenaHaiku4J";
 	/** バージョン */
-	public static final String VERSION = "v1.1.4";
+	public static final String VERSION = "v1.2.0";
 
 	/** コロン */
 	public static final String COLON = ":";
@@ -31,6 +31,8 @@ public class Const {
 	public static final String FOLLOWING = "following";
 	/** mobile */
 	public static final String MOBILE = "mobile";
+	/** api */
+	public static final String API = "api";
 
 	/** URL: はてなハイクベースURL */
 	public static final String BASE_URL = "http://h.hatena.ne.jp/";
@@ -41,19 +43,29 @@ public class Const {
 
 	/** URL: はてなハイクモバイルベースURL */
 	public static final String MOBILE_BASE_URL = BASE_URL + MOBILE + SLASH;
-	/** URL: はてなハイクモバイルキーワードベースURL */
+	/** URL: はてなハイクモバイルIDベースURL */
 	public static final String MOBILE_ID_BASE_URL = MOBILE_BASE_URL + ID + SLASH;
 	/** URL: はてなハイクモバイルキーワードベースURL */
 	public static final String MOBILE_KEYWORD_BASE_URL = MOBILE_BASE_URL + KEYWORD + SLASH;
 
 	/** URL: はてなプロフィールベースURL */
 	public static final String HATENA_PROFILE_BASE_URL = "http://www.hatena.ne.jp/";
+	/** URL: はてなstベースURL */
+	public static final String HATENA_ST_BASE_URL = "http://www.st-hatena.com/";
 
+	/** URL: はてなハイクAPIベースURL */
+	public static final String API_BASE_URL = BASE_URL + API + SLASH;
+	
 	/** はてなIDプレフィックス */
 	public static final String ID_COLON = ID + COLON;
+	/** キーワードプレフィックス */
+	public static final String KEYWORD_COLON = KEYWORD + COLON;
 
 	/** エンコーディング：UTF-8 */
 	public static final String UTF8 = "UTF-8";
 	/** 拡張子:XML (.xml) */
 	public static final String EXT_XML = ".xml";
+
+	/** XMLヘッダ */
+	public static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"" + UTF8 + "\" ?>";
 }

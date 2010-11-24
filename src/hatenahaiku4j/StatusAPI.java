@@ -47,6 +47,18 @@ public class StatusAPI extends EntityAPI {
 	}
 	
 	/**
+	 * 初期化します。
+	 * 
+	 * @param status ステータス情報
+	 * @param apiHtml はてなハイクAPI（HTMLスクレイピング版）
+	 * @since v1.2.0
+	 */
+	void init(Status status, HatenaHaikuAPIHTML apiHtml) {
+		this.status = status;
+		this.apiHtml = apiHtml;
+	}
+
+	/**
 	 * このステータスを返信先状態に取得しなおします。
 	 * 
 	 * @see HatenaHaikuAPILight#getStatus(String)

@@ -222,6 +222,9 @@ public class HttpUtil {
 			BufferedReader responseReader = new BufferedReader(new InputStreamReader(urlconn.getInputStream(), Const.UTF8));
 			String line;
 			while((line = responseReader.readLine()) != null) {
+				if (responseBody.length() > 0) {
+					responseBody.append("\r\n");
+				}
 				responseBody.append(line);
 			}
 

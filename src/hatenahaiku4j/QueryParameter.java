@@ -21,8 +21,19 @@ public class QueryParameter {
 	private static final int MIN_COUNT = 0;
 	/** カウントの最大値 */
 	private static final int MAX_COUNT = 200;
-	/** 人気順(HOT) */
-	private static final String HOT = "hot";
+	
+	/**
+	 * 人気順(HOT)として指定する際の値
+	 */
+	static final String HOT = "hot";
+
+	/**
+	 * アルバムとして指定する際の値
+	 */
+	static final String ALBUM = "album";
+	
+	/** 最大値を突破するかどうか */
+	private boolean breakthroughMaxLimit;
 	
 	/** その日時よりも新しい投稿のみに絞り込むための日時を指定します。  */
 	private Date since;
@@ -36,8 +47,10 @@ public class QueryParameter {
 	private String word1;
 	/** 関連付けキーワード2 */
 	private String word2;
-	/** 人気順 */
+	/** 並び順の種類 */
 	private String sort;
+	/** モードの種類 */
+	private String mode;
 	
 	/**
 	 * コンストラクタです。
@@ -51,13 +64,11 @@ public class QueryParameter {
 	/**
 	 * コンストラクタです。
 	 * 
-	 * @param isHot 人気順取得用かどうか
-	 * @since v1.0.0
+	 * @param breakthroughMaxLimit 最大値を突破するかどうか
+	 * @since v1.2.0
 	 */
-	QueryParameter(boolean isHot) {
-		if (isHot) {
-			this.sort = HOT;
-		}
+	QueryParameter(boolean breakthroughMaxLimit) {
+		this.breakthroughMaxLimit = breakthroughMaxLimit;
 	}
 
 	/**
@@ -93,12 +104,17 @@ public class QueryParameter {
 	 * <li>指定されたページが100より大きい場合、100になります。</li>
 	 * <li>指定されたページが0の場合、デフォルトページ(1ページ目)を取得します。</li>
 	 * </ul>
+	 * ただし、breakthroughMaxLimitがtrueに指定されている場合、最大数制限は適用されません。
 	 * 
 	 * @param page 取得するページ
 	 * @since v0.0.1
 	 */
 	public void setPage(int page) {
-		this.page = Math.min(Math.max(page, MIN_PAGE), MAX_PAGE);
+		if (breakthroughMaxLimit) {
+			this.page = Math.max(page, MIN_PAGE);
+		} else {
+			this.page = Math.min(Math.max(page, MIN_PAGE), MAX_PAGE);
+		}
 	}
 
 	/**
@@ -118,12 +134,17 @@ public class QueryParameter {
 	 * <li>指定された取得数が200より大きい場合、100になります。</li>
 	 * <li>指定された取得数が0の場合、デフォルトの取得件数で取得します。</li>
 	 * </ul>
+	 * ただし、breakthroughMaxLimitがtrueに指定されている場合、最大数制限は適用されません。
 	 * 
 	 * @param count 取得数
 	 * @since v0.0.1
 	 */
 	public void setCount(int count) {
-		this.count = Math.min(Math.max(count, MIN_COUNT), MAX_COUNT);
+		if (breakthroughMaxLimit) {
+			this.count = Math.max(count, MIN_COUNT);
+		} else {
+			this.count = Math.min(Math.max(count, MIN_COUNT), MAX_COUNT);
+		}
 	}
 	
 	/**
@@ -187,9 +208,9 @@ public class QueryParameter {
 	}
 
 	/**
-	 * 人気順を取得します。
+	 * 並び順の種類を取得します。
 	 * 
-	 * @return 人気順
+	 * @return 並び順の種類
 	 * @since v1.0.0
 	 */
 	public String getSort() {
@@ -197,13 +218,33 @@ public class QueryParameter {
 	}
 
 	/** 
-	 * 人気順を設定します。
+	 * 並び順の種類を設定します。
 	 * 
-	 * @param sort 人気順
+	 * @param sort 並び順の種類
 	 * @since v1.0.0
 	 */
 	public String setSort(String sort) {
 		return this.sort = sort;
+	}
+
+	/**
+	 * モードの種類を取得します。
+	 * 
+	 * @return モードの種類
+	 * @since v1.2.0
+	 */
+	public String getMode() {
+		return mode;
+	}
+
+	/** 
+	 * モードの種類を設定します。
+	 * 
+	 * @param mode モードの種類
+	 * @since v1.2.0
+	 */
+	public String setMode(String mode) {
+		return this.mode = mode;
 	}
 
 	//-----------------------------------
@@ -221,6 +262,8 @@ public class QueryParameter {
 	private static final String PARAM_KEY_WORD2 = "word2";
 	/** sort */
 	private static final String PARAM_KEY_SORT = "sort";
+	/** mode */
+	private static final String PARAM_KEY_MODE = "mode";
 
 	/**
 	 * ポストするパラメータを設定します。
@@ -258,6 +301,10 @@ public class QueryParameter {
 		if (sort != null) {
 			ps.addProperty(PARAM_KEY_SORT, sort);
 		}
+		// mode
+		if (mode != null) {
+			ps.addProperty(PARAM_KEY_MODE, mode);
+		}
 	}
 
 	/**
@@ -274,5 +321,6 @@ public class QueryParameter {
 		System.out.println("[word1: " + word1 + "]");
 		System.out.println("[word2: " + word2 + "]");
 		System.out.println("[sort: " + sort + "]");
+		System.out.println("[mode: " + mode + "]");
 	}
 }

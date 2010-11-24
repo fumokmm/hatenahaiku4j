@@ -23,35 +23,35 @@ import org.xml.sax.SAXException;
  */
 public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	/** URL: フレンドタイムライン(XML) */
-	protected static final String URL_FRIENDS_TIMELINE_XML		= "http://h.hatena.ne.jp/api/statuses/friends_timeline.xml";
+	protected static final String URL_FRIENDS_TIMELINE_XML		= Const.API_BASE_URL + "statuses/friends_timeline.xml";
 	/** URL: ユーザタイムライン(XML) */
-	protected static final String URL_USER_TIMELINE_XML			= "http://h.hatena.ne.jp/api/statuses/user_timeline.xml";
+	protected static final String URL_USER_TIMELINE_XML			= Const.API_BASE_URL + "statuses/user_timeline.xml";
 	/** URL: 投稿(XML) */
-	protected static final String URL_UPDATE_STATUS_XML			= "http://h.hatena.ne.jp/api/statuses/update.xml";
+	protected static final String URL_UPDATE_STATUS_XML			= Const.API_BASE_URL + "statuses/update.xml";
 	/** URL: エントリを削除 */
-	protected static final String URL_DELETE_STATUS				= "http://h.hatena.ne.jp/api/statuses/destroy/";
+	protected static final String URL_DELETE_STATUS				= Const.API_BASE_URL + "statuses/destroy/";
 	/** URL: エントリにスターを一つ追加 */
-	protected static final String URL_ADD_STAR					= "http://h.hatena.ne.jp/api/favorites/create/";
+	protected static final String URL_ADD_STAR					= Const.API_BASE_URL + "favorites/create/";
 	/** URL: エントリのスターを一つ減らす */
-	protected static final String URL_DELETE_STAR					= "http://h.hatena.ne.jp/api/favorites/destroy/";
+	protected static final String URL_DELETE_STAR					= Const.API_BASE_URL + "favorites/destroy/";
 	/** URL: ユーザがフォローしているユーザのリスト(XML) */
-	protected static final String URL_FOLLOWING_LIST_XML			= "http://h.hatena.ne.jp/api/statuses/friends.xml";
+	protected static final String URL_FOLLOWING_LIST_XML			= Const.API_BASE_URL + "statuses/friends.xml";
 	/** URL: ユーザをフォローしているユーザのリスト(XML) */
-	protected static final String URL_FOLLOWERS_LIST_XML			= "http://h.hatena.ne.jp/api/statuses/followers.xml";
+	protected static final String URL_FOLLOWERS_LIST_XML			= Const.API_BASE_URL + "statuses/followers.xml";
 	/** URL: ユーザをフォローする */
-	protected static final String URL_FOLLOW_USER					= "http://h.hatena.ne.jp/api/friendships/create/";
+	protected static final String URL_FOLLOW_USER					= Const.API_BASE_URL + "friendships/create/";
 	/** URL: ユーザのフォローをやめる */
-	protected static final String URL_UNFOLLOW_USER				= "http://h.hatena.ne.jp/api/friendships/destroy/";
+	protected static final String URL_UNFOLLOW_USER				= Const.API_BASE_URL + "friendships/destroy/";
 	/** URL: ユーザがフォローしているキーワードのリスト(XML) */
-	protected static final String URL_FOLLOWING_KEYWORD_LIST_XML	= "http://h.hatena.ne.jp/api/statuses/keywords.xml";
+	protected static final String URL_FOLLOWING_KEYWORD_LIST_XML	= Const.API_BASE_URL + "statuses/keywords.xml";
 	/** URL: キーワードをフォローする */
-	protected static final String URL_FOLLOW_KEYWORD				= "http://h.hatena.ne.jp/api/keywords/create/";
+	protected static final String URL_FOLLOW_KEYWORD				= Const.API_BASE_URL + "keywords/create/";
 	/** URL: キーワードのフォローをやめる */
-	protected static final String URL_UNFOLLOW_KEYWORD			= "http://h.hatena.ne.jp/api/keywords/destroy/";
+	protected static final String URL_UNFOLLOW_KEYWORD			= Const.API_BASE_URL + "keywords/destroy/";
 	/** URL: 関連キーワードを設定(XML) */
-	protected static final String URL_RELATE_KEYWORD_XML			= "http://h.hatena.ne.jp/api/keywords/relation/create.xml";
+	protected static final String URL_RELATE_KEYWORD_XML			= Const.API_BASE_URL + "keywords/relation/create.xml";
 	/** URL: 関連キーワードを解除(XML) */
-	protected static final String URL_UNRELATE_KEYWORD_XML		= "http://h.hatena.ne.jp/api/keywords/relation/destroy.xml";
+	protected static final String URL_UNRELATE_KEYWORD_XML		= Const.API_BASE_URL + "keywords/relation/destroy.xml";
 
 	/** ログインユーザ */
 	private LoginUser loginUser;
@@ -126,7 +126,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getFriendsTimeline(int page, int count, Date since) throws HatenaHaikuException {
-		return getFriendsTimeline(this.<Status>createCollectOp(), page, count, since);
+		return getFriendsTimeline(EntityAPI.<Status>createCollectOp(), page, count, since);
 	}
 	
 	/**
@@ -217,7 +217,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(int page, int count, Date since) throws HatenaHaikuException {
-		return getUserTimeline(this.<Status>createCollectOp(), page, count, since);
+		return getUserTimeline(EntityAPI.<Status>createCollectOp(), page, count, since);
 	}
 
 	/**
@@ -292,7 +292,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotUserTimeline(int page, int count, Date since) throws HatenaHaikuException {
-		return getHotUserTimeline(this.<Status>createCollectOp(), page, count, since);
+		return getHotUserTimeline(EntityAPI.<Status>createCollectOp(), page, count, since);
 	}
 	
 	/**
@@ -328,7 +328,10 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 */
 	private <T> T _getUserTimeline(ReduceOp<Status, T> op, int page, int count, Date since, boolean isHot) throws HatenaHaikuException {
 		try {
-			QueryParameter param = new QueryParameter(isHot);
+			QueryParameter param = new QueryParameter();
+			if (isHot) {
+				param.setSort(QueryParameter.HOT);	// 人気順
+			}
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
@@ -728,7 +731,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<User> getFollowingList(int page) throws HatenaHaikuException {
-		return getFollowingList(this.<User>createCollectOp(), page);
+		return getFollowingList(EntityAPI.<User>createCollectOp(), page);
 	}
 
 	/**
@@ -771,7 +774,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<User> getFollowersList() throws HatenaHaikuException {
-		return getFollowersList(this.<User>createCollectOp());
+		return getFollowersList(EntityAPI.<User>createCollectOp());
 	}
 
 	/**
@@ -882,7 +885,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Keyword> getFollowingKeywordList() throws HatenaHaikuException {
-		return getFollowingKeywordList(this.<Keyword>createCollectOp());
+		return getFollowingKeywordList(EntityAPI.<Keyword>createCollectOp());
 	}
 
 	/**
