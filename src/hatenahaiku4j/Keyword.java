@@ -112,7 +112,7 @@ public class Keyword {
 	 * @since v1.0.0
 	 */
 	public String getMobileLink() {
-		return link.replace(Const.BASE_URL, Const.BASE_URL + Const.MOBILE + "/");
+		return link.replace(Const.BASE_URL, Const.MOBILE_BASE_URL);
 	}
 
 	/**

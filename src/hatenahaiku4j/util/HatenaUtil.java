@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * はてなユーティリティクラス
@@ -66,5 +68,57 @@ public class HatenaUtil {
 	public static String formatDate(Date date) {
 		return HATENA_DEFAULT_DATE_FORMAT.format(date);
 	}
+	
+	/** はてな記法コード */
+	private static final String HATENA_NOTATION_CODE = new String(new char[]{
+			'"',
+			'&',
+			'\'',
+			'\\','(',
+			'\\',')',
+			':',
+			';',
+			'<',
+			'=',
+			'>',
+			'\\','[',
+			'\\',']',
+	});
 
+	/** はてな記法コードパターン */
+	private static final Pattern HATENA_NOTATION_CODE_PATTERN = Pattern.compile("(?s)([" + HATENA_NOTATION_CODE + "])");
+	
+	/**
+	 * 「:」や「[]」や「:」などのはてな記法で使用する文字をHTMLエスケープします。<br/>
+	 * これを利用することで、例えばid:xxxはidxxxとなるため、idコールされなくなります。<br/>
+	 * <br/>
+	 * エスケープされる文字<br/>
+	 * <ul>
+	 * <li>" → &amp;#34;</li>
+	 * <li>& → &amp;#38;</li>
+	 * <li>' → &amp;#39;</li>
+	 * <li>( → &amp;#40;</li>
+	 * <li>) → &amp;#41;</li>
+	 * <li>: → &amp;#58;</li>
+	 * <li>; → &amp;#59;</li>
+	 * <li>< → &amp;#60;</li>
+	 * <li>= → &amp;#61;</li>
+	 * <li>> → &amp;#62;</li>
+	 * <li>[ → &amp;#91;</li>
+	 * <li>] → &amp;#93;</li>
+	 * </ul>
+	 * 
+	 * @param str エスケープ対象の文字列
+	 * @return エスケープした文字列
+	 * @since v1.0.1
+	 */
+	public static String escapeHatenaNotation(String str) {
+		Matcher matcher = HATENA_NOTATION_CODE_PATTERN.matcher(str);
+		StringBuffer sb = new StringBuffer();
+		while (matcher.find()) {
+			matcher.appendReplacement(sb, "&#" + String.valueOf((int) matcher.group(0).charAt(0)) + ";");
+		}
+	    matcher.appendTail(sb);
+	    return sb.toString();
+	}
 }

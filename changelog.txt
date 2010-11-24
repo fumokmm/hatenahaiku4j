@@ -1,3 +1,7 @@
+HatenaHaiku4J v1.0.1 2009-09-22
+	・ユーティリティとしてHaikuURLを追加。⇒サンプル:Sample004.java
+	・ユーティリティHatenaUtilに#escapeHatenaNotation(String)を追加。
+
 HatenaHaiku4J v1.0.0 2009-09-18
 	・画像をfotolifeにアップロードしつつ投稿するAPI機能を実装。
 	・画像をFileで指定、URLで指定、byte[]で指定する方式を提供。

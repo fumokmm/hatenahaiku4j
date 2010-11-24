@@ -158,7 +158,7 @@ public class User {
 	 * @since v1.0.0
 	 */
 	public String getMobileEntriesUrl() {
-		return url.replace(Const.BASE_URL, Const.BASE_URL + Const.MOBILE + "/");
+		return url.replace(Const.BASE_URL, Const.MOBILE_BASE_URL);
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class User {
 	 * @since v0.0.1
 	 */
 	public String getIdUrl() {
-		return Const.BASE_URL + Const.ID + "/" + getUserId();
+		return Const.ID_BASE_URL + getUserId();
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class User {
 	 * @since v1.0.0
 	 */
 	public String getMobileIdUrl() {
-		return Const.BASE_URL + Const.MOBILE + "/" + Const.ID + "/" + getUserId();
+		return Const.MOBILE_ID_BASE_URL + getUserId();
 	}
 
 	/**
