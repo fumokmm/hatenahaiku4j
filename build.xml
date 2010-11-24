@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <project name="HatenaHaiku4J Build" default="main" basedir=".">
 
+	<!-- HatenaHaiku4Jのバージョン -->
+	<property name="version" value="0.0.3"/>
+	
 	<!-- 概要 -->
 	<description>JarやJavadocなどを生成します。</description>
-	
-	<!-- HatenaHaiku4Jのバージョン -->
-	<property name="version" value="0.0.2"/>
 	
 	<!-- ディレクトリ -->
 	<property name="src" location="src"/>

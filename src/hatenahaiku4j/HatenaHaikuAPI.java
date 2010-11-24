@@ -1,6 +1,7 @@
 package hatenahaiku4j;
 
 import hatenahaiku4j.util.HttpUtil;
+import hatenahaiku4j.util.StringUtil;
 import hatenahaiku4j.util.XmlUtil;
 
 import java.io.File;
@@ -666,6 +667,9 @@ public class HatenaHaikuAPI extends HatenaHaikuAPIWithoutAuth {
 	 * @throws HatenaHaikuException
 	 */
 	private Keyword modifyRelateKeyword(boolean isRelate, String keyword1, String keyword2) throws HatenaHaikuException {
+		if (StringUtil.isSame(keyword1, keyword2)) {
+			throw new HatenaHaikuException("対象キーワードに同じキーワードは指定できません。");
+		}
 		try {
 			QueryParameter param = new QueryParameter();
 			param.setWord1(keyword1);
