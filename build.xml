@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<project name="HatenaHaiku4J Build" default="main" basedir=".">
+
+	<!-- 概要 -->
+	<description>JarやJavadocなどを生成します。</description>
+	
+	<!-- HatenaHaiku4Jのバージョン -->
+	<property name="version" value="0.0.1"/>
+	
+	<!-- ディレクトリ -->
+	<property name="src" location="src"/>
+	<property name="classes" location="classes"/>
+	<property name="jar" location="jar"/>
+	<property name="doc" location="doc"/>
+
+	<!-- メイン -->
+	<target name="main">
+		<echo message="-----main-----" />
+		<antcall target="jar.with.source" />
+		<antcall target="javadoc" />
+		<antcall target="archive" />
+		<antcall target="clean" />
+	</target>
+	
+	<!-- Jar(ソース付き)を生成 -->
+	<target name="jar.with.source" depends="compile">
+		<echo message="-----jar-----" />
+		<delete dir="${jar}" quiet="true" />
+		<mkdir dir="${jar}" />
+		<jar destfile="${jar}\hatenahaiku4j-${version}.jar">
+			<fileset dir="${classes}"/>
+			<fileset dir="${src}"/>
+		</jar>
+	</target>
+
+	<!-- Jar(.classのみ)を生成 -->
+	<target name="jar" depends="compile">
+		<echo message="-----jar-----" />
+		<delete dir="${jar}" quiet="true" />
+		<mkdir dir="${jar}" />
+		<jar destfile="${jar}/hatenahaiku4j-${version}.jar">
+			<fileset dir="${classes}"/>
+		</jar>
+	</target>
+	
+	<!-- javadocを生成 -->
+	<target name="javadoc">
+		<echo message="-----javadoc-----" />
+		<delete dir="${doc}" quiet="true" />
+		<mkdir dir="${doc}" />
+		<javadoc access="public" author="true" classpath="." destdir="${doc}" doctitle="HatenaHaiku4J ${version}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="hatenahaiku4j.util,hatenahaiku4j,hatenahaiku4j.sample" source="1.5" sourcepath="src" splitindex="true" use="true" version="true"/>
+	</target>
+
+	<!-- ZIPを生成 -->
+	<target name="archive">
+		<echo message="-----archive-----" />
+		<delete file="./hatenahaiku4j-${version}.zip" quiet="true" />
+		<zip destfile="./hatenahaiku4j-${version}.zip">
+			<zipfileset dir="${doc}" prefix="doc" />
+			<zipfileset dir="${jar}" prefix="jar" />
+			<zipfileset dir="${src}" prefix="src" />
+			<zipfileset dir="." includes="build.xml" fullpath="/build.xml" />
+			<zipfileset dir="." includes="changelog.txt" fullpath="/changelog.txt" />
+		</zip>
+	</target>
+		
+	<!-- コンパイル -->
+	<target name="compile">
+		<echo message="-----compile-----" />
+		<delete dir="${classes}" quiet="true" />
+		<mkdir dir="${classes}" />
+		<javac srcdir="${src}" destdir="${classes}" debug="on" />
+	</target>
+
+	<!-- 一時ファイル／一時フォルダの削除 -->
+	<target name="clean">
+		<echo message="-----clean-----" />
+		<delete dir="${classes}" quiet="true" />
+	</target>
+
+</project>

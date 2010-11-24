@@ -1,0 +1,193 @@
+package hatenahaiku4j;
+
+import hatenahaiku4j.util.Util;
+
+import java.util.Date;
+
+/**
+ * はてなハイクステータス情報を表現するクラス
+ * 
+ * @author fumokmm
+ */
+public class Status {
+	/** ステータスID */
+	private String id;
+	/** 作成日時 */
+	private Date createdAt;
+	/** お気に入られ */
+	private int favorited;
+	/** 返信先ステータスID */
+	private String inReplyToStatusId;
+	/** 返信先ユーザID */
+	private String inReplyToUserId;
+	/** キーワード */
+	private String keyword;
+	/** リンク */
+	private String link;
+	/** ソース（クライアント名） */
+	private String source;
+	/** 投稿内容 */
+	private String text;
+	/** ユーザ情報 */
+	private User user;
+	
+	/** @return ステータスID */
+	public String getStatusId() {
+		return id;
+	}
+
+	/** @return 作成日時 */
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	/** @return お気に入られ */
+	public int getFavorited() {
+		return favorited;
+	}
+
+	/** @return 返信先ステータスID */
+	public String getInReplyToStatusId() {
+		return inReplyToStatusId;
+	}
+
+	/** @return 返信先ユーザID */
+	public String getInReplyToUserId() {
+		return inReplyToUserId;
+	}
+
+	/** @return キーワード */
+	public String getKeyword() {
+		return keyword;
+	}
+
+	/** @return idページかどうか */
+	public boolean isIdPage() {
+		return Util.isHatenaIdFormat(keyword);
+	}
+
+	/** @return リンク */
+	public String getLink() {
+		return link;
+	}
+
+	/** @return ソース（クライアント名） */
+	public String getSource() {
+		return source;
+	}
+
+	/** @return 投稿内容 */
+	public String getText() {
+		return text;
+	}
+
+	/** @return ユーザ情報 */
+	public User getUser() {
+		return user;
+	}
+	
+	/** @return ユーザID */
+	public String getUserId() {
+		return user.getUserId();
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	void setStatusId(String statusId) {
+		this.id = statusId;
+	}
+
+	/**
+	 * @param createdAt the createdAt to set
+	 */
+	void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	/**
+	 * @param favorited the favorited to set
+	 */
+	void setFavorited(int favorited) {
+		this.favorited = favorited;
+	}
+
+	/**
+	 * @param inReplyToStatusId the inReplyToStatusId to set
+	 */
+	void setInReplyToStatusId(String inReplyToStatusId) {
+		this.inReplyToStatusId = inReplyToStatusId;
+	}
+
+	/**
+	 * @param inReplyToUserId the inReplyToUserId to set
+	 */
+	void setInReplyToUserId(String inReplyToUserId) {
+		this.inReplyToUserId = inReplyToUserId;
+	}
+
+	/**
+	 * @param keyword the keyword to set
+	 */
+	void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	/**
+	 * @param link the link to set
+	 */
+	void setLink(String link) {
+		this.link = link;
+	}
+
+	/**
+	 * @param source the source to set
+	 */
+	void setSource(String source) {
+		this.source = source;
+	}
+
+	/**
+	 * @param text the text to set
+	 */
+	void setText(String text) {
+		this.text = text;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+	
+}
+
+/* ------ sample xml ---------------------------
+<?xml version='1.0' standalone='yes'?>
+<statuses type="array">
+  <status>
+    <id>12345678901234</id>
+    <created_at>2008-08-19T00:00:00Z</created_at>
+    <favorited>0</favorited>
+    <in_reply_to_status_id>98765432109876</in_reply_to_status_id>
+    <in_reply_to_user_id>jkondo</in_reply_to_user_id>
+
+    <keyword>はてなデフォルトさん</keyword>
+    <link>http://h.hatena.ne.jp/jkondo/12345678901234</link>
+    <source>web</source>
+    <text>はてなデフォルトさん=こんにちは、かわいいデフォルトさんですね。</text>
+    <user>
+      <name>jkondo</name>
+      <followers_count>1</followers_count>
+      <id>jkondo</id>
+      <profile_image_url>http://www.hatena.ne.jp/users/jk/jkondo/profile.gif</profile_image_url>
+      <screen_name>jkondo</screen_name>
+      <url>http://h.hatena.ne.jp/jkondo/</url>
+    </user>
+  </status>
+  <!-- status 要素が続きます。 -->
+</statuses>
+--------------------------------------------- */
