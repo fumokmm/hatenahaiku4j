@@ -513,7 +513,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId) throws HatenaHaikuException {
-		return getIdTimeline(Const.ID_COLON + userId, 0, 0, null);
+		return getIdTimeline(userId, 0, 0, null);
 	}
 
 	/**
@@ -528,7 +528,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId, int page) throws HatenaHaikuException {
-		return getIdTimeline(Const.ID_COLON + userId, page, 0, null);
+		return getIdTimeline(userId, page, 0, null);
 	}
 
 	/**
@@ -544,7 +544,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId, int page, int count) throws HatenaHaikuException {
-		return getIdTimeline(Const.ID_COLON + userId, page, count, null);
+		return getIdTimeline(userId, page, count, null);
 	}
 
 	/**
@@ -561,7 +561,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return getIdTimeline(this.<Status>createCollectOp(), Const.ID_COLON + userId, page, count, since);
+		return getIdTimeline(this.<Status>createCollectOp(), userId, page, count, since);
 	}
 	
 	/**
