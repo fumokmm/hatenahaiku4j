@@ -10,7 +10,7 @@ public class Const {
 	/** API名 */
 	public static final String API_NAME = "HatenaHaiku4J";
 	/** バージョン */
-	public static final String VERSION = "v1.1.3";
+	public static final String VERSION = "v1.1.4";
 
 	/** コロン */
 	public static final String COLON = ":";

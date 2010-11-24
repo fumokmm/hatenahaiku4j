@@ -42,17 +42,45 @@ public class StringUtil {
 	 * 
 	 * @param str URLEncodeする文字列
 	 * @return エンコードされた文字列
+	 * @see <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/net/URLEncoder.html">http://java.sun.com/j2se/1.5.0/docs/api/java/net/URLEncoder.html</a>
 	 * @since v1.0.0
 	 */
 	public static String encode(String str) {
 		String encoded = "";
 		try {
-			// UTF-8でエンコードしてから半角スペース(+)を%20に変換する
-			encoded = URLEncoder.encode(str, Const.UTF8).replaceAll("\\+", "%20");
-		} catch ( UnsupportedEncodingException e ) {
+			// UTF-8でエンコードしてから
+			// 「+」を「%20」に(半角スペース)、
+			// 「.」を「%2E」に、
+			// 「-」を「%2D」に、
+			// 「*」を「%2A」に、
+			// 「_」を「%5F」に変換する。
+			encoded = URLEncoder.encode(str, Const.UTF8)
+				.replaceAll("\\+", urlEncodeOther(" "))
+				.replaceAll("\\.", urlEncodeOther("."))
+				.replaceAll("-", urlEncodeOther("-"))
+				.replaceAll("\\*", urlEncodeOther("*"))
+				.replaceAll("_", urlEncodeOther("_"))
+			;
+		} catch (UnsupportedEncodingException e) {
 			// ignore it
 		}
 		return encoded;
+	}
+
+	/**
+	 * {@link URLEncoder#encode(String, String)}にて変換してくれない文字をエンコードする。
+	 * 
+	 * @param str エンコードする文字列
+	 * @since v1.1.4
+	 * @return 変換後の文字列
+	 */
+	private static String urlEncodeOther(String str) {
+		try {
+			return "%" + String.format("%02x", str.getBytes(Const.UTF8)[0]).toUpperCase();
+		} catch (UnsupportedEncodingException e) {
+			// ignore it
+		}
+		return "";
 	}
 	
 	/**
