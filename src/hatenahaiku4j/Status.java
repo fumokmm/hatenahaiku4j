@@ -11,7 +11,8 @@ import java.util.List;
  * @since v0.0.1
  * @author fumokmm
  */
-public class Status {
+public class Status implements Entity<Status> {
+
 	/** ステータスID */
 	private String id;
 	/** 作成日時 */
@@ -409,6 +410,56 @@ public class Status {
 			text = text.substring(keyword.length() + 1);
 		}
 	}
+
+	/**
+	 * このステータス情報と指定されたステータス情報の順序を比較します。<br/>
+	 * このステータス情報が指定されたステータス情報より小さい場合は負の整数、<br/>
+	 * 等しい場合はゼロ、大きい場合は正の整数を返します。<br/>
+	 * <br/>
+	 * 比較はステータスIDで行います。
+	 * 
+	 * @param status 指定されたステータス情報
+	 * @since v1.1.0
+	 */
+	@Override
+	public int compareTo(Status status) {
+		return this.id.compareTo(status.id);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return this.id.hashCode();
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+
+		Status other = (Status) obj;
+		if (this.id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!this.id.equals(other.id)) {
+			return false;
+		}
+		return true;
+	}
+
 }
 
 /* ------ sample xml ---------------------------

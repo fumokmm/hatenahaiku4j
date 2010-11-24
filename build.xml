@@ -2,7 +2,7 @@
 <project name="HatenaHaiku4J Build" default="main" basedir=".">
 
 	<!-- HatenaHaiku4Jのバージョン -->
-	<property name="version" value="1.0.3"/>
+	<property name="version" value="1.1.0"/>
 
 	<!-- 概要 -->
 	<description>JarやJavadocなどを生成します。</description>
@@ -61,6 +61,7 @@
 			notree="false"
 			packagenames="
 				hatenahaiku4j,
+				hatenahaiku4j.op,
 				hatenahaiku4j.util,
 				hatenahaiku4j.sample
 			"

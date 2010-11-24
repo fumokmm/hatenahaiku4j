@@ -19,7 +19,7 @@ public class Sample004 {
 	
 	/**
 	 * v1.0.1から使えるようになったHaikuURLと<br/>
-	 * HatenaUtilに#escapeHatenaNotation(String)のサンプルです。
+	 * HatenaUtil#escapeHatenaNotation(String)のサンプルです。
 	 * 
 	 * @param args
 	 */

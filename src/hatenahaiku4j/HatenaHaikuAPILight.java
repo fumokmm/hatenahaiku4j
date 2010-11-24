@@ -1,5 +1,7 @@
 package hatenahaiku4j;
 
+import hatenahaiku4j.op.CollectOp;
+import hatenahaiku4j.op.ReduceOp;
 import hatenahaiku4j.util.DateUtil;
 import hatenahaiku4j.util.HttpUtil;
 import hatenahaiku4j.util.StringUtil;
@@ -28,11 +30,11 @@ public class HatenaHaikuAPILight {
 	/** URL: パブリックタイムライン(XML) */
 	protected static final String URL_PUBLIC_TIMELINE_XML		= "http://h.hatena.ne.jp/api/statuses/public_timeline.xml";
 	/** URL: フレンドタイムライン */
-	protected static final String URL_FRIENDS_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/friends_timeline/";
+	protected static final String URL_FRIENDS_TIMELINE		= "http://h.hatena.ne.jp/api/statuses/friends_timeline/";
 	/** URL: ユーザタイムライン */
-	protected static final String URL_USER_TIMELINE				= "http://h.hatena.ne.jp/api/statuses/user_timeline/";
+	protected static final String URL_USER_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/user_timeline/";
 	/** URL: キーワードタイムライン */
-	protected static final String URL_KEYWORD_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/keyword_timeline/";
+	protected static final String URL_KEYWORD_TIMELINE		= "http://h.hatena.ne.jp/api/statuses/keyword_timeline/";
 	/** URL: アルバムタイムライン(XML) */
 	protected static final String URL_ALBUM_TIMELINE_XML		= "http://h.hatena.ne.jp/api/statuses/album.xml";
 	/** URL: キーワードタイムライン */
@@ -44,11 +46,11 @@ public class HatenaHaikuAPILight {
 	/** URL: ユーザをフォローしているユーザのリスト */
 	protected static final String URL_FOLLOWERS_LIST			= "http://h.hatena.ne.jp/api/statuses/followers/";
 	/** URL: ユーザ情報 */
-	protected static final String URL_USER						= "http://h.hatena.ne.jp/api/friendships/show/";
+	protected static final String URL_USER					= "http://h.hatena.ne.jp/api/friendships/show/";
 	/** URL: ホットキーワードのリスト(XML) */
-	protected static final String URL_HOT_KEYWORD_LIST_XML		= "http://h.hatena.ne.jp/api/keywords/hot.xml";
+	protected static final String URL_HOT_KEYWORD_LIST_XML	= "http://h.hatena.ne.jp/api/keywords/hot.xml";
 	/** URL: キーワードのリスト(XML) */
-	protected static final String URL_KEYWORD_LIST_XML			= "http://h.hatena.ne.jp/api/keywords/list.xml";
+	protected static final String URL_KEYWORD_LIST_XML		= "http://h.hatena.ne.jp/api/keywords/list.xml";
 	/** URL: ユーザがフォローしているキーワードのリスト */
 	protected static final String URL_FOLLOWING_KEYWORD_LIST	= "http://h.hatena.ne.jp/api/statuses/keywords/";
 	/** URL: キーワード情報 */
@@ -174,12 +176,29 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getPublicTimeline(int page, Date since) throws HatenaHaikuException {
+		return getPublicTimeline(this.<Status>createCollectOp(), page, since);
+	}
+
+	/**
+	 * パブリックタイムラインを取得します。取得件数は20件です。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/public_timeline.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/">はてなハイク</a>
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-public_timeline">statuses/public_timeline</a>
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return パブリックタイムライン
+	 * @throws HatenaHaikuException 
+	 * @since v1.1.0
+	 */
+	public <T> T getPublicTimeline(ReduceOp<Status, T> op, int page, Date since) throws HatenaHaikuException {
 		try {
 			QueryParameter param = new QueryParameter();
 			param.setPage(page);
 			param.setSince(since);
 			String resultXml = HttpUtil.doGet(URL_PUBLIC_TIMELINE_XML, param, isNeedHttpLog());
-			return toStatusList(XmlUtil.getRootElement(resultXml));
+			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -251,13 +270,31 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getFriendsTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
+		return getFriendsTimeline(this.<Status>createCollectOp(), userId, page, count, since);
+	}
+	
+	/**
+	 * 指定したユーザのフレンドタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ユーザID</font>.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-friends_timeline">statuses/friends_timeline</a>
+	 * @param op 集合操作
+	 * @param userId ユーザID
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 指定したユーザのフレンドタイムライン
+	 * @throws HatenaHaikuException 
+	 * @since v1.1.0
+	 */
+	public <T> T getFriendsTimeline(ReduceOp<Status, T> op, String userId, int page, int count, Date since) throws HatenaHaikuException {
 		try {
 			QueryParameter param = new QueryParameter();
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
 			String resultXml = HttpUtil.doGet(URL_FRIENDS_TIMELINE + userId + Const.EXT_XML, param, isNeedHttpLog());
-			return toStatusList(XmlUtil.getRootElement(resultXml));
+			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -281,7 +318,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(String userId) throws HatenaHaikuException {
-		return _getUserTimeline(userId, 0, 0, null, false);
+		return getUserTimeline(userId, 0, 0, null);
 	}
 
 	/**
@@ -296,7 +333,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(String userId, int page) throws HatenaHaikuException {
-		return _getUserTimeline(userId, page, 0, null, false);
+		return getUserTimeline(userId, page, 0, null);
 	}
 
 	/**
@@ -312,7 +349,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(String userId, int page, int count) throws HatenaHaikuException {
-		return _getUserTimeline(userId, page, count, null, false);
+		return getUserTimeline(userId, page, count, null);
 	}
 
 	/**
@@ -329,7 +366,25 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return _getUserTimeline(userId, page, count, since, false);
+		return getUserTimeline(this.<Status>createCollectOp(), userId, page, count, since);
+	}
+	
+	/**
+	 * 指定したユーザのユーザタイムラインを取得します。<br/>
+	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
+	 *
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
+	 * @param op 集合操作
+	 * @param userId ユーザID
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 指定したユーザのユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getUserTimeline(ReduceOp<Status, T> op, String userId, int page, int count, Date since) throws HatenaHaikuException {
+		return _getUserTimeline(op, userId, page, count, since, false);
 	}
 	
 	/**
@@ -343,7 +398,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotUserTimeline(String userId) throws HatenaHaikuException {
-		return _getUserTimeline(userId, 0, 0, null, true);
+		return getHotUserTimeline(userId, 0, 0, null);
 	}
 
 	/**
@@ -358,7 +413,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotUserTimeline(String userId, int page) throws HatenaHaikuException {
-		return _getUserTimeline(userId, page, 0, null, true);
+		return getHotUserTimeline(userId, page, 0, null);
 	}
 
 	/**
@@ -374,7 +429,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotUserTimeline(String userId, int page, int count) throws HatenaHaikuException {
-		return _getUserTimeline(userId, page, count, null, true);
+		return getHotUserTimeline(userId, page, count, null);
 	}
 
 	/**
@@ -391,14 +446,33 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotUserTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return _getUserTimeline(userId, page, count, since, true);
+		return getHotUserTimeline(this.<Status>createCollectOp(), userId, page, count, since);
 	}
 	
+	/**
+	 * 指定したユーザの人気のユーザタイムラインを取得します。<br/>
+	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
+	 *
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
+	 * @param op 集合操作
+	 * @param userId ユーザID
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 指定したユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getHotUserTimeline(ReduceOp<Status, T> op, String userId, int page, int count, Date since) throws HatenaHaikuException {
+		return _getUserTimeline(op, userId, page, count, since, true);
+	}
+
 	/**
 	 * 指定したユーザのユーザタイムラインを取得します。<br/>
 	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
+	 * @param op 集合操作
 	 * @param userId ユーザID
 	 * @param page 取得するページです。最大数は100です。
 	 * @param count 取得数を指定します。最大数は 200 です。
@@ -408,14 +482,14 @@ public class HatenaHaikuAPILight {
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
-	private List<Status> _getUserTimeline(String userId, int page, int count, Date since, boolean isHot) throws HatenaHaikuException {
+	private <T> T _getUserTimeline(ReduceOp<Status, T> op, String userId, int page, int count, Date since, boolean isHot) throws HatenaHaikuException {
 		try {
 			QueryParameter param = new QueryParameter(isHot);
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
 			String resultXml = HttpUtil.doGet(URL_USER_TIMELINE + userId + Const.EXT_XML, param, isNeedHttpLog());
-			return toStatusList(XmlUtil.getRootElement(resultXml));
+			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -439,7 +513,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId) throws HatenaHaikuException {
-		return getKeywordTimeline(Const.ID_COLON + userId, 0, 0, null);
+		return getIdTimeline(Const.ID_COLON + userId, 0, 0, null);
 	}
 
 	/**
@@ -454,7 +528,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId, int page) throws HatenaHaikuException {
-		return getKeywordTimeline(Const.ID_COLON + userId, page, 0, null);
+		return getIdTimeline(Const.ID_COLON + userId, page, 0, null);
 	}
 
 	/**
@@ -470,7 +544,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId, int page, int count) throws HatenaHaikuException {
-		return getKeywordTimeline(Const.ID_COLON + userId, page, count, null);
+		return getIdTimeline(Const.ID_COLON + userId, page, count, null);
 	}
 
 	/**
@@ -487,9 +561,27 @@ public class HatenaHaikuAPILight {
 	 * @since v0.2.0
 	 */
 	public List<Status> getIdTimeline(String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return _getKeywordTimeline(Const.ID_COLON + userId, page, count, since, false);
+		return getIdTimeline(this.<Status>createCollectOp(), Const.ID_COLON + userId, page, count, since);
 	}
 	
+	/**
+	 * 指定したユーザのidページのタイムラインを取得します。<br/>
+	 * このタイムラインは "id:xxxx" のキーワードタイムラインと同じものです。
+	 * 
+	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int, Date)
+	 * @param op 集合操作
+	 * @param userId ユーザID
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 指定したユーザのidページのタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getIdTimeline(ReduceOp<Status, T> op, String userId, int page, int count, Date since) throws HatenaHaikuException {
+		return getKeywordTimeline(op, Const.ID_COLON + userId, page, count, since);
+	}
+
 	/**
 	 * 指定したキーワードのキーワードタイムラインを取得します。最新ページを20件取得します。<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
@@ -501,7 +593,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getKeywordTimeline(String keyword) throws HatenaHaikuException {
-		return _getKeywordTimeline(keyword, 0, 0, null, false);
+		return getKeywordTimeline(keyword, 0, 0, null);
 	}
 
 	/**
@@ -516,7 +608,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getKeywordTimeline(String keyword, int page) throws HatenaHaikuException {
-		return _getKeywordTimeline(keyword, page, 0, null, false);
+		return getKeywordTimeline(keyword, page, 0, null);
 	}
 
 	/**
@@ -532,7 +624,7 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getKeywordTimeline(String keyword, int page, int count) throws HatenaHaikuException {
-		return _getKeywordTimeline(keyword, page, count, null, false);
+		return getKeywordTimeline(keyword, page, count, null);
 	}
 
 	/**
@@ -549,9 +641,27 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getKeywordTimeline(String keyword, int page, int count, Date since) throws HatenaHaikuException {
-		return _getKeywordTimeline(keyword, page, count, since, false);
+		return getKeywordTimeline(this.<Status>createCollectOp(), keyword, page, count, since);
 	}
 	
+	/**
+	 * 指定したキーワードのキーワードタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
+	 * @param op 集合操作
+	 * @param keyword キーワード
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 指定したキーワードのキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getKeywordTimeline(ReduceOp<Status, T> op, String keyword, int page, int count, Date since) throws HatenaHaikuException {
+		return _getKeywordTimeline(op, keyword, page, count, since, false);
+	}
+
 	/**
 	 * 指定したキーワードの人気のキーワードタイムラインを取得します。最新ページを20件取得します。<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
@@ -563,7 +673,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotKeywordTimeline(String keyword) throws HatenaHaikuException {
-		return _getKeywordTimeline(keyword, 0, 0, null, true);
+		return getHotKeywordTimeline(keyword, 0, 0, null);
 	}
 
 	/**
@@ -578,7 +688,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotKeywordTimeline(String keyword, int page) throws HatenaHaikuException {
-		return _getKeywordTimeline(keyword, page, 0, null, true);
+		return getHotKeywordTimeline(keyword, page, 0, null);
 	}
 
 	/**
@@ -594,7 +704,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotKeywordTimeline(String keyword, int page, int count) throws HatenaHaikuException {
-		return _getKeywordTimeline(keyword, page, count, null, true);
+		return getHotKeywordTimeline(keyword, page, count, null);
 	}
 
 	/**
@@ -611,7 +721,25 @@ public class HatenaHaikuAPILight {
 	 * @since v1.0.0
 	 */
 	public List<Status> getHotKeywordTimeline(String keyword, int page, int count, Date since) throws HatenaHaikuException {
-		return _getKeywordTimeline(keyword, page, count, since, true);
+		return getHotKeywordTimeline(this.<Status>createCollectOp(), keyword, page, count, since);
+	}
+
+	/**
+	 * 指定したキーワードの人気のキーワードタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
+	 * @param op 集合操作
+	 * @param keyword キーワード
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 指定したキーワードの人気のキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getHotKeywordTimeline(ReduceOp<Status, T> op, String keyword, int page, int count, Date since) throws HatenaHaikuException {
+		return _getKeywordTimeline(op, keyword, page, count, since, true);
 	}
 
 	/**
@@ -619,6 +747,7 @@ public class HatenaHaikuAPILight {
 	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
+	 * @param op 集合操作
 	 * @param keyword キーワード
 	 * @param page 取得するページです。最大数は100です。
 	 * @param count 取得数を指定します。最大数は 200 です。
@@ -628,14 +757,14 @@ public class HatenaHaikuAPILight {
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
-	private List<Status> _getKeywordTimeline(String keyword, int page, int count, Date since, boolean isHot) throws HatenaHaikuException {
+	private <T> T _getKeywordTimeline(ReduceOp<Status, T> op, String keyword, int page, int count, Date since, boolean isHot) throws HatenaHaikuException {
 		try {
 			QueryParameter param = new QueryParameter(isHot);
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
 			String resultXml = HttpUtil.doGet(URL_KEYWORD_TIMELINE + StringUtil.encode(keyword) + Const.EXT_XML, param, isNeedHttpLog());
-			return toStatusList(XmlUtil.getRootElement(resultXml));
+			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -703,13 +832,30 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getAlbumTimeline(int page, int count, Date since) throws HatenaHaikuException {
+		return getAlbumTimeline(this.<Status>createCollectOp(), page, count, since);
+	}
+
+	/**
+	 * 画像を含む最新のエントリのパブリックタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 画像を含む最新のエントリのパブリックタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getAlbumTimeline(ReduceOp<Status, T> op, int page, int count, Date since) throws HatenaHaikuException {
 		try {
 			QueryParameter param = new QueryParameter();
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
 			String resultXml = HttpUtil.doGet(URL_ALBUM_TIMELINE_XML, param, isNeedHttpLog());
-			return toStatusList(XmlUtil.getRootElement(resultXml));
+			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -781,13 +927,31 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getAlbumKeywordTimeline(String keyword, int page, int count, Date since) throws HatenaHaikuException {
+		return getAlbumKeywordTimeline(this.<Status>createCollectOp(), keyword, page, count, since);
+	}
+	
+	/**
+	 * 指定したキーワードの画像を含む最新のエントリのキーワードタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
+	 * @param op 集合操作
+	 * @param keyword キーワード
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 画像を含む最新のエントリのキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getAlbumKeywordTimeline(ReduceOp<Status, T> op, String keyword, int page, int count, Date since) throws HatenaHaikuException {
 		try {
 			QueryParameter param = new QueryParameter();
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
 			String resultXml = HttpUtil.doGet(URL_ALBUM_TIMELINE + StringUtil.encode(keyword) + Const.EXT_XML, param, isNeedHttpLog());
-			return toStatusList(XmlUtil.getRootElement(resultXml));
+			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -864,11 +1028,27 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<User> getFollowingList(String userId, int page) throws HatenaHaikuException {
+		return getFollowingList(this.<User>createCollectOp(), userId, page);
+	}
+
+	/**
+	 * 指定したユーザがフォローしているユーザのリストを100件取得します。（指定ページ）<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends/<font color="red">ユーザID</font>.xml&page=<font color="red">ページ</font></i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-friends">statuses/friends</a>
+	 * @param op 集合操作
+	 * @param userId ユーザID
+	 * @param page ページ
+	 * @return 指定したユーザがフォローしているユーザのリスト（指定ページ）
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getFollowingList(ReduceOp<User, T> op, String userId, int page) throws HatenaHaikuException {
 		try {
 			QueryParameter param = new QueryParameter();
 			param.setPage(page);
 			String resultXml = HttpUtil.doGet(URL_FOLLOWING_LIST + userId + Const.EXT_XML, param, isNeedHttpLog());
-			return toUserList(XmlUtil.getRootElement(resultXml));
+			return toUserList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -893,9 +1073,25 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<User> getFollowersList(String userId) throws HatenaHaikuException {
+		return getFollowersList(this.<User>createCollectOp(), userId);
+	}
+
+	/**
+	 * 指定したユーザをフォローしているユーザのリストを取得します。<br/>
+	 * フォロワーはページ指定できず、一気に全員分取得されるようです。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/followers/<font color="red">ユーザID</font>.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-followers">statuses/followers</a>
+	 * @param op 集合操作
+	 * @param userId ユーザID
+	 * @return 指定したユーザをフォローしているユーザのリスト
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getFollowersList(ReduceOp<User, T> op, String userId) throws HatenaHaikuException {
 		try {
 			String resultXml = HttpUtil.doGet(URL_FOLLOWERS_LIST + userId + Const.EXT_XML, null, isNeedHttpLog());
-			return toUserList(XmlUtil.getRootElement(resultXml));
+			return toUserList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -949,9 +1145,24 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Keyword> getHotKeywordList() throws HatenaHaikuException {
+		return getHotKeywordList(this.<Keyword>createCollectOp());
+	}
+
+	/**
+	 * ホットキーワードのリストを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/keywords/hot.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/hotkeywords">注目キーワード</a>
+	 * @see <a href="http://h.hatena.ne.jp/api#keywords-hot">keywords/hot</a>
+	 * @param op 集合操作
+	 * @return ホットキーワードのリスト
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getHotKeywordList(ReduceOp<Keyword, T> op) throws HatenaHaikuException {
 		try {
 			String resultXml = HttpUtil.doGet(URL_HOT_KEYWORD_LIST_XML, null, isNeedHttpLog());
-			return toKeywordList(XmlUtil.getRootElement(resultXml));
+			return toKeywordList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -963,7 +1174,7 @@ public class HatenaHaikuAPILight {
 			throw new HatenaHaikuException("IOException発生。", e);
 		}
 	}
-
+	
 	/**
 	 * キーワードリストを取得します。（１ページ目）<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/list.xml</i>
@@ -984,7 +1195,7 @@ public class HatenaHaikuAPILight {
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/keywords">キーワードリスト</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#keywords-list">keywords/list</a>
-	 * @param page ページ
+	 * @param page ページ (最大数は100です)
 	 * @return　キーワードリスト（指定ページ）
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
@@ -996,24 +1207,41 @@ public class HatenaHaikuAPILight {
 	/**
 	 * 指定したワードに部分一致するキーワードリストを取得します。（指定ページ）<br/>
 	 * パラメータに?word=00, page=1などが使える。<br/>
-	 * pageの最大数が100とAPI解説ページに書かれているが、それ以上でも取得できるようである。<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/list.xml?word=<font color="red">検索ワード</font>&page=<font color="red">ページ</font></i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/keywords">キーワードリスト</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#keywords-list">keywords/list</a>
 	 * @param searchWord 検索ワード
-	 * @param page ページ
+	 * @param page ページ (最大数は100です)
 	 * @return　キーワードリスト（指定ページ）
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
 	public List<Keyword> getKeywordList(String searchWord, int page) throws HatenaHaikuException {
+		return getKeywordList(this.<Keyword>createCollectOp(), searchWord, page);
+	}
+
+	/**
+	 * 指定したワードに部分一致するキーワードリストを取得します。（指定ページ）<br/>
+	 * パラメータに?word=00, page=1などが使える。<br/>
+	 * <i>http://h.hatena.ne.jp/api/keywords/list.xml?word=<font color="red">検索ワード</font>&page=<font color="red">ページ</font></i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/keywords">キーワードリスト</a>
+	 * @see <a href="http://h.hatena.ne.jp/api#keywords-list">keywords/list</a>
+	 * @param op 集合操作
+	 * @param searchWord 検索ワード
+	 * @param page ページ (最大数は100です)
+	 * @return　キーワードリスト（指定ページ）
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getKeywordList(ReduceOp<Keyword, T> op, String searchWord, int page) throws HatenaHaikuException {
 		try {
 			QueryParameter param = new QueryParameter();
 			param.setWord(searchWord);
 			param.setPage(page);
 			String resultXml = HttpUtil.doGet(URL_KEYWORD_LIST_XML, param, isNeedHttpLog());
-			return toKeywordList(XmlUtil.getRootElement(resultXml));
+			return toKeywordList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -1037,9 +1265,24 @@ public class HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Keyword> getFollowingKeywordList(String userId) throws HatenaHaikuException {
+		return getFollowingKeywordList(this.<Keyword>createCollectOp(), userId);
+	}
+
+	/**
+	 * 指定したユーザがフォローしているキーワードのリストを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keywords/<font color="red">ユーザID</font>.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keywords">statuses/keywords</a>
+	 * @param op 集合操作
+	 * @param userId ユーザID
+	 * @return　指定したユーザがフォローしているキーワードリスト
+	 * @throws HatenaHaikuException
+	 * @since v1.1.0
+	 */
+	public <T> T getFollowingKeywordList(ReduceOp<Keyword, T> op, String userId) throws HatenaHaikuException {
 		try {
 			String resultXml = HttpUtil.doGet(URL_FOLLOWING_KEYWORD_LIST + userId + Const.EXT_XML, null, isNeedHttpLog());
-			return toKeywordList(XmlUtil.getRootElement(resultXml));
+			return toKeywordList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -1166,16 +1409,16 @@ public class HatenaHaikuAPILight {
 	/**
 	 * ステータスエレメントルートをStatus情報リストに変換します。
 	 * 
+	 * @param op 集合操作
 	 * @param elemStatuses ステータスエレメントルート
 	 * @return Status情報リスト
 	 * @since v0.0.1
 	 */
-	protected List<Status> toStatusList(Element elemStatuses) throws HatenaHaikuException {
-		List<Status> statusList = new ArrayList<Status>();
+	protected <T> T toStatusList(ReduceOp<Status, T> op, Element elemStatuses) throws HatenaHaikuException {
 		for (Element elemStatus : XmlUtil.getChildElementsByTagName(elemStatuses, "status")) {
-			statusList.add(toStatus(elemStatus));
+			op.add(toStatus(elemStatus));
 		}
-		return statusList;
+		return op.value();
 	}
 
 	/**
@@ -1205,16 +1448,16 @@ public class HatenaHaikuAPILight {
 	/**
 	 * ユーザエレメントルートをUser情報リストに変換します。
 	 * 
+	 * @param op 集合操作
 	 * @param elemUsers ユーザエレメントルート
 	 * @return User情報リスト
 	 * @since v0.0.1
 	 */
-	protected List<User> toUserList(Element elemUsers) throws HatenaHaikuException {
-		List<User> userList = new ArrayList<User>();
+	protected <T> T toUserList(ReduceOp<User, T> op, Element elemUsers) throws HatenaHaikuException {
 		for (Element elemUser : XmlUtil.getChildElementsByTagName(elemUsers, "user")) {
-			userList.add(toUser(elemUser));
+			op.add(toUser(elemUser));
 		}
-		return userList;
+		return op.value();
 	}
 
 	/**
@@ -1242,15 +1485,28 @@ public class HatenaHaikuAPILight {
 	/**
 	 * キーワードエレメントルートをKeyword情報リストに変換します。
 	 * 
+	 * @param op 集合操作
 	 * @param elemKeywords キーワードエレメントルート
 	 * @return Keyword情報リスト
 	 * @since v0.0.1
 	 */
-	protected List<Keyword> toKeywordList(Element elemKeywords) throws HatenaHaikuException {
-		List<Keyword> keywordList = new ArrayList<Keyword>();
+	protected <T> T toKeywordList(ReduceOp<Keyword, T> op, Element elemKeywords) throws HatenaHaikuException {
 		for (Element elemKeyword : XmlUtil.getChildElementsByTagName(elemKeywords, "keyword")) {
-			keywordList.add(toKeyword(elemKeyword));
+			op.add(toKeyword(elemKeyword));
 		}
-		return keywordList;
+		return op.value();
 	}
+
+	/**
+	 * 標準の集合操作を返却します。<br/>
+	 * {@link java.util.ArrayList}にaddしていく。
+	 * 
+	 * @param <E> 集めるEntity
+	 * @return 指定したEntityのArrayListによる集合操作
+	 * @since v1.1.0
+	 */
+	protected <E extends Entity<E>> CollectOp<E, List<E>> createCollectOp() {
+		return new CollectOp<E, List<E>>(new ArrayList<E>());
+	}
+	
 }

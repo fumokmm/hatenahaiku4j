@@ -10,7 +10,8 @@ import java.util.List;
  * @since v0.0.1
  * @author fumokmm
  */
-public class Keyword {
+public class Keyword implements Entity<Keyword> {
+
 	/** 投稿数 */
 	private int entryCount;
 	/** フォロワー数 */
@@ -194,6 +195,56 @@ public class Keyword {
 	void setTitle(String title) {
 		this.title = title;
 	}
+
+	/**
+	 * このキーワード情報と指定されたキーワード情報の順序を比較します。<br/>
+	 * このキーワード情報が指定されたキーワード情報より小さい場合は負の整数、<br/>
+	 * 等しい場合はゼロ、大きい場合は正の整数を返します。<br/>
+	 * <br/>
+	 * 比較はキーワードタイトルで行います。
+	 * 
+	 * @param keyword 指定されたキーワード情報
+	 * @since v1.1.0
+	 */
+	@Override
+	public int compareTo(Keyword keyword) {
+		return this.title.compareTo(keyword.title);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return this.title.hashCode();
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+
+		Keyword other = (Keyword) obj;
+		if (this.title == null) {
+			if (other.title != null) {
+				return false;
+			}
+		} else if (!this.title.equals(other.title)) {
+			return false;
+		}
+		return true;
+	}
+
 }
 
 /* ------ sample xml ---------------------------

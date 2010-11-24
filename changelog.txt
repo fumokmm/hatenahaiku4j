@@ -1,3 +1,7 @@
+HatenaHaiku4J v1.1.0 2009-10-21
+	・v593kdrg氏による集約操作のインタフェースを追加。
+	・Status, Keyword, UserにComparableを実装させた。
+
 HatenaHaiku4J v1.0.3 2009-09-24
 	・ユーザ名取得用のメソッドを追加。⇒HatenaUtil#getUserName(String userId)
 

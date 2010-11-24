@@ -6,7 +6,8 @@ package hatenahaiku4j;
  * @since v0.0.1
  * @author fumokmm
  */
-public class User {
+public class User implements Entity<User> {
+
 	/** ユーザ名 */
 	private String name;
 	/** フォロワー数 */
@@ -249,6 +250,55 @@ public class User {
 	 */
 	void setUrl(String url) {
 		this.url = url;
+	}
+
+	/**
+	 * このユーザ情報と指定されたユーザ情報の順序を比較します。<br/>
+	 * このユーザ情報が指定されたユーザ情報より小さい場合は負の整数、<br/>
+	 * 等しい場合はゼロ、大きい場合は正の整数を返します。<br/>
+	 * <br/>
+	 * 比較はユーザIDで行います。
+	 * 
+	 * @param user 指定されたユーザ情報
+	 * @since v1.1.0
+	 */
+	@Override
+	public int compareTo(User user) {
+		return this.id.compareTo(user.id);
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return this.id.hashCode();
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+
+		User other = (User) obj;
+		if (this.id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!this.id.equals(other.id)) {
+			return false;
+		}
+		return true;
 	}
 
 }
