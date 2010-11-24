@@ -1,3 +1,6 @@
+HatenaHaiku4J v1.1.3 2009-11-07
+	・半角スペースが"+"に変換されてしまっていた問題を修正。
+
 HatenaHaiku4J v1.1.2 2009-11-01
 	・HatenaHaikuAPILight#getIdTimeline()がバグっていたので修正。
 

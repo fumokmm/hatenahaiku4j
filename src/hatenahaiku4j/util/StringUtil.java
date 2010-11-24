@@ -47,7 +47,8 @@ public class StringUtil {
 	public static String encode(String str) {
 		String encoded = "";
 		try {
-			encoded = URLEncoder.encode(str, Const.UTF8);
+			// UTF-8でエンコードしてから半角スペース(+)を%20に変換する
+			encoded = URLEncoder.encode(str, Const.UTF8).replaceAll("\\+", "%20");
 		} catch ( UnsupportedEncodingException e ) {
 			// ignore it
 		}
