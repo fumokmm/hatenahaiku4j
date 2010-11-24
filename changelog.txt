@@ -1,3 +1,6 @@
+HatenaHaiku4J v1.0.3 2009-09-24
+	・ユーザ名取得用のメソッドを追加。⇒HatenaUtil#getUserName(String userId)
+
 HatenaHaiku4J v1.0.2 2009-09-24
 	・ソースの文字コードをsjisをやめてutf-8で統一。
 

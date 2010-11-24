@@ -108,15 +108,15 @@ public class HttpUtil {
 		} catch (MalformedURLException e) {
 			if (needLog) {
 				System.out.println(urlconn.getRequestMethod() + " failure");
+				e.printStackTrace();
 			}
-			e.printStackTrace();
 			throw e;
 
 		} catch (IOException e) {
 			if (needLog) {
 				System.out.println(urlconn.getRequestMethod() + " failure");
+				e.printStackTrace();
 			}
-			e.printStackTrace();
 			throw e;
 
 		} finally {
@@ -179,15 +179,15 @@ public class HttpUtil {
 		} catch (MalformedURLException e) {
 			if (needLog) {
 				System.out.println(urlconn.getRequestMethod() + " failure");
+				e.printStackTrace();
 			}
-			e.printStackTrace();
 			throw e;
 
 		} catch (IOException e) {
 			if (needLog) {
 				System.out.println(urlconn.getRequestMethod() + " failure");
+				e.printStackTrace();
 			}
-			e.printStackTrace();
 			throw e;
 
 		} finally {
@@ -237,9 +237,37 @@ public class HttpUtil {
 		} catch (IOException e) {
 			if (needLog) {
 				System.out.println(urlconn.getRequestMethod() + " failure");
+				e.printStackTrace();
 			}
-			e.printStackTrace();
 			throw e;
+
+		} finally {
+			// コネクション切断
+			urlconn.disconnect();
+		}
+	}
+	
+	/**
+	 * 指定されたURLをGETで取得した結果をStringで返却します。<br/>
+	 * 取得に失敗した場合、空文字を返却します。
+	 * 
+	 * @param url 取得先URL
+	 * @return 取得結果
+	 * @throws Exception 各種例外
+	 * @since v1.0.3
+	 */
+	public static String getText(String url) throws Exception {
+		HttpURLConnection urlconn = null; // コネクション
+		try {
+			urlconn = (HttpURLConnection) new URL(url).openConnection();
+			urlconn.setRequestMethod(Method.GET.name());
+			urlconn.setDoInput(true);		// for GET
+			urlconn.setDoOutput(true);		// for POST
+			urlconn.setUseCaches(false);	// disable cache
+			// 最初にして最後の要求
+			urlconn.setRequestProperty(REQUEST_PROPERTY_CONNECTION, REQUEST_PROPERTY_CONNECTION_CLOSE);
+			// レスポンス
+			return getResponse(urlconn, false);
 
 		} finally {
 			// コネクション切断

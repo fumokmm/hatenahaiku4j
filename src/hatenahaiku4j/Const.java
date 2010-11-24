@@ -44,6 +44,9 @@ public class Const {
 	/** URL: はてなハイクモバイルキーワードベースURL */
 	public static final String MOBILE_KEYWORD_BASE_URL = MOBILE_BASE_URL + KEYWORD + SLASH;
 
+	/** URL: はてなプロフィールベースURL */
+	public static final String HATENA_PROFILE_BASE_URL = "http://www.hatena.ne.jp/";
+
 	/** はてなIDプレフィックス */
 	public static final String ID_COLON = ID + COLON;
 

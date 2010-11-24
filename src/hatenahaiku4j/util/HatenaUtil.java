@@ -1,5 +1,7 @@
 package hatenahaiku4j.util;
 
+import hatenahaiku4j.Const;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -120,5 +122,35 @@ public class HatenaUtil {
 		}
 	    matcher.appendTail(sb);
 	    return sb.toString();
+	}
+	
+	/** ユーザ名の&lt;TITLE&gt;タグパターン */
+	private static final Pattern USER_NAME_TITLE_PATTERN =
+		Pattern.compile("<title>(.+)さんのプロフィール - はてな</title>");
+	
+	/**
+	 * はてなユーザIDからはてなユーザ名を取得します。<br/>
+	 * 取得には、はてなプロフィール(http://www.hatena.ne.jp/はてなユーザID/)に表示される<br/>
+	 * ユーザ名を利用します。
+	 * 取得に失敗した場合、空文字を返却します。
+	 * 
+	 * @param userId はてなユーザID
+	 * @return はてなユーザ名
+	 * @since v1.0.3
+	 */
+	public static String getUserName(String userId) {
+		String result = "";
+		try {
+			// GET:はてなプロフィールのHTML
+			String html = HttpUtil.getText(Const.HATENA_PROFILE_BASE_URL + userId + Const.SLASH);
+			Matcher matcher =  USER_NAME_TITLE_PATTERN.matcher(html);
+			// 最初の一件目のみ取得、なければ空文字のまま
+			if (matcher.find()) {
+			    result = matcher.group(1);
+			}
+		} catch(Exception e) {
+			// do nothing
+		}
+		return result;
 	}
 }
