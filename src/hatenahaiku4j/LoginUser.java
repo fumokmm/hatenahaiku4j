@@ -5,6 +5,7 @@ import hatenahaiku4j.util.Base64Util;
 /**
  * ログインユーザ情報
  * 
+ * @since v0.0.1
  * @author fumokmm
  */
 public class LoginUser {
@@ -21,6 +22,7 @@ public class LoginUser {
 	 * @param userId ユーザID
 	 * @param password 投稿用パスワード
 	 * @param source クライアント名
+	 * @since v0.0.1
 	 */
 	private LoginUser(String userId, String password, String source) {
 		this.userId = userId;
@@ -33,6 +35,7 @@ public class LoginUser {
 	 * 
 	 * @param userId ユーザID
 	 * @param password パスワード
+	 * @since v0.0.1
 	 */
 	public static LoginUser create(String userId, String password) {
 		if (userId == null || userId.equals("")) return NULL;
@@ -46,6 +49,7 @@ public class LoginUser {
 	 * @param userId ユーザID
 	 * @param password パスワード
 	 * @param source クライアント名
+	 * @since v0.0.1
 	 */
 	public static LoginUser create(String userId, String password, String source) {
 		if (userId == null || userId.equals("")) return NULL;
@@ -58,17 +62,19 @@ public class LoginUser {
 	 * ユーザIDを取得します。
 	 * 
 	 * @return ユーザID
+	 * @since v0.0.1
 	 */
 	public String getUserId() {
 		return userId;
 	}
 
 	/**
-	 * ユーザIDをはてなIDフォーマット（"id:xxx"）で取得します。
+	 * id記法のユーザIDを取得します。 (id:xxx)
 	 * 
-	 * @return id:<ユーザID>
+	 * @return ユーザid記法 (id:xxx)
+	 * @since v0.2.0
 	 */
-	public String getHatenaIdFormat() {
+	public String getUserIdNotation() {
 		return Const.ID_COLON + userId;
 	}
 	
@@ -76,6 +82,7 @@ public class LoginUser {
 	 * 投稿用パスワードを取得します。
 	 * 
 	 * @return 投稿用パスワード
+	 * @since v0.0.1
 	 */
 	public String getPassword() {
 		return password;
@@ -85,6 +92,7 @@ public class LoginUser {
 	 * クライアント名を取得します。
 	 * 
 	 * @return クライアント名
+	 * @since v0.0.1
 	 */
 	public String getSource() {
 		return source;
@@ -144,12 +152,37 @@ public class LoginUser {
 				+ ", password=" + password + "]";
 	}
 
-	/** BASIC認証用 */
+	/**
+	 * ユーザID + ":" + パスワード形式に変換します。
+	 * 
+	 * @return ユーザID + ":" + パスワード
+	 * @since v0.0.1
+	 */
+	String toUserPassword() {
+		return userId + ":" + password;
+	}
+	
+	/**
+	 * BASIC認証用文字列に変換します。
+	 * 
+	 * @return BASIC認証用文字列
+	 * @since v0.0.1
+	 */
 	public String toBasicAuthenticationString() {
-		String encodedUserPass = Base64Util.encodeBase64(userId + ":" + password);
+		String encodedUserPass = Base64Util.encodeBase64(toUserPassword());
 		return "Basic " + encodedUserPass;
 	}
 
-	/** ヌルユーザ */
-	static LoginUser NULL = new LoginUser(null, null, null);
+	/** NULLユーザ */
+	static LoginUser NULL = new LoginUser("", "", "");
+	
+	/**
+	 * NULLユーザかどうか取得します。
+	 * 
+	 * @return NULLユーザの場合true
+	 * @since v0.0.1
+	 */
+	boolean isNull() {
+		return this == NULL;
+	}
 }

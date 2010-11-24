@@ -2,11 +2,11 @@
 <project name="HatenaHaiku4J Build" default="main" basedir=".">
 
 	<!-- HatenaHaiku4Jのバージョン -->
-	<property name="version" value="0.1.0"/>
-	
+	<property name="version" value="0.2.0"/>
+
 	<!-- 概要 -->
 	<description>JarやJavadocなどを生成します。</description>
-	
+
 	<!-- ディレクトリ -->
 	<property name="src" location="src"/>
 	<property name="classes" location="classes"/>
@@ -21,7 +21,7 @@
 		<antcall target="archive" />
 		<antcall target="clean" />
 	</target>
-	
+
 	<!-- Jar(ソース付き)を生成 -->
 	<target name="jar.with.source" depends="compile">
 		<echo message="-----jar-----" />
@@ -42,13 +42,13 @@
 			<fileset dir="${classes}"/>
 		</jar>
 	</target>
-	
+
 	<!-- javadocを生成 -->
 	<target name="javadoc">
 		<echo message="-----javadoc-----" />
 		<delete dir="${doc}" quiet="true" />
 		<mkdir dir="${doc}" />
-		<javadoc access="public" author="true" classpath="." destdir="${doc}" doctitle="HatenaHaiku4J ${version}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="hatenahaiku4j.util,hatenahaiku4j,hatenahaiku4j.sample" source="1.5" sourcepath="src" splitindex="true" use="true" version="true"/>
+		<javadoc access="public" author="true" classpath="." destdir="${doc}" doctitle="HatenaHaiku4J ${version}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="hatenahaiku4j.util,hatenahaiku4j,hatenahaiku4j.sample" source="1.5" sourcepath="src" splitindex="true" use="true" version="true" encoding="MS932"/>
 	</target>
 
 	<!-- ZIPを生成 -->
@@ -63,13 +63,13 @@
 			<zipfileset dir="." includes="changelog.txt" fullpath="/changelog.txt" />
 		</zip>
 	</target>
-		
+
 	<!-- コンパイル -->
 	<target name="compile">
 		<echo message="-----compile-----" />
 		<delete dir="${classes}" quiet="true" />
 		<mkdir dir="${classes}" />
-		<javac srcdir="${src}" destdir="${classes}" debug="on" source="1.5" target="1.5" />
+		<javac srcdir="${src}" destdir="${classes}" debug="on" source="1.5" target="1.5" encoding="MS932"/>
 	</target>
 
 	<!-- 一時ファイル／一時フォルダの削除 -->

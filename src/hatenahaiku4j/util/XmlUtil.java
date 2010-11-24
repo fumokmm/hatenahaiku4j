@@ -21,6 +21,7 @@ import org.xml.sax.SAXException;
 /**
  * XMLに関するユーティリティクラス
  * 
+ * @since v0.0.1
  * @author fumokmm
  */
 public class XmlUtil {
@@ -34,6 +35,7 @@ public class XmlUtil {
 	 * @throws UnsupportedEncodingException
 	 * @throws SAXException
 	 * @throws IOException
+	 * @since v0.0.1
 	 */
 	public static Element getRootElement(String resultXml) throws ParserConfigurationException, UnsupportedEncodingException, SAXException, IOException {
 		// ドキュメントビルダーファクトリを生成
@@ -51,6 +53,7 @@ public class XmlUtil {
 	 * 
 	 * @param node 走査基点となるXMLノード
 	 * @return 子ノードのエレメントリスト
+	 * @since v0.1.0
 	 */
 	public static List<Element> getChildElements(Node node) {
 		List<Element> result = new ArrayList<Element>();
@@ -70,6 +73,7 @@ public class XmlUtil {
 	 * @param elem 走査基点となるXMLエレメント
 	 * @param name 走査するタグ名
 	 * @return 走査するタグ名にマッチした1件目のエレメント
+	 * @since v0.1.0
 	 */
 	public static List<Element> getChildElementsByTagName(Element elem, String name) {
 		List<Element> result = new ArrayList<Element>();
@@ -91,6 +95,7 @@ public class XmlUtil {
 	 * @param elem 走査基点となるXMLエレメント
 	 * @param name 走査するタグ名
 	 * @return 走査するタグ名にマッチした1件目のエレメント
+	 * @since v0.1.0
 	 */
 	public static Element getFirstChildElement(Element elem, String name) {
 		NodeList nodeList = elem.getChildNodes();
@@ -110,6 +115,7 @@ public class XmlUtil {
 	 * @param elem 走査基点となるXMLエレメント
 	 * @param name 走査するタグ名
 	 * @return 走査するタグ名にマッチした1件目のエレメントのテキストコンテンツ
+	 * @since v0.0.1
 	 */
 	public static String getText(Element elem, String name) {
 		Element childElement = getFirstChildElement(elem, name);
@@ -126,6 +132,7 @@ public class XmlUtil {
 	 * @param elem 走査基点となるXMLエレメント
 	 * @param name 走査するタグ名
 	 * @return 走査するタグ名にマッチする要素のエレメントのテキストコンテンツのリスト
+	 * @since v0.0.1
 	 */
 	public static List<String> getTextList(Element elem, String name) {
 		List<String> result = new ArrayList<String>();

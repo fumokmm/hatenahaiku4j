@@ -3,6 +3,7 @@ package hatenahaiku4j.util;
 /**
  * Base64エンコード／デコードに関するユーティリティクラス
  * 
+ * @since v0.0.1
  * @author fumokmm
  */
 public class Base64Util {
@@ -15,6 +16,7 @@ public class Base64Util {
 	 *
 	 * @param value　変換前の文字列
 	 * @return BASE64エンコードした文字列
+	 * @since v0.0.1
 	 */
 	public static String encodeBase64(String value) {
 		final byte[] data = value.getBytes();
@@ -87,6 +89,7 @@ public class Base64Util {
 	 *
 	 * @param value BASE64エンコードされた文字列
 	 * @return BASE64デコードした文字列
+	 * @since v0.0.1
 	 */
 	public static String decodeBase64(String value) {
 		int byteShift = 4;

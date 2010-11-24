@@ -1,14 +1,20 @@
+HatenaHaiku4J v0.2.0 2009-09-15
+	・クラス名変更 HatenaHaikuAPIWithoutAuth -> HatenaHaikuAPILight。
+	・Keyword, User, Statusに#apiを付属させ、各インスタンスからapiを利用できるようにした。
+	・HatenaHaikuAPI, HatenaHaikuAPILightの機能拡張(idタイムラインなど)。
+	・サンプル(Main.java)をちょっと整理した。
+
 HatenaHaiku4J v0.1.0 2009-09-13
-	Statusにrepliesを追加した。
-	XmlUtilの不具合を修正した。
+	・Statusにrepliesを追加した。
+	・XmlUtilの不具合を修正した。
 
 HatenaHaiku4J v0.0.3 2009-09-11
-	HatenaHaikuAPI#relateKeywordにて、
-	対象キーワード1と2が同じだった場合、エラーとするよう修正を行った。
+	・HatenaHaikuAPI#relateKeywordにて、
+	・対象キーワード1と2が同じだった場合、エラーとするよう修正を行った。
 
 HatenaHaiku4J v0.0.2 2009-09-09
-	javacコンパイルオプションを追加し、
-	クラスバージョンを50(JDK1.6以降)ではなく49(JDK1.5以降)に変更。
+	・javacコンパイルオプションを追加し、
+	・クラスバージョンを50(JDK1.6以降)ではなく49(JDK1.5以降)に変更。
 
 HatenaHaiku4J v0.0.1 2009-09-09
-	とりあえず動くものをリリース。
+	・とりあえず動くものをリリース。

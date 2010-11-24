@@ -3,10 +3,11 @@ package hatenahaiku4j;
 /**
  * はてなハイクユーザ情報を表現するクラス
  * 
+ * @since v0.0.1
  * @author fumokmm
  */
 public class User {
-	/** ユーザ名？ */
+	/** ユーザ名 */
 	private String name;
 	/** フォロワー数 */
 	private int followersCount;
@@ -14,86 +15,225 @@ public class User {
 	private String id;
 	/** プロフィール画像URL */
 	private String profileImageUrl;
-	/** 表示名？ */
+	/** 表示名 */
 	private String screenName;
 	/** ユーザのエントリページのURL */
 	private String url;
 
-	/** @return ユーザ名？ */
+	/** ユーザAPI */
+	public final UserAPI api;
+
+	/**
+	 * コンストラクタです。（パッケージプライベート）
+	 * 
+	 * @since v0.0.1
+	 */
+	private User() {
+		this.api = new UserAPI();
+	}
+	
+	/**
+	 * 指定したユーザでこのユーザを上書きします。
+	 * 
+	 * @param other 上書きするユーザ
+	 * @since v0.2.0
+	 */
+	void overwrite(User other) {
+		this.name = other.name;
+		this.followersCount = other.followersCount;
+		this.id = other.id;
+		this.profileImageUrl = other.profileImageUrl;
+		this.screenName = other.screenName;
+		this.url = other.url;
+	}
+	
+	/**
+	 * インスタンスを取得します。（パッケージプライベート）
+	 * 
+	 * @param apiAuth はてなハイクAPI（認証あり）
+	 * @since v0.2.0
+	 */
+	static User create(HatenaHaikuAPI apiAuth) {
+		User user = new User();
+		user.api.init(user, apiAuth);
+		return user;
+	}
+
+	/**
+	 * インスタンスを取得します。（パッケージプライベート）
+	 * 
+	 * @param apiLight はてなハイクAPI（認証なし）
+	 * @since v0.2.0
+	 */
+	static User create(HatenaHaikuAPILight apiLight) {
+		User user = new User();
+		user.api.init(user, apiLight);
+		return user;
+	}
+
+	/**
+	 * ユーザ名を取得します。
+	 * 
+	 * @return ユーザ名
+	 * @since v0.0.1
+	 */
 	public String getName() {
 		return name;
 	}
-	/** @return フォロワー数 */
+	
+	/**
+	 * フォロワー数を取得します。
+	 * 
+	 * @return フォロワー数
+	 * @since v0.0.1
+	 */
 	public int getFollowersCount() {
 		return followersCount;
 	}
-	/** @return ユーザID */
+
+	/**
+	 * ユーザIDを取得します。
+	 * 
+	 * @return ユーザID
+	 * @since v0.0.1
+	 */
 	public String getUserId() {
 		return id;
 	}
-	/** @return プロフィール画像URL */
+
+	/**
+	 * id記法のユーザIDを取得します。 (id:xxx)
+	 * 
+	 * @return ユーザid記法 (id:xxx)
+	 * @since v0.2.0
+	 */
+	public String getUserIdNotation() {
+		return Const.ID_COLON + id;
+	}
+	
+	/**
+	 * プロフィール画像URLを取得します。
+	 * 
+	 * @return プロフィール画像URL
+	 * @since v0.0.1
+	 */
 	public String getProfileImageUrl() {
 		return profileImageUrl;
 	}
-	/** @return プロフィール画像(小)URL */
+	
+	/**
+	 * プロフィール画像(小)URLを取得します。
+	 * 
+	 * @return プロフィール画像(小)URL
+	 * @since v0.0.1
+	 */
 	public String getProfileImageSmallUrl() {
 		return profileImageUrl.replaceFirst("profile\\.gif$", "profile_s.gif");
 	}
-	/** @return 表示名？ */
+	
+	/**
+	 * 表示名を取得します。
+	 * 
+	 * @return 表示名
+	 * @since v0.0.1
+	 */
 	public String getScreenName() {
 		return screenName;
 	}
-	/** @return ユーザのエントリページのURL */
+
+	/**
+	 * ユーザのエントリページのURLを取得します。
+	 * 
+	 * @return ユーザのエントリページのURL
+	 * @since v0.0.1
+	 */
 	public String getEntriesUrl() {
 		return url;
 	}
-	/** @return ユーザのフォロウィングページのURL */
+	
+	/**
+	 * ユーザのフォロウィングページのURLを取得します。
+	 * 
+	 * @return ユーザのフォロウィングページのURL
+	 * @since v0.0.1
+	 */
 	public String getFollowingUrl() {
-		return url + "following";
+		return url + FOLLOWING;
 	}
-	/** @return ユーザのプロフィールページのURL */
+	
+	/** URL: following */
+	private static final String FOLLOWING = "following";
+
+	/**
+	 * ユーザのプロフィールページのURLを取得します。
+	 * 
+	 * @return ユーザのプロフィールページのURL
+	 * @since v0.0.1
+	 */
 	public String getProfileUrl() {
 		return Const.BASE_URL + Const.ID + "/" + getUserId();
 	}
+
 	/**
-	 * @param name the name to set
+	 * ユーザ名を設定します。
+	 * 
+	 * @param name ユーザ名
+	 * @since v0.0.1
 	 */
 	void setName(String name) {
 		this.name = name;
 	}
+	
 	/**
-	 * @param followersCount the followersCount to set
+	 * フォロワー数を設定します。
+	 * 
+	 * @param followersCount フォロワー数
+	 * @since v0.0.1
 	 */
 	void setFollowersCount(int followersCount) {
 		this.followersCount = followersCount;
 	}
+
 	/**
-	 * @param id the id to set
+	 * ユーザIDを設定します。
+	 * 
+	 * @param userId ユーザID
+	 * @since v0.0.1
 	 */
 	void setUserId(String userId) {
 		this.id = userId;
 	}
+
 	/**
-	 * @param profileImageUrl the profileImageUrl to set
+	 * プロフィール画像URLを設定します。
+	 * 
+	 * @param profileImageUrl プロフィール画像URL
+	 * @since v0.0.1
 	 */
 	void setProfileImageUrl(String profileImageUrl) {
 		this.profileImageUrl = profileImageUrl;
 	}
+	
 	/**
-	 * @param screenName the screenName to set
+	 * 表示名を設定します。
+	 * 
+	 * @param screenName 表示名
+	 * @since v0.0.1
 	 */
 	void setScreenName(String screenName) {
 		this.screenName = screenName;
 	}
+	
 	/**
-	 * @param url the url to set
+	 * ユーザのエントリページのURLを設定します。
+	 * 
+	 * @param url ユーザのエントリページのURL
+	 * @since v0.0.1
 	 */
 	void setUrl(String url) {
 		this.url = url;
 	}
-	
-	
-	
+
 }
 
 /* ------ sample xml ---------------------------

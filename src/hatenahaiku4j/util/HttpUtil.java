@@ -20,6 +20,7 @@ import java.util.Map;
 /**
  * HTTPリクエストに関するユーティリティクラス
  * 
+ * @since v0.0.1
  * @author fumokmm
  */
 public class HttpUtil {
@@ -33,10 +34,14 @@ public class HttpUtil {
 	 * 
 	 * @param url リクエストURL
 	 * @param param リクエストパラメータ情報
+	 * @param needLog ログ出力要否
 	 * @return レスポンスボディの文字列
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 * @since v0.0.1
 	 */
-	public static String doGet(String url, QueryParameter param) throws HatenaHaikuException {
-		return doGet(null, url, param);
+	public static String doGet(String url, QueryParameter param, boolean needLog) throws MalformedURLException, IOException {
+		return doGet(null, url, param, needLog);
 	}
 
 	/**
@@ -45,9 +50,17 @@ public class HttpUtil {
 	 * @param loginUser ログインユーザ
 	 * @param url リクエストURL
 	 * @param param リクエストパラメータ情報
+	 * @param needLog ログ出力要否
 	 * @return レスポンスボディの文字列
+	 * @throws UnsupportedEncodingException
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 * @since v0.0.1
 	 */
-	public static String doGet(LoginUser loginUser, String url, QueryParameter param) throws HatenaHaikuException {
+	public static String doGet(LoginUser loginUser, String url,
+			QueryParameter param, boolean needLog) throws UnsupportedEncodingException,
+			MalformedURLException, IOException {
+
 		HttpURLConnection urlconn = null; // コネクション
 		try {
 			urlconn = (HttpURLConnection) new URL(url).openConnection();
@@ -59,7 +72,9 @@ public class HttpUtil {
 			
 			// ポスト内容の表示
 			if (param != null) {
-				param.outputPostInfo();
+				if (needLog) {
+					param.outputPostInfo();
+				}
 			}
 
 			PrintWriter writer = new PrintWriter(urlconn.getOutputStream());
@@ -70,15 +85,28 @@ public class HttpUtil {
 			writer.close();
 
 			// レスポンス
-			return getResponse(urlconn);
+			return getResponse(urlconn, needLog);
+
+		} catch (UnsupportedEncodingException e) {
+			if (needLog) {
+				System.out.println(urlconn.getRequestMethod() + " failure");
+			}
+			e.printStackTrace();
+			throw e;
 
 		} catch (MalformedURLException e) {
-			System.out.println(urlconn.getRequestMethod() + " failure");
-			throw new HatenaHaikuException("不正なURL形式です。", e);
+			if (needLog) {
+				System.out.println(urlconn.getRequestMethod() + " failure");
+			}
+			e.printStackTrace();
+			throw e;
 
 		} catch (IOException e) {
-			System.out.println(urlconn.getRequestMethod() + " failure");
-			throw new HatenaHaikuException("IOExceptionが発生しました。", e);
+			if (needLog) {
+				System.out.println(urlconn.getRequestMethod() + " failure");
+			}
+			e.printStackTrace();
+			throw e;
 
 		} finally {
 			// コネクション切断
@@ -92,9 +120,18 @@ public class HttpUtil {
 	 * @param loginUser ログインユーザ
 	 * @param url リクエストURL
 	 * @param param リクエストパラメータ情報
+	 * @param needLog ログ出力要否
 	 * @return レスポンスボディの文字列
+	 * @throws UnsupportedEncodingException
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 * @throws HatenaHaikuException 
+	 * @since v0.0.1
 	 */
-	public static String doPost(LoginUser loginUser, String url, UpdateParameter param) throws HatenaHaikuException {
+	public static String doPost(LoginUser loginUser, String url,
+			UpdateParameter param, boolean needLog) throws UnsupportedEncodingException,
+			MalformedURLException, IOException, HatenaHaikuException {
+
 		HttpURLConnection urlconn = null; // コネクション
 		try {
 			urlconn = (HttpURLConnection) new URL(url).openConnection();
@@ -102,12 +139,14 @@ public class HttpUtil {
 			urlconn.setRequestProperty(REQUEST_PROPERTY_AUTHORIZATION, loginUser.toBasicAuthenticationString());
 			// キーワード未指定の場合は、ログインユーザのIDとする。
 			if (param.getKeyword() == null || param.getKeyword().equals("")) {
-				param.setKeyword(loginUser.getHatenaIdFormat());
+				param.setKeyword(loginUser.getUserIdNotation());
 			}
 			urlconn.setDoOutput(true);
 			
 			// ポスト内容の表示
-			param.outputPostInfo(loginUser);
+			if (needLog) {
+				param.outputPostInfo(loginUser);
+			}
 
 			PrintWriter writer = new PrintWriter(urlconn.getOutputStream());
 			// TODO 画像ファイルを投稿 (file パラメータを指定) する場合は、multipart/form-data でエンコードして下さい。
@@ -116,15 +155,28 @@ public class HttpUtil {
 			writer.close();
 			
 			// レスポンス
-			return getResponse(urlconn);
+			return getResponse(urlconn, needLog);
+
+		} catch (UnsupportedEncodingException e) {
+			if (needLog) {
+				System.out.println(urlconn.getRequestMethod() + " failure");
+			}
+			e.printStackTrace();
+			throw e;
 
 		} catch (MalformedURLException e) {
-			System.out.println(urlconn.getRequestMethod() + " failure");
-			throw new HatenaHaikuException("不正なURL形式です。", e);
+			if (needLog) {
+				System.out.println(urlconn.getRequestMethod() + " failure");
+			}
+			e.printStackTrace();
+			throw e;
 
 		} catch (IOException e) {
-			System.out.println(urlconn.getRequestMethod() + " failure");
-			throw new HatenaHaikuException("IOExceptionが発生しました。", e);
+			if (needLog) {
+				System.out.println(urlconn.getRequestMethod() + " failure");
+			}
+			e.printStackTrace();
+			throw e;
 
 		} finally {
 			// コネクション切断
@@ -136,14 +188,22 @@ public class HttpUtil {
 	 * レスポンスを返却します。
 	 * 
 	 * @param urlconn　HTTPコネクション
+	 * @param needLog ログ出力要否
 	 * @return レスポンスボディの文字列
+	 * @throws UnsupportedEncodingException
+	 * @throws IOException
+	 * @since v0.0.1
 	 */
-	private static String getResponse(HttpURLConnection urlconn) throws HatenaHaikuException {
+	private static String getResponse(HttpURLConnection urlconn, boolean needLog)
+			throws MalformedURLException, IOException {
+
 		try {
 			// レスポンス
 			Map<String, List<String>> headers = urlconn.getHeaderFields();
-			for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
-				System.out.println(entry.getKey() + ": " + entry.getValue());
+			if (needLog) {
+				for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
+					System.out.println(entry.getKey() + ": " + entry.getValue());
+				}
 			}
 			// ボディ
 			StringBuilder responseBody = new StringBuilder();
@@ -153,21 +213,28 @@ public class HttpUtil {
 				responseBody.append(line);
 			}
 
-			System.out.println("----------------");
-			System.out.println("レスポンスコード: " + urlconn.getResponseCode());
-			System.out.println("レスポンスメッセージ: " + urlconn.getResponseMessage());
-			System.out.println("----------------");
-			System.out.println(urlconn.getRequestMethod() + " successfully");
-
+			if (needLog) {
+				System.out.println("----------------");
+				System.out.println("レスポンスコード: " + urlconn.getResponseCode());
+				System.out.println("レスポンスメッセージ: " + urlconn.getResponseMessage());
+				System.out.println("----------------");
+				System.out.println(urlconn.getRequestMethod() + " successfully");
+			}
 			return responseBody.toString();
 
 		} catch (UnsupportedEncodingException e) {
-			System.out.println(urlconn.getRequestMethod() + " failure");
-			throw new HatenaHaikuException("エンコーディングがサポートされていません。", e);
+			if (needLog) {
+				System.out.println(urlconn.getRequestMethod() + " failure");
+			}
+			e.printStackTrace();
+			throw e;
 
 		} catch (IOException e) {
-			System.out.println(urlconn.getRequestMethod() + " failure");
-			throw new HatenaHaikuException("IOExceptionが発生しました。", e);
+			if (needLog) {
+				System.out.println(urlconn.getRequestMethod() + " failure");
+			}
+			e.printStackTrace();
+			throw e;
 
 		} finally {
 			// コネクション切断

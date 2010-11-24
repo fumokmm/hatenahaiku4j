@@ -3,6 +3,7 @@ package hatenahaiku4j;
 /**
  * ’è”’è‹`ƒNƒ‰ƒX
  * 
+ * @since v0.0.1
  * @author fumokmm
  */
 public class Const {

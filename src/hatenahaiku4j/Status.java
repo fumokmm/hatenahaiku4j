@@ -1,6 +1,6 @@
 package hatenahaiku4j;
 
-import hatenahaiku4j.util.Util;
+import hatenahaiku4j.util.HatenaUtil;
 
 import java.util.Date;
 import java.util.List;
@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * はてなハイクステータス情報を表現するクラス
  * 
+ * @since v0.0.1
  * @author fumokmm
  */
 public class Status {
@@ -15,11 +16,11 @@ public class Status {
 	private String id;
 	/** 作成日時 */
 	private Date createdAt;
-	/** お気に入られ */
+	/** お気に入られ（☆してくれた人数） */
 	private int favorited;
-	/** 返信先ステータスID */
+	/** 返信元ステータスID */
 	private String inReplyToStatusId;
-	/** 返信先ユーザID */
+	/** 返信元ユーザID */
 	private String inReplyToUserId;
 	/** キーワード */
 	private String keyword;
@@ -36,174 +37,364 @@ public class Status {
 	
 	/** このステータスへの返信として取得した内容かどうか */
 	private boolean shadow;
+	/** ステータスAPI */
+	public final StatusAPI api;
+
+	/**
+	 * コンストラクタです。（パッケージプライベート）
+	 * 
+	 * @since v0.0.1
+	 */
+	private Status() {
+		this.api = new StatusAPI();
+	}
 	
-	/** @return ステータスID */
+	/**
+	 * 指定したユーザでこのユーザを上書きします。
+	 * 
+	 * @param other 上書きするユーザ
+	 * @since v0.2.0
+	 */
+	void overwrite(Status other) {
+		this.id = other.id;
+		this.createdAt = other.createdAt;
+		this.favorited = other.favorited;
+		this.inReplyToStatusId = other.inReplyToStatusId;
+		this.inReplyToUserId = other.inReplyToUserId;
+		this.keyword = other.keyword;
+		this.link = other.link;
+		this.replies = other.replies;
+		this.source = other.source;
+		this.text = other.text;
+		this.user = other.user;
+		this.shadow = other.shadow;
+	}
+	
+	/**
+	 * インスタンスを取得します。（パッケージプライベート）
+	 * 
+	 * @param apiAuth はてなハイクAPI（認証あり）
+	 * @since v0.2.0
+	 */
+	static Status create(HatenaHaikuAPI apiAuth) {
+		Status status = new Status();
+		status.api.init(status, apiAuth);
+		return status;
+	}
+
+	/**
+	 * インスタンスを取得します。（パッケージプライベート）
+	 * 
+	 * @param apiLight はてなハイクAPI（認証なし）
+	 * @since v0.2.0
+	 */
+	static Status create(HatenaHaikuAPILight apiLight) {
+		Status status = new Status();
+		status.api.init(status, apiLight);
+		return status;
+	}
+	
+	/**
+	 * ステータスIDを取得します。
+	 * 
+	 * @return ステータスID 
+	 * @since v0.0.1
+	 */
 	public String getStatusId() {
 		return id;
 	}
 
-	/** @return 作成日時 */
+	/**
+	 * 作成日時を取得します。
+	 * 
+	 * @return 作成日時
+	 * @since v0.0.1
+	 */
 	public Date getCreatedAt() {
 		return createdAt;
 	}
 
-	/** @return お気に入られ */
+	/**
+	 * 作成日時をはてな日付形式文字列で取得します。
+	 * 
+	 * @return 作成日時（はてな日付形式文字列）
+	 * @since v0.2.0
+	 */
+	public String getCreatedAtString() {
+		return HatenaUtil.formatDate(createdAt);
+	}
+
+	/**
+	 * お気に入られ（☆してくれた人数）を取得します。<br/>
+	 * 付いたスターの数でないことに注意してください。
+	 * 
+	 * @return お気に入られ（☆してくれた人数）
+	 * @since v0.0.1
+	 */
 	public int getFavorited() {
 		return favorited;
 	}
 
-	/** @return 返信先ステータスID */
+	/**
+	 * 返信元ステータスIDを取得します。
+	 * 
+	 * @return 返信元ステータスID
+	 * @since v0.0.1
+	 */
 	public String getInReplyToStatusId() {
 		return inReplyToStatusId;
 	}
 
-	/** @return 返信先ユーザID */
+	/**
+	 * 返信元ユーザIDを取得します。
+	 * 
+	 * @return 返信元ユーザID
+	 * @since v0.0.1
+	 */
 	public String getInReplyToUserId() {
 		return inReplyToUserId;
 	}
 
-	/** @return キーワード */
+	/**
+	 * キーワードを取得します。
+	 * 
+	 * @return キーワード 
+	 * @since v0.0.1
+	 */
 	public String getKeyword() {
 		return keyword;
 	}
 
-	/** @return idページかどうか */
+	/**
+	 * idページかどうか取得します。
+	 * 
+	 * @return idページかどうか
+	 * @since v0.0.1
+	 */
 	public boolean isIdPage() {
-		return Util.isHatenaIdFormat(keyword);
+		return HatenaUtil.isIdNotation(keyword);
 	}
 
-	/** @return リンク */
+	/**
+	 * リンクを取得します。
+	 * 
+	 * @return リンク 
+	 * @since v0.0.1
+	 */
 	public String getLink() {
 		return link;
 	}
 
-	/** このステータスへの返信 */
+	/**
+	 * このステータスへの返信を返却します。
+	 * 
+	 * @return このステータスへの返信
+	 * @since v0.1.0
+	 */
 	public List<Status> getReplies() {
+		// 自動更新するなら
+		if (api.apiLight.isAutoRefreshReplies()) {
+			if (shadow) {
+				try {
+					this.api.refreshReplies();
+				} catch (HatenaHaikuException e) {
+					System.out.println("返信先取得失敗。");
+				}
+			}
+		}
 		return replies;
 	}
 	
-	/** @return ソース（クライアント名） */
+	/**
+	 * ソース（クライアント名）を取得します。
+	 * 
+	 * @return ソース（クライアント名）
+	 * @since v0.0.1
+	 */
 	public String getSource() {
 		return source;
 	}
 
-	/** @return 投稿内容 */
+	/**
+	 * 投稿内容を取得します。
+	 * 
+	 * @return 投稿内容
+	 * @since v0.0.1
+	 */
 	public String getText() {
 		return text;
 	}
 
-	/** @return ユーザ情報 */
+	/**
+	 * ユーザ情報を取得します。
+	 * 
+	 * @return ユーザ情報
+	 * @since v0.0.1
+	 */
 	public User getUser() {
 		return user;
 	}
 	
-	/** @return ユーザID */
+	/**
+	 * ユーザIDを取得します。
+	 * 
+	 * {@link #getUser()}で取得できるユーザの{@link User#getUserId()}のエイリアスです。
+	 * @return ユーザID
+	 * @since v0.0.1
+	 */
 	public String getUserId() {
 		return user.getUserId();
 	}
 
 	/**
-	 * {@link #getShadow()}のエイリアスです。
+	 * id記法のユーザIDを取得します。<br/>
+	 * {@link #getUser()}で取得できるユーザの{@link User#getUserIdNotation()}のエイリアスです。
+	 * 
+	 * @return ユーザid記法
+	 * @since v0.2.0
+	 */
+	public String getUserIdNotation() {
+		return user.getUserIdNotation();
+	}
+
+	/**
+	 * このステータスへの返信として取得した内容かどうかを取得します。
+	 * 
 	 * @return このステータスへの返信として取得した内容かどうか
+	 * @since v0.1.0
 	 */
 	public boolean isShadow() {
 		return shadow;
 	}
-	/** @return このステータスへの返信として取得した内容かどうか */
-	public boolean getShadow() {
-		return shadow;
-	}
 	
 	/**
-	 * @param id the id to set
+	 * ステータスIDを設定します。
+	 * 
+	 * @param statusId ステータスID
+	 * @since v0.0.1
 	 */
 	void setStatusId(String statusId) {
 		this.id = statusId;
 	}
 
 	/**
-	 * @param createdAt the createdAt to set
+	 * 作成日時を設定します。
+	 * 
+	 * @param createdAt　作成日時
+	 * @since v0.0.1
 	 */
 	void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
 	/**
-	 * @param favorited the favorited to set
+	 * お気に入られを設定します。
+	 * 
+	 * @param favorited お気に入られ
+	 * @since v0.0.1
 	 */
 	void setFavorited(int favorited) {
 		this.favorited = favorited;
 	}
 
 	/**
-	 * @param inReplyToStatusId the inReplyToStatusId to set
+	 * 返信元ステータスIDを設定します。
+	 * 
+	 * @param inReplyToStatusId 返信元ステータスID
+	 * @since v0.0.1
 	 */
 	void setInReplyToStatusId(String inReplyToStatusId) {
 		this.inReplyToStatusId = inReplyToStatusId;
 	}
 
 	/**
-	 * @param inReplyToUserId the inReplyToUserId to set
+	 * 返信元ユーザIDを設定します。
+	 * 
+	 * @param inReplyToUserId 返信元ユーザID
+	 * @since v0.0.1
 	 */
 	void setInReplyToUserId(String inReplyToUserId) {
 		this.inReplyToUserId = inReplyToUserId;
 	}
 
 	/**
-	 * @param keyword the keyword to set
+	 * キーワードを設定します。
+	 * 
+	 * @param keyword キーワード
+	 * @since v0.0.1
 	 */
 	void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
 
 	/**
-	 * @param link the link to set
+	 * リンクを設定します。
+	 * 
+	 * @param link リンク
+	 * @since v0.0.1
 	 */
 	void setLink(String link) {
 		this.link = link;
 	}
 
 	/**
-	 * @param replies the replies to set
+	 * このステータスへの返信を設定します。
+	 * 
+	 * @param replies このステータスへの返信
+	 * @since v0.0.1
 	 */
 	void setReplies(List<Status> replies) {
 		this.replies = replies;
 	}
 	
 	/**
-	 * @param source the source to set
+	 * ソース（クライアント名）を設定します。
+	 * 
+	 * @param source ソース（クライアント名）
+	 * @since v0.0.1
 	 */
 	void setSource(String source) {
 		this.source = source;
 	}
 
 	/**
-	 * @param text the text to set
+	 * 投稿内容を設定します。
+	 * 
+	 * @param text 投稿内容
+	 * @since v0.0.1
 	 */
 	void setText(String text) {
 		this.text = text;
 	}
 
 	/**
-	 * @param user the user to set
+	 * ユーザ情報を設定します。
+	 * 
+	 * @param user ユーザ情報
+	 * @since v0.0.1
 	 */
 	void setUser(User user) {
 		this.user = user;
 	}
 	
 	/**
-	 * @param shadow the shadow to set
+	 * このステータスへの返信として取得した内容かどうかを設定します。
+	 * 
+	 * @param shadow このステータスへの返信として取得した内容かどうか
+	 * @since v0.1.0
 	 */
 	void setShadow(boolean shadow) {
 		this.shadow = shadow;
 	}
-	
+
 	/**
 	 * textの「xxxx=本文」の "xxxx="部分を取り除く。<br/>
 	 * 前提：keyword, textが設定されていること。（keywordはidページの場合id:xxx形式で格納済みであること）
+	 * 
+	 * @since v0.1.0
 	 */
 	void removeKeywordEqualOnText() {
-		if (!keyword.equals("") && !isIdPage()) {
+		if (!"".equals(keyword) && !isIdPage()) {
 			// 空白でもidページでもない場合、textには「キーワード=」が頭についているので、取り除く
 			text = text.substring(keyword.length() + 1);
 		}
