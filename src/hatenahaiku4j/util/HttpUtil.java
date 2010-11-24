@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * HTTPƒŠƒNƒGƒXƒg‚ÉŠÖ‚·‚éƒ†[ƒeƒBƒŠƒeƒBƒNƒ‰ƒX
+ * HTTPãƒªã‚¯ã‚¨ã‚¹ãƒˆã«é–¢ã™ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
@@ -34,22 +34,22 @@ import java.util.Map;
 public class HttpUtil {
 	/** METHOD */
 	private static enum Method { POST, GET }
-	/** ƒŠƒNƒGƒXƒgƒvƒƒpƒeƒBFBASIC”FØ */
+	/** ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼šBASICèªè¨¼ */
 	protected static final String REQUEST_PROPERTY_AUTHORIZATION = "Authorization";
-	/** ƒŠƒNƒGƒXƒgƒvƒƒpƒeƒB:ƒRƒlƒNƒVƒ‡ƒ“ */
+	/** ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£:ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ */
 	protected static final String REQUEST_PROPERTY_CONNECTION = "Connection";
-	/** ƒŠƒNƒGƒXƒgƒvƒƒpƒeƒB:ƒRƒlƒNƒVƒ‡ƒ“ (’l:close) */
+	/** ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£:ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ (å€¤:close) */
 	protected static final String REQUEST_PROPERTY_CONNECTION_CLOSE = "close";
-	/** ƒŠƒNƒGƒXƒgƒvƒƒpƒeƒB:ƒRƒ“ƒeƒ“ƒgƒ^ƒCƒv */
+	/** ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£:ã‚³ãƒ³ãƒ†ãƒ³ãƒˆã‚¿ã‚¤ãƒ— */
 	protected static final String REQUEST_PROPERTY_CONTENT_TYPE = "Content-Type";
 	
 	/**
-	 * ƒQƒbƒg‚µ‚Ü‚·B
+	 * ã‚²ãƒƒãƒˆã—ã¾ã™ã€‚
 	 * 
-	 * @param url ƒŠƒNƒGƒXƒgURL
-	 * @param param ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^î•ñ
-	 * @param needLog ƒƒOo—Í—v”Û
-	 * @return ƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì•¶š—ñ
+	 * @param url ãƒªã‚¯ã‚¨ã‚¹ãƒˆURL
+	 * @param param ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±
+	 * @param needLog ãƒ­ã‚°å‡ºåŠ›è¦å¦
+	 * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®æ–‡å­—åˆ—
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 * @since v0.0.1
@@ -59,13 +59,13 @@ public class HttpUtil {
 	}
 
 	/**
-	 * ƒQƒbƒg‚µ‚Ü‚·B
+	 * ã‚²ãƒƒãƒˆã—ã¾ã™ã€‚
 	 * 
-	 * @param loginUser ƒƒOƒCƒ“ƒ†[ƒU
-	 * @param url ƒŠƒNƒGƒXƒgURL
-	 * @param param ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^î•ñ
-	 * @param needLog ƒƒOo—Í—v”Û
-	 * @return ƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì•¶š—ñ
+	 * @param loginUser ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶
+	 * @param url ãƒªã‚¯ã‚¨ã‚¹ãƒˆURL
+	 * @param param ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±
+	 * @param needLog ãƒ­ã‚°å‡ºåŠ›è¦å¦
+	 * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®æ–‡å­—åˆ—
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 * @since v0.0.1
@@ -74,21 +74,21 @@ public class HttpUtil {
 			QueryParameter param, boolean needLog) throws
 			MalformedURLException, IOException {
 
-		HttpURLConnection urlconn = null; // ƒRƒlƒNƒVƒ‡ƒ“
+		HttpURLConnection urlconn = null; // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
 		try {
 			urlconn = (HttpURLConnection) new URL(url).openConnection();
 			urlconn.setRequestMethod(Method.GET.name());
 			if (loginUser != null) {
 				urlconn.setRequestProperty(REQUEST_PROPERTY_AUTHORIZATION, loginUser.toBasicAuthenticationString());
 			}
-			// GET‚¾‚ªAoutputStream‚ğæ“¾‚·‚é‚½output‚àtrue‚Æ‚·‚é
+			// GETã ãŒã€outputStreamã‚’å–å¾—ã™ã‚‹ãŸoutputã‚‚trueã¨ã™ã‚‹
 			urlconn.setDoInput(true);		// for GET
 			urlconn.setDoOutput(true);		// for POST
 			urlconn.setUseCaches(false);	// disable cache
-			// Å‰‚É‚µ‚ÄÅŒã‚Ì—v‹
+			// æœ€åˆã«ã—ã¦æœ€å¾Œã®è¦æ±‚
 			urlconn.setRequestProperty(REQUEST_PROPERTY_CONNECTION, REQUEST_PROPERTY_CONNECTION_CLOSE);
 			
-			// ƒ|ƒXƒg“à—e‚Ì•\¦
+			// ãƒã‚¹ãƒˆå†…å®¹ã®è¡¨ç¤º
 			if (param != null) {
 				if (needLog) {
 					param.outputPostInfo();
@@ -102,7 +102,7 @@ public class HttpUtil {
 			}
 			ps.close();
 
-			// ƒŒƒXƒ|ƒ“ƒX
+			// ãƒ¬ã‚¹ãƒãƒ³ã‚¹
 			return getResponse(urlconn, needLog);
 
 		} catch (MalformedURLException e) {
@@ -120,19 +120,19 @@ public class HttpUtil {
 			throw e;
 
 		} finally {
-			// ƒRƒlƒNƒVƒ‡ƒ“Ø’f
+			// ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³åˆ‡æ–­
 			urlconn.disconnect();
 		}
 	}
 
 	/**
-	 * ƒ|ƒXƒg‚µ‚Ü‚·B
+	 * ãƒã‚¹ãƒˆã—ã¾ã™ã€‚
 	 * 
-	 * @param loginUser ƒƒOƒCƒ“ƒ†[ƒU
-	 * @param url ƒŠƒNƒGƒXƒgURL
-	 * @param param ƒŠƒNƒGƒXƒgƒpƒ‰ƒ[ƒ^î•ñ
-	 * @param needLog ƒƒOo—Í—v”Û
-	 * @return ƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì•¶š—ñ
+	 * @param loginUser ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶
+	 * @param url ãƒªã‚¯ã‚¨ã‚¹ãƒˆURL
+	 * @param param ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±
+	 * @param needLog ãƒ­ã‚°å‡ºåŠ›è¦å¦
+	 * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®æ–‡å­—åˆ—
 	 * @throws UnsupportedEncodingException
 	 * @throws MalformedURLException
 	 * @throws IOException
@@ -143,27 +143,27 @@ public class HttpUtil {
 			UpdateParameter param, boolean needLog) throws UnsupportedEncodingException,
 			MalformedURLException, IOException, HatenaHaikuException {
 
-		HttpURLConnection urlconn = null; // ƒRƒlƒNƒVƒ‡ƒ“
+		HttpURLConnection urlconn = null; // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
 		try {
 			urlconn = (HttpURLConnection) new URL(url).openConnection();
 			urlconn.setRequestMethod(Method.POST.name());
 			urlconn.setRequestProperty(REQUEST_PROPERTY_AUTHORIZATION, loginUser.toBasicAuthenticationString());
-			// ƒL[ƒ[ƒh–¢w’è‚Ìê‡‚ÍAƒƒOƒCƒ“ƒ†[ƒU‚ÌID‚Æ‚·‚éB
+			// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æœªæŒ‡å®šã®å ´åˆã¯ã€ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ã®IDã¨ã™ã‚‹ã€‚
 			if (param.getKeyword() == null || param.getKeyword().equals("")) {
 				param.setKeyword(loginUser.getUserIdNotation());
 			}
-			// POST‚Ì‚½‚ßAInput/Output‚Æ‚à‚Étrue
+			// POSTã®ãŸã‚ã€Input/Outputã¨ã‚‚ã«true
 			urlconn.setDoInput(true);		// for GET
 			urlconn.setDoOutput(true);		// for POST
 			urlconn.setUseCaches(false);	// disable cache
-			// Å‰‚É‚µ‚ÄÅŒã‚Ì—v‹
+			// æœ€åˆã«ã—ã¦æœ€å¾Œã®è¦æ±‚
 			urlconn.setRequestProperty(REQUEST_PROPERTY_CONNECTION, REQUEST_PROPERTY_CONNECTION_CLOSE);
 
-			// multipart/form-data‚Åƒ|ƒXƒg‚·‚é‚½‚ß‚ÌƒoƒEƒ“ƒ_ƒŠ•¶š—ñ‚ğ¶¬
+			// multipart/form-dataã§ãƒã‚¹ãƒˆã™ã‚‹ãŸã‚ã®ãƒã‚¦ãƒ³ãƒ€ãƒªæ–‡å­—åˆ—ã‚’ç”Ÿæˆ
 			String boundary = "--------------------" + Const.API_NAME + StringUtil.getSerial();
 			urlconn.setRequestProperty(REQUEST_PROPERTY_CONTENT_TYPE, "multipart/form-data; boundary=" + boundary);
 			
-			// ƒ|ƒXƒg“à—e‚Ì•\¦
+			// ãƒã‚¹ãƒˆå†…å®¹ã®è¡¨ç¤º
 			if (needLog) {
 				param.outputPostInfo(loginUser);
 			}
@@ -173,7 +173,7 @@ public class HttpUtil {
 			param.addParameter(loginUser, ps);
 			ps.close();
 			
-			// ƒŒƒXƒ|ƒ“ƒX
+			// ãƒ¬ã‚¹ãƒãƒ³ã‚¹
 			return getResponse(urlconn, needLog);
 
 		} catch (MalformedURLException e) {
@@ -191,17 +191,17 @@ public class HttpUtil {
 			throw e;
 
 		} finally {
-			// ƒRƒlƒNƒVƒ‡ƒ“Ø’f
+			// ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³åˆ‡æ–­
 			urlconn.disconnect();
 		}
 	}
 	
 	/**
-	 * ƒŒƒXƒ|ƒ“ƒX‚ğ•Ô‹p‚µ‚Ü‚·B
+	 * ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @param urlconn@HTTPƒRƒlƒNƒVƒ‡ƒ“
-	 * @param needLog ƒƒOo—Í—v”Û
-	 * @return ƒŒƒXƒ|ƒ“ƒXƒ{ƒfƒB‚Ì•¶š—ñ
+	 * @param urlconnã€€HTTPã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³
+	 * @param needLog ãƒ­ã‚°å‡ºåŠ›è¦å¦
+	 * @return ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒœãƒ‡ã‚£ã®æ–‡å­—åˆ—
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 * @since v0.0.1
@@ -210,14 +210,14 @@ public class HttpUtil {
 			throws MalformedURLException, IOException {
 
 		try {
-			// ƒŒƒXƒ|ƒ“ƒX
+			// ãƒ¬ã‚¹ãƒãƒ³ã‚¹
 			Map<String, List<String>> headers = urlconn.getHeaderFields();
 			if (needLog) {
 				for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
 					System.out.println(entry.getKey() + ": " + entry.getValue());
 				}
 			}
-			// ƒ{ƒfƒB
+			// ãƒœãƒ‡ã‚£
 			StringBuilder responseBody = new StringBuilder();
 			BufferedReader responseReader = new BufferedReader(new InputStreamReader(urlconn.getInputStream(), Const.UTF8));
 			String line;
@@ -227,8 +227,8 @@ public class HttpUtil {
 
 			if (needLog) {
 				System.out.println("----------------");
-				System.out.println("ƒŒƒXƒ|ƒ“ƒXƒR[ƒh: " + urlconn.getResponseCode());
-				System.out.println("ƒŒƒXƒ|ƒ“ƒXƒƒbƒZ[ƒW: " + urlconn.getResponseMessage());
+				System.out.println("ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚³ãƒ¼ãƒ‰: " + urlconn.getResponseCode());
+				System.out.println("ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸: " + urlconn.getResponseMessage());
 				System.out.println("----------------");
 				System.out.println(urlconn.getRequestMethod() + " successfully");
 			}
@@ -242,42 +242,42 @@ public class HttpUtil {
 			throw e;
 
 		} finally {
-			// ƒRƒlƒNƒVƒ‡ƒ“Ø’f
+			// ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³åˆ‡æ–­
 			urlconn.disconnect();
 		}
 	}
 	
 	/**
-	 * ƒ|ƒXƒgˆ—•â•ƒNƒ‰ƒXB<br/>
-	 * ƒpƒ‰ƒ[ƒ^‚ğ¶¬‚µ‚Äƒ|ƒXƒg‚µ‚Ü‚·B
+	 * ãƒã‚¹ãƒˆå‡¦ç†è£œåŠ©ã‚¯ãƒ©ã‚¹ã€‚<br/>
+	 * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç”Ÿæˆã—ã¦ãƒã‚¹ãƒˆã—ã¾ã™ã€‚
 	 * 
 	 * @author fumokmm
 	 * @since v1.0.0
 	 */
 	public static class PostStream {
-		/** ƒf[ƒ^‘‚«‚İ—p */
+		/** ãƒ‡ãƒ¼ã‚¿æ›¸ãè¾¼ã¿ç”¨ */
 		protected final DataOutputStream out;
-		/** ƒeƒLƒXƒg‘‚«‚İ—p */
+		/** ãƒ†ã‚­ã‚¹ãƒˆæ›¸ãè¾¼ã¿ç”¨ */
 		protected final Writer wout;
 		
-		/** ƒoƒEƒ“ƒ_ƒŠ[ */
+		/** ãƒã‚¦ãƒ³ãƒ€ãƒªãƒ¼ */
 		private final String boundary;
-		/** ƒZƒpƒŒ[ƒ^ */
+		/** ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ */
 		private static final String SEPARATOR = "--";
-		/** s‹æØ‚è */
+		/** è¡ŒåŒºåˆ‡ã‚Š */
 		private static final byte[] CRLF = { 0x0d, 0x0a };
-		/** ƒoƒbƒtƒ@ƒTƒCƒY */
+		/** ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚º */
 		private final int BUFSIZE = 8192;
 
-		/** ƒfƒŠƒ~ƒ^‚ª•K—v‚©‚Ç‚¤‚© */
+		/** ãƒ‡ãƒªãƒŸã‚¿ãŒå¿…è¦ã‹ã©ã†ã‹ */
 		private boolean needDelimeter = false;
 
 		/**
-		 * uURLƒGƒ“ƒR[ƒhvƒ‚[ƒh‚Ìƒf[ƒ^ƒXƒgƒŠ[ƒ€‚ğì¬‚µ‚Ü‚·B<br>
-		 * addProperty(java.lang.String, java.lang.String) ‚Å’Ç‰Á‚³‚ê‚éƒf[ƒ^‚Í“KØ‚É URL ƒGƒ“ƒR[ƒh‚³‚ê‚Ü‚·B<br>
-		 * {@link #close()}‚·‚é‚ÆAContent-Type ‚ğ "application/x-www-urlencoded" ‚Æ‚µ‚Ä POST ƒŠƒNƒGƒXƒg‚ğÀs‚µ‚Ü‚·B
+		 * ã€ŒURLã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã€ãƒ¢ãƒ¼ãƒ‰ã®ãƒ‡ãƒ¼ã‚¿ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ä½œæˆã—ã¾ã™ã€‚<br>
+		 * addProperty(java.lang.String, java.lang.String) ã§è¿½åŠ ã•ã‚Œã‚‹ãƒ‡ãƒ¼ã‚¿ã¯é©åˆ‡ã« URL ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚Œã¾ã™ã€‚<br>
+		 * {@link #close()}ã™ã‚‹ã¨ã€Content-Type ã‚’ "application/x-www-urlencoded" ã¨ã—ã¦ POST ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å®Ÿè¡Œã—ã¾ã™ã€‚
 		 *
-		 * @param o URLConnection.getOutputStream() ‚Å•Ô‚³‚ê‚é {@link URLConnection#getOutputStream}
+		 * @param o URLConnection.getOutputStream() ã§è¿”ã•ã‚Œã‚‹ {@link URLConnection#getOutputStream}
 		 * @since v1.0.0
 		 */
 		public PostStream(OutputStream o) { 
@@ -285,14 +285,14 @@ public class HttpUtil {
 		}
 		
 		/**
-		 * uƒ}ƒ‹ƒ`ƒp[ƒgvƒ‚[ƒh‚Ìƒf[ƒ^ƒXƒgƒŠ[ƒ€‚ğì¬‚µ‚Ü‚·B
-		 * addProperty(java.lang.String, java.lang.String)‚â
-		 * addFile(java.io.File, java.lang.String, java.lang.String)‚Å
-		 * ’Ç‰Á‚³‚ê‚éƒf[ƒ^‚Íƒ}ƒ‹ƒ`ƒp[ƒg MIME Œ`®‚ÉƒtƒH[ƒ}ƒbƒg‚³‚ê‚Ü‚·B
-		 * close() ‚·‚é‚ÆAContent-Type ‚ğ "multipart/form-data" ‚Æ‚µ‚Ä POST ƒŠƒNƒGƒXƒg‚ğÀs‚µ‚Ü‚·B
+		 * ã€Œãƒãƒ«ãƒãƒ‘ãƒ¼ãƒˆã€ãƒ¢ãƒ¼ãƒ‰ã®ãƒ‡ãƒ¼ã‚¿ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ä½œæˆã—ã¾ã™ã€‚
+		 * addProperty(java.lang.String, java.lang.String)ã‚„
+		 * addFile(java.io.File, java.lang.String, java.lang.String)ã§
+		 * è¿½åŠ ã•ã‚Œã‚‹ãƒ‡ãƒ¼ã‚¿ã¯ãƒãƒ«ãƒãƒ‘ãƒ¼ãƒˆ MIME å½¢å¼ã«ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã•ã‚Œã¾ã™ã€‚
+		 * close() ã™ã‚‹ã¨ã€Content-Type ã‚’ "multipart/form-data" ã¨ã—ã¦ POST ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å®Ÿè¡Œã—ã¾ã™ã€‚
 		 *
-		 * @param o {@link URLConnection#getOutputStream} ‚Å•Ô‚³‚ê‚é OutputStream
-		 * @param boundary ƒ}ƒ‹ƒ`ƒp[ƒg MIME ‚Ì‹æØ•¶š—ñ
+		 * @param o {@link URLConnection#getOutputStream} ã§è¿”ã•ã‚Œã‚‹ OutputStream
+		 * @param boundary ãƒãƒ«ãƒãƒ‘ãƒ¼ãƒˆ MIME ã®åŒºåˆ‡æ–‡å­—åˆ—
 		 * @since v1.0.0
 		 */
 		public PostStream(OutputStream o, String boundary) {
@@ -315,11 +315,11 @@ public class HttpUtil {
 		}
 
 		/**
-		 * ƒpƒ‰ƒ[ƒ^‚ğƒXƒgƒŠ[ƒ€‚É’Ç‰Á‚µ‚Ü‚·B
+		 * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«è¿½åŠ ã—ã¾ã™ã€‚
 		 *
-		 * @param name ƒpƒ‰ƒ[ƒ^–¼
-		 * @param value ƒpƒ‰ƒ[ƒ^‚Ì’l
-		 * @throws IOException ‘‚«‚İ‚ÉƒGƒ‰[‚ª”­¶‚µ‚½
+		 * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+		 * @param value ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å€¤
+		 * @throws IOException æ›¸ãè¾¼ã¿æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		 * @since v1.0.0
 		 */
 		public void addProperty(String name, String value) throws IOException {
@@ -339,13 +339,13 @@ public class HttpUtil {
 		}
 
 		/**
-		 * ƒtƒ@ƒCƒ‹‚Ì“à—e‚ğƒXƒgƒŠ[ƒ€‚É’Ç‰Á‚µ‚Ü‚·B<br>
-		 * uƒ}ƒ‹ƒ`ƒp[ƒgvƒ‚[ƒh‚ÌƒXƒgƒŠ[ƒ€‚Å‚µ‚©g—p‚Å‚«‚Ü‚¹‚ñB
+		 * ãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«è¿½åŠ ã—ã¾ã™ã€‚<br>
+		 * ã€Œãƒãƒ«ãƒãƒ‘ãƒ¼ãƒˆã€ãƒ¢ãƒ¼ãƒ‰ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§ã—ã‹ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚
 		 *
-		 * @param file ’Ç‰Á‚·‚éƒtƒ@ƒCƒ‹
-		 * @param name ƒpƒ‰ƒ[ƒ^–¼
-		 * @param mimeType ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì MIME ƒ^ƒCƒv
-		 * @throws IOException ’ÊMƒGƒ‰[‚ª”­¶
+		 * @param file è¿½åŠ ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+		 * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+		 * @param mimeType ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã® MIME ã‚¿ã‚¤ãƒ—
+		 * @throws IOException é€šä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿ
 		 * @since v1.0.0
 		 */
 		public void addFile(File file, String name, ImageMime mimeType) throws IOException {
@@ -353,20 +353,20 @@ public class HttpUtil {
 				throw new IllegalStateException("could not add a file for this stream.");
 			}
 			writeSeparatorBoundary();
-			// ƒtƒ@ƒCƒ‹–¼‚Í‚Æ‚è‚ ‚¦‚¸‚È‚ñ‚Å‚à‚¢‚¢‚æ‚¤‚È‚Ì‚ÅAmimeType‚ğ‰ÁH‚µ‚Äƒtƒ@ƒCƒ‹–¼‚Æ‚µ‚Ä‚¢‚é
+			// ãƒ•ã‚¡ã‚¤ãƒ«åã¯ã¨ã‚Šã‚ãˆãšãªã‚“ã§ã‚‚ã„ã„ã‚ˆã†ãªã®ã§ã€mimeTypeã‚’åŠ å·¥ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«åã¨ã—ã¦ã„ã‚‹
 			writeContentDisposition(name, mimeType.toTemporaryFileName());
 			writeContentType(mimeType.getMimeType());
 			writeValue(file);
 		}
 		
 		/**
-		 * URLã‚©‚çƒoƒCƒgƒXƒgƒŠ[ƒ€‚ğæ“¾‚µAƒtƒ@ƒCƒ‹‚Æ‚µ‚Ä’Ç‰Á‚µ‚Ü‚·B<br>
-		 * uƒ}ƒ‹ƒ`ƒp[ƒgvƒ‚[ƒh‚ÌƒXƒgƒŠ[ƒ€‚Å‚µ‚©g—p‚Å‚«‚Ü‚¹‚ñB
+		 * URLä¸Šã‹ã‚‰ãƒã‚¤ãƒˆã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’å–å¾—ã—ã€ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã—ã¦è¿½åŠ ã—ã¾ã™ã€‚<br>
+		 * ã€Œãƒãƒ«ãƒãƒ‘ãƒ¼ãƒˆã€ãƒ¢ãƒ¼ãƒ‰ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§ã—ã‹ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚
 		 *
-		 * @param imageUrl ’Ç‰Á‚·‚éƒtƒ@ƒCƒ‹
-		 * @param name ƒpƒ‰ƒ[ƒ^–¼
-		 * @param mimeType ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì MIME ƒ^ƒCƒv
-		 * @throws IOException ’ÊMƒGƒ‰[‚ª”­¶
+		 * @param imageUrl è¿½åŠ ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«
+		 * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+		 * @param mimeType ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã® MIME ã‚¿ã‚¤ãƒ—
+		 * @throws IOException é€šä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿ
 		 * @since v1.0.0
 		 */
 		public void addImageUrl(String imageUrl, String name, ImageMime mimeType) throws IOException {
@@ -374,20 +374,20 @@ public class HttpUtil {
 				throw new IllegalStateException("could not add a image file for this stream.");
 			}
 			writeSeparatorBoundary();
-			// ƒtƒ@ƒCƒ‹–¼‚Í‚Æ‚è‚ ‚¦‚¸‚È‚ñ‚Å‚à‚¢‚¢‚æ‚¤‚È‚Ì‚ÅAmimeType‚ğ‰ÁH‚µ‚Äƒtƒ@ƒCƒ‹–¼‚Æ‚µ‚Ä‚¢‚é
+			// ãƒ•ã‚¡ã‚¤ãƒ«åã¯ã¨ã‚Šã‚ãˆãšãªã‚“ã§ã‚‚ã„ã„ã‚ˆã†ãªã®ã§ã€mimeTypeã‚’åŠ å·¥ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«åã¨ã—ã¦ã„ã‚‹
 			writeContentDisposition(name, mimeType.toTemporaryFileName());
 			writeContentType(mimeType.getMimeType());
 			writeValue(new URL(imageUrl));
 		}
 
 		/**
-		 * ‰æ‘œƒoƒCƒiƒŠƒf[ƒ^‚ğƒXƒgƒŠ[ƒ€‚É’Ç‰Á‚µ‚Ü‚·B<br>
-		 * uƒ}ƒ‹ƒ`ƒp[ƒgvƒ‚[ƒh‚ÌƒXƒgƒŠ[ƒ€‚Å‚µ‚©g—p‚Å‚«‚Ü‚¹‚ñB
+		 * ç”»åƒãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«è¿½åŠ ã—ã¾ã™ã€‚<br>
+		 * ã€Œãƒãƒ«ãƒãƒ‘ãƒ¼ãƒˆã€ãƒ¢ãƒ¼ãƒ‰ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§ã—ã‹ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚
 		 *
-		 * @param imageData ‰æ‘œƒoƒCƒiƒŠƒf[ƒ^
-		 * @param name ƒpƒ‰ƒ[ƒ^–¼
-		 * @param mimeType ‚±‚Ìƒtƒ@ƒCƒ‹‚Ì MIME ƒ^ƒCƒv
-		 * @throws IOException ’ÊMƒGƒ‰[‚ª”­¶
+		 * @param imageData ç”»åƒãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿
+		 * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+		 * @param mimeType ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã® MIME ã‚¿ã‚¤ãƒ—
+		 * @throws IOException é€šä¿¡ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿ
 		 * @since v1.0.0
 		 */
 		public void addImageData(byte[] imageData, String name, ImageMime mimeType) throws IOException {
@@ -395,14 +395,14 @@ public class HttpUtil {
 				throw new IllegalStateException("could not add a image data for this stream.");
 			}
 			writeSeparatorBoundary();
-			// ƒtƒ@ƒCƒ‹–¼‚Í‚Æ‚è‚ ‚¦‚¸‚È‚ñ‚Å‚à‚¢‚¢‚æ‚¤‚È‚Ì‚ÅAmimeType‚ğ‰ÁH‚µ‚Äƒtƒ@ƒCƒ‹–¼‚Æ‚µ‚Ä‚¢‚é
+			// ãƒ•ã‚¡ã‚¤ãƒ«åã¯ã¨ã‚Šã‚ãˆãšãªã‚“ã§ã‚‚ã„ã„ã‚ˆã†ãªã®ã§ã€mimeTypeã‚’åŠ å·¥ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«åã¨ã—ã¦ã„ã‚‹
 			writeContentDisposition(name, mimeType.toTemporaryFileName());
 			writeContentType(mimeType.getMimeType());
 			writeValue(imageData);
 		}
 
 		/**
-		 * ‚±‚ÌƒXƒgƒŠ[ƒ€‚ğ•Â‚¶‚ÄAƒ|ƒXƒg‚µ‚Ü‚·B
+		 * ã“ã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é–‰ã˜ã¦ã€ãƒã‚¹ãƒˆã—ã¾ã™ã€‚
 		 * 
 		 * @throws IOException
 		 * @since v1.0.0
@@ -429,7 +429,7 @@ public class HttpUtil {
 		}
 		
 		/**
-		 * ƒZƒpƒŒ[ƒ^[{ƒoƒEƒ“ƒ_ƒŠ[‚ğƒXƒgƒŠ[ƒ€‚É‘‚«‚İ‚Ü‚·B
+		 * ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ãƒ¼ï¼‹ãƒã‚¦ãƒ³ãƒ€ãƒªãƒ¼ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã¿ã¾ã™ã€‚
 		 * 
 		 * @throws IOException
 		 * @since v1.0.0
@@ -441,9 +441,9 @@ public class HttpUtil {
 		}
 		
 		/**
-		 * ƒRƒ“ƒeƒ“ƒgƒfƒBƒXƒ|ƒWƒVƒ‡ƒ“‚ğƒXƒgƒŠ[ƒ€‚É‘‚«‚İ‚Ü‚·B
+		 * ã‚³ãƒ³ãƒ†ãƒ³ãƒˆãƒ‡ã‚£ã‚¹ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã¿ã¾ã™ã€‚
 		 * 
-		 * @param name ƒpƒ‰ƒ[ƒ^–¼
+		 * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
 		 * @throws IOException
 		 * @since v1.0.0
 		 */
@@ -454,10 +454,10 @@ public class HttpUtil {
 		}
 		
 		/**
-		 * ƒRƒ“ƒeƒ“ƒgƒfƒBƒXƒ|ƒWƒVƒ‡ƒ“‚ğƒXƒgƒŠ[ƒ€‚É‘‚«‚İ‚Ü‚·B
+		 * ã‚³ãƒ³ãƒ†ãƒ³ãƒˆãƒ‡ã‚£ã‚¹ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã¿ã¾ã™ã€‚
 		 * 
-		 * @param name ƒpƒ‰ƒ[ƒ^–¼
-		 * @param fileName ƒtƒ@ƒCƒ‹–¼
+		 * @param name ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+		 * @param fileName ãƒ•ã‚¡ã‚¤ãƒ«å
 		 * @throws IOException
 		 * @since v1.0.0
 		 */
@@ -468,9 +468,9 @@ public class HttpUtil {
 		}
 		
 		/**
-		 * ƒRƒ“ƒeƒ“ƒcƒ^ƒCƒv‚ğƒXƒgƒŠ[ƒ€‚É‘‚«‚İ‚Ü‚·B
+		 * ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚¿ã‚¤ãƒ—ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã¿ã¾ã™ã€‚
 		 * 
-		 * @param mimeType ƒ}ƒCƒ€ƒ^ƒCƒv
+		 * @param mimeType ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—
 		 * @throws IOException
 		 * @since v1.0.0
 		 */
@@ -481,9 +481,9 @@ public class HttpUtil {
 		}
 		
 		/**
-		 * •¶š—ñ‚ğƒXƒgƒŠ[ƒ€‚É‘‚«‚İ‚Ü‚·B
+		 * æ–‡å­—åˆ—ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã¿ã¾ã™ã€‚
 		 * 
-		 * @param value ƒXƒgƒŠ[ƒ€‚É‘‚«‚Ş•¶š—ñ
+		 * @param value ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã‚€æ–‡å­—åˆ—
 		 * @throws IOException
 		 * @since v1.0.0
 		 */
@@ -495,9 +495,9 @@ public class HttpUtil {
 		}
 
 		/**
-		 * ƒoƒCƒg”z—ñ‚ğƒXƒgƒŠ[ƒ€‚É‘‚«‚İ‚Ü‚·B
+		 * ãƒã‚¤ãƒˆé…åˆ—ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã¿ã¾ã™ã€‚
 		 * 
-		 * @param value ƒXƒgƒŠ[ƒ€‚É‘‚«‚ŞƒoƒCƒg”z—ñ
+		 * @param value ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã‚€ãƒã‚¤ãƒˆé…åˆ—
 		 * @throws IOException
 		 * @since v1.0.0
 		 */
@@ -508,9 +508,9 @@ public class HttpUtil {
 		}
 		
 		/**
-		 * ƒtƒ@ƒCƒ‹‚ğƒXƒgƒŠ[ƒ€‚É‘‚«‚İ‚Ü‚·B
+		 * ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã¿ã¾ã™ã€‚
 		 * 
-		 * @param file ƒXƒgƒŠ[ƒ€‚É‘‚«‚Şƒtƒ@ƒCƒ‹
+		 * @param file ã‚¹ãƒˆãƒªãƒ¼ãƒ ã«æ›¸ãè¾¼ã‚€ãƒ•ã‚¡ã‚¤ãƒ«
 		 * @throws IOException
 		 * @since v1.0.0
 		 */

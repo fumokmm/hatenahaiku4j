@@ -3,7 +3,7 @@ package hatenahaiku4j.util;
 import hatenahaiku4j.Const;
 
 /**
- * ‚Í‚Ä‚ÈƒnƒCƒN‚ÌURL‚ğ¶¬‚·‚éƒ†[ƒeƒBƒŠƒeƒBƒNƒ‰ƒX‚Å‚·B
+ * ã¯ã¦ãªãƒã‚¤ã‚¯ã®URLã‚’ç”Ÿæˆã™ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
  * 
  * @author fumokmm
  * @since v1.0.1
@@ -13,20 +13,20 @@ public class HaikuURL {
 	//----------------------------------------------
 	// Fields
 	
-	/** ƒŠƒ“ƒN */
+	/** ãƒªãƒ³ã‚¯ */
 	private String link;
-	/** ƒ‚ƒoƒCƒ‹—p‚ÌƒŠƒ“ƒN */
+	/** ãƒ¢ãƒã‚¤ãƒ«ç”¨ã®ãƒªãƒ³ã‚¯ */
 	private String mobileLink;
 	
-	/** ƒGƒXƒP[ƒv‚³‚ê‚½ƒŠƒ“ƒN */
+	/** ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸãƒªãƒ³ã‚¯ */
 	private String escapedLink;
-	/** ƒ‚ƒoƒCƒ‹—p‚ÌƒGƒXƒP[ƒv‚³‚ê‚½ƒŠƒ“ƒN */
+	/** ãƒ¢ãƒã‚¤ãƒ«ç”¨ã®ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸãƒªãƒ³ã‚¯ */
 	private String escapedMobileLink;
 
 	//----------------------------------------------
 	// Constructors
 
-	/* ƒvƒ‰ƒCƒx[ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^ */
+	/* ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ */
 	private HaikuURL() {
 		this.link = "";
 		this.mobileLink = "";
@@ -38,11 +38,11 @@ public class HaikuURL {
 	// Create Methods
 
 	/**
-	 * ƒL[ƒ[ƒh‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * ƒL[ƒ[ƒh‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @return ƒL[ƒ[ƒh‚ÌHaikuURL
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byKeyword(String keyword) {
@@ -50,13 +50,13 @@ public class HaikuURL {
 	}
 
 	/**
-	 * ƒL[ƒ[ƒh‚Æƒ‰ƒxƒ‹‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * ƒGƒXƒP[ƒv‚Íƒ‰ƒxƒ‹‚É{‚³‚ê‚Ü‚·B<br/>
-	 * ƒL[ƒ[ƒh‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã¨ãƒ©ãƒ™ãƒ«ã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¯ãƒ©ãƒ™ãƒ«ã«æ–½ã•ã‚Œã¾ã™ã€‚<br/>
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param label ƒŠƒ“ƒN‚ğ’u‚«Š·‚¦‚éƒ‰ƒxƒ‹
-	 * @return ƒL[ƒ[ƒh‚ÌHaikuURL
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param label ãƒªãƒ³ã‚¯ã‚’ç½®ãæ›ãˆã‚‹ãƒ©ãƒ™ãƒ«
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byKeyword(String keyword, String label) {
@@ -64,14 +64,14 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * ƒL[ƒ[ƒh‚Æƒ‰ƒxƒ‹‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * ƒGƒXƒP[ƒv‚Íƒ‰ƒxƒ‹‚É{‚³‚ê‚Ü‚·B<br/>
-	 * ƒ‰ƒxƒ‹‚ª‹ó‚¾‚Á‚½ê‡A’Êí‚ÌƒL[ƒ[ƒhƒŠƒ“ƒN‚ğ{‚µ‚Ü‚·B<br/>
-	 * ƒL[ƒ[ƒh‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã¨ãƒ©ãƒ™ãƒ«ã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¯ãƒ©ãƒ™ãƒ«ã«æ–½ã•ã‚Œã¾ã™ã€‚<br/>
+	 * ãƒ©ãƒ™ãƒ«ãŒç©ºã ã£ãŸå ´åˆã€é€šå¸¸ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªãƒ³ã‚¯ã‚’æ–½ã—ã¾ã™ã€‚<br/>
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param label ƒŠƒ“ƒN‚ğ’u‚«Š·‚¦‚éƒ‰ƒxƒ‹
-	 * @return ƒL[ƒ[ƒh‚ÌHaikuURL
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param label ãƒªãƒ³ã‚¯ã‚’ç½®ãæ›ãˆã‚‹ãƒ©ãƒ™ãƒ«
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	private static HaikuURL _byKeyword(String keyword, String label) {
@@ -79,7 +79,7 @@ public class HaikuURL {
 		if (StringUtil.isEmpty(keyword)) {
 			return haikuUrl;
 		}
-		// ƒ‰ƒxƒ‹‚ª‚ ‚é‚Æ‚«‚ÍAƒ‰ƒxƒ‹‚ÅURLƒŠƒ“ƒN‚É‚·‚é
+		// ãƒ©ãƒ™ãƒ«ãŒã‚ã‚‹ã¨ãã¯ã€ãƒ©ãƒ™ãƒ«ã§URLãƒªãƒ³ã‚¯ã«ã™ã‚‹
 		if (StringUtil.isEmpty(label)) {
 			haikuUrl.link				= toKeywordLink(keyword);
 			haikuUrl.mobileLink			= toKeywordLink(keyword);
@@ -95,11 +95,11 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * ƒ†[ƒUID‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * ƒ†[ƒUID‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶IDã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * ãƒ¦ãƒ¼ã‚¶IDãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param userId ƒ†[ƒUID
-	 * @return ƒ†[ƒUID‚ÌHaikuURL
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return ãƒ¦ãƒ¼ã‚¶IDã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byUserId(String userId) {
@@ -107,13 +107,13 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * ƒ†[ƒUID‚Æƒ‰ƒxƒ‹‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * ƒGƒXƒP[ƒv‚Íƒ‰ƒxƒ‹‚É{‚³‚ê‚Ü‚·B<br/>
-	 * ƒ†[ƒUID‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶IDã¨ãƒ©ãƒ™ãƒ«ã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¯ãƒ©ãƒ™ãƒ«ã«æ–½ã•ã‚Œã¾ã™ã€‚<br/>
+	 * ãƒ¦ãƒ¼ã‚¶IDãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param userId ƒ†[ƒUID
-	 * @param label ƒŠƒ“ƒN‚ğ’u‚«Š·‚¦‚éƒ‰ƒxƒ‹
-	 * @return ƒ†[ƒUID‚ÌHaikuURL
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param label ãƒªãƒ³ã‚¯ã‚’ç½®ãæ›ãˆã‚‹ãƒ©ãƒ™ãƒ«
+	 * @return ãƒ¦ãƒ¼ã‚¶IDã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byUserId(String userId, String label) {
@@ -121,14 +121,14 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * ƒ†[ƒUID‚Æƒ‰ƒxƒ‹‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * ƒGƒXƒP[ƒv‚Íƒ‰ƒxƒ‹‚É{‚³‚ê‚Ü‚·B<br/>
-	 * ƒ‰ƒxƒ‹‚ª‹ó‚¾‚Á‚½ê‡A’Êí‚Ìƒ†[ƒUIDƒŠƒ“ƒN‚ğ{‚µ‚Ü‚·B<br/>
-	 * ƒ†[ƒUID‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶IDã¨ãƒ©ãƒ™ãƒ«ã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¯ãƒ©ãƒ™ãƒ«ã«æ–½ã•ã‚Œã¾ã™ã€‚<br/>
+	 * ãƒ©ãƒ™ãƒ«ãŒç©ºã ã£ãŸå ´åˆã€é€šå¸¸ã®ãƒ¦ãƒ¼ã‚¶IDãƒªãƒ³ã‚¯ã‚’æ–½ã—ã¾ã™ã€‚<br/>
+	 * ãƒ¦ãƒ¼ã‚¶IDãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param userId ƒ†[ƒUID
-	 * @param label ƒŠƒ“ƒN‚ğ’u‚«Š·‚¦‚éƒ‰ƒxƒ‹
-	 * @return ƒ†[ƒUID‚ÌHaikuURL
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param label ãƒªãƒ³ã‚¯ã‚’ç½®ãæ›ãˆã‚‹ãƒ©ãƒ™ãƒ«
+	 * @return ãƒ¦ãƒ¼ã‚¶IDã®HaikuURL
 	 * @since v1.0.1
 	 */
 	private static HaikuURL _byUserId(String userId, String label) {
@@ -136,7 +136,7 @@ public class HaikuURL {
 		if (StringUtil.isEmpty(userId)) {
 			return haikuUrl;
 		}
-		// ƒ‰ƒxƒ‹‚ª‚ ‚é‚Æ‚«‚ÍAƒ‰ƒxƒ‹‚ÅIDƒŠƒ“ƒN‚É‚·‚é
+		// ãƒ©ãƒ™ãƒ«ãŒã‚ã‚‹ã¨ãã¯ã€ãƒ©ãƒ™ãƒ«ã§IDãƒªãƒ³ã‚¯ã«ã™ã‚‹
 		if (StringUtil.isEmpty(label)) {
 			haikuUrl.link				= toIdLink(userId);
 			haikuUrl.mobileLink			= toIdLink(userId);
@@ -152,10 +152,10 @@ public class HaikuURL {
 	}
 
 	/**
-	 * ASINƒR[ƒh‚ğw’è‚µ‚ÄAasin‹L–@‚ÌHaikuURL‚ğ¶¬‚µ‚Ü‚·B
+	 * ASINã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã—ã¦ã€asinè¨˜æ³•ã®HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	 * 
-	 * @param asinCode ASINƒR[ƒh
-	 * @return asin‹L–@‚ÌHaikuURL
+	 * @param asinCode ASINã‚³ãƒ¼ãƒ‰
+	 * @return asinè¨˜æ³•ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byASIN(String asinCode) {
@@ -172,10 +172,10 @@ public class HaikuURL {
 	}
 
 	/**
-	 * YouTube‚Ì"watch?v="ˆÈ~‚Ì“®‰æID‚ğw’è‚µ‚ÄAyoutube“®‰æ‚ÌHaikuURL‚ğ¶¬‚µ‚Ü‚·B
+	 * YouTubeã®"watch?v="ä»¥é™ã®å‹•ç”»IDã‚’æŒ‡å®šã—ã¦ã€youtubeå‹•ç”»ã®HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	 * 
-	 * @param youtubeId YouTube“®‰æ‚Ì“®‰æID
-	 * @return YouTube“®‰æ‚ÌƒŠƒ“ƒN‚ÌHaikuURL
+	 * @param youtubeId YouTubeå‹•ç”»ã®å‹•ç”»ID
+	 * @return YouTubeå‹•ç”»ã®ãƒªãƒ³ã‚¯ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byYouTube(String youtubeId) {
@@ -192,10 +192,10 @@ public class HaikuURL {
 	}
 
 	/**
-	 * ƒjƒRƒjƒR“®‰æ‚Ì“®‰æID("sm``"Œ`®)‚ğw’è‚µ‚ÄAƒjƒRƒjƒR“®‰æ‚ÌURL‚ğ¶¬‚µ‚Ü‚·B
+	 * ãƒ‹ã‚³ãƒ‹ã‚³å‹•ç”»ã®å‹•ç”»ID("smï½ï½"å½¢å¼)ã‚’æŒ‡å®šã—ã¦ã€ãƒ‹ã‚³ãƒ‹ã‚³å‹•ç”»ã®URLã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	 * 
-	 * @param nico2Id ƒjƒRƒjƒR“®‰æ‚Ì“®‰æID
-	 * @return ƒjƒRƒjƒR“®‰æ‚ÌƒŠƒ“ƒN‚ÌHaikuURL
+	 * @param nico2Id ãƒ‹ã‚³ãƒ‹ã‚³å‹•ç”»ã®å‹•ç”»ID
+	 * @return ãƒ‹ã‚³ãƒ‹ã‚³å‹•ç”»ã®ãƒªãƒ³ã‚¯ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byNico2(String nico2Id) {
@@ -212,11 +212,11 @@ public class HaikuURL {
 	}
 
 	/**
-	 * URLî•ñ‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * URLî•ñ‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * URLæƒ…å ±ã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * URLæƒ…å ±ãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param url URLî•ñ
-	 * @return URLî•ñ‚ÌHaikuURL
+	 * @param url URLæƒ…å ±
+	 * @return URLæƒ…å ±ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byURL(String url) {
@@ -224,13 +224,13 @@ public class HaikuURL {
 	}
 
 	/**
-	 * URLî•ñ‚Æƒ‰ƒxƒ‹‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * ƒGƒXƒP[ƒv‚Íƒ‰ƒxƒ‹‚É{‚³‚ê‚Ü‚·B<br/>
-	 * URLî•ñ‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * URLæƒ…å ±ã¨ãƒ©ãƒ™ãƒ«ã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¯ãƒ©ãƒ™ãƒ«ã«æ–½ã•ã‚Œã¾ã™ã€‚<br/>
+	 * URLæƒ…å ±ãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param url URLî•ñ
-	 * @param label ƒŠƒ“ƒN‚ğ’u‚«Š·‚¦‚éƒ‰ƒxƒ‹
-	 * @return URLî•ñ‚ÌHaikuURL
+	 * @param url URLæƒ…å ±
+	 * @param label ãƒªãƒ³ã‚¯ã‚’ç½®ãæ›ãˆã‚‹ãƒ©ãƒ™ãƒ«
+	 * @return URLæƒ…å ±ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	public static HaikuURL byURL(String url, String label) {
@@ -238,14 +238,14 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * URLî•ñ‚Æƒ‰ƒxƒ‹‚ğw’è‚µ‚ÄAHaikuURL‚ğ¶¬‚µ‚Ü‚·B<br/>
-	 * ƒGƒXƒP[ƒv‚Íƒ‰ƒxƒ‹‚É{‚³‚ê‚Ü‚·B<br/>
-	 * ƒ‰ƒxƒ‹‚ª‹ó‚¾‚Á‚½ê‡A’Êí‚ÌƒŠƒ“ƒN‚Æ‚È‚è‚Ü‚·B<br/>
-	 * URLî•ñ‚ª‹ó‚¾‚Á‚½ê‡A‹ó‚ÌHaikuURL‚ª¶¬‚³‚ê‚Ü‚·B
+	 * URLæƒ…å ±ã¨ãƒ©ãƒ™ãƒ«ã‚’æŒ‡å®šã—ã¦ã€HaikuURLã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
+	 * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã¯ãƒ©ãƒ™ãƒ«ã«æ–½ã•ã‚Œã¾ã™ã€‚<br/>
+	 * ãƒ©ãƒ™ãƒ«ãŒç©ºã ã£ãŸå ´åˆã€é€šå¸¸ã®ãƒªãƒ³ã‚¯ã¨ãªã‚Šã¾ã™ã€‚<br/>
+	 * URLæƒ…å ±ãŒç©ºã ã£ãŸå ´åˆã€ç©ºã®HaikuURLãŒç”Ÿæˆã•ã‚Œã¾ã™ã€‚
 	 * 
-	 * @param url URLî•ñ
-	 * @param label ƒŠƒ“ƒN‚ğ’u‚«Š·‚¦‚éƒ‰ƒxƒ‹
-	 * @return URLî•ñ‚ÌHaikuURL
+	 * @param url URLæƒ…å ±
+	 * @param label ãƒªãƒ³ã‚¯ã‚’ç½®ãæ›ãˆã‚‹ãƒ©ãƒ™ãƒ«
+	 * @return URLæƒ…å ±ã®HaikuURL
 	 * @since v1.0.1
 	 */
 	private static HaikuURL _byURL(String url, String label) {
@@ -271,9 +271,9 @@ public class HaikuURL {
 	// Getter/Setter Methods
 
 	/**
-	 * ƒŠƒ“ƒN‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒªãƒ³ã‚¯ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒŠƒ“ƒN
+	 * @return ãƒªãƒ³ã‚¯
 	 * @since v1.0.1
 	 */
 	public String getLink() {
@@ -281,9 +281,9 @@ public class HaikuURL {
 	}
 
 	/**
-	 * ƒGƒXƒP[ƒv‚³‚ê‚½ƒŠƒ“ƒN‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸãƒªãƒ³ã‚¯ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒGƒXƒP[ƒv‚³‚ê‚½ƒŠƒ“ƒN
+	 * @return ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸãƒªãƒ³ã‚¯
 	 * @since v1.0.1
 	 */
 	public String getEscapedLink() {
@@ -291,9 +291,9 @@ public class HaikuURL {
 	}
 
 	/**
-	 * ƒ‚ƒoƒCƒ‹—pƒŠƒ“ƒN‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¢ãƒã‚¤ãƒ«ç”¨ãƒªãƒ³ã‚¯ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ‚ƒoƒCƒ‹—pƒŠƒ“ƒN
+	 * @return ãƒ¢ãƒã‚¤ãƒ«ç”¨ãƒªãƒ³ã‚¯
 	 * @since v1.0.1
 	 */
 	public String getMobileLink() {
@@ -301,9 +301,9 @@ public class HaikuURL {
 	}
 
 	/**
-	 * ƒ‚ƒoƒCƒ‹—pƒGƒXƒP[ƒv‚³‚ê‚½ƒŠƒ“ƒN‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¢ãƒã‚¤ãƒ«ç”¨ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸãƒªãƒ³ã‚¯ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ‚ƒoƒCƒ‹—pƒGƒXƒP[ƒv‚³‚ê‚½ƒŠƒ“ƒN
+	 * @return ãƒ¢ãƒã‚¤ãƒ«ç”¨ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚ŒãŸãƒªãƒ³ã‚¯
 	 * @since v1.0.1
 	 */
 	public String getEscapedMobileLink() {
@@ -314,10 +314,10 @@ public class HaikuURL {
 	// Utility Methods
 	
 	/**
-	 * ƒL[ƒ[ƒhƒŠƒ“ƒN‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªãƒ³ã‚¯ã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @return ƒL[ƒ[ƒhƒŠƒ“ƒN
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªãƒ³ã‚¯
 	 * @since v1.0.1
 	 */
 	private static String toKeywordLink(String keyword) {
@@ -325,10 +325,10 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * IDƒŠƒ“ƒN‚É•ÏŠ·‚µ‚Ü‚·B
+	 * IDãƒªãƒ³ã‚¯ã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param userId ƒ†[ƒUID
-	 * @return IDƒŠƒ“ƒN
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return IDãƒªãƒ³ã‚¯
 	 * @since v1.0.1
 	 */
 	private static String toIdLink(String userId) {
@@ -336,10 +336,10 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * ASIN‹L–@‚ÌURL‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ASINè¨˜æ³•ã®URLã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param asinCode ASINƒR[ƒh
-	 * @return ASIN‹L–@‚ÌURL
+	 * @param asinCode ASINã‚³ãƒ¼ãƒ‰
+	 * @return ASINè¨˜æ³•ã®URL
 	 * @since v1.0.1
 	 */
 	private static String toASINLink(String asinCode) {
@@ -347,10 +347,10 @@ public class HaikuURL {
 	}
 
 	/**
-	 * YouTube‹L–@‚ÌURL‚É•ÏŠ·‚µ‚Ü‚·B
+	 * YouTubeè¨˜æ³•ã®URLã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param youtubeId YouTube“®‰æ‚Ì“®‰æID
-	 * @return YouTube‹L–@‚ÌURL
+	 * @param youtubeId YouTubeå‹•ç”»ã®å‹•ç”»ID
+	 * @return YouTubeè¨˜æ³•ã®URL
 	 * @since v1.0.1
 	 */
 	private static String toYouTubeLink(String youtubeId) {
@@ -358,10 +358,10 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * ƒjƒRƒjƒR“®‰æ‹L–@‚ÌURL‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ãƒ‹ã‚³ãƒ‹ã‚³å‹•ç”»è¨˜æ³•ã®URLã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param nico2Id ƒjƒRƒjƒR“®‰æ‚Ì“®‰æID
-	 * @return ƒjƒRƒjƒR“®‰æ‹L–@‚ÌURL
+	 * @param nico2Id ãƒ‹ã‚³ãƒ‹ã‚³å‹•ç”»ã®å‹•ç”»ID
+	 * @return ãƒ‹ã‚³ãƒ‹ã‚³å‹•ç”»è¨˜æ³•ã®URL
 	 * @since v1.0.1
 	 */
 	private static String toNico2Link(String nico2Id) {
@@ -369,31 +369,31 @@ public class HaikuURL {
 	}
 	
 	/**
-	 * URLƒŠƒ“ƒN‹L–@‚ÌURL‚É•ÏŠ·‚µ‚Ü‚·B
+	 * URLãƒªãƒ³ã‚¯è¨˜æ³•ã®URLã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param baseUrl ƒx[ƒXURL
-	 * @param info î•ñ
-	 * @param label ƒ‰ƒxƒ‹
-	 * @param needEscape ƒGƒXƒP[ƒv—v”Û
-	 * @return URLƒŠƒ“ƒN‹L–@‚ÌURL
+	 * @param baseUrl ãƒ™ãƒ¼ã‚¹URL
+	 * @param info æƒ…å ±
+	 * @param label ãƒ©ãƒ™ãƒ«
+	 * @param needEscape ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—è¦å¦
+	 * @return URLãƒªãƒ³ã‚¯è¨˜æ³•ã®URL
 	 * @since v1.0.1
 	 */
 	private static String toUrlLink(String baseUrl, String info, String label, boolean needEscape) {
 		String url = StringUtil.isEmpty(baseUrl) ?
 				shortenURL(info) :
 				shortenURL(baseUrl + encode(info));
-		// URL\’z(URL‹L–@)
+		// URLæ§‹ç¯‰(URLè¨˜æ³•)
 		return needEscape ?
 			"[" + url + ":title=" + escape(label) + "]" :
 			"[" + url + ":title=" + label + "]";
 	}
 
 	/**
-	 * URLƒGƒ“ƒR[ƒh‚ğ{‚·
+	 * URLã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’æ–½ã™
 	 * 
 	 * @see StringUtil#encode(String)
-	 * @param str URLEncode‚·‚é•¶š—ñ
-	 * @return ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶š—ñ
+	 * @param str URLEncodeã™ã‚‹æ–‡å­—åˆ—
+	 * @return ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—
 	 * @since v1.0.1
 	 */
 	private static String encode(String str) {
@@ -401,11 +401,11 @@ public class HaikuURL {
 	}
 
 	/**
-	 * :‚È‚Ç‚Ì•¶š‚ğƒGƒXƒP[ƒv‚·‚é
+	 * :ãªã©ã®æ–‡å­—ã‚’ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã™ã‚‹
 	 * 
 	 * @see HatenaUtil#escapeHatenaNotation(String)
-	 * @param str ƒGƒXƒP[ƒv‘ÎÛ‚Ì•¶š—ñ
-	 * @return ƒGƒXƒP[ƒv‚µ‚½•¶š—ñ
+	 * @param str ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—å¯¾è±¡ã®æ–‡å­—åˆ—
+	 * @return ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãŸæ–‡å­—åˆ—
 	 * @since v1.0.1
 	 */
 	private static String escape(String str) {
@@ -413,10 +413,10 @@ public class HaikuURL {
 	}
 
 	/**
-	 * URL‚ğ’Zk‚·‚éB¦–¢À‘•
+	 * URLã‚’çŸ­ç¸®ã™ã‚‹ã€‚â€»æœªå®Ÿè£…
 	 * 
-	 * @param str ’Zk‘ÎÛ‚ÌURL
-	 * @return ’ZkŒã‚ÌURL
+	 * @param str çŸ­ç¸®å¯¾è±¡ã®URL
+	 * @return çŸ­ç¸®å¾Œã®URL
 	 */
 	private static String shortenURL(String str) {
 		return str;

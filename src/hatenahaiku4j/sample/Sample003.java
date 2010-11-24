@@ -12,7 +12,7 @@ import hatenahaiku4j.util.FileUtil;
 import java.io.File;
 
 /**
- * HatenaHaiku4J “®ìƒTƒ“ƒvƒ‹ƒNƒ‰ƒX‚Å‚· #003
+ * HatenaHaiku4J å‹•ä½œã‚µãƒ³ãƒ—ãƒ«ã‚¯ãƒ©ã‚¹ã§ã™ #003
  * 
  * @since v1.0.0
  * @author fumokmm
@@ -20,52 +20,52 @@ import java.io.File;
 public class Sample003 {
 	
 	/**
-	 * v1.0.0‚©‚çg‚¦‚é‚æ‚¤‚É‚È‚Á‚½‰æ‘œ‚ÌƒAƒbƒvƒ[ƒhˆ—‚ÌƒTƒ“ƒvƒ‹‚Å‚·B
+	 * v1.0.0ã‹ã‚‰ä½¿ãˆã‚‹ã‚ˆã†ã«ãªã£ãŸç”»åƒã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å‡¦ç†ã®ã‚µãƒ³ãƒ—ãƒ«ã§ã™ã€‚
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// ƒƒOƒCƒ“ƒ†[ƒU
+		// ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶
 		LoginUser loginUser = new LoginUser("userid", "password");
-		// ”FØ‚ ‚èAPI
+		// èªè¨¼ã‚ã‚ŠAPI
 		HatenaHaikuAPI apiAuth = new HatenaHaikuAPI(loginUser);
-		apiAuth.setNeedHttpLog(true);	// HTTPƒƒO‚ğo—Í‚·‚é
-		// ”FØ‚È‚µAPI
+		apiAuth.setNeedHttpLog(true);	// HTTPãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹
+		// èªè¨¼ãªã—API
 		HatenaHaikuAPILight apiLight = new HatenaHaikuAPILight();
-		apiLight.setNeedHttpLog(true);	// HTTPƒƒO‚ğo—Í‚·‚é
+		apiLight.setNeedHttpLog(true);	// HTTPãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹
 
 		printSeparate("#003 Sample START");
 		try {
 			Keyword myIdPage = apiAuth.getMyKeyword();
 
 			// entry
-			printSeparate("ƒ[ƒJƒ‹‰æ‘œƒtƒ@ƒCƒ‹‚ğƒAƒbƒvƒ[ƒh(jpg)");
-			String text = "ƒ[ƒJƒ‹‰æ‘œƒAƒbƒvƒeƒXƒg(jpg)";
-			// —á) c:/temp/test.jpg
+			printSeparate("ãƒ­ãƒ¼ã‚«ãƒ«ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰(jpg)");
+			String text = "ãƒ­ãƒ¼ã‚«ãƒ«ç”»åƒã‚¢ãƒƒãƒ—ãƒ†ã‚¹ãƒˆ(jpg)";
+			// ä¾‹) c:/temp/test.jpg
 			File file = new File("your local jpg image file path here...");
 			Status result = myIdPage.api.entry(text, file);
 			printStatus(result);
 
 			// entry
-			printSeparate("ƒ[ƒJƒ‹‰æ‘œƒtƒ@ƒCƒ‹ƒAƒbƒvƒ[ƒh(png)");
-			text = "ƒ[ƒJƒ‹‰æ‘œƒAƒbƒvƒeƒXƒg(png)";
-			// —á) c:/temp/test.png
+			printSeparate("ãƒ­ãƒ¼ã‚«ãƒ«ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰(png)");
+			text = "ãƒ­ãƒ¼ã‚«ãƒ«ç”»åƒã‚¢ãƒƒãƒ—ãƒ†ã‚¹ãƒˆ(png)";
+			// ä¾‹) c:/temp/test.png
 			file = new File("your local png image file path here...");
 			result = myIdPage.api.entry(text, file);
 			printStatus(result);
 			
 			// reply
-			printSeparate("ƒoƒCƒiƒŠƒf[ƒ^‚ÅƒAƒbƒvƒ[ƒh(bmp)");
-			text = "ƒoƒCƒiƒŠƒf[ƒ^(byte[])‚Åƒ[ƒJƒ‹‰æ‘œƒAƒbƒvƒeƒXƒg(bmp)";
-			// —á) c:/temp/test.bmp
+			printSeparate("ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã§ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰(bmp)");
+			text = "ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿(byte[])ã§ãƒ­ãƒ¼ã‚«ãƒ«ç”»åƒã‚¢ãƒƒãƒ—ãƒ†ã‚¹ãƒˆ(bmp)";
+			// ä¾‹) c:/temp/test.bmp
 			byte[] data = FileUtil.toByteArray(new File("your local bmp image file path here..."));
 			result = result.api.reply(text, data, ImageExt.BMP);
 			printStatus(result);
 
 			// reply
-			printSeparate("ƒlƒbƒgã‚Ì‰æ‘œƒtƒ@ƒCƒ‹‚ğƒAƒbƒvƒ[ƒh(gif)");
-			text = "ƒlƒbƒgã‚Ì‰æ‘œƒAƒbƒvƒeƒXƒg(gif)";
-			// —á) http://h.hatena.ne.jp/images/haiku_logo.gif
+			printSeparate("ãƒãƒƒãƒˆä¸Šã®ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰(gif)");
+			text = "ãƒãƒƒãƒˆä¸Šã®ç”»åƒã‚¢ãƒƒãƒ—ãƒ†ã‚¹ãƒˆ(gif)";
+			// ä¾‹) http://h.hatena.ne.jp/images/haiku_logo.gif
 			String url = "some jpg image file on the web URL here...";
 			result = result.api.reply(text, url);
 			printStatus(result);
@@ -77,18 +77,18 @@ public class Sample003 {
 	}
 	
 	/**
-	 * ƒXƒe[ƒ^ƒXî•ñ‚ğ•W€o—Í‚Éo—Í‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ã‚’æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param status ƒXƒe[ƒ^ƒXî•ñ
+	 * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 */
 	public static void printStatus(Status status) {
 		Sample001.printStatus(status);
 	}
 
 	/**
-	 * ‹æØ‚è‚ğ•W€o—Í‚Éo—Í‚µ‚Ü‚·B
+	 * åŒºåˆ‡ã‚Šã‚’æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param label ƒ‰ƒxƒ‹
+	 * @param label ãƒ©ãƒ™ãƒ«
 	 */
 	public static void printSeparate(String label) {
 		Sample001.printSeparate(label);

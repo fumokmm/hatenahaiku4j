@@ -1,30 +1,30 @@
 package hatenahaiku4j;
 
 /**
- * ‚Í‚Ä‚ÈƒnƒCƒNƒ†[ƒUî•ñ‚ğ•\Œ»‚·‚éƒNƒ‰ƒX
+ * ã¯ã¦ãªãƒã‚¤ã‚¯ãƒ¦ãƒ¼ã‚¶æƒ…å ±ã‚’è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class User {
-	/** ƒ†[ƒU–¼ */
+	/** ãƒ¦ãƒ¼ã‚¶å */
 	private String name;
-	/** ƒtƒHƒƒ[” */
+	/** ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•° */
 	private int followersCount;
-	/** ƒ†[ƒUID */
+	/** ãƒ¦ãƒ¼ã‚¶ID */
 	private String id;
-	/** ƒvƒƒtƒB[ƒ‹‰æ‘œURL */
+	/** ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ç”»åƒURL */
 	private String profileImageUrl;
-	/** •\¦–¼ */
+	/** è¡¨ç¤ºå */
 	private String screenName;
-	/** ƒ†[ƒU‚ÌƒGƒ“ƒgƒŠƒy[ƒW‚ÌURL */
+	/** ãƒ¦ãƒ¼ã‚¶ã®ã‚¨ãƒ³ãƒˆãƒªãƒšãƒ¼ã‚¸ã®URL */
 	private String url;
 
-	/** ƒ†[ƒUAPI */
+	/** ãƒ¦ãƒ¼ã‚¶API */
 	public final UserAPI api;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
 	 * @since v0.0.1
 	 */
@@ -33,9 +33,9 @@ public class User {
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Å‚±‚Ìƒ†[ƒU‚ğã‘‚«‚µ‚Ü‚·B
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã§ã“ã®ãƒ¦ãƒ¼ã‚¶ã‚’ä¸Šæ›¸ãã—ã¾ã™ã€‚
 	 * 
-	 * @param other ã‘‚«‚·‚éƒ†[ƒU
+	 * @param other ä¸Šæ›¸ãã™ã‚‹ãƒ¦ãƒ¼ã‚¶
 	 * @since v0.2.0
 	 */
 	void overwrite(User other) {
@@ -48,9 +48,9 @@ public class User {
 	}
 	
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
-	 * @param apiAuth ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚ ‚èj
+	 * @param apiAuth ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ã‚ã‚Šï¼‰
 	 * @since v0.2.0
 	 */
 	static User create(HatenaHaikuAPI apiAuth) {
@@ -60,9 +60,9 @@ public class User {
 	}
 
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
-	 * @param apiLight ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚È‚µj
+	 * @param apiLight ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ãªã—ï¼‰
 	 * @since v0.2.0
 	 */
 	static User create(HatenaHaikuAPILight apiLight) {
@@ -72,9 +72,9 @@ public class User {
 	}
 
 	/**
-	 * ƒ†[ƒU–¼‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶åã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒU–¼
+	 * @return ãƒ¦ãƒ¼ã‚¶å
 	 * @since v0.0.1
 	 */
 	public String getName() {
@@ -82,9 +82,9 @@ public class User {
 	}
 	
 	/**
-	 * ƒtƒHƒƒ[”‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒtƒHƒƒ[”
+	 * @return ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°
 	 * @since v0.0.1
 	 */
 	public int getFollowersCount() {
@@ -92,9 +92,9 @@ public class User {
 	}
 
 	/**
-	 * ƒ†[ƒUID‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶IDã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒUID
+	 * @return ãƒ¦ãƒ¼ã‚¶ID
 	 * @since v0.0.1
 	 */
 	public String getUserId() {
@@ -102,9 +102,9 @@ public class User {
 	}
 
 	/**
-	 * id‹L–@‚Ìƒ†[ƒUID‚ğæ“¾‚µ‚Ü‚·B (id:xxx)
+	 * idè¨˜æ³•ã®ãƒ¦ãƒ¼ã‚¶IDã‚’å–å¾—ã—ã¾ã™ã€‚ (id:xxx)
 	 * 
-	 * @return ƒ†[ƒUid‹L–@ (id:xxx)
+	 * @return ãƒ¦ãƒ¼ã‚¶idè¨˜æ³• (id:xxx)
 	 * @since v0.2.0
 	 */
 	public String getUserIdNotation() {
@@ -112,9 +112,9 @@ public class User {
 	}
 	
 	/**
-	 * ƒvƒƒtƒB[ƒ‹‰æ‘œURL‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ç”»åƒURLã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒvƒƒtƒB[ƒ‹‰æ‘œURL
+	 * @return ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ç”»åƒURL
 	 * @since v0.0.1
 	 */
 	public String getProfileImageUrl() {
@@ -122,9 +122,9 @@ public class User {
 	}
 	
 	/**
-	 * ƒvƒƒtƒB[ƒ‹‰æ‘œ(¬)URL‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ç”»åƒ(å°)URLã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒvƒƒtƒB[ƒ‹‰æ‘œ(¬)URL
+	 * @return ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ç”»åƒ(å°)URL
 	 * @since v0.0.1
 	 */
 	public String getProfileImageSmallUrl() {
@@ -132,9 +132,9 @@ public class User {
 	}
 	
 	/**
-	 * •\¦–¼‚ğæ“¾‚µ‚Ü‚·B
+	 * è¡¨ç¤ºåã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return •\¦–¼
+	 * @return è¡¨ç¤ºå
 	 * @since v0.0.1
 	 */
 	public String getScreenName() {
@@ -142,9 +142,9 @@ public class User {
 	}
 
 	/**
-	 * ƒ†[ƒU‚ÌƒGƒ“ƒgƒŠƒy[ƒW‚ÌURL‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶ã®ã‚¨ãƒ³ãƒˆãƒªãƒšãƒ¼ã‚¸ã®URLã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒU‚ÌƒGƒ“ƒgƒŠƒy[ƒW‚ÌURL
+	 * @return ãƒ¦ãƒ¼ã‚¶ã®ã‚¨ãƒ³ãƒˆãƒªãƒšãƒ¼ã‚¸ã®URL
 	 * @since v0.0.1
 	 */
 	public String getEntriesUrl() {
@@ -152,9 +152,9 @@ public class User {
 	}
 	
 	/**
-	 * ƒ‚ƒoƒCƒ‹—pƒ†[ƒU‚ÌƒGƒ“ƒgƒŠƒy[ƒW‚ÌURL‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¢ãƒã‚¤ãƒ«ç”¨ãƒ¦ãƒ¼ã‚¶ã®ã‚¨ãƒ³ãƒˆãƒªãƒšãƒ¼ã‚¸ã®URLã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ‚ƒoƒCƒ‹—pƒ†[ƒU‚ÌƒGƒ“ƒgƒŠƒy[ƒW‚ÌURL
+	 * @return ãƒ¢ãƒã‚¤ãƒ«ç”¨ãƒ¦ãƒ¼ã‚¶ã®ã‚¨ãƒ³ãƒˆãƒªãƒšãƒ¼ã‚¸ã®URL
 	 * @since v1.0.0
 	 */
 	public String getMobileEntriesUrl() {
@@ -162,9 +162,9 @@ public class User {
 	}
 
 	/**
-	 * ƒ†[ƒU‚ÌƒtƒHƒƒEƒBƒ“ƒOƒy[ƒW‚ÌURL‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶ã®ãƒ•ã‚©ãƒ­ã‚¦ã‚£ãƒ³ã‚°ãƒšãƒ¼ã‚¸ã®URLã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒU‚ÌƒtƒHƒƒEƒBƒ“ƒOƒy[ƒW‚ÌURL
+	 * @return ãƒ¦ãƒ¼ã‚¶ã®ãƒ•ã‚©ãƒ­ã‚¦ã‚£ãƒ³ã‚°ãƒšãƒ¼ã‚¸ã®URL
 	 * @since v0.0.1
 	 */
 	public String getFollowingUrl() {
@@ -172,9 +172,9 @@ public class User {
 	}
 	
 	/**
-	 * ƒ†[ƒU‚ÌIDƒy[ƒW‚ÌURL‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶ã®IDãƒšãƒ¼ã‚¸ã®URLã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒU‚ÌƒvƒƒtƒB[ƒ‹ƒy[ƒW‚ÌURL
+	 * @return ãƒ¦ãƒ¼ã‚¶ã®ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ãƒšãƒ¼ã‚¸ã®URL
 	 * @since v0.0.1
 	 */
 	public String getIdUrl() {
@@ -182,9 +182,9 @@ public class User {
 	}
 
 	/**
-	 * ƒ‚ƒoƒCƒ‹—pƒ†[ƒU‚ÌIDƒy[ƒW‚ÌURL‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¢ãƒã‚¤ãƒ«ç”¨ãƒ¦ãƒ¼ã‚¶ã®IDãƒšãƒ¼ã‚¸ã®URLã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ‚ƒoƒCƒ‹—pƒ†[ƒU‚ÌƒvƒƒtƒB[ƒ‹ƒy[ƒW‚ÌURL
+	 * @return ãƒ¢ãƒã‚¤ãƒ«ç”¨ãƒ¦ãƒ¼ã‚¶ã®ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ãƒšãƒ¼ã‚¸ã®URL
 	 * @since v1.0.0
 	 */
 	public String getMobileIdUrl() {
@@ -192,9 +192,9 @@ public class User {
 	}
 
 	/**
-	 * ƒ†[ƒU–¼‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶åã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param name ƒ†[ƒU–¼
+	 * @param name ãƒ¦ãƒ¼ã‚¶å
 	 * @since v0.0.1
 	 */
 	void setName(String name) {
@@ -202,9 +202,9 @@ public class User {
 	}
 	
 	/**
-	 * ƒtƒHƒƒ[”‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param followersCount ƒtƒHƒƒ[”
+	 * @param followersCount ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°
 	 * @since v0.0.1
 	 */
 	void setFollowersCount(int followersCount) {
@@ -212,9 +212,9 @@ public class User {
 	}
 
 	/**
-	 * ƒ†[ƒUID‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶IDã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param userId ƒ†[ƒUID
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
 	 * @since v0.0.1
 	 */
 	void setUserId(String userId) {
@@ -222,9 +222,9 @@ public class User {
 	}
 
 	/**
-	 * ƒvƒƒtƒB[ƒ‹‰æ‘œURL‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ç”»åƒURLã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param profileImageUrl ƒvƒƒtƒB[ƒ‹‰æ‘œURL
+	 * @param profileImageUrl ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ç”»åƒURL
 	 * @since v0.0.1
 	 */
 	void setProfileImageUrl(String profileImageUrl) {
@@ -232,9 +232,9 @@ public class User {
 	}
 	
 	/**
-	 * •\¦–¼‚ğİ’è‚µ‚Ü‚·B
+	 * è¡¨ç¤ºåã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param screenName •\¦–¼
+	 * @param screenName è¡¨ç¤ºå
 	 * @since v0.0.1
 	 */
 	void setScreenName(String screenName) {
@@ -242,9 +242,9 @@ public class User {
 	}
 	
 	/**
-	 * ƒ†[ƒU‚ÌƒGƒ“ƒgƒŠƒy[ƒW‚ÌURL‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶ã®ã‚¨ãƒ³ãƒˆãƒªãƒšãƒ¼ã‚¸ã®URLã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param url ƒ†[ƒU‚ÌƒGƒ“ƒgƒŠƒy[ƒW‚ÌURL
+	 * @param url ãƒ¦ãƒ¼ã‚¶ã®ã‚¨ãƒ³ãƒˆãƒªãƒšãƒ¼ã‚¸ã®URL
 	 * @since v0.0.1
 	 */
 	void setUrl(String url) {

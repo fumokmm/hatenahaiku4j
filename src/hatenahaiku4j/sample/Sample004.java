@@ -10,7 +10,7 @@ import hatenahaiku4j.util.HaikuURL;
 import hatenahaiku4j.util.HatenaUtil;
 
 /**
- * HatenaHaiku4J “®ìƒTƒ“ƒvƒ‹ƒNƒ‰ƒX‚Å‚· #004
+ * HatenaHaiku4J å‹•ä½œã‚µãƒ³ãƒ—ãƒ«ã‚¯ãƒ©ã‚¹ã§ã™ #004
  * 
  * @since v1.0.1
  * @author fumokmm
@@ -18,88 +18,88 @@ import hatenahaiku4j.util.HatenaUtil;
 public class Sample004 {
 	
 	/**
-	 * v1.0.1‚©‚çg‚¦‚é‚æ‚¤‚É‚È‚Á‚½HaikuURL‚Æ<br/>
-	 * HatenaUtil‚É#escapeHatenaNotation(String)‚ÌƒTƒ“ƒvƒ‹‚Å‚·B
+	 * v1.0.1ã‹ã‚‰ä½¿ãˆã‚‹ã‚ˆã†ã«ãªã£ãŸHaikuURLã¨<br/>
+	 * HatenaUtilã«#escapeHatenaNotation(String)ã®ã‚µãƒ³ãƒ—ãƒ«ã§ã™ã€‚
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// ƒƒOƒCƒ“ƒ†[ƒU
+		// ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶
 		LoginUser loginUser = new LoginUser("userid", "password");
-		// ”FØ‚ ‚èAPI
+		// èªè¨¼ã‚ã‚ŠAPI
 		HatenaHaikuAPI apiAuth = new HatenaHaikuAPI(loginUser);
-		apiAuth.setNeedHttpLog(true);	// HTTPƒƒO‚ğo—Í‚·‚é
-		// ”FØ‚È‚µAPI
+		apiAuth.setNeedHttpLog(true);	// HTTPãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹
+		// èªè¨¼ãªã—API
 		HatenaHaikuAPILight apiLight = new HatenaHaikuAPILight();
-		apiLight.setNeedHttpLog(true);	// HTTPƒƒO‚ğo—Í‚·‚é
+		apiLight.setNeedHttpLog(true);	// HTTPãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹
 
 		printSeparate("#004 Sample START");
 		try {
-			// ƒGƒ“ƒgƒŠ“à—e‚ğì¬
+			// ã‚¨ãƒ³ãƒˆãƒªå†…å®¹ã‚’ä½œæˆ
 			StringBuilder entryContents = new StringBuilder();
 
 			HaikuURL idUrl = HaikuURL.byUserId(loginUser.getUserId());
-			entryContents.append("idƒy[ƒWƒŠƒ“ƒNi’Êí”Å:idƒR[ƒ‹‚·‚éj\n");
+			entryContents.append("idãƒšãƒ¼ã‚¸ãƒªãƒ³ã‚¯ï¼ˆé€šå¸¸ç‰ˆ:idã‚³ãƒ¼ãƒ«ã™ã‚‹ï¼‰\n");
 			entryContents.append(idUrl.getLink() + "\n");
 			entryContents.append(" \n");
-			entryContents.append("idƒy[ƒWƒŠƒ“ƒNiƒGƒXƒP[ƒv”Å:idƒR[ƒ‹‚È‚µj\n");
+			entryContents.append("idãƒšãƒ¼ã‚¸ãƒªãƒ³ã‚¯ï¼ˆã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ç‰ˆ:idã‚³ãƒ¼ãƒ«ãªã—ï¼‰\n");
 			entryContents.append(idUrl.getEscapedLink() + "\n");
 			entryContents.append(" \n");
-			HaikuURL idUrl2 = HaikuURL.byUserId(loginUser.getUserId(), loginUser.getUserIdNotation() + "‚³‚ñ‚Æ‚±");
-			entryContents.append("ƒ‰ƒxƒ‹‚Å’u‚«Š·‚¦‚½idƒy[ƒWƒŠƒ“ƒNi’Êí”Å:idƒR[ƒ‹‚·‚éj\n");
+			HaikuURL idUrl2 = HaikuURL.byUserId(loginUser.getUserId(), loginUser.getUserIdNotation() + "ã•ã‚“ã¨ã“");
+			entryContents.append("ãƒ©ãƒ™ãƒ«ã§ç½®ãæ›ãˆãŸidãƒšãƒ¼ã‚¸ãƒªãƒ³ã‚¯ï¼ˆé€šå¸¸ç‰ˆ:idã‚³ãƒ¼ãƒ«ã™ã‚‹ï¼‰\n");
 			entryContents.append(idUrl2.getLink() + "\n");
 			entryContents.append(" \n");
-			entryContents.append("ƒ‰ƒxƒ‹‚Å’u‚«Š·‚¦‚½idƒy[ƒWƒŠƒ“ƒNiƒGƒXƒP[ƒv”Å:idƒR[ƒ‹‚È‚µj\n");
+			entryContents.append("ãƒ©ãƒ™ãƒ«ã§ç½®ãæ›ãˆãŸidãƒšãƒ¼ã‚¸ãƒªãƒ³ã‚¯ï¼ˆã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ç‰ˆ:idã‚³ãƒ¼ãƒ«ãªã—ï¼‰\n");
 			entryContents.append(idUrl2.getEscapedLink() + "\n");
 			entryContents.append(" \n");
 
-			HaikuURL keywordUrl = HaikuURL.byKeyword(loginUser.getUserIdNotation() + "‚¾‚¯‚ÇAHatenaHaiku4J‚ÌƒeƒXƒg‚·‚é‚æI");
-			entryContents.append("ƒL[ƒ[ƒhƒy[ƒWƒŠƒ“ƒNi’Êí”Å:idƒR[ƒ‹‚·‚éj\n");
+			HaikuURL keywordUrl = HaikuURL.byKeyword(loginUser.getUserIdNotation() + "ã ã‘ã©ã€HatenaHaiku4Jã®ãƒ†ã‚¹ãƒˆã™ã‚‹ã‚ˆï¼");
+			entryContents.append("ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ãƒªãƒ³ã‚¯ï¼ˆé€šå¸¸ç‰ˆ:idã‚³ãƒ¼ãƒ«ã™ã‚‹ï¼‰\n");
 			entryContents.append(keywordUrl.getLink() + "\n");
 			entryContents.append(" \n");
-			entryContents.append("ƒL[ƒ[ƒhƒy[ƒWƒŠƒ“ƒNiƒGƒXƒP[ƒv”Å:idƒR[ƒ‹‚È‚µj\n");
+			entryContents.append("ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ãƒªãƒ³ã‚¯ï¼ˆã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ç‰ˆ:idã‚³ãƒ¼ãƒ«ãªã—ï¼‰\n");
 			entryContents.append(keywordUrl.getEscapedLink() + "\n");
 			entryContents.append(" \n");
-			HaikuURL keywordUrl2 = HaikuURL.byKeyword(loginUser.getUserIdNotation() + "‚¾‚¯‚ÇAHatenaHaiku4J‚ÌƒeƒXƒg‚·‚é‚æI", "[[" + loginUser.getUserIdNotation() + "‚¾‚¯‚ÇAHatenaHaiku4J‚ÌƒeƒXƒg‚·‚é‚æI" + "]]");
-			entryContents.append("ƒ‰ƒxƒ‹‚Å’u‚«Š·‚¦‚½ƒL[ƒ[ƒhƒy[ƒWƒŠƒ“ƒNi’Êí”Å:idƒR[ƒ‹‚·‚éj\n");
+			HaikuURL keywordUrl2 = HaikuURL.byKeyword(loginUser.getUserIdNotation() + "ã ã‘ã©ã€HatenaHaiku4Jã®ãƒ†ã‚¹ãƒˆã™ã‚‹ã‚ˆï¼", "[[" + loginUser.getUserIdNotation() + "ã ã‘ã©ã€HatenaHaiku4Jã®ãƒ†ã‚¹ãƒˆã™ã‚‹ã‚ˆï¼" + "]]");
+			entryContents.append("ãƒ©ãƒ™ãƒ«ã§ç½®ãæ›ãˆãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ãƒªãƒ³ã‚¯ï¼ˆé€šå¸¸ç‰ˆ:idã‚³ãƒ¼ãƒ«ã™ã‚‹ï¼‰\n");
 			entryContents.append(keywordUrl2.getLink() + "\n");
 			entryContents.append(" \n");
-			entryContents.append("ƒL[ƒ[ƒhƒy[ƒWƒŠƒ“ƒNiƒGƒXƒP[ƒv”Å:idƒR[ƒ‹‚È‚µj\n");
+			entryContents.append("ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ãƒªãƒ³ã‚¯ï¼ˆã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ç‰ˆ:idã‚³ãƒ¼ãƒ«ãªã—ï¼‰\n");
 			entryContents.append(keywordUrl2.getEscapedLink() + "\n");
 			entryContents.append(" \n");
 
 			HaikuURL urlUrl = HaikuURL.byURL("http://h.hatena.ne.jp");
-			entryContents.append("URLƒŠƒ“ƒN\n");
+			entryContents.append("URLãƒªãƒ³ã‚¯\n");
 			entryContents.append(urlUrl.getLink() + "\n");
 			entryContents.append(" \n");
-			HaikuURL urlUrl2 = HaikuURL.byURL("http://h.hatena.ne.jp", "‚Í‚Ä‚ÈƒnƒCƒN");
-			entryContents.append("ƒ‰ƒxƒ‹‚Å’u‚«Š·‚¦‚½URLƒŠƒ“ƒN\n");
+			HaikuURL urlUrl2 = HaikuURL.byURL("http://h.hatena.ne.jp", "ã¯ã¦ãªãƒã‚¤ã‚¯");
+			entryContents.append("ãƒ©ãƒ™ãƒ«ã§ç½®ãæ›ãˆãŸURLãƒªãƒ³ã‚¯\n");
 			entryContents.append(urlUrl2.getLink() + "\n");
 			entryContents.append(" \n");
 			
 			HaikuURL asinUrl = HaikuURL.byASIN("4798110523");
-			entryContents.append("ASINƒŠƒ“ƒN\n");
+			entryContents.append("ASINãƒªãƒ³ã‚¯\n");
 			entryContents.append(asinUrl.getLink() + "\n");
 			entryContents.append(" \n");
 
 			HaikuURL youtubeUrl = HaikuURL.byYouTube("HaYs1Ni4ts0");
-			entryContents.append("YouTubeƒŠƒ“ƒN\n");
+			entryContents.append("YouTubeãƒªãƒ³ã‚¯\n");
 			entryContents.append(youtubeUrl.getLink() + "\n");
 			entryContents.append(" \n");
 
 			HaikuURL nico2Url = HaikuURL.byNico2("sm2476246");
-			entryContents.append("ƒjƒRƒjƒR“®‰æƒŠƒ“ƒN\n");
+			entryContents.append("ãƒ‹ã‚³ãƒ‹ã‚³å‹•ç”»ãƒªãƒ³ã‚¯\n");
 			entryContents.append(nico2Url.getLink() + "\n");
 			entryContents.append(" \n");
 			
-			// ƒGƒXƒP[ƒvƒfƒ‚
+			// ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ãƒ‡ãƒ¢
 			entryContents.append("------------------------\n");
-			entryContents.append(HatenaUtil.escapeHatenaNotation("HatenaUtil#escapeHatenaNotation(String)‚ğg‚¤‚ÆA\n"));
-			entryContents.append(HatenaUtil.escapeHatenaNotation("id:xxxxx‚È‚Ç‚Ì‚æ‚¤‚ÈidƒR[ƒ‹‚â[[ƒL[ƒ[ƒhƒŠƒ“ƒN]]‚ÌƒTƒ“ƒvƒ‹‚È‚Ç‚ğ\n"));
-			entryContents.append(HatenaUtil.escapeHatenaNotation("ƒGƒ“ƒgƒŠ‚ğ‚µ‚½‚¢ê‡‚ÉA“KØ‚ÉƒGƒXƒP[ƒv‚µ‚Ä‚­‚ê‚Ü‚·B\n"));
-			entryContents.append(HatenaUtil.escapeHatenaNotation("HaikuURL“à•”‚Å‚à‚±‚Ìƒƒ\ƒbƒh‚ğ—˜—p‚µ‚Ä‚¢‚Ü‚·B\n"));
+			entryContents.append(HatenaUtil.escapeHatenaNotation("HatenaUtil#escapeHatenaNotation(String)ã‚’ä½¿ã†ã¨ã€\n"));
+			entryContents.append(HatenaUtil.escapeHatenaNotation("id:xxxxxãªã©ã®ã‚ˆã†ãªidã‚³ãƒ¼ãƒ«ã‚„[[ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªãƒ³ã‚¯]]ã®ã‚µãƒ³ãƒ—ãƒ«ãªã©ã‚’\n"));
+			entryContents.append(HatenaUtil.escapeHatenaNotation("ã‚¨ãƒ³ãƒˆãƒªã‚’ã—ãŸã„å ´åˆã«ã€é©åˆ‡ã«ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ã¦ãã‚Œã¾ã™ã€‚\n"));
+			entryContents.append(HatenaUtil.escapeHatenaNotation("HaikuURLå†…éƒ¨ã§ã‚‚ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’åˆ©ç”¨ã—ã¦ã„ã¾ã™ã€‚\n"));
 
-			// ƒƒOƒCƒ“ƒ†[ƒU‚Ìidƒy[ƒW‚ÉƒGƒ“ƒgƒŠ
+			// ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã«ã‚¨ãƒ³ãƒˆãƒª
 			Keyword myIdPage = apiAuth.getMyKeyword();
 			printStatus(myIdPage.api.entry(entryContents.toString()));
 			
@@ -110,18 +110,18 @@ public class Sample004 {
 	}
 	
 	/**
-	 * ƒXƒe[ƒ^ƒXî•ñ‚ğ•W€o—Í‚Éo—Í‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ã‚’æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param status ƒXƒe[ƒ^ƒXî•ñ
+	 * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 */
 	public static void printStatus(Status status) {
 		Sample001.printStatus(status);
 	}
 
 	/**
-	 * ‹æØ‚è‚ğ•W€o—Í‚Éo—Í‚µ‚Ü‚·B
+	 * åŒºåˆ‡ã‚Šã‚’æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param label ƒ‰ƒxƒ‹
+	 * @param label ãƒ©ãƒ™ãƒ«
 	 */
 	public static void printSeparate(String label) {
 		Sample001.printSeparate(label);

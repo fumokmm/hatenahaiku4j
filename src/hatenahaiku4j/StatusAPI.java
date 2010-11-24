@@ -3,17 +3,17 @@ package hatenahaiku4j;
 import java.io.File;
 
 /**
- * ƒXƒe[ƒ^ƒX‚ÉŠÖ‚·‚éAPI
+ * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã«é–¢ã™ã‚‹API
  * 
  * @since v0.2.0
  * @author fumokmm
  */
 public class StatusAPI extends EntityAPI {
-	/** ƒXƒe[ƒ^ƒXî•ñ */
+	/** ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ± */
 	private Status status;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
 	 * @since v0.2.0
 	 */
@@ -22,10 +22,10 @@ public class StatusAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‰Šú‰»‚µ‚Ü‚·B
+	 * åˆæœŸåŒ–ã—ã¾ã™ã€‚
 	 * 
-	 * @param status ƒXƒe[ƒ^ƒXî•ñ
-	 * @param apiAuth ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚ ‚èj
+	 * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
+	 * @param apiAuth ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ã‚ã‚Šï¼‰
 	 * @since v0.2.0
 	 */
 	void init(Status status, HatenaHaikuAPI apiAuth) {
@@ -35,10 +35,10 @@ public class StatusAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‰Šú‰»‚µ‚Ü‚·B
+	 * åˆæœŸåŒ–ã—ã¾ã™ã€‚
 	 * 
-	 * @param status ƒXƒe[ƒ^ƒXî•ñ
-	 * @param apiLight ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚È‚µj
+	 * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
+	 * @param apiLight ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ãªã—ï¼‰
 	 * @since v0.2.0
 	 */
 	void init(Status status, HatenaHaikuAPILight apiLight) {
@@ -47,10 +47,10 @@ public class StatusAPI extends EntityAPI {
 	}
 	
 	/**
-	 * ‚±‚ÌƒXƒe[ƒ^ƒX‚ğ•ÔMæó‘Ô‚Éæ“¾‚µ‚È‚¨‚µ‚Ü‚·B
+	 * ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¿”ä¿¡å…ˆçŠ¶æ…‹ã«å–å¾—ã—ãªãŠã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPILight#getStatus(String)
-	 * @return •ÔMæó‘Ô‚ğæ“¾‚µ‚È‚¨‚³‚ê‚½‚±‚ÌƒXƒe[ƒ^ƒX
+	 * @return è¿”ä¿¡å…ˆçŠ¶æ…‹ã‚’å–å¾—ã—ãªãŠã•ã‚ŒãŸã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
 	 * @since v0.2.0
 	 */
 	Status refreshReplies() throws HatenaHaikuException {
@@ -60,14 +60,14 @@ public class StatusAPI extends EntityAPI {
 		return this.status;
 	}
 	
-	// ------------------ˆÈ‰ºA”FØ‚ª•s—v‚ÈAPI
+	// ------------------ä»¥ä¸‹ã€èªè¨¼ãŒä¸è¦ãªAPI
 
 	/**
-	 * ‚±‚ÌƒXƒe[ƒ^ƒX‚Ìƒ†[ƒUî•ñ‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/friendships/show/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®ãƒ¦ãƒ¼ã‚¶æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/friendships/show/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getUser(String)
-	 * @return w’è‚µ‚½ƒ†[ƒUî•ñ
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -76,11 +76,11 @@ public class StatusAPI extends EntityAPI {
 	}
 	
 	/**
-	 * ‚±‚ÌƒXƒe[ƒ^ƒX‚ÌƒL[ƒ[ƒhî•ñ‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/keywords/show/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/keywords/show/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeyword(String)
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒhî•ñ
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -88,14 +88,14 @@ public class StatusAPI extends EntityAPI {
 		return apiLight.getKeyword(status.getKeyword());
 	}
 	
-	// ------------------ˆÈ‰ºA”FØ‚ª•K—v‚ÈAPI
+	// ------------------ä»¥ä¸‹ã€èªè¨¼ãŒå¿…è¦ãªAPI
 	
 	/**
-	 * ‚±‚ÌƒGƒ“ƒgƒŠ‚ÉV‚µ‚­•ÔMƒGƒ“ƒgƒŠ‚ğ“Še‚µ‚Ü‚·B
+	 * ã“ã®ã‚¨ãƒ³ãƒˆãƒªã«æ–°ã—ãè¿”ä¿¡ã‚¨ãƒ³ãƒˆãƒªã‚’æŠ•ç¨¿ã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPI#reply(String, String)
-	 * @param text “Še“à—e
-	 * @return “ŠeŒ‹‰Ê‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @param text æŠ•ç¨¿å†…å®¹
+	 * @return æŠ•ç¨¿çµæœã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -103,18 +103,18 @@ public class StatusAPI extends EntityAPI {
 		if (isAuth()) {
 			return apiAuth.reply(status.getStatusId(), text);
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 
 	/**
-	 * ‚±‚ÌƒGƒ“ƒgƒŠ‚ÉV‚µ‚­•ÔMƒGƒ“ƒgƒŠ‚ğ“Še‚µ‚Ü‚·B<br/>
-	 * ‰æ‘œ•t‚«‚ÅƒGƒ“ƒgƒŠ‚µ‚Ü‚·B
+	 * ã“ã®ã‚¨ãƒ³ãƒˆãƒªã«æ–°ã—ãè¿”ä¿¡ã‚¨ãƒ³ãƒˆãƒªã‚’æŠ•ç¨¿ã—ã¾ã™ã€‚<br/>
+	 * ç”»åƒä»˜ãã§ã‚¨ãƒ³ãƒˆãƒªã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPI#reply(String, String, File)
-	 * @param text “Še“à—e
-	 * @param file ‰æ‘œƒtƒ@ƒCƒ‹
-	 * @return “ŠeŒ‹‰Ê‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @param text æŠ•ç¨¿å†…å®¹
+	 * @param file ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«
+	 * @return æŠ•ç¨¿çµæœã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -122,18 +122,18 @@ public class StatusAPI extends EntityAPI {
 		if (isAuth()) {
 			return apiAuth.reply(status.getStatusId(), text, file);
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 	
 	/**
-	 * ‚±‚ÌƒGƒ“ƒgƒŠ‚ÉV‚µ‚­•ÔMƒGƒ“ƒgƒŠ‚ğ“Še‚µ‚Ü‚·B<br/>
-	 * URLã‚É‚ ‚é‰æ‘œ•t‚«‚ÅƒGƒ“ƒgƒŠ‚µ‚Ü‚·B
+	 * ã“ã®ã‚¨ãƒ³ãƒˆãƒªã«æ–°ã—ãè¿”ä¿¡ã‚¨ãƒ³ãƒˆãƒªã‚’æŠ•ç¨¿ã—ã¾ã™ã€‚<br/>
+	 * URLä¸Šã«ã‚ã‚‹ç”»åƒä»˜ãã§ã‚¨ãƒ³ãƒˆãƒªã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPI#reply(String, String, String)
-	 * @param text “Še“à—e
-	 * @param imageUrl ‰æ‘œ‚ÌURL
-	 * @return “ŠeŒ‹‰Ê‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @param text æŠ•ç¨¿å†…å®¹
+	 * @param imageUrl ç”»åƒã®URL
+	 * @return æŠ•ç¨¿çµæœã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -141,19 +141,19 @@ public class StatusAPI extends EntityAPI {
 		if (isAuth()) {
 			return apiAuth.reply(status.getStatusId(), text, imageUrl);
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 	
 	/**
-	 * ‚±‚ÌƒGƒ“ƒgƒŠ‚ÉV‚µ‚­•ÔMƒGƒ“ƒgƒŠ‚ğ“Še‚µ‚Ü‚·B<br/>
-	 * ‰æ‘œ‚ÌƒoƒCƒiƒŠƒf[ƒ^‚Æ‚»‚ÌŠg’£q‚ğw’è‚µA‰æ‘œ•t‚«‚ÅƒGƒ“ƒgƒŠ‚µ‚Ü‚·B
+	 * ã“ã®ã‚¨ãƒ³ãƒˆãƒªã«æ–°ã—ãè¿”ä¿¡ã‚¨ãƒ³ãƒˆãƒªã‚’æŠ•ç¨¿ã—ã¾ã™ã€‚<br/>
+	 * ç”»åƒã®ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã¨ãã®æ‹¡å¼µå­ã‚’æŒ‡å®šã—ã€ç”»åƒä»˜ãã§ã‚¨ãƒ³ãƒˆãƒªã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPI#reply(String, String, byte[], ImageExt)
-	 * @param text “Še“à—e
-	 * @param imageData ‰æ‘œ‚ÌƒoƒCƒiƒŠƒf[ƒ^
-	 * @param imageDataExt ‰æ‘œ‚ÌŠg’£q
-	 * @return “ŠeŒ‹‰Ê‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @param text æŠ•ç¨¿å†…å®¹
+	 * @param imageData ç”»åƒã®ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿
+	 * @param imageDataExt ç”»åƒã®æ‹¡å¼µå­
+	 * @return æŠ•ç¨¿çµæœã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -161,16 +161,16 @@ public class StatusAPI extends EntityAPI {
 		if (isAuth()) {
 			return apiAuth.reply(status.getStatusId(), text, imageData, imageDataExt);
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 	
 	/**
-	 * ‚±‚ÌƒGƒ“ƒgƒŠ‚ğíœ‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/destroy/<font color="red">ƒXƒe[ƒ^ƒXID</font>.xml</i>
+	 * ã“ã®ã‚¨ãƒ³ãƒˆãƒªã‚’å‰Šé™¤ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/destroy/<font color="red">ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#deleteEntry(String)
-	 * @return ‚±‚Ìíœ‚µ‚½ƒXƒe[ƒ^ƒXî•ñ
+	 * @return ã“ã®å‰Šé™¤ã—ãŸã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException 
 	 * @since v0.2.0
 	 */
@@ -180,16 +180,16 @@ public class StatusAPI extends EntityAPI {
 			status.overwrite(deleted);
 			return status;
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 	
 	/**
-	 * ‚±‚ÌƒGƒ“ƒgƒŠ‚ÉƒXƒ^[‚ğˆê‚Â’Ç‰Á‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/favorites/create/<font color="red">ƒXƒe[ƒ^ƒXID</font>.xml</i>
+	 * ã“ã®ã‚¨ãƒ³ãƒˆãƒªã«ã‚¹ã‚¿ãƒ¼ã‚’ä¸€ã¤è¿½åŠ ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/favorites/create/<font color="red">ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#addStar(String)
-	 * @return ƒXƒ^[‚ğˆê‚Â’Ç‰Á‚µ‚½Œ‹‰Ê‚Ì‚±‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @return ã‚¹ã‚¿ãƒ¼ã‚’ä¸€ã¤è¿½åŠ ã—ãŸçµæœã®ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException 
 	 * @since v0.2.0
 	 */
@@ -199,16 +199,16 @@ public class StatusAPI extends EntityAPI {
 			status.overwrite(starAdded);
 			return status;
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½ƒGƒ“ƒgƒŠ‚ÌƒXƒ^[‚ğˆê‚ÂŒ¸‚ç‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/favorites/destroy/<font color="red">ƒXƒe[ƒ^ƒXID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚¨ãƒ³ãƒˆãƒªã®ã‚¹ã‚¿ãƒ¼ã‚’ä¸€ã¤æ¸›ã‚‰ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/favorites/destroy/<font color="red">ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#deleteStar(String)
-	 * @return ƒXƒ^[‚ğˆê‚ÂŒ¸‚ç‚µ‚½Œ‹‰Ê‚Ì‚±‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @return ã‚¹ã‚¿ãƒ¼ã‚’ä¸€ã¤æ¸›ã‚‰ã—ãŸçµæœã®ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException 
 	 * @since v0.2.0
 	 */
@@ -218,7 +218,7 @@ public class StatusAPI extends EntityAPI {
 			status.overwrite(starDeleted);
 			return status;
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 

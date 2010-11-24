@@ -7,40 +7,40 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * –â‚¢‡‚í‚¹—pƒpƒ‰ƒ[ƒ^‚ğ•\Œ»‚·‚éƒNƒ‰ƒX‚Å‚·B
+ * å•ã„åˆã‚ã›ç”¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class QueryParameter {
-	/** ƒy[ƒW‚ÌÅ¬’l */
+	/** ãƒšãƒ¼ã‚¸ã®æœ€å°å€¤ */
 	private static final int MIN_PAGE = 0;
-	/** ƒy[ƒW‚ÌÅ‘å’l */
+	/** ãƒšãƒ¼ã‚¸ã®æœ€å¤§å€¤ */
 	private static final int MAX_PAGE = 100;
-	/** ƒJƒEƒ“ƒg‚ÌÅ¬’l */
+	/** ã‚«ã‚¦ãƒ³ãƒˆã®æœ€å°å€¤ */
 	private static final int MIN_COUNT = 0;
-	/** ƒJƒEƒ“ƒg‚ÌÅ‘å’l */
+	/** ã‚«ã‚¦ãƒ³ãƒˆã®æœ€å¤§å€¤ */
 	private static final int MAX_COUNT = 200;
-	/** l‹C‡(HOT) */
+	/** äººæ°—é †(HOT) */
 	private static final String HOT = "hot";
 	
-	/** ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B  */
+	/** ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚  */
 	private Date since;
-	/** æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B */
+	/** å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚ */
 	private int page;
-	/** æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B */
+	/** å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚ */
 	private int count;
-	/** ŒŸõ•¶š */
+	/** æ¤œç´¢æ–‡å­— */
 	private String word;
-	/** ŠÖ˜A•t‚¯ƒL[ƒ[ƒh1 */
+	/** é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰1 */
 	private String word1;
-	/** ŠÖ˜A•t‚¯ƒL[ƒ[ƒh2 */
+	/** é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰2 */
 	private String word2;
-	/** l‹C‡ */
+	/** äººæ°—é † */
 	private String sort;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
 	 * 
 	 * @since v0.0.1
 	 */
@@ -49,9 +49,9 @@ public class QueryParameter {
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
 	 * 
-	 * @param isHot l‹C‡æ“¾—p‚©‚Ç‚¤‚©
+	 * @param isHot äººæ°—é †å–å¾—ç”¨ã‹ã©ã†ã‹
 	 * @since v1.0.0
 	 */
 	QueryParameter(boolean isHot) {
@@ -61,9 +61,9 @@ public class QueryParameter {
 	}
 
 	/**
-	 * ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğæ“¾‚µ‚Ü‚·B
+	 * ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú
+	 * @return ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚
 	 * @since v0.0.1
 	 */
 	public Date getSince() {
@@ -71,30 +71,30 @@ public class QueryParameter {
 	}
 
 	/**
-	 * ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B<br/>
-	 * w’è‚³‚ê‚½ê‡‚ÍA‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ•Ô‚è‚Ü‚·B
+	 * ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚<br/>
+	 * æŒ‡å®šã•ã‚ŒãŸå ´åˆã¯ã€ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿è¿”ã‚Šã¾ã™ã€‚
 	 * 
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚
 	 * @since v0.0.1
 	 */
 	public void setSince(Date since) {
 		this.since = since;
 	}
 
-	/** @return æ“¾‚·‚éƒy[ƒW */
+	/** @return å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ */
 	public int getPage() {
 		return page;
 	}
 
 	/**
-	 * æ“¾‚·‚éƒy[ƒW‚ğİ’è‚µ‚Ü‚·BÅ‘å”‚Í100‚Å‚·B
+	 * å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã‚’è¨­å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
 	 * <ul>
-	 * <li>w’è‚³‚ê‚½ƒy[ƒW‚ª0‚æ‚è¬‚³‚¢ê‡A0‚É‚È‚è‚Ü‚·B</li>
-	 * <li>w’è‚³‚ê‚½ƒy[ƒW‚ª100‚æ‚è‘å‚«‚¢ê‡A100‚É‚È‚è‚Ü‚·B</li>
-	 * <li>w’è‚³‚ê‚½ƒy[ƒW‚ª0‚Ìê‡AƒfƒtƒHƒ‹ƒgƒy[ƒW(1ƒy[ƒW–Ú)‚ğæ“¾‚µ‚Ü‚·B</li>
+	 * <li>æŒ‡å®šã•ã‚ŒãŸãƒšãƒ¼ã‚¸ãŒ0ã‚ˆã‚Šå°ã•ã„å ´åˆã€0ã«ãªã‚Šã¾ã™ã€‚</li>
+	 * <li>æŒ‡å®šã•ã‚ŒãŸãƒšãƒ¼ã‚¸ãŒ100ã‚ˆã‚Šå¤§ãã„å ´åˆã€100ã«ãªã‚Šã¾ã™ã€‚</li>
+	 * <li>æŒ‡å®šã•ã‚ŒãŸãƒšãƒ¼ã‚¸ãŒ0ã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒšãƒ¼ã‚¸(1ãƒšãƒ¼ã‚¸ç›®)ã‚’å–å¾—ã—ã¾ã™ã€‚</li>
 	 * </ul>
 	 * 
-	 * @param page æ“¾‚·‚éƒy[ƒW
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸
 	 * @since v0.0.1
 	 */
 	public void setPage(int page) {
@@ -102,9 +102,9 @@ public class QueryParameter {
 	}
 
 	/**
-	 * æ“¾”‚ğæ“¾‚µ‚Ü‚·B
+	 * å–å¾—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return æ“¾”
+	 * @return å–å¾—æ•°
 	 * @since v0.0.1
 	 */
 	public int getCount() {
@@ -112,14 +112,14 @@ public class QueryParameter {
 	}
 
 	/**
-	 * æ“¾”‚ğİ’è‚µ‚Ü‚·BÅ‘å”‚Í 200
+	 * å–å¾—æ•°ã‚’è¨­å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200
 	 * <ul>
-	 * <li>w’è‚³‚ê‚½æ“¾”‚ª0‚æ‚è¬‚³‚¢ê‡A0‚É‚È‚è‚Ü‚·B</li>
-	 * <li>w’è‚³‚ê‚½æ“¾”‚ª200‚æ‚è‘å‚«‚¢ê‡A100‚É‚È‚è‚Ü‚·B</li>
-	 * <li>w’è‚³‚ê‚½æ“¾”‚ª0‚Ìê‡AƒfƒtƒHƒ‹ƒg‚Ìæ“¾Œ”‚Åæ“¾‚µ‚Ü‚·B</li>
+	 * <li>æŒ‡å®šã•ã‚ŒãŸå–å¾—æ•°ãŒ0ã‚ˆã‚Šå°ã•ã„å ´åˆã€0ã«ãªã‚Šã¾ã™ã€‚</li>
+	 * <li>æŒ‡å®šã•ã‚ŒãŸå–å¾—æ•°ãŒ200ã‚ˆã‚Šå¤§ãã„å ´åˆã€100ã«ãªã‚Šã¾ã™ã€‚</li>
+	 * <li>æŒ‡å®šã•ã‚ŒãŸå–å¾—æ•°ãŒ0ã®å ´åˆã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å–å¾—ä»¶æ•°ã§å–å¾—ã—ã¾ã™ã€‚</li>
 	 * </ul>
 	 * 
-	 * @param count æ“¾”
+	 * @param count å–å¾—æ•°
 	 * @since v0.0.1
 	 */
 	public void setCount(int count) {
@@ -127,9 +127,9 @@ public class QueryParameter {
 	}
 	
 	/**
-	 * ŒŸõ•¶š‚ğæ“¾‚µ‚Ü‚·B
+	 * æ¤œç´¢æ–‡å­—ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ŒŸõ•¶š 
+	 * @return æ¤œç´¢æ–‡å­— 
 	 * @since v0.0.1
 	 */
 	public String getWord() {
@@ -137,9 +137,9 @@ public class QueryParameter {
 	}
 
 	/** 
-	 * ŒŸõ•¶š‚ğİ’è‚µ‚Ü‚·B
+	 * æ¤œç´¢æ–‡å­—ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param word ŒŸõ•¶š
+	 * @param word æ¤œç´¢æ–‡å­—
 	 * @since v0.0.1
 	 */
 	public String setWord(String word) {
@@ -147,9 +147,9 @@ public class QueryParameter {
 	}
 	
 	/**
-	 * ŠÖ˜A•t‚¯ƒL[ƒ[ƒh1‚ğæ“¾‚µ‚Ü‚·B
+	 * é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰1ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ŠÖ˜A•t‚¯ƒL[ƒ[ƒh1 
+	 * @return é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰1 
 	 * @since v0.0.1
 	 */
 	public String getWord1() {
@@ -157,9 +157,9 @@ public class QueryParameter {
 	}
 
 	/** 
-	 * ŠÖ˜A•t‚¯ƒL[ƒ[ƒh1‚ğİ’è‚µ‚Ü‚·B
+	 * é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰1ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param word1 ŠÖ˜A•t‚¯ƒL[ƒ[ƒh1
+	 * @param word1 é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰1
 	 * @since v0.0.1
 	 */
 	public String setWord1(String word1) {
@@ -167,9 +167,9 @@ public class QueryParameter {
 	}
 
 	/**
-	 * ŠÖ˜A•t‚¯ƒL[ƒ[ƒh2‚ğæ“¾‚µ‚Ü‚·B
+	 * é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰2ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ŠÖ˜A•t‚¯ƒL[ƒ[ƒh2
+	 * @return é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰2
 	 * @since v0.0.1
 	 */
 	public String getWord2() {
@@ -177,9 +177,9 @@ public class QueryParameter {
 	}
 
 	/** 
-	 * ŠÖ˜A•t‚¯ƒL[ƒ[ƒh2‚ğİ’è‚µ‚Ü‚·B
+	 * é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰2ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param word2 ŠÖ˜A•t‚¯ƒL[ƒ[ƒh2
+	 * @param word2 é–¢é€£ä»˜ã‘ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰2
 	 * @since v0.0.1
 	 */
 	public String setWord2(String word2) {
@@ -187,9 +187,9 @@ public class QueryParameter {
 	}
 
 	/**
-	 * l‹C‡‚ğæ“¾‚µ‚Ü‚·B
+	 * äººæ°—é †ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return l‹C‡
+	 * @return äººæ°—é †
 	 * @since v1.0.0
 	 */
 	public String getSort() {
@@ -197,9 +197,9 @@ public class QueryParameter {
 	}
 
 	/** 
-	 * l‹C‡‚ğİ’è‚µ‚Ü‚·B
+	 * äººæ°—é †ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param sort l‹C‡
+	 * @param sort äººæ°—é †
 	 * @since v1.0.0
 	 */
 	public String setSort(String sort) {
@@ -223,9 +223,9 @@ public class QueryParameter {
 	private static final String PARAM_KEY_SORT = "sort";
 
 	/**
-	 * ƒ|ƒXƒg‚·‚éƒpƒ‰ƒ[ƒ^‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒã‚¹ãƒˆã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param ps ƒ|ƒXƒgˆ—•â•ƒNƒ‰ƒX
+	 * @param ps ãƒã‚¹ãƒˆå‡¦ç†è£œåŠ©ã‚¯ãƒ©ã‚¹
 	 * @throws IOException 
 	 * @since v1.0.0
 	 */
@@ -261,12 +261,12 @@ public class QueryParameter {
 	}
 
 	/**
-	 * ƒ|ƒXƒg“à—e‚ğ•\¦‚µ‚Ü‚·B
+	 * ãƒã‚¹ãƒˆå†…å®¹ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
 	 * 
 	 * @since v0.0.1
 	 */
 	public void outputPostInfo() {
-		// ƒ|ƒXƒg“à—e‚Ì•\¦
+		// ãƒã‚¹ãƒˆå†…å®¹ã®è¡¨ç¤º
 		System.out.println("[count: " + count + "]");
 		System.out.println("[page: " + page + "]");
 		System.out.println("[since: " + since + "]");

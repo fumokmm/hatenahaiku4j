@@ -1,33 +1,33 @@
 package hatenahaiku4j;
 
 /**
- * ‰æ‘œ‚Ìƒ}ƒCƒ€ƒ^ƒCƒv
+ * ç”»åƒã®ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—
  * 
  * @author fumokmm
  * @since v1.0.0
  */
 public enum ImageMime {
-	/** JPG‰æ‘œ */
+	/** JPGç”»åƒ */
 	JPG(ImageExt.JPG, "image/jpeg"),
-	/** JPEG‰æ‘œ */
+	/** JPEGç”»åƒ */
 	JPEG(ImageExt.JPEG, "image/jpeg"),
-	/** GIF‰æ‘œ */
+	/** GIFç”»åƒ */
 	GIF(ImageExt.GIF, "image/gif"),
-	/** PNG‰æ‘œ */
+	/** PNGç”»åƒ */
 	PNG(ImageExt.PNG, "image/png"),
-	/** BMP‰æ‘œ */
+	/** BMPç”»åƒ */
 	BMP(ImageExt.BMP, "image/bmp");
 
-	/** Šg’£q */
+	/** æ‹¡å¼µå­ */
 	private ImageExt ext;
-	/** ƒ}ƒCƒ€ƒ^ƒCƒv */
+	/** ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ— */
 	private String mimeType;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
 	 * 
-	 * @param ext Šg’£q
-	 * @param mimeType ƒ}ƒCƒ€ƒ^ƒCƒv
+	 * @param ext æ‹¡å¼µå­
+	 * @param mimeType ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—
 	 */
 	private ImageMime(ImageExt ext, String mimeType) {
 		this.ext = ext;
@@ -35,28 +35,28 @@ public enum ImageMime {
 	}
 	
 	/**
-	 * ƒ}ƒCƒ€ƒ^ƒCƒv‚ğæ“¾‚·‚éB
+	 * ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã™ã‚‹ã€‚
 	 * 
-	 * @return ƒ}ƒCƒ€ƒ^ƒCƒv
+	 * @return ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—
 	 */
 	public String getMimeType() {
 		return this.mimeType;
 	}
 	
 	/**
-	 * Šg’£q‚ğæ“¾‚·‚éB
+	 * æ‹¡å¼µå­ã‚’å–å¾—ã™ã‚‹ã€‚
 	 * 
-	 * @return Šg’£q
+	 * @return æ‹¡å¼µå­
 	 */
 	public String getExt() {
 		return this.ext.name();
 	}
 
 	/**
-	 * ˆø”‚ÌŠg’£q‚©‚çŠg’£q‚Ìƒ}ƒCƒ€ƒ^ƒCƒv‚ğæ“¾‚µ‚Ü‚·B
+	 * å¼•æ•°ã®æ‹¡å¼µå­ã‹ã‚‰æ‹¡å¼µå­ã®ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @param ext Šg’£q
-	 * @return ƒ}ƒCƒ€ƒ^ƒCƒv
+	 * @param ext æ‹¡å¼µå­
+	 * @return ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—
 	 */
 	public static ImageMime getImageMime(ImageExt ext) {
 		for (ImageMime mime : values()) {
@@ -70,10 +70,10 @@ public enum ImageMime {
 	}
 	
 	/**
-	 * ˆø”‚Ìƒtƒ@ƒCƒ‹–¼‚©‚çŠg’£q‚Ìƒ}ƒCƒ€ƒ^ƒCƒv‚ğæ“¾‚µ‚Ü‚·B
+	 * å¼•æ•°ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‹ã‚‰æ‹¡å¼µå­ã®ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @param fileName ƒtƒ@ƒCƒ‹–¼
-	 * @return ƒ}ƒCƒ€ƒ^ƒCƒv
+	 * @param fileName ãƒ•ã‚¡ã‚¤ãƒ«å
+	 * @return ãƒã‚¤ãƒ ã‚¿ã‚¤ãƒ—
 	 */
 	public static ImageMime getImageMime(String fileName) {
 		String[] name = fileName.split("\\.");
@@ -89,9 +89,9 @@ public enum ImageMime {
 	}
 	
 	/**
-	 * ˆê“I‚Èƒtƒ@ƒCƒ‹–¼
+	 * ä¸€æ™‚çš„ãªãƒ•ã‚¡ã‚¤ãƒ«å
 	 * 
-	 * @return ˆê“I‚Èƒtƒ@ƒCƒ‹–¼
+	 * @return ä¸€æ™‚çš„ãªãƒ•ã‚¡ã‚¤ãƒ«å
 	 */
 	public String toTemporaryFileName() {
 		return this.mimeType.replace('/', '.').replaceAll("e", "");

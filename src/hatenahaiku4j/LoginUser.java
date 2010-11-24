@@ -3,25 +3,25 @@ package hatenahaiku4j;
 import hatenahaiku4j.util.Base64Util;
 
 /**
- * ƒƒOƒCƒ“ƒ†[ƒUî•ñ
+ * ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶æƒ…å ±
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class LoginUser {
-	/** ƒ†[ƒUID */
+	/** ãƒ¦ãƒ¼ã‚¶ID */
 	private String userId;
-	/** “Še—pƒpƒXƒ[ƒh */
+	/** æŠ•ç¨¿ç”¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ */
 	private String password;
-	/** ƒNƒ‰ƒCƒAƒ“ƒg–¼ */
+	/** ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå */
 	private String source;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B<br/>
-	 * ƒƒOƒCƒ“ƒ†[ƒU‚ğƒfƒtƒHƒ‹ƒgƒNƒ‰ƒCƒAƒ“ƒg–¼("HatenaHaiku4J")‚Å¶¬‚µ‚Ü‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚<br/>
+	 * ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå("HatenaHaiku4J")ã§ç”Ÿæˆã—ã¾ã™ã€‚
 	 * 
-	 * @param userId ƒ†[ƒUID
-	 * @param password ƒpƒXƒ[ƒh
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param password ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 * @since v0.2.1
 	 */
 	public LoginUser(String userId, String password) {
@@ -29,12 +29,12 @@ public class LoginUser {
 	}
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B<br/>
-	 * ƒƒOƒCƒ“ƒ†[ƒU‚ğ¶¬‚µ‚Ü‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚<br/>
+	 * ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	 * 
-	 * @param userId ƒ†[ƒUID
-	 * @param password “Še—pƒpƒXƒ[ƒh
-	 * @param source ƒNƒ‰ƒCƒAƒ“ƒg–¼
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param password æŠ•ç¨¿ç”¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
+	 * @param source ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå
 	 * @since v0.2.1
 	 */
 	public LoginUser(String userId, String password, String source) {
@@ -44,9 +44,9 @@ public class LoginUser {
 	}
 
 	/**
-	 * ƒ†[ƒUID‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶IDã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒUID
+	 * @return ãƒ¦ãƒ¼ã‚¶ID
 	 * @since v0.0.1
 	 */
 	public String getUserId() {
@@ -54,9 +54,9 @@ public class LoginUser {
 	}
 
 	/**
-	 * id‹L–@‚Ìƒ†[ƒUID‚ğæ“¾‚µ‚Ü‚·B (id:xxx)
+	 * idè¨˜æ³•ã®ãƒ¦ãƒ¼ã‚¶IDã‚’å–å¾—ã—ã¾ã™ã€‚ (id:xxx)
 	 * 
-	 * @return ƒ†[ƒUid‹L–@ (id:xxx)
+	 * @return ãƒ¦ãƒ¼ã‚¶idè¨˜æ³• (id:xxx)
 	 * @since v0.2.0
 	 */
 	public String getUserIdNotation() {
@@ -64,9 +64,9 @@ public class LoginUser {
 	}
 	
 	/**
-	 * “Še—pƒpƒXƒ[ƒh‚ğæ“¾‚µ‚Ü‚·B
+	 * æŠ•ç¨¿ç”¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return “Še—pƒpƒXƒ[ƒh
+	 * @return æŠ•ç¨¿ç”¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 * @since v0.0.1
 	 */
 	public String getPassword() {
@@ -74,9 +74,9 @@ public class LoginUser {
 	}
 	
 	/**
-	 * ƒNƒ‰ƒCƒAƒ“ƒg–¼‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒNƒ‰ƒCƒAƒ“ƒg–¼
+	 * @return ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå
 	 * @since v0.0.1
 	 */
 	public String getSource() {
@@ -93,9 +93,9 @@ public class LoginUser {
 	}
 
 	/**
-	 * ƒ†[ƒUID + ":" + ƒpƒXƒ[ƒhŒ`®‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶ID + ":" + ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å½¢å¼ã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒUID + ":" + ƒpƒXƒ[ƒh
+	 * @return ãƒ¦ãƒ¼ã‚¶ID + ":" + ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 * @since v0.0.1
 	 */
 	String toUserPassword() {
@@ -103,9 +103,9 @@ public class LoginUser {
 	}
 	
 	/**
-	 * BASIC”FØ—p•¶š—ñ‚É•ÏŠ·‚µ‚Ü‚·B
+	 * BASICèªè¨¼ç”¨æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @return BASIC”FØ—p•¶š—ñ
+	 * @return BASICèªè¨¼ç”¨æ–‡å­—åˆ—
 	 * @since v0.0.1
 	 */
 	public String toBasicAuthenticationString() {

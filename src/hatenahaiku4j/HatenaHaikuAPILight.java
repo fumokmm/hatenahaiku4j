@@ -17,50 +17,50 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 /**
- * ‚Í‚Ä‚ÈƒnƒCƒNAPIƒ‰ƒbƒsƒ“ƒOƒNƒ‰ƒXi”FØ‚È‚µj<br/>
- * Light‚Í”FØ‚È‚µ‚Å"‚¨èŒy"‚ÌˆÓ–¡‚Å‚·B
+ * ã¯ã¦ãªãƒã‚¤ã‚¯APIãƒ©ãƒƒãƒ”ãƒ³ã‚°ã‚¯ãƒ©ã‚¹ï¼ˆèªè¨¼ãªã—ï¼‰<br/>
+ * Lightã¯èªè¨¼ãªã—ã§"ãŠæ‰‹è»½"ã®æ„å‘³ã§ã™ã€‚
  * 
- * @see <a href="http://h.hatena.ne.jp/api">‚Í‚Ä‚ÈƒnƒCƒNAPI</a>
+ * @see <a href="http://h.hatena.ne.jp/api">ã¯ã¦ãªãƒã‚¤ã‚¯API</a>
  * @since v0.2.0
  * @author fumokmm
  */
 public class HatenaHaikuAPILight {
-	/** URL: ƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“(XML) */
+	/** URL: ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³(XML) */
 	protected static final String URL_PUBLIC_TIMELINE_XML		= "http://h.hatena.ne.jp/api/statuses/public_timeline.xml";
-	/** URL: ƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“ */
+	/** URL: ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ */
 	protected static final String URL_FRIENDS_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/friends_timeline/";
-	/** URL: ƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“ */
+	/** URL: ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ */
 	protected static final String URL_USER_TIMELINE				= "http://h.hatena.ne.jp/api/statuses/user_timeline/";
-	/** URL: ƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“ */
+	/** URL: ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ */
 	protected static final String URL_KEYWORD_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/keyword_timeline/";
-	/** URL: ƒAƒ‹ƒoƒ€ƒ^ƒCƒ€ƒ‰ƒCƒ“(XML) */
+	/** URL: ã‚¢ãƒ«ãƒãƒ ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³(XML) */
 	protected static final String URL_ALBUM_TIMELINE_XML		= "http://h.hatena.ne.jp/api/statuses/album.xml";
-	/** URL: ƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“ */
+	/** URL: ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ */
 	protected static final String URL_ALBUM_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/album/";
-	/** URL: ƒXƒe[ƒ^ƒXî•ñ */
+	/** URL: ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ± */
 	protected static final String URL_STATUS					= "http://h.hatena.ne.jp/api/statuses/show/";
-	/** URL: ƒ†[ƒU‚ªƒtƒHƒ[‚µ‚Ä‚¢‚éƒ†[ƒU‚ÌƒŠƒXƒg */
+	/** URL: ãƒ¦ãƒ¼ã‚¶ãŒãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒªã‚¹ãƒˆ */
 	protected static final String URL_FOLLOWING_LIST			= "http://h.hatena.ne.jp/api/statuses/friends/";
-	/** URL: ƒ†[ƒU‚ğƒtƒHƒ[‚µ‚Ä‚¢‚éƒ†[ƒU‚ÌƒŠƒXƒg */
+	/** URL: ãƒ¦ãƒ¼ã‚¶ã‚’ãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒªã‚¹ãƒˆ */
 	protected static final String URL_FOLLOWERS_LIST			= "http://h.hatena.ne.jp/api/statuses/followers/";
-	/** URL: ƒ†[ƒUî•ñ */
+	/** URL: ãƒ¦ãƒ¼ã‚¶æƒ…å ± */
 	protected static final String URL_USER						= "http://h.hatena.ne.jp/api/friendships/show/";
-	/** URL: ƒzƒbƒgƒL[ƒ[ƒh‚ÌƒŠƒXƒg(XML) */
+	/** URL: ãƒ›ãƒƒãƒˆã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆ(XML) */
 	protected static final String URL_HOT_KEYWORD_LIST_XML		= "http://h.hatena.ne.jp/api/keywords/hot.xml";
-	/** URL: ƒL[ƒ[ƒh‚ÌƒŠƒXƒg(XML) */
+	/** URL: ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆ(XML) */
 	protected static final String URL_KEYWORD_LIST_XML			= "http://h.hatena.ne.jp/api/keywords/list.xml";
-	/** URL: ƒ†[ƒU‚ªƒtƒHƒ[‚µ‚Ä‚¢‚éƒL[ƒ[ƒh‚ÌƒŠƒXƒg */
+	/** URL: ãƒ¦ãƒ¼ã‚¶ãŒãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆ */
 	protected static final String URL_FOLLOWING_KEYWORD_LIST	= "http://h.hatena.ne.jp/api/statuses/keywords/";
-	/** URL: ƒL[ƒ[ƒhî•ñ */
+	/** URL: ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ± */
 	protected static final String URL_KEYWORD					= "http://h.hatena.ne.jp/api/keywords/show/";
 
-	/** HTTP’ÊMƒƒOo—Í—v”Û */
+	/** HTTPé€šä¿¡ãƒ­ã‚°å‡ºåŠ›è¦å¦ */
 	protected boolean needHttpLog;
 	
 	/**
-	 * HTTP’ÊMƒƒOo—Í—v”Û‚ğ•Ô‹p‚µ‚Ü‚·B
+	 * HTTPé€šä¿¡ãƒ­ã‚°å‡ºåŠ›è¦å¦ã‚’è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @return HTTP’ÊMƒƒOo—Í—v”Û
+	 * @return HTTPé€šä¿¡ãƒ­ã‚°å‡ºåŠ›è¦å¦
 	 * @since v0.2.0
 	 */
 	public boolean isNeedHttpLog() {
@@ -68,22 +68,22 @@ public class HatenaHaikuAPILight {
 	}
 	
 	/**
-	 * HTTP’ÊMƒƒOo—Í—v”Û‚ğİ’è‚µ‚Ü‚·B
+	 * HTTPé€šä¿¡ãƒ­ã‚°å‡ºåŠ›è¦å¦ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param needHttpLog HTTP’ÊMƒƒOo—Í—v”Û
+	 * @param needHttpLog HTTPé€šä¿¡ãƒ­ã‚°å‡ºåŠ›è¦å¦
 	 * @since v0.2.0
 	 */
 	public void setNeedHttpLog(boolean needHttpLog) {
 		this.needHttpLog = needHttpLog;
 	}
 	
-	/** APIƒVƒŠƒAƒ‹’l */
+	/** APIã‚·ãƒªã‚¢ãƒ«å€¤ */
 	private final String serial;
 
 	/**
-	 * APIƒVƒŠƒAƒ‹’l‚ğæ“¾‚·‚éB
+	 * APIã‚·ãƒªã‚¢ãƒ«å€¤ã‚’å–å¾—ã™ã‚‹ã€‚
 	 *
-	 * @return APIƒVƒŠƒAƒ‹’l
+	 * @return APIã‚·ãƒªã‚¢ãƒ«å€¤
 	 * @since v0.2.0
 	 */
 	protected String getSerial() {
@@ -91,27 +91,27 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ƒXƒe[ƒ^ƒX‚Ìó‘Ô‚ªshadow‚Ì‚É•ÔMæ‚ğ©“®æ“¾‚·‚é‚©‚Ç‚¤‚©<br/>
-	 * ƒfƒtƒHƒ‹ƒg:true
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®çŠ¶æ…‹ãŒshadowã®æ™‚ã«è¿”ä¿¡å…ˆã‚’è‡ªå‹•å–å¾—ã™ã‚‹ã‹ã©ã†ã‹<br/>
+	 * ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ:true
 	 */
 	private boolean autoRefreshReplies;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚
 	 * 
 	 * @since v0.0.1
 	 */
 	public HatenaHaikuAPILight() {
-		// APIƒVƒŠƒAƒ‹’l
+		// APIã‚·ãƒªã‚¢ãƒ«å€¤
 		this.serial = StringUtil.getSerial();
-		// ƒXƒe[ƒ^ƒX‚Ìó‘Ô‚ªshadow‚Ì‚É•ÔMæ‚ğ©“®æ“¾‚·‚é‚©‚Ç‚¤‚©
+		// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®çŠ¶æ…‹ãŒshadowã®æ™‚ã«è¿”ä¿¡å…ˆã‚’è‡ªå‹•å–å¾—ã™ã‚‹ã‹ã©ã†ã‹
 		this.autoRefreshReplies = true;
 	}
 	
 	/**
-	 * ƒXƒe[ƒ^ƒX‚Ìó‘Ô‚ªshadow‚Ì‚É•ÔMæ‚ğ©“®æ“¾‚·‚é‚©‚Ç‚¤‚©‚ğ•Ô‹p‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®çŠ¶æ…‹ãŒshadowã®æ™‚ã«è¿”ä¿¡å…ˆã‚’è‡ªå‹•å–å¾—ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @return ©“®æ“¾‚·‚é:true^©“®æ“¾‚µ‚È‚¢:false
+	 * @return è‡ªå‹•å–å¾—ã™ã‚‹:trueï¼è‡ªå‹•å–å¾—ã—ãªã„:false
 	 * @since v0.2.0
 	 */
 	public boolean isAutoRefreshReplies() {
@@ -119,9 +119,9 @@ public class HatenaHaikuAPILight {
 	}
 	
 	/**
-	 * ƒXƒe[ƒ^ƒX‚Ìó‘Ô‚ªshadow‚Ì‚É•ÔMæ‚ğ©“®æ“¾‚·‚é‚©‚Ç‚¤‚©İ’è‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã®çŠ¶æ…‹ãŒshadowã®æ™‚ã«è¿”ä¿¡å…ˆã‚’è‡ªå‹•å–å¾—ã™ã‚‹ã‹ã©ã†ã‹è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param autoRefreshReplies •ÔMæ‚ğ©“®æ“¾‚·‚é‚©‚Ç‚¤‚©
+	 * @param autoRefreshReplies è¿”ä¿¡å…ˆã‚’è‡ªå‹•å–å¾—ã™ã‚‹ã‹ã©ã†ã‹
 	 * @since v0.2.0
 	 */
 	public void setAutoRefreshReplies(boolean autoRefreshReplies) {
@@ -129,16 +129,16 @@ public class HatenaHaikuAPILight {
 	}
 	
 	//-------------------------------------------------------------
-	// ƒ^ƒCƒ€ƒ‰ƒCƒ“ŠÖŒW
+	// ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³é–¢ä¿‚
 	//-------------------------------------------------------------
 
 	/**
-	 * ƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
+	 * ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/public_timeline.xml</i>
 	 * 
-	 * @see <a href="http://h.hatena.ne.jp/">‚Í‚Ä‚ÈƒnƒCƒN</a>
+	 * @see <a href="http://h.hatena.ne.jp/">ã¯ã¦ãªãƒã‚¤ã‚¯</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-public_timeline">statuses/public_timeline</a>
-	 * @return ƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @return ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
@@ -147,13 +147,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
+	 * ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/public_timeline.xml</i>
 	 * 
-	 * @see <a href="http://h.hatena.ne.jp/">‚Í‚Ä‚ÈƒnƒCƒN</a>
+	 * @see <a href="http://h.hatena.ne.jp/">ã¯ã¦ãªãƒã‚¤ã‚¯</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-public_timeline">statuses/public_timeline</a>
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return ƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
@@ -162,14 +162,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
+	 * ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/public_timeline.xml</i>
 	 * 
-	 * @see <a href="http://h.hatena.ne.jp/">‚Í‚Ä‚ÈƒnƒCƒN</a>
+	 * @see <a href="http://h.hatena.ne.jp/">ã¯ã¦ãªãƒã‚¤ã‚¯</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-public_timeline">statuses/public_timeline</a>
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return ƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
@@ -182,23 +182,23 @@ public class HatenaHaikuAPILight {
 			return toStatusList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚ÌƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-friends_timeline">statuses/friends_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @return w’è‚µ‚½ƒ†[ƒU‚ÌƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
@@ -207,13 +207,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚ÌƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-friends_timeline">statuses/friends_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚ÌƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
@@ -222,14 +222,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚ÌƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-friends_timeline">statuses/friends_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚ÌƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
@@ -238,15 +238,15 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚ÌƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-friends_timeline">statuses/friends_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚ÌƒtƒŒƒ“ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
@@ -260,23 +260,23 @@ public class HatenaHaikuAPILight {
 			return toStatusList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -285,13 +285,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -300,14 +300,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -316,15 +316,15 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -333,12 +333,12 @@ public class HatenaHaikuAPILight {
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -347,13 +347,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -362,14 +362,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -378,15 +378,15 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -395,16 +395,16 @@ public class HatenaHaikuAPILight {
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 *@<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 *ã€€<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 *
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @param isHot l‹C‡æ“¾—p‚©‚Ç‚¤‚©
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @param isHot äººæ°—é †å–å¾—ç”¨ã‹ã©ã†ã‹
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -418,23 +418,23 @@ public class HatenaHaikuAPILight {
 			return toStatusList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìidƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 * ‚±‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚Í "id:xxxx" ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚Æ“¯‚¶‚à‚Ì‚Å‚·B
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * ã“ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã¯ "id:xxxx" ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã¨åŒã˜ã‚‚ã®ã§ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String)
-	 * @param userId ƒ†[ƒUID
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìidƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -443,13 +443,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìidƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 * ‚±‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚Í "id:xxxx" ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚Æ“¯‚¶‚à‚Ì‚Å‚·B
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 * ã“ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã¯ "id:xxxx" ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã¨åŒã˜ã‚‚ã®ã§ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int)
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìidƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -458,14 +458,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìidƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * ‚±‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚Í "id:xxxx" ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚Æ“¯‚¶‚à‚Ì‚Å‚·B
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * ã“ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã¯ "id:xxxx" ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã¨åŒã˜ã‚‚ã®ã§ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int)
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìidƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -474,15 +474,15 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Ìidƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * ‚±‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚Í "id:xxxx" ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚Æ“¯‚¶‚à‚Ì‚Å‚·B
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * ã“ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã¯ "id:xxxx" ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã¨åŒã˜ã‚‚ã®ã§ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int, Date)
-	 * @param userId ƒ†[ƒUID
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return w’è‚µ‚½ƒ†[ƒU‚Ìidƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -491,12 +491,12 @@ public class HatenaHaikuAPILight {
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -505,13 +505,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -520,14 +520,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -536,15 +536,15 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -553,12 +553,12 @@ public class HatenaHaikuAPILight {
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -567,13 +567,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -582,14 +582,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -598,15 +598,15 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -615,16 +615,16 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keyword_timeline">statuses/keyword_timeline</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @param isHot l‹C‡æ“¾—p‚©‚Ç‚¤‚©
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @param isHot äººæ°—é †å–å¾—ç”¨ã‹ã©ã†ã‹
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -638,22 +638,22 @@ public class HatenaHaikuAPILight {
 			return toStatusList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
+	 * ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/album.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -662,12 +662,12 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
+	 * ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/album.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -676,13 +676,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
+	 * ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/album.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -691,14 +691,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
+	 * ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/album.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -712,23 +712,23 @@ public class HatenaHaikuAPILight {
 			return toStatusList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Ì‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -737,13 +737,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Ì‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -752,14 +752,14 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Ì‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -768,15 +768,15 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Ì‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-album">statuses/album</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -790,27 +790,27 @@ public class HatenaHaikuAPILight {
 			return toStatusList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 	
 	//-------------------------------------------------------------
-	// ƒXƒe[ƒ^ƒXŠÖŒW
+	// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹é–¢ä¿‚
 	//-------------------------------------------------------------
 	
 	/**
-	 * w’è‚µ‚½ƒXƒe[ƒ^ƒXî•ñ‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/show/<font color="red">ƒXƒe[ƒ^ƒXID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/show/<font color="red">ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-show">statuses/show</a>
-	 * @param statusId ƒXƒe[ƒ^ƒXID
-	 * @return ƒXƒe[ƒ^ƒXî•ñ
+	 * @param statusId ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID
+	 * @return ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -820,31 +820,31 @@ public class HatenaHaikuAPILight {
 			return toStatus(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	//-------------------------------------------------------------
-	// ƒXƒ^[ŠÖŒW
+	// ã‚¹ã‚¿ãƒ¼é–¢ä¿‚
 	//-------------------------------------------------------------
 
 	//-------------------------------------------------------------
-	// ƒ†[ƒU^ƒtƒHƒ[ŠÖŒW
+	// ãƒ¦ãƒ¼ã‚¶ï¼ãƒ•ã‚©ãƒ­ãƒ¼é–¢ä¿‚
 	//-------------------------------------------------------------
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚ªƒtƒHƒ[‚µ‚Ä‚¢‚éƒ†[ƒU‚ÌƒŠƒXƒg‚ğ100Œæ“¾‚µ‚Ü‚·Bi‚Pƒy[ƒW–Új<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/friends/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ãŒãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒªã‚¹ãƒˆã‚’100ä»¶å–å¾—ã—ã¾ã™ã€‚ï¼ˆï¼‘ãƒšãƒ¼ã‚¸ç›®ï¼‰<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-friends">statuses/friends</a>
-	 * @param userId ƒ†[ƒUID
-	 * @return w’è‚µ‚½ƒ†[ƒU‚ªƒtƒHƒ[‚µ‚Ä‚¢‚éƒ†[ƒU‚ÌƒŠƒXƒgi‚Pƒy[ƒW–Új
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ãŒãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒªã‚¹ãƒˆï¼ˆï¼‘ãƒšãƒ¼ã‚¸ç›®ï¼‰
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -853,13 +853,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚ªƒtƒHƒ[‚µ‚Ä‚¢‚éƒ†[ƒU‚ÌƒŠƒXƒg‚ğ100Œæ“¾‚µ‚Ü‚·Biw’èƒy[ƒWj<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/friends/<font color="red">ƒ†[ƒUID</font>.xml&page=<font color="red">ƒy[ƒW</font></i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ãŒãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒªã‚¹ãƒˆã‚’100ä»¶å–å¾—ã—ã¾ã™ã€‚ï¼ˆæŒ‡å®šãƒšãƒ¼ã‚¸ï¼‰<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml&page=<font color="red">ãƒšãƒ¼ã‚¸</font></i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-friends">statuses/friends</a>
-	 * @param userId ƒ†[ƒUID
-	 * @param page ƒy[ƒW
-	 * @return w’è‚µ‚½ƒ†[ƒU‚ªƒtƒHƒ[‚µ‚Ä‚¢‚éƒ†[ƒU‚ÌƒŠƒXƒgiw’èƒy[ƒWj
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @param page ãƒšãƒ¼ã‚¸
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ãŒãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒªã‚¹ãƒˆï¼ˆæŒ‡å®šãƒšãƒ¼ã‚¸ï¼‰
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -871,24 +871,24 @@ public class HatenaHaikuAPILight {
 			return toUserList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚ğƒtƒHƒ[‚µ‚Ä‚¢‚éƒ†[ƒU‚ÌƒŠƒXƒg‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * ƒtƒHƒƒ[‚Íƒy[ƒWw’è‚Å‚«‚¸Aˆê‹C‚É‘Sˆõ•ªæ“¾‚³‚ê‚é‚æ‚¤‚Å‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/followers/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã‚’ãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼ã¯ãƒšãƒ¼ã‚¸æŒ‡å®šã§ããšã€ä¸€æ°—ã«å…¨å“¡åˆ†å–å¾—ã•ã‚Œã‚‹ã‚ˆã†ã§ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/followers/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-followers">statuses/followers</a>
-	 * @param userId ƒ†[ƒUID
-	 * @return w’è‚µ‚½ƒ†[ƒU‚ğƒtƒHƒ[‚µ‚Ä‚¢‚éƒ†[ƒU‚ÌƒŠƒXƒg
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã‚’ãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ãƒ¦ãƒ¼ã‚¶ã®ãƒªã‚¹ãƒˆ
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -898,23 +898,23 @@ public class HatenaHaikuAPILight {
 			return toUserList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒUî•ñ‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/friendships/show/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/friendships/show/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#friendships-show">friendships/show</a>
-	 * @param userId ƒ†[ƒUID
-	 * @return w’è‚µ‚½ƒ†[ƒUî•ñ
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @return æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -924,27 +924,27 @@ public class HatenaHaikuAPILight {
 			return toUser(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 	
 	//-------------------------------------------------------------
-	// ƒL[ƒ[ƒhŠÖŒW
+	// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰é–¢ä¿‚
 	//-------------------------------------------------------------
 
 	/**
-	 * ƒzƒbƒgƒL[ƒ[ƒh‚ÌƒŠƒXƒg‚ğæ“¾‚µ‚Ü‚·B<br/>
+	 * ãƒ›ãƒƒãƒˆã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/hot.xml</i>
 	 * 
-	 * @see <a href="http://h.hatena.ne.jp/hotkeywords">’–ÚƒL[ƒ[ƒh</a>
+	 * @see <a href="http://h.hatena.ne.jp/hotkeywords">æ³¨ç›®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#keywords-hot">keywords/hot</a>
-	 * @return ƒzƒbƒgƒL[ƒ[ƒh‚ÌƒŠƒXƒg
+	 * @return ãƒ›ãƒƒãƒˆã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆ
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -954,23 +954,23 @@ public class HatenaHaikuAPILight {
 			return toKeywordList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * ƒL[ƒ[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ü‚·Bi‚Pƒy[ƒW–Új<br/>
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆï¼‘ãƒšãƒ¼ã‚¸ç›®ï¼‰<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/list.xml</i>
 	 * 
-	 * @see <a href="http://h.hatena.ne.jp/keywords">ƒL[ƒ[ƒhƒŠƒXƒg</a>
+	 * @see <a href="http://h.hatena.ne.jp/keywords">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#keywords-list">keywords/list</a>
-	 * @return ƒL[ƒ[ƒhƒŠƒXƒgi‚Pƒy[ƒW–Új
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆï¼ˆï¼‘ãƒšãƒ¼ã‚¸ç›®ï¼‰
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -979,13 +979,13 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ƒL[ƒ[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ü‚·Biw’èƒy[ƒWj<br/>
-	 * <i>http://h.hatena.ne.jp/api/keywords/list.xml?page=<font color="red">ƒy[ƒW</font></i>
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆæŒ‡å®šãƒšãƒ¼ã‚¸ï¼‰<br/>
+	 * <i>http://h.hatena.ne.jp/api/keywords/list.xml?page=<font color="red">ãƒšãƒ¼ã‚¸</font></i>
 	 * 
-	 * @see <a href="http://h.hatena.ne.jp/keywords">ƒL[ƒ[ƒhƒŠƒXƒg</a>
+	 * @see <a href="http://h.hatena.ne.jp/keywords">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#keywords-list">keywords/list</a>
-	 * @param page ƒy[ƒW
-	 * @return@ƒL[ƒ[ƒhƒŠƒXƒgiw’èƒy[ƒWj
+	 * @param page ãƒšãƒ¼ã‚¸
+	 * @returnã€€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆï¼ˆæŒ‡å®šãƒšãƒ¼ã‚¸ï¼‰
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -994,16 +994,16 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ[ƒh‚É•”•ªˆê’v‚·‚éƒL[ƒ[ƒhƒŠƒXƒg‚ğæ“¾‚µ‚Ü‚·Biw’èƒy[ƒWj<br/>
-	 * ƒpƒ‰ƒ[ƒ^‚É?word=00, page=1‚È‚Ç‚ªg‚¦‚éB<br/>
-	 * page‚ÌÅ‘å”‚ª100‚ÆAPI‰ğàƒy[ƒW‚É‘‚©‚ê‚Ä‚¢‚é‚ªA‚»‚êˆÈã‚Å‚àæ“¾‚Å‚«‚é‚æ‚¤‚Å‚ ‚éB<br/>
-	 * <i>http://h.hatena.ne.jp/api/keywords/list.xml?word=<font color="red">ŒŸõƒ[ƒh</font>&page=<font color="red">ƒy[ƒW</font></i>
+	 * æŒ‡å®šã—ãŸãƒ¯ãƒ¼ãƒ‰ã«éƒ¨åˆ†ä¸€è‡´ã™ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆæŒ‡å®šãƒšãƒ¼ã‚¸ï¼‰<br/>
+	 * ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«?word=00, page=1ãªã©ãŒä½¿ãˆã‚‹ã€‚<br/>
+	 * pageã®æœ€å¤§æ•°ãŒ100ã¨APIè§£èª¬ãƒšãƒ¼ã‚¸ã«æ›¸ã‹ã‚Œã¦ã„ã‚‹ãŒã€ãã‚Œä»¥ä¸Šã§ã‚‚å–å¾—ã§ãã‚‹ã‚ˆã†ã§ã‚ã‚‹ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/keywords/list.xml?word=<font color="red">æ¤œç´¢ãƒ¯ãƒ¼ãƒ‰</font>&page=<font color="red">ãƒšãƒ¼ã‚¸</font></i>
 	 * 
-	 * @see <a href="http://h.hatena.ne.jp/keywords">ƒL[ƒ[ƒhƒŠƒXƒg</a>
+	 * @see <a href="http://h.hatena.ne.jp/keywords">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ</a>
 	 * @see <a href="http://h.hatena.ne.jp/api#keywords-list">keywords/list</a>
-	 * @param searchWord ŒŸõƒ[ƒh
-	 * @param page ƒy[ƒW
-	 * @return@ƒL[ƒ[ƒhƒŠƒXƒgiw’èƒy[ƒWj
+	 * @param searchWord æ¤œç´¢ãƒ¯ãƒ¼ãƒ‰
+	 * @param page ãƒšãƒ¼ã‚¸
+	 * @returnã€€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆï¼ˆæŒ‡å®šãƒšãƒ¼ã‚¸ï¼‰
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -1016,23 +1016,23 @@ public class HatenaHaikuAPILight {
 			return toKeywordList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚ªƒtƒHƒ[‚µ‚Ä‚¢‚éƒL[ƒ[ƒh‚ÌƒŠƒXƒg‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keywords/<font color="red">ƒ†[ƒUID</font>.xml</i>
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ãŒãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keywords/<font color="red">ãƒ¦ãƒ¼ã‚¶ID</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#statuses-keywords">statuses/keywords</a>
-	 * @param userId ƒ†[ƒUID
-	 * @return@w’è‚µ‚½ƒ†[ƒU‚ªƒtƒHƒ[‚µ‚Ä‚¢‚éƒL[ƒ[ƒhƒŠƒXƒg
+	 * @param userId ãƒ¦ãƒ¼ã‚¶ID
+	 * @returnã€€æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ãŒãƒ•ã‚©ãƒ­ãƒ¼ã—ã¦ã„ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -1042,23 +1042,23 @@ public class HatenaHaikuAPILight {
 			return toKeywordList(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒhî•ñ‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/keywords/show/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/keywords/show/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see <a href="http://h.hatena.ne.jp/api#keywords-show">keywords/show</a>
-	 * @param keyword ƒL[ƒ[ƒh
-	 * @return w’è‚µ‚½ƒL[ƒ[ƒhî•ñ
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
@@ -1068,22 +1068,22 @@ public class HatenaHaikuAPILight {
 			return toKeyword(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException”­¶B", e);
+			throw new HatenaHaikuException("ParserConfigurationExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException”­¶B", e);
+			throw new HatenaHaikuException("SAXExceptionç™ºç”Ÿã€‚", e);
 
 		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException”­¶B", e);
+			throw new HatenaHaikuException("IOExceptionç™ºç”Ÿã€‚", e);
 		}
 	}
 	
 	//----------------------------------
-	// ˆÈ‰ºA•ÏŠ·ƒƒ\ƒbƒh
+	// ä»¥ä¸‹ã€å¤‰æ›ãƒ¡ã‚½ãƒƒãƒ‰
 	//----------------------------------
 	
 	/**
-	 * ƒXƒe[ƒ^ƒXî•ñ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
 	 * @since v0.2.0
 	 */
@@ -1092,7 +1092,7 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ƒ†[ƒUî•ñ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶æƒ…å ±ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
 	 * @since v0.2.0
 	 */
@@ -1101,7 +1101,7 @@ public class HatenaHaikuAPILight {
 	}
 	
 	/**
-	 * ƒL[ƒ[ƒhî•ñ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
 	 * @since v0.2.0
 	 */
@@ -1110,36 +1110,36 @@ public class HatenaHaikuAPILight {
 	}
 	
 	/**
-	 * ƒXƒe[ƒ^ƒXƒGƒŒƒƒ“ƒg‚ğStatusî•ñ‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’Statusæƒ…å ±ã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param elemStatus ƒXƒe[ƒ^ƒXƒGƒŒƒƒ“ƒg
-	 * @return Statusî•ñ
+	 * @param elemStatus ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
+	 * @return Statusæƒ…å ±
 	 * @since v0.0.1
 	 */
 	protected Status toStatus(Element elemStatus) throws HatenaHaikuException {
 		try {
 			Status status = createStatus();
-			// ƒXƒe[ƒ^ƒXID
+			// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID
 			status.setStatusId(XmlUtil.getText(elemStatus, "id"));
-			// ì¬“ú
+			// ä½œæˆæ—¥æ™‚
 			status.setCreatedAt(DateUtil.toJSTDate(XmlUtil.getText(elemStatus, "created_at")));
-			// ‚¨‹C‚É“ü‚ç‚ê
+			// ãŠæ°—ã«å…¥ã‚‰ã‚Œ
 			status.setFavorited(Integer.parseInt(XmlUtil.getText(elemStatus, "favorited")));
-			// •ÔMæƒXƒe[ƒ^ƒXID
+			// è¿”ä¿¡å…ˆã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID
 			status.setInReplyToStatusId(XmlUtil.getText(elemStatus, "in_reply_to_status_id"));
-			// •ÔMæƒ†[ƒUID
+			// è¿”ä¿¡å…ˆãƒ¦ãƒ¼ã‚¶ID
 			status.setInReplyToUserId(XmlUtil.getText(elemStatus, "in_reply_to_user_id"));
-			// ƒL[ƒ[ƒh
+			// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 			status.setKeyword(XmlUtil.getText(elemStatus, "keyword"));
-			// ƒŠƒ“ƒN
+			// ãƒªãƒ³ã‚¯
 			status.setLink(XmlUtil.getText(elemStatus, "link"));
-			// ƒ\[ƒXiƒNƒ‰ƒCƒAƒ“ƒg–¼j
+			// ã‚½ãƒ¼ã‚¹ï¼ˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåï¼‰
 			status.setSource(XmlUtil.getText(elemStatus, "source"));
-			// “Še“à—e
+			// æŠ•ç¨¿å†…å®¹
 			status.setText(XmlUtil.getText(elemStatus, "text"));
-			// ƒ†[ƒUî•ñ
+			// ãƒ¦ãƒ¼ã‚¶æƒ…å ±
 			status.setUser(toUser(XmlUtil.getFirstChildElement(elemStatus, "user")));
-			// ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM
+			// ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡
 			List<Status> replies = new ArrayList<Status>();
 			for (Element replyStatus : XmlUtil.getChildElementsByTagName(elemStatus, "replies")) {
 				Status reply = toStatus(replyStatus);
@@ -1148,26 +1148,26 @@ public class HatenaHaikuAPILight {
 				reply.setInReplyToUserId(status.getUserId());
 				reply.setKeyword(status.getKeyword());
 				reply.setLink(reply.getUser().getEntriesUrl() + reply.getStatusId());
-				// text‚ÌuƒL[ƒ[ƒh=v•”•ª‚Ìíœ
+				// textã®ã€Œã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰=ã€éƒ¨åˆ†ã®å‰Šé™¤
 				reply.removeKeywordEqualOnText();
 				replies.add(reply);
 			}
 			status.setReplies(replies);
 			
-			// text‚ÌuƒL[ƒ[ƒh=v•”•ª‚Ìíœ
+			// textã®ã€Œã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰=ã€éƒ¨åˆ†ã®å‰Šé™¤
 			status.removeKeywordEqualOnText();
 			
 			return status;
 		} catch (ParseException e) {
-			throw new HatenaHaikuException("ParseException”­¶", e);
+			throw new HatenaHaikuException("ParseExceptionç™ºç”Ÿ", e);
 		}
 	}
 	
 	/**
-	 * ƒXƒe[ƒ^ƒXƒGƒŒƒƒ“ƒgƒ‹[ƒg‚ğStatusî•ñƒŠƒXƒg‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ«ãƒ¼ãƒˆã‚’Statusæƒ…å ±ãƒªã‚¹ãƒˆã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param elemStatuses ƒXƒe[ƒ^ƒXƒGƒŒƒƒ“ƒgƒ‹[ƒg
-	 * @return Statusî•ñƒŠƒXƒg
+	 * @param elemStatuses ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ«ãƒ¼ãƒˆ
+	 * @return Statusæƒ…å ±ãƒªã‚¹ãƒˆ
 	 * @since v0.0.1
 	 */
 	protected List<Status> toStatusList(Element elemStatuses) throws HatenaHaikuException {
@@ -1179,34 +1179,34 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ƒ†[ƒUƒGƒŒƒƒ“ƒg‚ğUserî•ñ‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’Useræƒ…å ±ã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param elemUser ƒ†[ƒUƒGƒŒƒƒ“ƒg
-	 * @return Userî•ñ
+	 * @param elemUser ãƒ¦ãƒ¼ã‚¶ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
+	 * @return Useræƒ…å ±
 	 * @since v0.0.1
 	 */
 	protected User toUser(Element elemUser) {
 		User user = createUser();
-		// ƒ†[ƒU–¼
+		// ãƒ¦ãƒ¼ã‚¶å
 		user.setName(XmlUtil.getText(elemUser, "name"));
-		// ƒtƒHƒƒ[”
+		// ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°
 		user.setFollowersCount(Integer.parseInt(XmlUtil.getText(elemUser, "followers_count")));
-		// ƒ†[ƒUID
+		// ãƒ¦ãƒ¼ã‚¶ID
 		user.setUserId(XmlUtil.getText(elemUser, "id"));
-		// ƒvƒƒtƒB[ƒ‹‰æ‘œURL
+		// ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ç”»åƒURL
 		user.setProfileImageUrl(XmlUtil.getText(elemUser, "profile_image_url"));
-		// •\¦–¼
+		// è¡¨ç¤ºå
 		user.setScreenName(XmlUtil.getText(elemUser, "screen_name"));
-		// ƒ†[ƒU‚ÌƒGƒ“ƒgƒŠƒy[ƒW‚ÌURL
+		// ãƒ¦ãƒ¼ã‚¶ã®ã‚¨ãƒ³ãƒˆãƒªãƒšãƒ¼ã‚¸ã®URL
 		user.setUrl(XmlUtil.getText(elemUser, "url"));
 		return user;
 	}
 
 	/**
-	 * ƒ†[ƒUƒGƒŒƒƒ“ƒgƒ‹[ƒg‚ğUserî•ñƒŠƒXƒg‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ«ãƒ¼ãƒˆã‚’Useræƒ…å ±ãƒªã‚¹ãƒˆã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param elemUsers ƒ†[ƒUƒGƒŒƒƒ“ƒgƒ‹[ƒg
-	 * @return Userî•ñƒŠƒXƒg
+	 * @param elemUsers ãƒ¦ãƒ¼ã‚¶ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ«ãƒ¼ãƒˆ
+	 * @return Useræƒ…å ±ãƒªã‚¹ãƒˆ
 	 * @since v0.0.1
 	 */
 	protected List<User> toUserList(Element elemUsers) throws HatenaHaikuException {
@@ -1218,32 +1218,32 @@ public class HatenaHaikuAPILight {
 	}
 
 	/**
-	 * ƒL[ƒ[ƒhƒGƒŒƒƒ“ƒg‚ğKeywordî•ñ‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’Keywordæƒ…å ±ã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param elemKeyword ƒL[ƒ[ƒhƒGƒŒƒƒ“ƒg
-	 * @return Keywordî•ñ
+	 * @param elemKeyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
+	 * @return Keywordæƒ…å ±
 	 * @since v0.0.1
 	 */
 	protected Keyword toKeyword(Element elemKeyword) throws HatenaHaikuException {
 		Keyword keyword = createKeyword();
-		// “Še”
+		// æŠ•ç¨¿æ•°
 		keyword.setEntryCount(Integer.parseInt(XmlUtil.getText(elemKeyword, "entry_count")));
-		// ƒtƒHƒƒ[”
+		// ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°
 		keyword.setFollowersCount(Integer.parseInt(XmlUtil.getText(elemKeyword, "followers_count")));
-		// ƒL[ƒ[ƒhƒy[ƒW‚ÌƒŠƒ“ƒN
+		// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ã®ãƒªãƒ³ã‚¯
 		keyword.setLink(XmlUtil.getText(elemKeyword, "link"));
-		// ŠÖ˜AƒL[ƒ[ƒh
+		// é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 		keyword.setRelatedKeywords(XmlUtil.getTextList(elemKeyword, "related_keywords"));
-		// ƒL[ƒ[ƒhƒ^ƒCƒgƒ‹
+		// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒˆãƒ«
 		keyword.setTitle(XmlUtil.getText(elemKeyword, "title"));
 		return keyword;
 	}
 
 	/**
-	 * ƒL[ƒ[ƒhƒGƒŒƒƒ“ƒgƒ‹[ƒg‚ğKeywordî•ñƒŠƒXƒg‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ«ãƒ¼ãƒˆã‚’Keywordæƒ…å ±ãƒªã‚¹ãƒˆã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param elemKeywords ƒL[ƒ[ƒhƒGƒŒƒƒ“ƒgƒ‹[ƒg
-	 * @return Keywordî•ñƒŠƒXƒg
+	 * @param elemKeywords ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒ«ãƒ¼ãƒˆ
+	 * @return Keywordæƒ…å ±ãƒªã‚¹ãƒˆ
 	 * @since v0.0.1
 	 */
 	protected List<Keyword> toKeywordList(Element elemKeywords) throws HatenaHaikuException {

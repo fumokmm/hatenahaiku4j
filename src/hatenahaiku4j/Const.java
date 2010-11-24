@@ -1,22 +1,22 @@
 package hatenahaiku4j;
 
 /**
- * ’è”’è‹`ƒNƒ‰ƒX
+ * å®šæ•°å®šç¾©ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class Const {
-	/** API–¼ */
+	/** APIå */
 	public static final String API_NAME = "HatenaHaiku4J";
 
-	/** ƒRƒƒ“ */
+	/** ã‚³ãƒ­ãƒ³ */
 	public static final String COLON = ":";
-	/** ƒZƒ~ƒRƒƒ“ */
+	/** ã‚»ãƒŸã‚³ãƒ­ãƒ³ */
 	public static final String SEMICOLON = ";";
-	/** ƒAƒ“ƒpƒTƒ“ƒh */
+	/** ã‚¢ãƒ³ãƒ‘ã‚µãƒ³ãƒ‰ */
 	public static final String AMP = "&";
-	/** ƒCƒR[ƒ‹ */
+	/** ã‚¤ã‚³ãƒ¼ãƒ« */
 	public static final String EQUAL = "=";
 	/** / */
 	public static final String SLASH = "/";
@@ -30,25 +30,25 @@ public class Const {
 	/** mobile */
 	public static final String MOBILE = "mobile";
 
-	/** URL: ‚Í‚Ä‚ÈƒnƒCƒNƒx[ƒXURL */
+	/** URL: ã¯ã¦ãªãƒã‚¤ã‚¯ãƒ™ãƒ¼ã‚¹URL */
 	public static final String BASE_URL = "http://h.hatena.ne.jp/";
-	/** URL: ‚Í‚Ä‚ÈƒnƒCƒNIDƒx[ƒXURL */
+	/** URL: ã¯ã¦ãªãƒã‚¤ã‚¯IDãƒ™ãƒ¼ã‚¹URL */
 	public static final String ID_BASE_URL = BASE_URL + ID + SLASH;
-	/** URL: ‚Í‚Ä‚ÈƒnƒCƒNƒL[ƒ[ƒhƒx[ƒXURL */
+	/** URL: ã¯ã¦ãªãƒã‚¤ã‚¯ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹URL */
 	public static final String KEYWORD_BASE_URL = BASE_URL + KEYWORD + SLASH;
 
-	/** URL: ‚Í‚Ä‚ÈƒnƒCƒNƒ‚ƒoƒCƒ‹ƒx[ƒXURL */
+	/** URL: ã¯ã¦ãªãƒã‚¤ã‚¯ãƒ¢ãƒã‚¤ãƒ«ãƒ™ãƒ¼ã‚¹URL */
 	public static final String MOBILE_BASE_URL = BASE_URL + MOBILE + SLASH;
-	/** URL: ‚Í‚Ä‚ÈƒnƒCƒNƒ‚ƒoƒCƒ‹ƒL[ƒ[ƒhƒx[ƒXURL */
+	/** URL: ã¯ã¦ãªãƒã‚¤ã‚¯ãƒ¢ãƒã‚¤ãƒ«ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹URL */
 	public static final String MOBILE_ID_BASE_URL = MOBILE_BASE_URL + ID + SLASH;
-	/** URL: ‚Í‚Ä‚ÈƒnƒCƒNƒ‚ƒoƒCƒ‹ƒL[ƒ[ƒhƒx[ƒXURL */
+	/** URL: ã¯ã¦ãªãƒã‚¤ã‚¯ãƒ¢ãƒã‚¤ãƒ«ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹URL */
 	public static final String MOBILE_KEYWORD_BASE_URL = MOBILE_BASE_URL + KEYWORD + SLASH;
 
-	/** ‚Í‚Ä‚ÈIDƒvƒŒƒtƒBƒbƒNƒX */
+	/** ã¯ã¦ãªIDãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹ */
 	public static final String ID_COLON = ID + COLON;
 
-	/** ƒGƒ“ƒR[ƒfƒBƒ“ƒOFUTF-8 */
+	/** ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ï¼šUTF-8 */
 	public static final String UTF8 = "UTF-8";
-	/** Šg’£q:XML (.xml) */
+	/** æ‹¡å¼µå­:XML (.xml) */
 	public static final String EXT_XML = ".xml";
 }

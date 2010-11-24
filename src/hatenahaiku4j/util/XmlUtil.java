@@ -19,7 +19,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * XML‚ÉŠÖ‚·‚éƒ†[ƒeƒBƒŠƒeƒBƒNƒ‰ƒX
+ * XMLã«é–¢ã™ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
@@ -27,10 +27,10 @@ import org.xml.sax.SAXException;
 public class XmlUtil {
 
 	/**
-	 * Œ‹‰ÊXML•¶š—ñ‚©‚çAƒ‹[ƒgƒGƒŒƒƒ“ƒg‚ğæ“¾‚µ‚Ü‚·B
+	 * çµæœXMLæ–‡å­—åˆ—ã‹ã‚‰ã€ãƒ«ãƒ¼ãƒˆã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @param resultXml Œ‹‰ÊXML•¶š—ñ
-	 * @return ƒ‹[ƒgƒGƒŒƒƒ“ƒg
+	 * @param resultXml çµæœXMLæ–‡å­—åˆ—
+	 * @return ãƒ«ãƒ¼ãƒˆã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
 	 * @throws ParserConfigurationException
 	 * @throws UnsupportedEncodingException
 	 * @throws SAXException
@@ -38,21 +38,21 @@ public class XmlUtil {
 	 * @since v0.0.1
 	 */
 	public static Element getRootElement(String resultXml) throws ParserConfigurationException, UnsupportedEncodingException, SAXException, IOException {
-		// ƒhƒLƒ…ƒƒ“ƒgƒrƒ‹ƒ_[ƒtƒ@ƒNƒgƒŠ‚ğ¶¬
+		// ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ“ãƒ«ãƒ€ãƒ¼ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’ç”Ÿæˆ
 		DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
-		// ƒhƒLƒ…ƒƒ“ƒgƒrƒ‹ƒ_[‚ğ¶¬
+		// ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆãƒ“ãƒ«ãƒ€ãƒ¼ã‚’ç”Ÿæˆ
 		DocumentBuilder builder = dbfactory.newDocumentBuilder();
-		// ƒp[ƒX‚ğÀs‚µ‚ÄDocumentƒIƒuƒWƒFƒNƒg‚ğæ“¾
+		// ãƒ‘ãƒ¼ã‚¹ã‚’å®Ÿè¡Œã—ã¦Documentã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
 		Document doc = builder.parse(new ByteArrayInputStream(resultXml.getBytes(Const.UTF8)));
 
 		return doc.getDocumentElement();
 	}
 	
 	/**
-	 * XMLƒm[ƒh‚©‚çqƒm[ƒh‚ÌƒGƒŒƒƒ“ƒg‚ğæ“¾‚µ•Ô‹p‚µ‚Ü‚·B
+	 * XMLãƒãƒ¼ãƒ‰ã‹ã‚‰å­ãƒãƒ¼ãƒ‰ã®ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’å–å¾—ã—è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @param node ‘–¸Šî“_‚Æ‚È‚éXMLƒm[ƒh
-	 * @return qƒm[ƒh‚ÌƒGƒŒƒƒ“ƒgƒŠƒXƒg
+	 * @param node èµ°æŸ»åŸºç‚¹ã¨ãªã‚‹XMLãƒãƒ¼ãƒ‰
+	 * @return å­ãƒãƒ¼ãƒ‰ã®ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆãƒªã‚¹ãƒˆ
 	 * @since v0.1.0
 	 */
 	public static List<Element> getChildElements(Node node) {
@@ -68,11 +68,11 @@ public class XmlUtil {
 	}
 
 	/**
-	 * XMLƒGƒŒƒƒ“ƒg‚©‚çw’è‚Ìƒ^ƒO–¼‚ğ‚Âqƒm[ƒh‚ÌƒGƒŒƒƒ“ƒg‚ğ•Ô‹p‚µ‚Ü‚·B
+	 * XMLã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‹ã‚‰æŒ‡å®šã®ã‚¿ã‚°åã‚’æŒã¤å­ãƒãƒ¼ãƒ‰ã®ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‚’è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @param elem ‘–¸Šî“_‚Æ‚È‚éXMLƒGƒŒƒƒ“ƒg
-	 * @param name ‘–¸‚·‚éƒ^ƒO–¼
-	 * @return ‘–¸‚·‚éƒ^ƒO–¼‚Éƒ}ƒbƒ`‚µ‚½1Œ–Ú‚ÌƒGƒŒƒƒ“ƒg
+	 * @param elem èµ°æŸ»åŸºç‚¹ã¨ãªã‚‹XMLã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
+	 * @param name èµ°æŸ»ã™ã‚‹ã‚¿ã‚°å
+	 * @return èµ°æŸ»ã™ã‚‹ã‚¿ã‚°åã«ãƒãƒƒãƒã—ãŸ1ä»¶ç›®ã®ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
 	 * @since v0.1.0
 	 */
 	public static List<Element> getChildElementsByTagName(Element elem, String name) {
@@ -89,12 +89,12 @@ public class XmlUtil {
 	}
 
 	/**
-	 * XMLƒGƒŒƒƒ“ƒg‚©‚çw’è‚Ìƒ^ƒO–¼‚ğ‚ÂƒGƒŒƒƒ“ƒg‚Ìæ“ª1Œ–Ú‚ğ•Ô‹p‚µ‚Ü‚·B<br/>
-	 * Œ©‚Â‚©‚ç‚È‚©‚Á‚½ê‡null‚ğ•Ô‹p‚µ‚Ü‚·B
+	 * XMLã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‹ã‚‰æŒ‡å®šã®ã‚¿ã‚°åã‚’æŒã¤ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®å…ˆé ­1ä»¶ç›®ã‚’è¿”å´ã—ã¾ã™ã€‚<br/>
+	 * è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸå ´åˆnullã‚’è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @param elem ‘–¸Šî“_‚Æ‚È‚éXMLƒGƒŒƒƒ“ƒg
-	 * @param name ‘–¸‚·‚éƒ^ƒO–¼
-	 * @return ‘–¸‚·‚éƒ^ƒO–¼‚Éƒ}ƒbƒ`‚µ‚½1Œ–Ú‚ÌƒGƒŒƒƒ“ƒg
+	 * @param elem èµ°æŸ»åŸºç‚¹ã¨ãªã‚‹XMLã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
+	 * @param name èµ°æŸ»ã™ã‚‹ã‚¿ã‚°å
+	 * @return èµ°æŸ»ã™ã‚‹ã‚¿ã‚°åã«ãƒãƒƒãƒã—ãŸ1ä»¶ç›®ã®ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
 	 * @since v0.1.0
 	 */
 	public static Element getFirstChildElement(Element elem, String name) {
@@ -110,11 +110,11 @@ public class XmlUtil {
 	}
 
 	/**
-	 * XMLƒGƒŒƒƒ“ƒg‚©‚çw’è‚Ìƒ^ƒO–¼‚ğ‚ÂƒGƒŒƒƒ“ƒg‚Ìæ“ª1Œ–Ú‚ÌƒeƒLƒXƒgƒRƒ“ƒeƒ“ƒc‚ğ•Ô‹p‚µ‚Ü‚·B
+	 * XMLã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‹ã‚‰æŒ‡å®šã®ã‚¿ã‚°åã‚’æŒã¤ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®å…ˆé ­1ä»¶ç›®ã®ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @param elem ‘–¸Šî“_‚Æ‚È‚éXMLƒGƒŒƒƒ“ƒg
-	 * @param name ‘–¸‚·‚éƒ^ƒO–¼
-	 * @return ‘–¸‚·‚éƒ^ƒO–¼‚Éƒ}ƒbƒ`‚µ‚½1Œ–Ú‚ÌƒGƒŒƒƒ“ƒg‚ÌƒeƒLƒXƒgƒRƒ“ƒeƒ“ƒc
+	 * @param elem èµ°æŸ»åŸºç‚¹ã¨ãªã‚‹XMLã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
+	 * @param name èµ°æŸ»ã™ã‚‹ã‚¿ã‚°å
+	 * @return èµ°æŸ»ã™ã‚‹ã‚¿ã‚°åã«ãƒãƒƒãƒã—ãŸ1ä»¶ç›®ã®ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„
 	 * @since v0.0.1
 	 */
 	public static String getText(Element elem, String name) {
@@ -127,11 +127,11 @@ public class XmlUtil {
 	}
 	
 	/**
-	 * XMLƒGƒŒƒƒ“ƒg‚©‚çw’è‚Ìƒ^ƒO–¼‚ğ‚ÂƒGƒŒƒƒ“ƒg‚·‚×‚Ä‚ÌƒeƒLƒXƒgƒRƒ“ƒeƒ“ƒc‚ğƒŠƒXƒg‚Å•Ô‹p‚µ‚Ü‚·B
+	 * XMLã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã‹ã‚‰æŒ‡å®šã®ã‚¿ã‚°åã‚’æŒã¤ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã™ã¹ã¦ã®ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’ãƒªã‚¹ãƒˆã§è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @param elem ‘–¸Šî“_‚Æ‚È‚éXMLƒGƒŒƒƒ“ƒg
-	 * @param name ‘–¸‚·‚éƒ^ƒO–¼
-	 * @return ‘–¸‚·‚éƒ^ƒO–¼‚Éƒ}ƒbƒ`‚·‚é—v‘f‚ÌƒGƒŒƒƒ“ƒg‚ÌƒeƒLƒXƒgƒRƒ“ƒeƒ“ƒc‚ÌƒŠƒXƒg
+	 * @param elem èµ°æŸ»åŸºç‚¹ã¨ãªã‚‹XMLã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆ
+	 * @param name èµ°æŸ»ã™ã‚‹ã‚¿ã‚°å
+	 * @return èµ°æŸ»ã™ã‚‹ã‚¿ã‚°åã«ãƒãƒƒãƒã™ã‚‹è¦ç´ ã®ã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã®ãƒªã‚¹ãƒˆ
 	 * @since v0.0.1
 	 */
 	public static List<String> getTextList(Element elem, String name) {

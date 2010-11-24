@@ -1,28 +1,28 @@
 package hatenahaiku4j;
 
 /**
- * �͂Ăȃn�C�N�G���e�B�e�B�i���[�U�A�X�e�[�^�X�A�L�[���[�h�j�Ɋւ���API�̃x�[�X�N���X
+ * はてなハイクエンティティ（ユーザ、ステータス、キーワード）に関するAPIのベースクラス
  * 
  * @since v0.2.0
  * @author fumokmm
  */
 class EntityAPI {
-	/** �͂Ăȃn�C�NAPI�i�F�؂���j */
+	/** はてなハイクAPI（認証あり） */
 	protected HatenaHaikuAPI apiAuth;
-	/** �͂Ăȃn�C�NAPI�i�F�؂Ȃ��j */
+	/** はてなハイクAPI（認証なし） */
 	protected HatenaHaikuAPILight apiLight;
 
 	/**
-	 * �R���X�g���N�^�B�i�p�b�P�[�W�v���C�x�[�g�j
+	 * コンストラクタ。（パッケージプライベート）
 	 * 
 	 * @since v0.2.0
 	 */
 	EntityAPI() {}
 
 	/**
-	 * �F�؂��肩�ǂ����ԋp���܂��B
+	 * 認証ありかどうか返却します。
 	 * 
-	 * @return �F�؂��肩�ǂ���
+	 * @return 認証ありかどうか
 	 * @since v0.2.0
  	 */
 	protected boolean isAuth() {

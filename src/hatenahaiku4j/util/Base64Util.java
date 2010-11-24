@@ -1,21 +1,21 @@
 package hatenahaiku4j.util;
 
 /**
- * Base64ƒGƒ“ƒR[ƒh^ƒfƒR[ƒh‚ÉŠÖ‚·‚éƒ†[ƒeƒBƒŠƒeƒBƒNƒ‰ƒX
+ * Base64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ï¼ãƒ‡ã‚³ãƒ¼ãƒ‰ã«é–¢ã™ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class Base64Util {
 
-	/** •ÏŠ·ƒe[ƒuƒ‹ */
+	/** å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ« */
 	private static final char[] T_TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".toCharArray();
 
 	/**
-	 * Žw’è‚³‚ê‚½•¶Žš—ñ‚ðBASE64ƒGƒ“ƒR[ƒh‚µ‚Ä•Ô‹p‚µ‚Ü‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã—ã¦è¿”å´ã—ã¾ã™ã€‚
 	 *
-	 * @param value@•ÏŠ·‘O‚Ì•¶Žš—ñ
-	 * @return BASE64ƒGƒ“ƒR[ƒh‚µ‚½•¶Žš—ñ
+	 * @param valueã€€å¤‰æ›å‰ã®æ–‡å­—åˆ—
+	 * @return BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã—ãŸæ–‡å­—åˆ—
 	 * @since v0.0.1
 	 */
 	public static String encodeBase64(String value) {
@@ -48,7 +48,7 @@ public class Base64Util {
 		return buffer.toString();
 	}
 
-	/** –|–óƒe[ƒuƒ‹ */
+	/** ç¿»è¨³ãƒ†ãƒ¼ãƒ–ãƒ« */
 	private static final byte[] TRANSLATE_TABLE = (
 	        //
 			"\u0042\u0042\u0042\u0042\u0042\u0042\u0042\u0042"
@@ -85,10 +85,10 @@ public class Base64Util {
 	).getBytes();
 
 	/**
-	 * BASE64ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶Žš—ñ‚ðBASE64ƒfƒR[ƒh‚µ‚Ä•Ô‹p‚µ‚Ü‚·B
+	 * BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’BASE64ãƒ‡ã‚³ãƒ¼ãƒ‰ã—ã¦è¿”å´ã—ã¾ã™ã€‚
 	 *
-	 * @param value BASE64ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶Žš—ñ
-	 * @return BASE64ƒfƒR[ƒh‚µ‚½•¶Žš—ñ
+	 * @param value BASE64ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—
+	 * @return BASE64ãƒ‡ã‚³ãƒ¼ãƒ‰ã—ãŸæ–‡å­—åˆ—
 	 * @since v0.0.1
 	 */
 	public static String decodeBase64(String value) {

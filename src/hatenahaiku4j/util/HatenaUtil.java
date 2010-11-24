@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ‚Í‚Ä‚Èƒ†[ƒeƒBƒŠƒeƒBƒNƒ‰ƒX
+ * ã¯ã¦ãªãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
@@ -16,26 +16,26 @@ import java.util.regex.Pattern;
 public class HatenaUtil {
 
 	/**
-	 * IDƒpƒ^[ƒ“<br>
+	 * IDãƒ‘ã‚¿ãƒ¼ãƒ³<br>
 	 * <ul>
-	 * <li>ƒ†[ƒUid‚Í”¼Šp‰p”š‚©AƒnƒCƒtƒ“i - jAƒAƒ“ƒ_[ƒo[i _ j</li>
-	 * <li>æ“ª‚ÍƒAƒ‹ƒtƒ@ƒxƒbƒg</li>
-	 * <li>––”ö‚ÍƒAƒ‹ƒtƒ@ƒxƒbƒg‚©”š</li>
-	 * <li>3•¶šˆÈã</li>
+	 * <li>ãƒ¦ãƒ¼ã‚¶idã¯åŠè§’è‹±æ•°å­—ã‹ã€ãƒã‚¤ãƒ•ãƒ³ï¼ˆ - ï¼‰ã€ã‚¢ãƒ³ãƒ€ãƒ¼ãƒãƒ¼ï¼ˆ _ ï¼‰</li>
+	 * <li>å…ˆé ­ã¯ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆ</li>
+	 * <li>æœ«å°¾ã¯ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã‹æ•°å­—</li>
+	 * <li>3æ–‡å­—ä»¥ä¸Š</li>
 	 * </ul>
 	 * 
 	 * @since v0.0.1
 	 */
 	private static final String ID_NOTATION_PATTERN = "id:[a-zA-Z][a-zA-Z0-9_-]{1,}[a-zA-Z0-9]";
 
-	/** ‚Í‚Ä‚È•W€“ú•tƒtƒH[ƒ}ƒbƒg(yyyy-MM-dd HH:mm:ss) */
+	/** ã¯ã¦ãªæ¨™æº–æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ(yyyy-MM-dd HH:mm:ss) */
 	private static final DateFormat HATENA_DEFAULT_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	/**
-	 * w’è‚³‚ê‚½•¶š—ñ‚ª‚Í‚Ä‚ÈIDƒpƒ^[ƒ“‚Éƒ}ƒbƒ`‚·‚é‚©‚Ç‚¤‚©”»’è‚µ‚Ü‚·B
+	 * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãŒã¯ã¦ãªIDãƒ‘ã‚¿ãƒ¼ãƒ³ã«ãƒãƒƒãƒã™ã‚‹ã‹ã©ã†ã‹åˆ¤å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param idStr ‚Í‚Ä‚ÈIDƒpƒ^[ƒ“•¶š—ñ
-	 * @return ‚Í‚Ä‚ÈIDƒpƒ^[ƒ“‚Ìê‡true, ‚Å‚È‚¯‚ê‚Îfalse
+	 * @param idStr ã¯ã¦ãªIDãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—åˆ—
+	 * @return ã¯ã¦ãªIDãƒ‘ã‚¿ãƒ¼ãƒ³ã®å ´åˆtrue, ã§ãªã‘ã‚Œã°false
 	 * @since v0.2.0
 	 */
 	public static boolean isIdNotation(String idStr) {
@@ -44,10 +44,10 @@ public class HatenaUtil {
 	}
 
 	/**
-	 * ‚Í‚Ä‚È•W€“ú•tƒtƒH[ƒ}ƒbƒgŒ`®i—áF2009-09-14 20:18:59)‚ğ“ú–{•W€‚ÌDate‚É•ÏŠ·‚µ‚Ü‚·B
+	 * ã¯ã¦ãªæ¨™æº–æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå½¢å¼ï¼ˆä¾‹ï¼š2009-09-14 20:18:59)ã‚’æ—¥æœ¬æ¨™æº–æ™‚ã®Dateã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param dateString ‚Í‚Ä‚È•W€“ú•tƒtƒH[ƒ}ƒbƒgŒ`®‚Ì•¶š—ñ
-	 * @return “ú–{•W€‚ÌDate
+	 * @param dateString ã¯ã¦ãªæ¨™æº–æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå½¢å¼ã®æ–‡å­—åˆ—
+	 * @return æ—¥æœ¬æ¨™æº–æ™‚ã®Date
 	 * @since v0.2.0
 	 */
 	public static Date parseDate(String dateString) {
@@ -59,17 +59,17 @@ public class HatenaUtil {
 	}
 	
 	/**
-	 * Date‚ğ‚Í‚Ä‚È•W€“ú•tƒtƒH[ƒ}ƒbƒgŒ`®i—áF2009-09-14 20:18:59)‚Ì•¶š—ñ‚É•ÏŠ·‚µ‚Ü‚·B
+	 * Dateã‚’ã¯ã¦ãªæ¨™æº–æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå½¢å¼ï¼ˆä¾‹ï¼š2009-09-14 20:18:59)ã®æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param date “ú•t
-	 * @return ‚Í‚Ä‚È•W€“ú•tƒtƒH[ƒ}ƒbƒgŒ`®‚Ì•¶š—ñ
+	 * @param date æ—¥ä»˜
+	 * @return ã¯ã¦ãªæ¨™æº–æ—¥ä»˜ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆå½¢å¼ã®æ–‡å­—åˆ—
 	 * @since v0.2.0
 	 */
 	public static String formatDate(Date date) {
 		return HATENA_DEFAULT_DATE_FORMAT.format(date);
 	}
 	
-	/** ‚Í‚Ä‚È‹L–@ƒR[ƒh */
+	/** ã¯ã¦ãªè¨˜æ³•ã‚³ãƒ¼ãƒ‰ */
 	private static final String HATENA_NOTATION_CODE = new String(new char[]{
 			'"',
 			'&',
@@ -85,31 +85,31 @@ public class HatenaUtil {
 			'\\',']',
 	});
 
-	/** ‚Í‚Ä‚È‹L–@ƒR[ƒhƒpƒ^[ƒ“ */
+	/** ã¯ã¦ãªè¨˜æ³•ã‚³ãƒ¼ãƒ‰ãƒ‘ã‚¿ãƒ¼ãƒ³ */
 	private static final Pattern HATENA_NOTATION_CODE_PATTERN = Pattern.compile("(?s)([" + HATENA_NOTATION_CODE + "])");
 	
 	/**
-	 * u:v‚âu[]v‚âu:v‚È‚Ç‚Ì‚Í‚Ä‚È‹L–@‚Åg—p‚·‚é•¶š‚ğHTMLƒGƒXƒP[ƒv‚µ‚Ü‚·B<br/>
-	 * ‚±‚ê‚ğ—˜—p‚·‚é‚±‚Æ‚ÅA—á‚¦‚Îid:xxx‚Íidxxx‚Æ‚È‚é‚½‚ßAidƒR[ƒ‹‚³‚ê‚È‚­‚È‚è‚Ü‚·B<br/>
+	 * ã€Œ:ã€ã‚„ã€Œ[]ã€ã‚„ã€Œ:ã€ãªã©ã®ã¯ã¦ãªè¨˜æ³•ã§ä½¿ç”¨ã™ã‚‹æ–‡å­—ã‚’HTMLã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ã¾ã™ã€‚<br/>
+	 * ã“ã‚Œã‚’åˆ©ç”¨ã™ã‚‹ã“ã¨ã§ã€ä¾‹ãˆã°id:xxxã¯idxxxã¨ãªã‚‹ãŸã‚ã€idã‚³ãƒ¼ãƒ«ã•ã‚Œãªããªã‚Šã¾ã™ã€‚<br/>
 	 * <br/>
-	 * ƒGƒXƒP[ƒv‚³‚ê‚é•¶š<br/>
+	 * ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã•ã‚Œã‚‹æ–‡å­—<br/>
 	 * <ul>
-	 * <li>" ¨ &amp;#34;</li>
-	 * <li>& ¨ &amp;#38;</li>
-	 * <li>' ¨ &amp;#39;</li>
-	 * <li>( ¨ &amp;#40;</li>
-	 * <li>) ¨ &amp;#41;</li>
-	 * <li>: ¨ &amp;#58;</li>
-	 * <li>; ¨ &amp;#59;</li>
-	 * <li>< ¨ &amp;#60;</li>
-	 * <li>= ¨ &amp;#61;</li>
-	 * <li>> ¨ &amp;#62;</li>
-	 * <li>[ ¨ &amp;#91;</li>
-	 * <li>] ¨ &amp;#93;</li>
+	 * <li>" â†’ &amp;#34;</li>
+	 * <li>& â†’ &amp;#38;</li>
+	 * <li>' â†’ &amp;#39;</li>
+	 * <li>( â†’ &amp;#40;</li>
+	 * <li>) â†’ &amp;#41;</li>
+	 * <li>: â†’ &amp;#58;</li>
+	 * <li>; â†’ &amp;#59;</li>
+	 * <li>< â†’ &amp;#60;</li>
+	 * <li>= â†’ &amp;#61;</li>
+	 * <li>> â†’ &amp;#62;</li>
+	 * <li>[ â†’ &amp;#91;</li>
+	 * <li>] â†’ &amp;#93;</li>
 	 * </ul>
 	 * 
-	 * @param str ƒGƒXƒP[ƒv‘ÎÛ‚Ì•¶š—ñ
-	 * @return ƒGƒXƒP[ƒv‚µ‚½•¶š—ñ
+	 * @param str ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—å¯¾è±¡ã®æ–‡å­—åˆ—
+	 * @return ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãŸæ–‡å­—åˆ—
 	 * @since v1.0.1
 	 */
 	public static String escapeHatenaNotation(String str) {

@@ -5,17 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * ƒL[ƒ[ƒh‚ÉŠÖ‚·‚éAPI
+ * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«é–¢ã™ã‚‹API
  * 
  * @since v0.2.0
  * @author fumokmm
  */
 public class KeywordAPI extends EntityAPI {
-	/** ƒL[ƒ[ƒhî•ñ */
+	/** ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ± */
 	private Keyword keyword;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * @since v0.2.0
 	 */
 	KeywordAPI() {
@@ -23,10 +23,10 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‰Šú‰»‚µ‚Ü‚·B
+	 * åˆæœŸåŒ–ã—ã¾ã™ã€‚
 	 * 
-	 * @param keyword ƒL[ƒ[ƒhî•ñ
-	 * @param apiAuth ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚ ‚èj
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±
+	 * @param apiAuth ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ã‚ã‚Šï¼‰
 	 * @since v0.2.0
 	 */
 	void init(Keyword keyword, HatenaHaikuAPI apiAuth) {
@@ -36,10 +36,10 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‰Šú‰»‚µ‚Ü‚·B
+	 * åˆæœŸåŒ–ã—ã¾ã™ã€‚
 	 * 
-	 * @param keyword ƒL[ƒ[ƒhî•ñ
-	 * @param apiLight ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚È‚µj
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±
+	 * @param apiLight ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ãªã—ï¼‰
 	 * @since v0.2.0
 	 */
 	void init(Keyword keyword, HatenaHaikuAPILight apiLight) {
@@ -47,14 +47,14 @@ public class KeywordAPI extends EntityAPI {
 		this.apiLight = apiLight;
 	}
 	
-	// ------------------ˆÈ‰ºA”FØ‚ª•s—v‚ÈAPI
+	// ------------------ä»¥ä¸‹ã€èªè¨¼ãŒä¸è¦ãªAPI
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String)
-	 * @return ‚±‚ÌƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @return ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -63,12 +63,12 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return ‚±‚ÌƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -77,13 +77,13 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return ‚±‚ÌƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -92,14 +92,14 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int, Date)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return ‚±‚ÌƒL[ƒ[ƒh‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -108,11 +108,11 @@ public class KeywordAPI extends EntityAPI {
 	}
 	
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String)
-	 * @return ‚±‚ÌƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @return ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -121,12 +121,12 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return ‚±‚ÌƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -135,13 +135,13 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return ‚±‚ÌƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -150,14 +150,14 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int, Date)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return ‚±‚ÌƒL[ƒ[ƒh‚Ìl‹C‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®äººæ°—ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -166,11 +166,11 @@ public class KeywordAPI extends EntityAPI {
 	}
 	
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Ì‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·BÅVƒy[ƒW‚ğ20Œæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚æœ€æ–°ãƒšãƒ¼ã‚¸ã‚’20ä»¶å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getAlbumKeywordTimeline(String)
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -179,12 +179,12 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Ì‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·Bæ“¾Œ”‚Í20Œ‚Å‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚å–å¾—ä»¶æ•°ã¯20ä»¶ã§ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getAlbumKeywordTimeline(String, int)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -193,13 +193,13 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Ì‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getAlbumKeywordTimeline(String, int, int)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -208,14 +208,14 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Ì‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPILight#getAlbumKeywordTimeline(String, int, int, Date)
-	 * @param page æ“¾‚·‚éƒy[ƒW‚Å‚·BÅ‘å”‚Í100‚Å‚·B
-	 * @param count æ“¾”‚ğw’è‚µ‚Ü‚·BÅ‘å”‚Í 200 ‚Å‚·B
-	 * @param since ‚»‚Ì“ú‚æ‚è‚àV‚µ‚¢“Še‚Ì‚İ‚Éi‚è‚Ş‚½‚ß‚Ì“ú‚ğw’è‚µ‚Ü‚·B
-	 * @return ‰æ‘œ‚ğŠÜ‚ŞÅV‚ÌƒGƒ“ƒgƒŠ‚ÌƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“
+	 * @param page å–å¾—ã™ã‚‹ãƒšãƒ¼ã‚¸ã§ã™ã€‚æœ€å¤§æ•°ã¯100ã§ã™ã€‚
+	 * @param count å–å¾—æ•°ã‚’æŒ‡å®šã—ã¾ã™ã€‚æœ€å¤§æ•°ã¯ 200 ã§ã™ã€‚
+	 * @param since ãã®æ—¥æ™‚ã‚ˆã‚Šã‚‚æ–°ã—ã„æŠ•ç¨¿ã®ã¿ã«çµã‚Šè¾¼ã‚€ãŸã‚ã®æ—¥æ™‚ã‚’æŒ‡å®šã—ã¾ã™ã€‚
+	 * @return ç”»åƒã‚’å«ã‚€æœ€æ–°ã®ã‚¨ãƒ³ãƒˆãƒªã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -223,14 +223,14 @@ public class KeywordAPI extends EntityAPI {
 		return apiLight.getAlbumKeywordTimeline(keyword.getTitle(), page, count, since);
 	}
 
-	// ------------------ˆÈ‰ºA”FØ‚ª•K—v‚ÈAPI
+	// ------------------ä»¥ä¸‹ã€èªè¨¼ãŒå¿…è¦ãªAPI
 	
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÉV‚µ‚­ƒGƒ“ƒgƒŠ‚ğ“Še‚µ‚Ü‚·B
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«æ–°ã—ãã‚¨ãƒ³ãƒˆãƒªã‚’æŠ•ç¨¿ã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPI#entry(String, String)
-	 * @param text “Še“à—e
-	 * @return “ŠeŒ‹‰Ê‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @param text æŠ•ç¨¿å†…å®¹
+	 * @return æŠ•ç¨¿çµæœã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -238,18 +238,18 @@ public class KeywordAPI extends EntityAPI {
 		if (isAuth()) {
 			return apiAuth.entry(keyword.getTitle(), text);
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÉV‚µ‚­ƒGƒ“ƒgƒŠ‚ğ“Še‚µ‚Ü‚·B<br/>
-	 * ‰æ‘œ•t‚«‚ÅƒGƒ“ƒgƒŠ‚µ‚Ü‚·B
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«æ–°ã—ãã‚¨ãƒ³ãƒˆãƒªã‚’æŠ•ç¨¿ã—ã¾ã™ã€‚<br/>
+	 * ç”»åƒä»˜ãã§ã‚¨ãƒ³ãƒˆãƒªã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPI#entry(String, String, File)
-	 * @param text “Še“à—e
-	 * @param file ‰æ‘œƒtƒ@ƒCƒ‹
-	 * @return “ŠeŒ‹‰Ê‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @param text æŠ•ç¨¿å†…å®¹
+	 * @param file ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«
+	 * @return æŠ•ç¨¿çµæœã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -257,18 +257,18 @@ public class KeywordAPI extends EntityAPI {
 		if (isAuth()) {
 			return apiAuth.entry(keyword.getTitle(), text, file);
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 	
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÉV‚µ‚­ƒGƒ“ƒgƒŠ‚ğ“Še‚µ‚Ü‚·B<br/>
-	 * URLã‚É‚ ‚é‰æ‘œ•t‚«‚ÅƒGƒ“ƒgƒŠ‚µ‚Ü‚·B
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«æ–°ã—ãã‚¨ãƒ³ãƒˆãƒªã‚’æŠ•ç¨¿ã—ã¾ã™ã€‚<br/>
+	 * URLä¸Šã«ã‚ã‚‹ç”»åƒä»˜ãã§ã‚¨ãƒ³ãƒˆãƒªã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPI#entry(String, String, String)
-	 * @param text “Še“à—e
-	 * @param imageUrl ‰æ‘œ‚ÌURL
-	 * @return “ŠeŒ‹‰Ê‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @param text æŠ•ç¨¿å†…å®¹
+	 * @param imageUrl ç”»åƒã®URL
+	 * @return æŠ•ç¨¿çµæœã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -276,19 +276,19 @@ public class KeywordAPI extends EntityAPI {
 		if (isAuth()) {
 			return apiAuth.entry(keyword.getTitle(), text, imageUrl);
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÉV‚µ‚­ƒGƒ“ƒgƒŠ‚ğ“Še‚µ‚Ü‚·B<br/>
-	 * ‰æ‘œ‚ÌƒoƒCƒiƒŠƒf[ƒ^‚Æ‚»‚ÌŠg’£q‚ğw’è‚µA‰æ‘œ•t‚«‚ÅƒGƒ“ƒgƒŠ‚µ‚Ü‚·B
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«æ–°ã—ãã‚¨ãƒ³ãƒˆãƒªã‚’æŠ•ç¨¿ã—ã¾ã™ã€‚<br/>
+	 * ç”»åƒã®ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã¨ãã®æ‹¡å¼µå­ã‚’æŒ‡å®šã—ã€ç”»åƒä»˜ãã§ã‚¨ãƒ³ãƒˆãƒªã—ã¾ã™ã€‚
 	 * 
 	 * @see HatenaHaikuAPI#entry(String, String, byte[], ImageExt)
-	 * @param text “Še“à—e
-	 * @param imageData ‰æ‘œ‚ÌƒoƒCƒiƒŠƒf[ƒ^
-	 * @param imageDataExt ‰æ‘œ‚ÌŠg’£q
-	 * @return “ŠeŒ‹‰Ê‚ÌƒXƒe[ƒ^ƒXî•ñ
+	 * @param text æŠ•ç¨¿å†…å®¹
+	 * @param imageData ç”»åƒã®ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿
+	 * @param imageDataExt ç”»åƒã®æ‹¡å¼µå­
+	 * @return æŠ•ç¨¿çµæœã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v1.0.0
 	 */
@@ -296,16 +296,16 @@ public class KeywordAPI extends EntityAPI {
 		if (isAuth()) {
 			return apiAuth.entry(keyword.getTitle(), text, imageData, imageDataExt);
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ğƒtƒHƒ[‚µ‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/keywords/create/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒ•ã‚©ãƒ­ãƒ¼ã—ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/keywords/create/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#followKeyword(String)
-	 * @return ƒtƒHƒ[‚µ‚½ƒL[ƒ[ƒhî•ñ
+	 * @return ãƒ•ã‚©ãƒ­ãƒ¼ã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -315,16 +315,16 @@ public class KeywordAPI extends EntityAPI {
 			keyword.overwrite(newKeyword);
 			return keyword;
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚ÌƒtƒHƒ[‚ğ‚â‚ß‚Ü‚·B<br/>
-	 * <i>http://h.hatena.ne.jp/api/keywords/destroy/<font color="red">ƒL[ƒ[ƒh</font>.xml</i>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒ•ã‚©ãƒ­ãƒ¼ã‚’ã‚„ã‚ã¾ã™ã€‚<br/>
+	 * <i>http://h.hatena.ne.jp/api/keywords/destroy/<font color="red">ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰</font>.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#unfollowKeyword(String)
-	 * @return ƒtƒHƒ[‚ğ‚â‚ß‚½ƒL[ƒ[ƒhî•ñ
+	 * @return ãƒ•ã‚©ãƒ­ãƒ¼ã‚’ã‚„ã‚ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -334,17 +334,17 @@ public class KeywordAPI extends EntityAPI {
 			keyword.overwrite(newKeyword);
 			return keyword;
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 	
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Éw’è‚ÌƒL[ƒ[ƒh‚ğŠÖ˜A•t‚¯‚Ü‚·B<br/>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«æŒ‡å®šã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’é–¢é€£ä»˜ã‘ã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/relation/create.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#relateKeyword(String, String)
-	 * @param keyword ‚±‚ÌƒL[ƒ[ƒh‚ÉŠÖ˜A•t‚¯‚éƒL[ƒ[ƒh
-	 * @return ŠÖ˜AƒL[ƒ[ƒh‚ğİ’èŒã‚Ì‚±‚ÌƒL[ƒ[ƒh
+	 * @param keyword ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«é–¢é€£ä»˜ã‘ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šå¾Œã®ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -354,17 +354,17 @@ public class KeywordAPI extends EntityAPI {
 			this.keyword.overwrite(newKeyword);
 			return this.keyword;
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚Éw’è‚ÌƒL[ƒ[ƒh‚ğŠÖ˜A•t‚¯‚Ü‚·B<br/>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«æŒ‡å®šã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’é–¢é€£ä»˜ã‘ã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/relation/create.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#relateKeyword(String, String)
-	 * @param keyword ‚±‚ÌƒL[ƒ[ƒh‚ÉŠÖ˜A•t‚¯‚éƒL[ƒ[ƒh
-	 * @return ŠÖ˜AƒL[ƒ[ƒh‚ğİ’èŒã‚Ì‚±‚ÌƒL[ƒ[ƒh
+	 * @param keyword ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã«é–¢é€£ä»˜ã‘ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šå¾Œã®ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -373,13 +373,13 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚©‚çw’è‚ÌƒL[ƒ[ƒh‚ÌŠÖ˜A•t‚¯‚ğ‰ğœ‚µ‚Ü‚·B<br/>
-	 * ŠÖ˜A•t‚¯‚ğ‰ğœ‚Í©•ª‚ªİ’è‚µ‚½‚à‚Ì‚ÉŒÀ‚ç‚ê‚Ü‚·B<br/>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‹ã‚‰æŒ‡å®šã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®é–¢é€£ä»˜ã‘ã‚’è§£é™¤ã—ã¾ã™ã€‚<br/>
+	 * é–¢é€£ä»˜ã‘ã‚’è§£é™¤ã¯è‡ªåˆ†ãŒè¨­å®šã—ãŸã‚‚ã®ã«é™ã‚‰ã‚Œã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/relation/destroy.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#unrelateKeyword(String, String)
-	 * @param keyword ‚±‚ÌƒL[ƒ[ƒh‚©‚çŠÖ˜A•t‚¯‚ğ‰ğœ‚·‚éƒL[ƒ[ƒh
-	 * @return ŠÖ˜AƒL[ƒ[ƒh‚ğ‰ğœŒã‚Ì‚±‚ÌƒL[ƒ[ƒh
+	 * @param keyword ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‹ã‚‰é–¢é€£ä»˜ã‘ã‚’è§£é™¤ã™ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’è§£é™¤å¾Œã®ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */
@@ -389,18 +389,18 @@ public class KeywordAPI extends EntityAPI {
 			this.keyword.overwrite(newKeyword);
 			return this.keyword;
 		} else {
-			throw new HatenaHaikuException("”FØ‚³‚ê‚é•K—v‚ª‚ ‚è‚Ü‚·BHatenaHaikuAPI‚ğ‚²—˜—p‚­‚¾‚³‚¢B");
+			throw new HatenaHaikuException("èªè¨¼ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚HatenaHaikuAPIã‚’ã”åˆ©ç”¨ãã ã•ã„ã€‚");
 		}
 	}
 
 	/**
-	 * ‚±‚ÌƒL[ƒ[ƒh‚©‚çw’è‚ÌƒL[ƒ[ƒh‚ÌŠÖ˜A•t‚¯‚ğ‰ğœ‚µ‚Ü‚·B<br/>
-	 * ŠÖ˜A•t‚¯‚ğ‰ğœ‚Í©•ª‚ªİ’è‚µ‚½‚à‚Ì‚ÉŒÀ‚ç‚ê‚Ü‚·B<br/>
+	 * ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‹ã‚‰æŒ‡å®šã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®é–¢é€£ä»˜ã‘ã‚’è§£é™¤ã—ã¾ã™ã€‚<br/>
+	 * é–¢é€£ä»˜ã‘ã‚’è§£é™¤ã¯è‡ªåˆ†ãŒè¨­å®šã—ãŸã‚‚ã®ã«é™ã‚‰ã‚Œã¾ã™ã€‚<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/relation/destroy.xml</i>
 	 * 
 	 * @see HatenaHaikuAPI#unrelateKeyword(String, String)
-	 * @param keyword ‚±‚ÌƒL[ƒ[ƒh‚©‚çŠÖ˜A•t‚¯‚ğ‰ğœ‚·‚éƒL[ƒ[ƒh
-	 * @return ŠÖ˜AƒL[ƒ[ƒh‚ğ‰ğœŒã‚Ì‚±‚ÌƒL[ƒ[ƒh
+	 * @param keyword ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‹ã‚‰é–¢é€£ä»˜ã‘ã‚’è§£é™¤ã™ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
+	 * @return é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’è§£é™¤å¾Œã®ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @throws HatenaHaikuException
 	 * @since v0.2.0
 	 */

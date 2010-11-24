@@ -1,27 +1,27 @@
 package hatenahaiku4j;
 
 /**
- * ‰æ‘œ‚ÌŠg’£q
+ * ç”»åƒã®æ‹¡å¼µå­
  * 
  * @author fumokmm
  * @since v1.0.0
  */
 public enum ImageExt {
-	/** JPG‰æ‘œ */
+	/** JPGç”»åƒ */
 	JPG,
-	/** JPEG‰æ‘œ */
+	/** JPEGç”»åƒ */
 	JPEG,
-	/** GIF‰æ‘œ */
+	/** GIFç”»åƒ */
 	GIF,
-	/** PNG‰æ‘œ */
+	/** PNGç”»åƒ */
 	PNG,
-	/** BMP‰æ‘œ */
+	/** BMPç”»åƒ */
 	BMP;
 	
 	/**
-	 * ¬•¶š‚ÅŠg’£q‚ğæ“¾‚·‚éB
+	 * å°æ–‡å­—ã§æ‹¡å¼µå­ã‚’å–å¾—ã™ã‚‹ã€‚
 	 * 
-	 * @return ¬•¶š‚ÌŠg’£qB
+	 * @return å°æ–‡å­—ã®æ‹¡å¼µå­ã€‚
 	 */
 	public String getLowerCaseName() {
 		return name().toLowerCase();

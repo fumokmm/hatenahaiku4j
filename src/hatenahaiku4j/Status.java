@@ -6,42 +6,42 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * ‚Í‚Ä‚ÈƒnƒCƒNƒXƒe[ƒ^ƒXî•ñ‚ğ•\Œ»‚·‚éƒNƒ‰ƒX
+ * ã¯ã¦ãªãƒã‚¤ã‚¯ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ã‚’è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class Status {
-	/** ƒXƒe[ƒ^ƒXID */
+	/** ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID */
 	private String id;
-	/** ì¬“ú */
+	/** ä½œæˆæ—¥æ™‚ */
 	private Date createdAt;
-	/** ‚¨‹C‚É“ü‚ç‚êi™‚µ‚Ä‚­‚ê‚½l”j */
+	/** ãŠæ°—ã«å…¥ã‚‰ã‚Œï¼ˆâ˜†ã—ã¦ãã‚ŒãŸäººæ•°ï¼‰ */
 	private int favorited;
-	/** •ÔMŒ³ƒXƒe[ƒ^ƒXID */
+	/** è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID */
 	private String inReplyToStatusId;
-	/** •ÔMŒ³ƒ†[ƒUID */
+	/** è¿”ä¿¡å…ƒãƒ¦ãƒ¼ã‚¶ID */
 	private String inReplyToUserId;
-	/** ƒL[ƒ[ƒh */
+	/** ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ */
 	private String keyword;
-	/** ƒŠƒ“ƒN */
+	/** ãƒªãƒ³ã‚¯ */
 	private String link;
-	/** ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM */
+	/** ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡ */
 	private List<Status> replies;
-	/** ƒ\[ƒXiƒNƒ‰ƒCƒAƒ“ƒg–¼j */
+	/** ã‚½ãƒ¼ã‚¹ï¼ˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåï¼‰ */
 	private String source;
-	/** “Še“à—e */
+	/** æŠ•ç¨¿å†…å®¹ */
 	private String text;
-	/** ƒ†[ƒUî•ñ */
+	/** ãƒ¦ãƒ¼ã‚¶æƒ…å ± */
 	private User user;
 	
-	/** ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM‚Æ‚µ‚Äæ“¾‚µ‚½“à—e‚©‚Ç‚¤‚© */
+	/** ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡ã¨ã—ã¦å–å¾—ã—ãŸå†…å®¹ã‹ã©ã†ã‹ */
 	private boolean shadow;
-	/** ƒXƒe[ƒ^ƒXAPI */
+	/** ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹API */
 	public final StatusAPI api;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
 	 * @since v0.0.1
 	 */
@@ -50,9 +50,9 @@ public class Status {
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒ†[ƒU‚Å‚±‚Ìƒ†[ƒU‚ğã‘‚«‚µ‚Ü‚·B
+	 * æŒ‡å®šã—ãŸãƒ¦ãƒ¼ã‚¶ã§ã“ã®ãƒ¦ãƒ¼ã‚¶ã‚’ä¸Šæ›¸ãã—ã¾ã™ã€‚
 	 * 
-	 * @param other ã‘‚«‚·‚éƒ†[ƒU
+	 * @param other ä¸Šæ›¸ãã™ã‚‹ãƒ¦ãƒ¼ã‚¶
 	 * @since v0.2.0
 	 */
 	void overwrite(Status other) {
@@ -71,9 +71,9 @@ public class Status {
 	}
 	
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
-	 * @param apiAuth ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚ ‚èj
+	 * @param apiAuth ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ã‚ã‚Šï¼‰
 	 * @since v0.2.0
 	 */
 	static Status create(HatenaHaikuAPI apiAuth) {
@@ -83,9 +83,9 @@ public class Status {
 	}
 
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
-	 * @param apiLight ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚È‚µj
+	 * @param apiLight ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ãªã—ï¼‰
 	 * @since v0.2.0
 	 */
 	static Status create(HatenaHaikuAPILight apiLight) {
@@ -95,9 +95,9 @@ public class Status {
 	}
 	
 	/**
-	 * ƒXƒe[ƒ^ƒXID‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹IDã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒXƒe[ƒ^ƒXID 
+	 * @return ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID 
 	 * @since v0.0.1
 	 */
 	public String getStatusId() {
@@ -105,9 +105,9 @@ public class Status {
 	}
 
 	/**
-	 * ì¬“ú‚ğæ“¾‚µ‚Ü‚·B
+	 * ä½œæˆæ—¥æ™‚ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ì¬“ú
+	 * @return ä½œæˆæ—¥æ™‚
 	 * @since v0.0.1
 	 */
 	public Date getCreatedAt() {
@@ -115,9 +115,9 @@ public class Status {
 	}
 
 	/**
-	 * ì¬“ú‚ğ‚Í‚Ä‚È“ú•tŒ`®•¶š—ñ‚Åæ“¾‚µ‚Ü‚·B
+	 * ä½œæˆæ—¥æ™‚ã‚’ã¯ã¦ãªæ—¥ä»˜å½¢å¼æ–‡å­—åˆ—ã§å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ì¬“úi‚Í‚Ä‚È“ú•tŒ`®•¶š—ñj
+	 * @return ä½œæˆæ—¥æ™‚ï¼ˆã¯ã¦ãªæ—¥ä»˜å½¢å¼æ–‡å­—åˆ—ï¼‰
 	 * @since v0.2.0
 	 */
 	public String getCreatedAtString() {
@@ -125,10 +125,10 @@ public class Status {
 	}
 
 	/**
-	 * ‚¨‹C‚É“ü‚ç‚êi™‚µ‚Ä‚­‚ê‚½l”j‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * •t‚¢‚½ƒXƒ^[‚Ì”‚Å‚È‚¢‚±‚Æ‚É’ˆÓ‚µ‚Ä‚­‚¾‚³‚¢B
+	 * ãŠæ°—ã«å…¥ã‚‰ã‚Œï¼ˆâ˜†ã—ã¦ãã‚ŒãŸäººæ•°ï¼‰ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * ä»˜ã„ãŸã‚¹ã‚¿ãƒ¼ã®æ•°ã§ãªã„ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
 	 * 
-	 * @return ‚¨‹C‚É“ü‚ç‚êi™‚µ‚Ä‚­‚ê‚½l”j
+	 * @return ãŠæ°—ã«å…¥ã‚‰ã‚Œï¼ˆâ˜†ã—ã¦ãã‚ŒãŸäººæ•°ï¼‰
 	 * @since v0.0.1
 	 */
 	public int getFavorited() {
@@ -136,9 +136,9 @@ public class Status {
 	}
 
 	/**
-	 * •ÔMŒ³ƒXƒe[ƒ^ƒXID‚ğæ“¾‚µ‚Ü‚·B
+	 * è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹IDã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return •ÔMŒ³ƒXƒe[ƒ^ƒXID
+	 * @return è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID
 	 * @since v0.0.1
 	 */
 	public String getInReplyToStatusId() {
@@ -146,9 +146,9 @@ public class Status {
 	}
 
 	/**
-	 * •ÔMŒ³ƒ†[ƒUID‚ğæ“¾‚µ‚Ü‚·B
+	 * è¿”ä¿¡å…ƒãƒ¦ãƒ¼ã‚¶IDã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return •ÔMŒ³ƒ†[ƒUID
+	 * @return è¿”ä¿¡å…ƒãƒ¦ãƒ¼ã‚¶ID
 	 * @since v0.0.1
 	 */
 	public String getInReplyToUserId() {
@@ -156,9 +156,9 @@ public class Status {
 	}
 
 	/**
-	 * ƒL[ƒ[ƒh‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒL[ƒ[ƒh 
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ 
 	 * @since v0.0.1
 	 */
 	public String getKeyword() {
@@ -166,9 +166,9 @@ public class Status {
 	}
 
 	/**
-	 * idƒy[ƒW‚©‚Ç‚¤‚©æ“¾‚µ‚Ü‚·B
+	 * idãƒšãƒ¼ã‚¸ã‹ã©ã†ã‹å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return idƒy[ƒW‚©‚Ç‚¤‚©
+	 * @return idãƒšãƒ¼ã‚¸ã‹ã©ã†ã‹
 	 * @since v0.0.1
 	 */
 	public boolean isIdPage() {
@@ -176,9 +176,9 @@ public class Status {
 	}
 
 	/**
-	 * ƒŠƒ“ƒN‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒªãƒ³ã‚¯ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒŠƒ“ƒN 
+	 * @return ãƒªãƒ³ã‚¯ 
 	 * @since v0.0.1
 	 */
 	public String getLink() {
@@ -186,9 +186,9 @@ public class Status {
 	}
 
 	/**
-	 * ƒ‚ƒoƒCƒ‹—pƒŠƒ“ƒN‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¢ãƒã‚¤ãƒ«ç”¨ãƒªãƒ³ã‚¯ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ‚ƒoƒCƒ‹—pƒŠƒ“ƒN 
+	 * @return ãƒ¢ãƒã‚¤ãƒ«ç”¨ãƒªãƒ³ã‚¯ 
 	 * @since v1.0.0
 	 */
 	public String getMobileLink() {
@@ -196,19 +196,19 @@ public class Status {
 	}
 
 	/**
-	 * ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM‚ğ•Ô‹p‚µ‚Ü‚·B
+	 * ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡ã‚’è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @return ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM
+	 * @return ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡
 	 * @since v0.1.0
 	 */
 	public List<Status> getReplies() {
-		// ©“®XV‚·‚é‚È‚ç
+		// è‡ªå‹•æ›´æ–°ã™ã‚‹ãªã‚‰
 		if (api.apiLight.isAutoRefreshReplies()) {
 			if (shadow) {
 				try {
 					this.api.refreshReplies();
 				} catch (HatenaHaikuException e) {
-					System.out.println("•ÔMææ“¾¸”sB");
+					System.out.println("è¿”ä¿¡å…ˆå–å¾—å¤±æ•—ã€‚");
 				}
 			}
 		}
@@ -216,9 +216,9 @@ public class Status {
 	}
 	
 	/**
-	 * ƒ\[ƒXiƒNƒ‰ƒCƒAƒ“ƒg–¼j‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚½ãƒ¼ã‚¹ï¼ˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåï¼‰ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ\[ƒXiƒNƒ‰ƒCƒAƒ“ƒg–¼j
+	 * @return ã‚½ãƒ¼ã‚¹ï¼ˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåï¼‰
 	 * @since v0.0.1
 	 */
 	public String getSource() {
@@ -226,9 +226,9 @@ public class Status {
 	}
 
 	/**
-	 * “Še“à—e‚ğæ“¾‚µ‚Ü‚·B
+	 * æŠ•ç¨¿å†…å®¹ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return “Še“à—e
+	 * @return æŠ•ç¨¿å†…å®¹
 	 * @since v0.0.1
 	 */
 	public String getText() {
@@ -236,9 +236,9 @@ public class Status {
 	}
 
 	/**
-	 * ƒ†[ƒUî•ñ‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶æƒ…å ±ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒUî•ñ
+	 * @return ãƒ¦ãƒ¼ã‚¶æƒ…å ±
 	 * @since v0.0.1
 	 */
 	public User getUser() {
@@ -246,10 +246,10 @@ public class Status {
 	}
 	
 	/**
-	 * ƒ†[ƒUID‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶IDã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * {@link #getUser()}‚Åæ“¾‚Å‚«‚éƒ†[ƒU‚Ì{@link User#getUserId()}‚ÌƒGƒCƒŠƒAƒX‚Å‚·B
-	 * @return ƒ†[ƒUID
+	 * {@link #getUser()}ã§å–å¾—ã§ãã‚‹ãƒ¦ãƒ¼ã‚¶ã®{@link User#getUserId()}ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚
+	 * @return ãƒ¦ãƒ¼ã‚¶ID
 	 * @since v0.0.1
 	 */
 	public String getUserId() {
@@ -257,10 +257,10 @@ public class Status {
 	}
 
 	/**
-	 * id‹L–@‚Ìƒ†[ƒUID‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * {@link #getUser()}‚Åæ“¾‚Å‚«‚éƒ†[ƒU‚Ì{@link User#getUserIdNotation()}‚ÌƒGƒCƒŠƒAƒX‚Å‚·B
+	 * idè¨˜æ³•ã®ãƒ¦ãƒ¼ã‚¶IDã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * {@link #getUser()}ã§å–å¾—ã§ãã‚‹ãƒ¦ãƒ¼ã‚¶ã®{@link User#getUserIdNotation()}ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚
 	 * 
-	 * @return ƒ†[ƒUid‹L–@
+	 * @return ãƒ¦ãƒ¼ã‚¶idè¨˜æ³•
 	 * @since v0.2.0
 	 */
 	public String getUserIdNotation() {
@@ -268,9 +268,9 @@ public class Status {
 	}
 
 	/**
-	 * ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM‚Æ‚µ‚Äæ“¾‚µ‚½“à—e‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B
+	 * ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡ã¨ã—ã¦å–å¾—ã—ãŸå†…å®¹ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM‚Æ‚µ‚Äæ“¾‚µ‚½“à—e‚©‚Ç‚¤‚©
+	 * @return ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡ã¨ã—ã¦å–å¾—ã—ãŸå†…å®¹ã‹ã©ã†ã‹
 	 * @since v0.1.0
 	 */
 	public boolean isShadow() {
@@ -278,9 +278,9 @@ public class Status {
 	}
 	
 	/**
-	 * ƒXƒe[ƒ^ƒXID‚ğİ’è‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹IDã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param statusId ƒXƒe[ƒ^ƒXID
+	 * @param statusId ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID
 	 * @since v0.0.1
 	 */
 	void setStatusId(String statusId) {
@@ -288,9 +288,9 @@ public class Status {
 	}
 
 	/**
-	 * ì¬“ú‚ğİ’è‚µ‚Ü‚·B
+	 * ä½œæˆæ—¥æ™‚ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param createdAt@ì¬“ú
+	 * @param createdAtã€€ä½œæˆæ—¥æ™‚
 	 * @since v0.0.1
 	 */
 	void setCreatedAt(Date createdAt) {
@@ -298,9 +298,9 @@ public class Status {
 	}
 
 	/**
-	 * ‚¨‹C‚É“ü‚ç‚ê‚ğİ’è‚µ‚Ü‚·B
+	 * ãŠæ°—ã«å…¥ã‚‰ã‚Œã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param favorited ‚¨‹C‚É“ü‚ç‚ê
+	 * @param favorited ãŠæ°—ã«å…¥ã‚‰ã‚Œ
 	 * @since v0.0.1
 	 */
 	void setFavorited(int favorited) {
@@ -308,9 +308,9 @@ public class Status {
 	}
 
 	/**
-	 * •ÔMŒ³ƒXƒe[ƒ^ƒXID‚ğİ’è‚µ‚Ü‚·B
+	 * è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹IDã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param inReplyToStatusId •ÔMŒ³ƒXƒe[ƒ^ƒXID
+	 * @param inReplyToStatusId è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID
 	 * @since v0.0.1
 	 */
 	void setInReplyToStatusId(String inReplyToStatusId) {
@@ -318,9 +318,9 @@ public class Status {
 	}
 
 	/**
-	 * •ÔMŒ³ƒ†[ƒUID‚ğİ’è‚µ‚Ü‚·B
+	 * è¿”ä¿¡å…ƒãƒ¦ãƒ¼ã‚¶IDã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param inReplyToUserId •ÔMŒ³ƒ†[ƒUID
+	 * @param inReplyToUserId è¿”ä¿¡å…ƒãƒ¦ãƒ¼ã‚¶ID
 	 * @since v0.0.1
 	 */
 	void setInReplyToUserId(String inReplyToUserId) {
@@ -328,9 +328,9 @@ public class Status {
 	}
 
 	/**
-	 * ƒL[ƒ[ƒh‚ğİ’è‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param keyword ƒL[ƒ[ƒh
+	 * @param keyword ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @since v0.0.1
 	 */
 	void setKeyword(String keyword) {
@@ -338,9 +338,9 @@ public class Status {
 	}
 
 	/**
-	 * ƒŠƒ“ƒN‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒªãƒ³ã‚¯ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param link ƒŠƒ“ƒN
+	 * @param link ãƒªãƒ³ã‚¯
 	 * @since v0.0.1
 	 */
 	void setLink(String link) {
@@ -348,9 +348,9 @@ public class Status {
 	}
 
 	/**
-	 * ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM‚ğİ’è‚µ‚Ü‚·B
+	 * ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param replies ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM
+	 * @param replies ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡
 	 * @since v0.0.1
 	 */
 	void setReplies(List<Status> replies) {
@@ -358,9 +358,9 @@ public class Status {
 	}
 	
 	/**
-	 * ƒ\[ƒXiƒNƒ‰ƒCƒAƒ“ƒg–¼j‚ğİ’è‚µ‚Ü‚·B
+	 * ã‚½ãƒ¼ã‚¹ï¼ˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåï¼‰ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param source ƒ\[ƒXiƒNƒ‰ƒCƒAƒ“ƒg–¼j
+	 * @param source ã‚½ãƒ¼ã‚¹ï¼ˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆåï¼‰
 	 * @since v0.0.1
 	 */
 	void setSource(String source) {
@@ -368,9 +368,9 @@ public class Status {
 	}
 
 	/**
-	 * “Še“à—e‚ğİ’è‚µ‚Ü‚·B
+	 * æŠ•ç¨¿å†…å®¹ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param text “Še“à—e
+	 * @param text æŠ•ç¨¿å†…å®¹
 	 * @since v0.0.1
 	 */
 	void setText(String text) {
@@ -378,9 +378,9 @@ public class Status {
 	}
 
 	/**
-	 * ƒ†[ƒUî•ñ‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒ¦ãƒ¼ã‚¶æƒ…å ±ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param user ƒ†[ƒUî•ñ
+	 * @param user ãƒ¦ãƒ¼ã‚¶æƒ…å ±
 	 * @since v0.0.1
 	 */
 	void setUser(User user) {
@@ -388,9 +388,9 @@ public class Status {
 	}
 	
 	/**
-	 * ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM‚Æ‚µ‚Äæ“¾‚µ‚½“à—e‚©‚Ç‚¤‚©‚ğİ’è‚µ‚Ü‚·B
+	 * ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡ã¨ã—ã¦å–å¾—ã—ãŸå†…å®¹ã‹ã©ã†ã‹ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param shadow ‚±‚ÌƒXƒe[ƒ^ƒX‚Ö‚Ì•ÔM‚Æ‚µ‚Äæ“¾‚µ‚½“à—e‚©‚Ç‚¤‚©
+	 * @param shadow ã“ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¸ã®è¿”ä¿¡ã¨ã—ã¦å–å¾—ã—ãŸå†…å®¹ã‹ã©ã†ã‹
 	 * @since v0.1.0
 	 */
 	void setShadow(boolean shadow) {
@@ -398,14 +398,14 @@ public class Status {
 	}
 
 	/**
-	 * text‚Ìuxxxx=–{•¶v‚Ì "xxxx="•”•ª‚ğæ‚èœ‚­B<br/>
-	 * ‘O’ñFkeyword, text‚ªİ’è‚³‚ê‚Ä‚¢‚é‚±‚ÆBikeyword‚Íidƒy[ƒW‚Ìê‡id:xxxŒ`®‚ÅŠi”[Ï‚İ‚Å‚ ‚é‚±‚Æj
+	 * textã®ã€Œxxxx=æœ¬æ–‡ã€ã® "xxxx="éƒ¨åˆ†ã‚’å–ã‚Šé™¤ãã€‚<br/>
+	 * å‰æï¼škeyword, textãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã“ã¨ã€‚ï¼ˆkeywordã¯idãƒšãƒ¼ã‚¸ã®å ´åˆid:xxxå½¢å¼ã§æ ¼ç´æ¸ˆã¿ã§ã‚ã‚‹ã“ã¨ï¼‰
 	 * 
 	 * @since v0.1.0
 	 */
 	void removeKeywordEqualOnText() {
 		if (!"".equals(keyword) && !isIdPage()) {
-			// ‹ó”’‚Å‚àidƒy[ƒW‚Å‚à‚È‚¢ê‡Atext‚É‚ÍuƒL[ƒ[ƒh=v‚ª“ª‚É‚Â‚¢‚Ä‚¢‚é‚Ì‚ÅAæ‚èœ‚­
+			// ç©ºç™½ã§ã‚‚idãƒšãƒ¼ã‚¸ã§ã‚‚ãªã„å ´åˆã€textã«ã¯ã€Œã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰=ã€ãŒé ­ã«ã¤ã„ã¦ã„ã‚‹ã®ã§ã€å–ã‚Šé™¤ã
 			text = text.substring(keyword.length() + 1);
 		}
 	}
@@ -421,17 +421,17 @@ public class Status {
     <in_reply_to_status_id>98765432109876</in_reply_to_status_id>
     <in_reply_to_user_id>jkondo</in_reply_to_user_id>
 
-    <keyword>‚Í‚Ä‚ÈƒfƒtƒHƒ‹ƒg‚³‚ñ</keyword>
+    <keyword>ã¯ã¦ãªãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã•ã‚“</keyword>
     <link>http://h.hatena.ne.jp/jkondo/12345678901234</link>
     <replies>                                         |
-    	in_reply_to_status_id, in_reply_to_user_id    | ‚½‚¾‚µAreplies‚Í
-		keyword, link, replies ‚ğœ‚­<status>           | ƒgƒbƒvƒŒƒxƒ‹status‚É‚Ì‚İ•t‰Á‚³‚ê‚éB
+    	in_reply_to_status_id, in_reply_to_user_id    | ãŸã ã—ã€repliesã¯
+		keyword, link, replies ã‚’é™¤ã<status>           | ãƒˆãƒƒãƒ—ãƒ¬ãƒ™ãƒ«statusã«ã®ã¿ä»˜åŠ ã•ã‚Œã‚‹ã€‚
 	</replies>                                        |
-		E
-		EˆÈ‰º•ÔMæ•ªAreplies‚ÌŒJ‚è•Ô‚µ
-		E
+		ãƒ»
+		ãƒ»ä»¥ä¸‹è¿”ä¿¡å…ˆåˆ†ã€repliesã®ç¹°ã‚Šè¿”ã—
+		ãƒ»
     <source>web</source>
-    <text>‚Í‚Ä‚ÈƒfƒtƒHƒ‹ƒg‚³‚ñ=‚±‚ñ‚É‚¿‚ÍA‚©‚í‚¢‚¢ƒfƒtƒHƒ‹ƒg‚³‚ñ‚Å‚·‚ËB</text>
+    <text>ã¯ã¦ãªãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã•ã‚“=ã“ã‚“ã«ã¡ã¯ã€ã‹ã‚ã„ã„ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã•ã‚“ã§ã™ã­ã€‚</text>
     <user>
       <name>jkondo</name>
       <followers_count>1</followers_count>
@@ -441,6 +441,6 @@ public class Status {
       <url>http://h.hatena.ne.jp/jkondo/</url>
     </user>
   </status>
-  <!-- status —v‘f‚ª‘±‚«‚Ü‚·B -->
+  <!-- status è¦ç´ ãŒç¶šãã¾ã™ã€‚ -->
 </statuses>
 --------------------------------------------- */

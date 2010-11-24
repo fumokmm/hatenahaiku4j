@@ -1,36 +1,39 @@
+HatenaHaiku4J v1.0.2 2009-09-24
+	ãƒ»ã‚½ãƒ¼ã‚¹ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’sjisã‚’ã‚„ã‚ã¦utf-8ã§çµ±ä¸€ã€‚
+
 HatenaHaiku4J v1.0.1 2009-09-22
-	Eƒ†[ƒeƒBƒŠƒeƒB‚Æ‚µ‚ÄHaikuURL‚ğ’Ç‰ÁBËƒTƒ“ƒvƒ‹:Sample004.java
-	Eƒ†[ƒeƒBƒŠƒeƒBHatenaUtil‚É#escapeHatenaNotation(String)‚ğ’Ç‰ÁB
+	ãƒ»ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã¨ã—ã¦HaikuURLã‚’è¿½åŠ ã€‚â‡’ã‚µãƒ³ãƒ—ãƒ«:Sample004.java
+	ãƒ»ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£HatenaUtilã«#escapeHatenaNotation(String)ã‚’è¿½åŠ ã€‚
 
 HatenaHaiku4J v1.0.0 2009-09-18
-	E‰æ‘œ‚ğfotolife‚ÉƒAƒbƒvƒ[ƒh‚µ‚Â‚Â“Še‚·‚éAPI‹@”\‚ğÀ‘•B
-	E‰æ‘œ‚ğFile‚Åw’èAURL‚Åw’èAbyte[]‚Åw’è‚·‚é•û®‚ğ’ñ‹ŸB
-	EStatus, User, Keyword‚Éƒ‚ƒoƒCƒ‹—pURLæ“¾—pƒQƒbƒ^[‚ğ’Ç‰ÁB
-	Eƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“A‚¨‚æ‚ÑƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚Él‹C‡‚ğæ“¾‚Å‚«‚é#getHot`Œnƒƒ\ƒbƒh‚ğ’Ç‰ÁB
+	ãƒ»ç”»åƒã‚’fotolifeã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ã¤ã¤æŠ•ç¨¿ã™ã‚‹APIæ©Ÿèƒ½ã‚’å®Ÿè£…ã€‚
+	ãƒ»ç”»åƒã‚’Fileã§æŒ‡å®šã€URLã§æŒ‡å®šã€byte[]ã§æŒ‡å®šã™ã‚‹æ–¹å¼ã‚’æä¾›ã€‚
+	ãƒ»Status, User, Keywordã«ãƒ¢ãƒã‚¤ãƒ«ç”¨URLå–å¾—ç”¨ã‚²ãƒƒã‚¿ãƒ¼ã‚’è¿½åŠ ã€‚
+	ãƒ»ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã€ãŠã‚ˆã³ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã«äººæ°—é †ã‚’å–å¾—ã§ãã‚‹#getHotï½ç³»ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ ã€‚
 
 HatenaHaiku4J v0.2.2 2009-09-16
-	EHttpUtil‚ÅsetUseCaches(false)‚ÆAsetRequestProperty("Connection", "close")‚ğ’Ç‰Á‚µ‚½B
+	ãƒ»HttpUtilã§setUseCaches(false)ã¨ã€setRequestProperty("Connection", "close")ã‚’è¿½åŠ ã—ãŸã€‚
 
 HatenaHaiku4J v0.2.1 2009-09-15
-	ELoginUser#create‚Í‚ ‚Ü‚èˆÓ–¡‚ª‚È‚©‚Á‚½‚½‚ßA•’Ê‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚É‚µ‚½B
+	ãƒ»LoginUser#createã¯ã‚ã¾ã‚Šæ„å‘³ãŒãªã‹ã£ãŸãŸã‚ã€æ™®é€šã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã«ã—ãŸã€‚
 
 HatenaHaiku4J v0.2.0 2009-09-15
-	EƒNƒ‰ƒX–¼•ÏX HatenaHaikuAPIWithoutAuth -> HatenaHaikuAPILightB
-	EKeyword, User, Status‚É#api‚ğ•t‘®‚³‚¹AŠeƒCƒ“ƒXƒ^ƒ“ƒX‚©‚çapi‚ğ—˜—p‚Å‚«‚é‚æ‚¤‚É‚µ‚½B
-	EHatenaHaikuAPI, HatenaHaikuAPILight‚Ì‹@”\Šg’£(idƒ^ƒCƒ€ƒ‰ƒCƒ“‚È‚Ç)B
-	EƒTƒ“ƒvƒ‹(Main.java)‚ğ‚¿‚å‚Á‚Æ®—‚µ‚½B
+	ãƒ»ã‚¯ãƒ©ã‚¹åå¤‰æ›´ HatenaHaikuAPIWithoutAuth -> HatenaHaikuAPILightã€‚
+	ãƒ»Keyword, User, Statusã«#apiã‚’ä»˜å±ã•ã›ã€å„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‹ã‚‰apiã‚’åˆ©ç”¨ã§ãã‚‹ã‚ˆã†ã«ã—ãŸã€‚
+	ãƒ»HatenaHaikuAPI, HatenaHaikuAPILightã®æ©Ÿèƒ½æ‹¡å¼µ(idã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ãªã©)ã€‚
+	ãƒ»ã‚µãƒ³ãƒ—ãƒ«(Main.java)ã‚’ã¡ã‚‡ã£ã¨æ•´ç†ã—ãŸã€‚
 
 HatenaHaiku4J v0.1.0 2009-09-13
-	EStatus‚Éreplies‚ğ’Ç‰Á‚µ‚½B
-	EXmlUtil‚Ì•s‹ï‡‚ğC³‚µ‚½B
+	ãƒ»Statusã«repliesã‚’è¿½åŠ ã—ãŸã€‚
+	ãƒ»XmlUtilã®ä¸å…·åˆã‚’ä¿®æ­£ã—ãŸã€‚
 
 HatenaHaiku4J v0.0.3 2009-09-11
-	EHatenaHaikuAPI#relateKeyword‚É‚ÄA
-	E‘ÎÛƒL[ƒ[ƒh1‚Æ2‚ª“¯‚¶‚¾‚Á‚½ê‡AƒGƒ‰[‚Æ‚·‚é‚æ‚¤C³‚ğs‚Á‚½B
+	ãƒ»HatenaHaikuAPI#relateKeywordã«ã¦ã€
+	ãƒ»å¯¾è±¡ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰1ã¨2ãŒåŒã˜ã ã£ãŸå ´åˆã€ã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ã‚ˆã†ä¿®æ­£ã‚’è¡Œã£ãŸã€‚
 
 HatenaHaiku4J v0.0.2 2009-09-09
-	EjavacƒRƒ“ƒpƒCƒ‹ƒIƒvƒVƒ‡ƒ“‚ğ’Ç‰Á‚µA
-	EƒNƒ‰ƒXƒo[ƒWƒ‡ƒ“‚ğ50(JDK1.6ˆÈ~)‚Å‚Í‚È‚­49(JDK1.5ˆÈ~)‚É•ÏXB
+	ãƒ»javacã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ ã—ã€
+	ãƒ»ã‚¯ãƒ©ã‚¹ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’50(JDK1.6ä»¥é™)ã§ã¯ãªã49(JDK1.5ä»¥é™)ã«å¤‰æ›´ã€‚
 
 HatenaHaiku4J v0.0.1 2009-09-09
-	E‚Æ‚è‚ ‚¦‚¸“®‚­‚à‚Ì‚ğƒŠƒŠ[ƒXB
+	ãƒ»ã¨ã‚Šã‚ãˆãšå‹•ãã‚‚ã®ã‚’ãƒªãƒªãƒ¼ã‚¹ã€‚

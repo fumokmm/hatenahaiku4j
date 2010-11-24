@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * File�Ɋւ��郆�[�e�B���e�B�N���X
+ * Fileに関するユーティリティクラス
  * 
  * @since v1.0.0
  * @author fumokmm
@@ -17,9 +17,9 @@ import java.io.InputStream;
 public class FileUtil {
 
 	/**
-	 * �t�@�C�����o�C�g�z��ɕϊ����܂��B
+	 * ファイルをバイト配列に変換します。
 	 * 
-	 * @param file �o�C�g�z��ɕϊ�����t�@�C��
+	 * @param file バイト配列に変換するファイル
 	 * @since v1.0.0
 	 */
 	public static byte[] toByteArray(File file) {

@@ -5,32 +5,32 @@ import hatenahaiku4j.util.HatenaUtil;
 import java.util.List;
 
 /**
- * ‚Í‚Ä‚ÈƒnƒCƒNƒL[ƒ[ƒhî•ñ‚ğ•\Œ»‚·‚éƒNƒ‰ƒX
+ * ã¯ã¦ãªãƒã‚¤ã‚¯ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æƒ…å ±ã‚’è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class Keyword {
-	/** “Še” */
+	/** æŠ•ç¨¿æ•° */
 	private int entryCount;
-	/** ƒtƒHƒƒ[” */
+	/** ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•° */
 	private int followersCount;
-	/** ƒL[ƒ[ƒhƒy[ƒW‚ÌƒŠƒ“ƒN  */
+	/** ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ã®ãƒªãƒ³ã‚¯  */
 	private String link;
-	/** ŠÖ˜AƒL[ƒ[ƒh */
+	/** é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ */
 	private List<String> relatedKeywords;
-	/** ƒL[ƒ[ƒhƒ^ƒCƒgƒ‹ */
+	/** ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒˆãƒ« */
 	private String title;
 
 	/**
-	 * ƒL[ƒ[ƒhAPI
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰API
 	 * 
 	 * @since v0.2.0
 	 */
 	public final KeywordAPI api;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * @since v0.0.1
 	 */
 	private Keyword() {
@@ -38,9 +38,9 @@ public class Keyword {
 	}
 	
 	/**
-	 * w’è‚µ‚½ƒL[ƒ[ƒh‚Å‚±‚ÌƒL[ƒ[ƒh‚ğã‘‚«‚µ‚Ü‚·B
+	 * æŒ‡å®šã—ãŸã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã§ã“ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ä¸Šæ›¸ãã—ã¾ã™ã€‚
 	 * 
-	 * @param other ã‘‚«‚·‚éƒL[ƒ[ƒh
+	 * @param other ä¸Šæ›¸ãã™ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @since v0.2.0
 	 */
 	void overwrite(Keyword other) {
@@ -52,9 +52,9 @@ public class Keyword {
 	}
 	
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
-	 * @param apiAuth ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚ ‚èj
+	 * @param apiAuth ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ã‚ã‚Šï¼‰
 	 * @since v0.2.0
 	 */
 	static Keyword create(HatenaHaikuAPI apiAuth) {
@@ -64,9 +64,9 @@ public class Keyword {
 	}
 
 	/**
-	 * ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·BiƒpƒbƒP[ƒWƒvƒ‰ƒCƒx[ƒgj
+	 * ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚ï¼ˆãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆï¼‰
 	 * 
-	 * @param apiLight ‚Í‚Ä‚ÈƒnƒCƒNAPIi”FØ‚È‚µj
+	 * @param apiLight ã¯ã¦ãªãƒã‚¤ã‚¯APIï¼ˆèªè¨¼ãªã—ï¼‰
 	 * @since v0.2.0
 	 */
 	static Keyword create(HatenaHaikuAPILight apiLight) {
@@ -76,9 +76,9 @@ public class Keyword {
 	}
 
 	/**
-	 * “Še”‚ğæ“¾‚µ‚Ü‚·B
+	 * æŠ•ç¨¿æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return “Še”
+	 * @return æŠ•ç¨¿æ•°
 	 * @since v0.0.1
 	 */
 	public int getEntryCount() {
@@ -86,9 +86,9 @@ public class Keyword {
 	}
 	
 	/**
-	 * ƒtƒHƒƒ[”‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒtƒHƒƒ[”
+	 * @return ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°
 	 * @since v0.0.1
 	 */
 	public int getFollowersCount() {
@@ -96,9 +96,9 @@ public class Keyword {
 	}
 	
 	/**
-	 * ƒL[ƒ[ƒhƒy[ƒW‚ÌƒŠƒ“ƒN‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ã®ãƒªãƒ³ã‚¯ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒL[ƒ[ƒhƒy[ƒW‚ÌƒŠƒ“ƒN 
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ã®ãƒªãƒ³ã‚¯ 
 	 * @since v0.0.1
 	 */
 	public String getLink() {
@@ -106,9 +106,9 @@ public class Keyword {
 	}
 	
 	/**
-	 * ƒ‚ƒoƒCƒ‹—pƒL[ƒ[ƒhƒy[ƒW‚ÌƒŠƒ“ƒN‚ğæ“¾‚µ‚Ü‚·B
+	 * ãƒ¢ãƒã‚¤ãƒ«ç”¨ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ã®ãƒªãƒ³ã‚¯ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒL[ƒ[ƒhƒy[ƒW‚ÌƒŠƒ“ƒN 
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ã®ãƒªãƒ³ã‚¯ 
 	 * @since v1.0.0
 	 */
 	public String getMobileLink() {
@@ -116,9 +116,9 @@ public class Keyword {
 	}
 
 	/**
-	 * ŠÖ˜AƒL[ƒ[ƒh‚ÌƒŠƒXƒg‚ğæ“¾‚µ‚Ü‚·B
+	 * é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ŠÖ˜AƒL[ƒ[ƒh‚ÌƒŠƒXƒg
+	 * @return é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆ
 	 * @since v0.0.1
 	 */
 	public List<String> getRelatedKeywords() {
@@ -126,9 +126,9 @@ public class Keyword {
 	}
 
 	/**
-	 * ƒL[ƒ[ƒhƒ^ƒCƒgƒ‹‚ğæ“¾‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒˆãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return ƒL[ƒ[ƒhƒ^ƒCƒgƒ‹
+	 * @return ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒˆãƒ«
 	 * @since v0.0.1
 	 */
 	public String getTitle() {
@@ -136,9 +136,9 @@ public class Keyword {
 	}
 	
 	/**
-	 * idƒy[ƒW‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B
+	 * idãƒšãƒ¼ã‚¸ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return idƒy[ƒW‚©‚Ç‚¤‚©
+	 * @return idãƒšãƒ¼ã‚¸ã‹ã©ã†ã‹
 	 * @since v0.0.1
 	 */
 	public boolean isIdPage() {
@@ -146,9 +146,9 @@ public class Keyword {
 	}
 
 	/**
-	 * “Še”‚ğİ’è‚µ‚Ü‚·B
+	 * æŠ•ç¨¿æ•°ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param entryCount “Še”
+	 * @param entryCount æŠ•ç¨¿æ•°
 	 * @since v0.0.1
 	 */
 	void setEntryCount(int entryCount) {
@@ -156,9 +156,9 @@ public class Keyword {
 	}
 
 	/**
-	 * ƒtƒHƒƒ[”‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param followersCount ƒtƒHƒƒ[”
+	 * @param followersCount ãƒ•ã‚©ãƒ­ãƒ¯ãƒ¼æ•°
 	 * @since v0.0.1
 	 */
 	void setFollowersCount(int followersCount) {
@@ -166,9 +166,9 @@ public class Keyword {
 	}
 
 	/**
-	 * ƒL[ƒ[ƒhƒy[ƒW‚ÌƒŠƒ“ƒN‚ğİ’è‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ã®ãƒªãƒ³ã‚¯ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param link ƒL[ƒ[ƒhƒy[ƒW‚ÌƒŠƒ“ƒN
+	 * @param link ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ãƒšãƒ¼ã‚¸ã®ãƒªãƒ³ã‚¯
 	 * @since v0.0.1
 	 */
 	void setLink(String link) {
@@ -176,9 +176,9 @@ public class Keyword {
 	}
 
 	/**
-	 * ŠÖ˜AƒL[ƒ[ƒh‚ğİ’è‚µ‚Ü‚·B
+	 * é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param relatedKeywords ŠÖ˜AƒL[ƒ[ƒh
+	 * @param relatedKeywords é–¢é€£ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @since v0.0.1
 	 */
 	void setRelatedKeywords(List<String> relatedKeywords) {
@@ -186,9 +186,9 @@ public class Keyword {
 	}
 
 	/**
-	 * ƒL[ƒ[ƒhƒ^ƒCƒgƒ‹‚ğİ’è‚µ‚Ü‚·B
+	 * ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒˆãƒ«ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param title ƒL[ƒ[ƒhƒ^ƒCƒgƒ‹
+	 * @param title ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒˆãƒ«
 	 * @since v0.0.1
 	 */
 	void setTitle(String title) {
@@ -200,9 +200,9 @@ public class Keyword {
 <keyword>
 	<entry_count>10</entry_count>
 	<followers_count>100</followers_count>
-	<link>http://h.hatena.ne.jp/‚Í‚Ä‚ÈƒnƒCƒN</link>
+	<link>http://h.hatena.ne.jp/ã¯ã¦ãªãƒã‚¤ã‚¯</link>
 	<related_keywords>RELATED_KEYWORD</related_keywords>
-	<!-- related_keywords ‚ª‘±‚«‚Ü‚·B -->
-	<title>‚Í‚Ä‚ÈƒnƒCƒN</title>
+	<!-- related_keywords ãŒç¶šãã¾ã™ã€‚ -->
+	<title>ã¯ã¦ãªãƒã‚¤ã‚¯</title>
 </keyword>
 --------------------------------------------- */

@@ -6,7 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
- * •¶š—ñˆ—‚ÉŠÖ‚·‚éƒ†[ƒeƒBƒŠƒeƒBƒNƒ‰ƒX
+ * æ–‡å­—åˆ—å‡¦ç†ã«é–¢ã™ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.3
  * @author fumokmm
@@ -14,10 +14,10 @@ import java.net.URLEncoder;
 public class StringUtil {
 
 	/**
-	 * ‹ó•¶š‚©‚Ç‚¤‚©”»’è‚·‚éB
+	 * ç©ºæ–‡å­—ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ã€‚
 	 * 
-	 * @param str ”»’è‚·‚é•¶š—ñ
-	 * @return ‹ó•¶š‚Ìê‡true, ‚»‚¤‚Å‚È‚¢ê‡false
+	 * @param str åˆ¤å®šã™ã‚‹æ–‡å­—åˆ—
+	 * @return ç©ºæ–‡å­—ã®å ´åˆtrue, ãã†ã§ãªã„å ´åˆfalse
 	 * @since v0.0.3
 	 */
 	public static boolean isEmpty(String str) {
@@ -25,11 +25,11 @@ public class StringUtil {
 	}
 	
 	/**
-	 * •¶š—ñ‚ª“™‚µ‚¢‚©”»’è‚·‚éB(NULL‹–—e)
+	 * æ–‡å­—åˆ—ãŒç­‰ã—ã„ã‹åˆ¤å®šã™ã‚‹ã€‚(NULLè¨±å®¹)
 	 * 
-	 * @param str1 ”»’è‚·‚é•¶š—ñ1
-	 * @param str2 ”»’è‚·‚é•¶š—ñ1
-	 * @return “™‚µ‚¢ê‡true, ‚»‚¤‚Å‚È‚¢ê‡false
+	 * @param str1 åˆ¤å®šã™ã‚‹æ–‡å­—åˆ—1
+	 * @param str2 åˆ¤å®šã™ã‚‹æ–‡å­—åˆ—1
+	 * @return ç­‰ã—ã„å ´åˆtrue, ãã†ã§ãªã„å ´åˆfalse
 	 * @since v0.0.3
 	 */
 	public static boolean isSame(String str1, String str2) {
@@ -37,11 +37,11 @@ public class StringUtil {
 	}
 
 	/**
-	 * ˆø”‚Ì•¶š—ñ‚ğUTF-8‚ÅURLEncode‚µ‚Ü‚·B<br/>
-	 * UTF-8‚ÅƒGƒ“ƒR[ƒh‚Å‚«‚È‚¢‚±‚Æ‚Í‚È‚¢‚Í‚¸‚È‚Ì‚ÅAƒGƒ‰[ˆ—‚ÍÈ—ª‚µ‚Ä‚¢‚Ü‚·B
+	 * å¼•æ•°ã®æ–‡å­—åˆ—ã‚’UTF-8ã§URLEncodeã—ã¾ã™ã€‚<br/>
+	 * UTF-8ã§ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã§ããªã„ã“ã¨ã¯ãªã„ã¯ãšãªã®ã§ã€ã‚¨ãƒ©ãƒ¼å‡¦ç†ã¯çœç•¥ã—ã¦ã„ã¾ã™ã€‚
 	 * 
-	 * @param str URLEncode‚·‚é•¶š—ñ
-	 * @return ƒGƒ“ƒR[ƒh‚³‚ê‚½•¶š—ñ
+	 * @param str URLEncodeã™ã‚‹æ–‡å­—åˆ—
+	 * @return ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã•ã‚ŒãŸæ–‡å­—åˆ—
 	 * @since v1.0.0
 	 */
 	public static String encode(String str) {
@@ -55,10 +55,10 @@ public class StringUtil {
 	}
 	
 	/**
-	 * ƒVƒŠƒAƒ‹’l‚ğæ“¾‚µ‚Ü‚·B<br/>
-	 * ƒVƒŠƒAƒ‹’lŒ»İ‚Ìƒ~ƒŠ•b{ƒ‰ƒ“ƒ_ƒ€’l
+	 * ã‚·ãƒªã‚¢ãƒ«å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚<br/>
+	 * ã‚·ãƒªã‚¢ãƒ«å€¤ï¼ç¾åœ¨æ™‚åˆ»ã®ãƒŸãƒªç§’ï¼‹ãƒ©ãƒ³ãƒ€ãƒ å€¤
 	 * 
-	 * @return ƒVƒŠƒAƒ‹’l‚ğæ“¾‚µ‚Ü‚·B
+	 * @return ã‚·ãƒªã‚¢ãƒ«å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * @since v1.0.0
 	 */
 	public static String getSerial() {

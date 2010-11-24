@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /**
- * �����Ɋւ��郆�[�e�B���e�B�N���X
+ * 日時に関するユーティリティクラス
  * 
  * @since v0.0.1
  * @author fumokmm
@@ -17,14 +17,14 @@ public class DateUtil {
 	static final TimeZone TZ_GMT0 = TimeZone.getTimeZone("GMT+00");
 	/** TimeZone(JST) */
 	static final TimeZone TZ_JST = TimeZone.getTimeZone("GMT+09");
-	/** datetimeTZ�`���t�H�[�}�b�^�[ */
+	/** datetimeTZ形式フォーマッター */
 	private static final DateFormat TZFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
 	/**
-	 * datetimeTZ�`������Date�ɕϊ�
+	 * datetimeTZ形式からDateに変換
 	 * 
-	 * @param datetimeTZ datetimeTZ�`���̕�����
-	 * @return ���{�W������Date
+	 * @param datetimeTZ datetimeTZ形式の文字列
+	 * @return 日本標準時のDate
 	 * @throws ParseException 
 	 * @since v0.0.1
 	 */
@@ -34,10 +34,10 @@ public class DateUtil {
 	}
 
 	/**
-	 * Date��datetimeTZ�`���ɕϊ�
+	 * DateをdatetimeTZ形式に変換
 	 * 
-	 * @param defaultDate ���{�W������Date
-	 * @return datetimeTZ�`���̕�����
+	 * @param defaultDate 日本標準時のDate
+	 * @return datetimeTZ形式の文字列
 	 * @since v0.0.1
 	 */
 	public static String toDefaultTZ(Date defaultDate) {
@@ -46,7 +46,7 @@ public class DateUtil {
 	}
 
 	/**
-	 * ���{�W�����̌��ݎ�����Date���擾���܂��B
+	 * 日本標準時の現在時刻のDateを取得します。
 	 * 
 	 * @since v0.0.1
 	 */
@@ -55,7 +55,7 @@ public class DateUtil {
 	}
 
 	/**
-	 * ���{���ԂɂȂ�悤�A���Ԃ𒲐����܂��B(GMT+0��JST(GMT+09))
+	 * 日本時間になるよう、時間を調整します。(GMT+0→JST(GMT+09))
 	 * 
 	 * @since v0.0.1
 	 */
@@ -67,7 +67,7 @@ public class DateUtil {
 	}
 
 	/**
-	 * GMT+0�ɂȂ�悤�A���Ԃ𒲐����܂��B(JST(GMT+09)��GMT+0)
+	 * GMT+0になるよう、時間を調整します。(JST(GMT+09)→GMT+0)
 	 * 
 	 * @since v0.0.1
 	 */

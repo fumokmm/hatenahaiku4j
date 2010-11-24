@@ -11,7 +11,7 @@ import hatenahaiku4j.User;
 import java.util.List;
 
 /**
- * HatenaHaiku4J “®ìƒTƒ“ƒvƒ‹ƒNƒ‰ƒX‚Å‚· #002
+ * HatenaHaiku4J å‹•ä½œã‚µãƒ³ãƒ—ãƒ«ã‚¯ãƒ©ã‚¹ã§ã™ #002
  * 
  * @since v0.2.1
  * @author fumokmm
@@ -19,59 +19,59 @@ import java.util.List;
 public class Sample002 {
 	
 	/**
-	 * v0.2.1“_‚Å‚Ìƒfƒ‚‚Å‚·B<br/>
-	 * v0.2.0‚©‚ç‚æ‚è_“î‚Éæ“¾Œ‹‰Ê‚©‚çFX‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½B<br/>
-	 * ƒfƒ‚“à—e‚Ív0.0.1“_‚Æ“¯‚¶‚±‚Æ‚µ‚½Œã‚ÉAƒ†[ƒU‚ÌIDƒy[ƒW‚Ìƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğæ“¾‚µ‚Ä‚¢‚Ü‚·B
+	 * v0.2.1æ™‚ç‚¹ã§ã®ãƒ‡ãƒ¢ã§ã™ã€‚<br/>
+	 * v0.2.0ã‹ã‚‰ã‚ˆã‚ŠæŸ”è»Ÿã«å–å¾—çµæœã‹ã‚‰è‰²ã€…ã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸã€‚<br/>
+	 * ãƒ‡ãƒ¢å†…å®¹ã¯v0.0.1æ™‚ç‚¹ã¨åŒã˜ã“ã¨ã—ãŸå¾Œã«ã€ãƒ¦ãƒ¼ã‚¶ã®IDãƒšãƒ¼ã‚¸ã®ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å–å¾—ã—ã¦ã„ã¾ã™ã€‚
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// ƒƒOƒCƒ“ƒ†[ƒU
+		// ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶
 		LoginUser loginUser = new LoginUser("userid", "password");
-		// ”FØ‚ ‚èAPI
+		// èªè¨¼ã‚ã‚ŠAPI
 		HatenaHaikuAPI apiAuth = new HatenaHaikuAPI(loginUser);
-		apiAuth.setNeedHttpLog(true);	// HTTPƒƒO‚ğo—Í‚·‚é
-		// ”FØ‚È‚µAPI
+		apiAuth.setNeedHttpLog(true);	// HTTPãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹
+		// èªè¨¼ãªã—API
 		HatenaHaikuAPILight apiLight = new HatenaHaikuAPILight();
-		apiLight.setNeedHttpLog(true);	// HTTPƒƒO‚ğo—Í‚·‚é
+		apiLight.setNeedHttpLog(true);	// HTTPãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹
 
 		printSeparate("#002 Sample START");
 		try {
-			printSeparate("ƒpƒuƒŠƒbƒNƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğo—Í‚·‚é");
+			printSeparate("ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å‡ºåŠ›ã™ã‚‹");
 			List<Status> publicTimeline = apiLight.getPublicTimeline();
 			for (Status status : publicTimeline) {
 				printStatus(status);
 			}
 
-			printSeparate("ƒL[ƒ[ƒhƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğo—Í‚·‚é(‚Ğ‚Æ‚è‚²‚Æ)");
-			Keyword hitorigoto = apiLight.getKeyword("‚Ğ‚Æ‚è‚²‚Æ");
-			// Keyword, Status, User ‚É #api ‚Æ‚¢‚¤ƒtƒB[ƒ‹ƒh‚ª•t‘®‚µ‚½‚½‚ßA
-			// ŠeƒCƒ“ƒXƒ^ƒ“ƒX‚©‚çapi‚ªŒÄ‚Ño‚¹‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½B
+			printSeparate("ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å‡ºåŠ›ã™ã‚‹(ã²ã¨ã‚Šã”ã¨)");
+			Keyword hitorigoto = apiLight.getKeyword("ã²ã¨ã‚Šã”ã¨");
+			// Keyword, Status, User ã« #api ã¨ã„ã†ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãŒä»˜å±ã—ãŸãŸã‚ã€
+			// å„ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‹ã‚‰apiãŒå‘¼ã³å‡ºã›ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸã€‚
 			for (Status status : hitorigoto.api.getTimeline()) {
 				printStatus(status);
 			}
 			
-			printSeparate("”FØ‚µ‚½ƒ†[ƒU‚Ìl‹C‚Ìƒ†[ƒUƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğo—Í‚·‚é");
-			User me = apiAuth.getMe();	// ”FØ‚µ‚½ƒ†[ƒU©g‚ÌUser‚ğæ“¾
+			printSeparate("èªè¨¼ã—ãŸãƒ¦ãƒ¼ã‚¶ã®äººæ°—ã®ãƒ¦ãƒ¼ã‚¶ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å‡ºåŠ›ã™ã‚‹");
+			User me = apiAuth.getMe();	// èªè¨¼ã—ãŸãƒ¦ãƒ¼ã‚¶è‡ªèº«ã®Userã‚’å–å¾—
 			List<Status> hotUserTimeline = me.api.getHotTimeline();
 			for (Status status : hotUserTimeline) {
 				printStatus(status);
 			}
 
-			printSeparate("ƒƒOƒCƒ“ƒ†[ƒU‚Ìidƒy[ƒW‚É“Še‚·‚éB");
-			Keyword idPage = apiAuth.getMyKeyword(); // ”FØ‚µ‚½ƒ†[ƒU‚ÌƒL[ƒ[ƒh(=idƒy[ƒW)‚ğæ“¾
-			Status result = idPage.api.entry("‚±‚ñ‚É‚¿‚Í\n‚Í‚Ä‚ÈƒnƒCƒN‚S‚iI\nƒfƒ‚ƒeƒXƒg’†‚Å‚·B");
+			printSeparate("ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã«æŠ•ç¨¿ã™ã‚‹ã€‚");
+			Keyword idPage = apiAuth.getMyKeyword(); // èªè¨¼ã—ãŸãƒ¦ãƒ¼ã‚¶ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰(=idãƒšãƒ¼ã‚¸)ã‚’å–å¾—
+			Status result = idPage.api.entry("ã“ã‚“ã«ã¡ã¯\nã¯ã¦ãªãƒã‚¤ã‚¯ï¼”ï¼ªï¼\nãƒ‡ãƒ¢ãƒ†ã‚¹ãƒˆä¸­ã§ã™ã€‚");
 			printStatus(result);
 			
-			printSeparate("‚Â‚¢‚Å‚É¡‚µ‚ª‚½“o˜^‚µ‚½©•ª‚ÌƒGƒ“ƒgƒŠ‚ÉƒXƒ^[‚ğ3‚Â‚Ù‚Ç‚Â‚¯‚Ä‚İ‚é");
+			printSeparate("ã¤ã„ã§ã«ä»Šã—ãŒãŸç™»éŒ²ã—ãŸè‡ªåˆ†ã®ã‚¨ãƒ³ãƒˆãƒªã«ã‚¹ã‚¿ãƒ¼ã‚’3ã¤ã»ã©ã¤ã‘ã¦ã¿ã‚‹");
 			for (int i = 0; i < 3; i++) {
 				printStatus(result.api.addStar());
 			}
 
-			printSeparate("‚³‚ç‚ÉAReply‚µ‚Ä‚İ‚é");
-			printStatus(result.api.reply("ƒŠƒvƒ‰ƒC‚à‚Å‚«‚Ü‚·B"));
+			printSeparate("ã•ã‚‰ã«ã€Replyã—ã¦ã¿ã‚‹");
+			printStatus(result.api.reply("ãƒªãƒ—ãƒ©ã‚¤ã‚‚ã§ãã¾ã™ã€‚"));
 			
-			printSeparate("ƒƒOƒCƒ“ƒ†[ƒU‚Ìidƒy[ƒWƒ^ƒCƒ€ƒ‰ƒCƒ“‚ğo—Í‚·‚é");
+			printSeparate("ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ã®idãƒšãƒ¼ã‚¸ã‚¿ã‚¤ãƒ ãƒ©ã‚¤ãƒ³ã‚’å‡ºåŠ›ã™ã‚‹");
 			for (Status idStatus : apiAuth.getMe().api.getIdTimeline()) {
 				printStatus(idStatus);
 			}
@@ -83,18 +83,18 @@ public class Sample002 {
 	}
 
 	/**
-	 * ƒXƒe[ƒ^ƒXî•ñ‚ğ•W€o—Í‚Éo—Í‚µ‚Ü‚·B
+	 * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ã‚’æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param status ƒXƒe[ƒ^ƒXî•ñ
+	 * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±
 	 */
 	public static void printStatus(Status status) {
 		Sample001.printStatus(status);
 	}
 
 	/**
-	 * ‹æØ‚è‚ğ•W€o—Í‚Éo—Í‚µ‚Ü‚·B
+	 * åŒºåˆ‡ã‚Šã‚’æ¨™æº–å‡ºåŠ›ã«å‡ºåŠ›ã—ã¾ã™ã€‚
 	 * 
-	 * @param label ƒ‰ƒxƒ‹
+	 * @param label ãƒ©ãƒ™ãƒ«
 	 */
 	public static void printSeparate(String label) {
 		Sample001.printSeparate(label);

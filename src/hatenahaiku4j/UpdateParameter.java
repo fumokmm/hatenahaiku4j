@@ -6,38 +6,38 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * XV—pƒpƒ‰ƒ[ƒ^‚ğ•\Œ»‚·‚éƒNƒ‰ƒX‚Å‚·B
+ * æ›´æ–°ç”¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class UpdateParameter {
-	/** “Še“à—e */
+	/** æŠ•ç¨¿å†…å®¹ */
 	private String text;
-	/** •ÔMŒ³ƒXƒe[ƒ^ƒXID */
+	/** è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID */
 	private String inReplyToStatusId;
-	/** “ŠeæƒL[ƒ[ƒh */
+	/** æŠ•ç¨¿å…ˆã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ */
 	private String keyword;
-	/** ‰æ‘œƒtƒ@ƒCƒ‹ */
+	/** ç”»åƒãƒ•ã‚¡ã‚¤ãƒ« */
 	private File file;
-	/** ‰æ‘œƒtƒ@ƒCƒ‹URL */
+	/** ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«URL */
 	private String imageUrl;
-	/** ‰æ‘œƒf[ƒ^ */
+	/** ç”»åƒãƒ‡ãƒ¼ã‚¿ */
 	private byte[] imageData;
-	/** ‰æ‘œƒf[ƒ^Šg’£q */
+	/** ç”»åƒãƒ‡ãƒ¼ã‚¿æ‹¡å¼µå­ */
 	private ImageExt imageDataExt;
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
 	 * 
 	 * @since v0.0.1
 	 */
 	UpdateParameter() {}
 	
 	/**
-	 * “Še“à—e‚ğ•Ô‹p‚µ‚Ü‚·B
+	 * æŠ•ç¨¿å†…å®¹ã‚’è¿”å´ã—ã¾ã™ã€‚
 	 * 
-	 * @return “Še“à—e
+	 * @return æŠ•ç¨¿å†…å®¹
 	 * @since v0.0.1
 	 */
 	public String getText() {
@@ -45,9 +45,9 @@ public class UpdateParameter {
 	}
 
 	/**
-	 * “Še“à—e‚ğİ’è‚µ‚Ü‚·B
+	 * æŠ•ç¨¿å†…å®¹ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param text “Še“à—e
+	 * @param text æŠ•ç¨¿å†…å®¹
 	 * @since v0.0.1
 	 */
 	public void setText(String text) {
@@ -55,9 +55,9 @@ public class UpdateParameter {
 	}
 	
 	/**
-	 * •ÔMŒ³ƒXƒe[ƒ^ƒXID‚ğæ“¾‚µ‚Ü‚·B
+	 * è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹IDã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return •ÔMŒ³ƒXƒe[ƒ^ƒXID
+	 * @return è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID
 	 * @since v0.0.1
 	 */
 	public String getInReplyToStatusId() {
@@ -65,9 +65,9 @@ public class UpdateParameter {
 	}
 
 	/**
-	 * •ÔMŒ³ƒXƒe[ƒ^ƒXID‚ğİ’è‚µ‚Ü‚·B
+	 * è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹IDã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param inReplyToStatusId •ÔMŒ³ƒXƒe[ƒ^ƒXID
+	 * @param inReplyToStatusId è¿”ä¿¡å…ƒã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ID
 	 * @since v0.0.1
 	 */
 	public void setInReplyToStatusId(String inReplyToStatusId) {
@@ -75,9 +75,9 @@ public class UpdateParameter {
 	}
 
 	/**
-	 * “ŠeæƒL[ƒ[ƒh‚ğæ“¾‚µ‚Ü‚·B
+	 * æŠ•ç¨¿å…ˆã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’å–å¾—ã—ã¾ã™ã€‚
 	 * 
-	 * @return “ŠeæƒL[ƒ[ƒh
+	 * @return æŠ•ç¨¿å…ˆã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @since v0.0.1
 	 */
 	public String getKeyword() {
@@ -85,9 +85,9 @@ public class UpdateParameter {
 	}
 
 	/**
-	 * “ŠeæƒL[ƒ[ƒh‚ğİ’è‚µ‚Ü‚·B
+	 * æŠ•ç¨¿å…ˆã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param keyword “ŠeæƒL[ƒ[ƒh
+	 * @param keyword æŠ•ç¨¿å…ˆã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
 	 * @since v0.0.1
 	 */
 	public void setKeyword(String keyword) {
@@ -95,9 +95,9 @@ public class UpdateParameter {
 	}
 	
 	/**
-	 * ‰æ‘œƒtƒ@ƒCƒ‹
+	 * ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«
 	 * 
-	 * @return ‰æ‘œƒtƒ@ƒCƒ‹
+	 * @return ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«
 	 * @since v0.0.1
 	 */
 	public File getFile() {
@@ -105,9 +105,9 @@ public class UpdateParameter {
 	}
 	
 	/**
-	 * ‰æ‘œƒtƒ@ƒCƒ‹‚ğİ’è‚µ‚Ü‚·B
+	 * ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param file ‰æ‘œƒtƒ@ƒCƒ‹
+	 * @param file ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«
 	 * @since v0.0.1
 	 */
 	public void setFile(File file) {
@@ -115,9 +115,9 @@ public class UpdateParameter {
 	}
 
 	/**
-	 * ‰æ‘œƒtƒ@ƒCƒ‹URL
+	 * ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«URL
 	 * 
-	 * @return ‰æ‘œƒtƒ@ƒCƒ‹URL
+	 * @return ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«URL
 	 * @since v1.0.0
 	 */
 	public String getImageUrl() {
@@ -125,9 +125,9 @@ public class UpdateParameter {
 	}
 	
 	/**
-	 * ‰æ‘œƒtƒ@ƒCƒ‹URL‚ğİ’è‚µ‚Ü‚·B
+	 * ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«URLã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param imageUrl ‰æ‘œƒtƒ@ƒCƒ‹URL
+	 * @param imageUrl ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«URL
 	 * @since v1.0.0
 	 */
 	public void setImageUrl(String imageUrl) {
@@ -135,9 +135,9 @@ public class UpdateParameter {
 	}
 	
 	/**
-	 * ‰æ‘œƒf[ƒ^
+	 * ç”»åƒãƒ‡ãƒ¼ã‚¿
 	 * 
-	 * @return ‰æ‘œƒtƒ@ƒCƒ‹URL
+	 * @return ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«URL
 	 * @since v1.0.0
 	 */
 	public byte[] getImageData() {
@@ -145,9 +145,9 @@ public class UpdateParameter {
 	}
 	
 	/**
-	 * ‰æ‘œƒf[ƒ^‚ğİ’è‚µ‚Ü‚·B
+	 * ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param imageData ‰æ‘œƒf[ƒ^
+	 * @param imageData ç”»åƒãƒ‡ãƒ¼ã‚¿
 	 * @since v1.0.0
 	 */
 	public void setImageData(byte[] imageData) {
@@ -155,9 +155,9 @@ public class UpdateParameter {
 	}
 
 	/**
-	 * ‰æ‘œƒf[ƒ^Šg’£q
+	 * ç”»åƒãƒ‡ãƒ¼ã‚¿æ‹¡å¼µå­
 	 * 
-	 * @return ‰æ‘œƒf[ƒ^Šg’£q
+	 * @return ç”»åƒãƒ‡ãƒ¼ã‚¿æ‹¡å¼µå­
 	 * @since v1.0.0
 	 */
 	public ImageExt getImageDataExt() {
@@ -165,9 +165,9 @@ public class UpdateParameter {
 	}
 	
 	/**
-	 * ‰æ‘œƒf[ƒ^Šg’£q‚ğİ’è‚µ‚Ü‚·B
+	 * ç”»åƒãƒ‡ãƒ¼ã‚¿æ‹¡å¼µå­ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param imageDataExt ‰æ‘œƒf[ƒ^Šg’£q
+	 * @param imageDataExt ç”»åƒãƒ‡ãƒ¼ã‚¿æ‹¡å¼µå­
 	 * @since v1.0.0
 	 */
 	public void setImageDataExt(ImageExt imageDataExt) {
@@ -187,10 +187,10 @@ public class UpdateParameter {
 	private static final String PARAM_KEY_SOURCE = "source";
 
 	/**
-	 * ƒ|ƒXƒg‚·‚éƒpƒ‰ƒ[ƒ^‚ğİ’è‚µ‚Ü‚·B
+	 * ãƒã‚¹ãƒˆã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¨­å®šã—ã¾ã™ã€‚
 	 * 
-	 * @param loginUser ƒƒOƒCƒ“ƒ†[ƒUî•ñ
-	 * @param ps ƒ|ƒXƒgˆ—•â•ƒNƒ‰ƒX
+	 * @param loginUser ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶æƒ…å ±
+	 * @param ps ãƒã‚¹ãƒˆå‡¦ç†è£œåŠ©ã‚¯ãƒ©ã‚¹
 	 * @throws IOException 
 	 * @since v1.0.0
 	 */
@@ -239,12 +239,12 @@ public class UpdateParameter {
 	}
 
 	/**
-	 * ƒ|ƒXƒg“à—e‚ğ•\¦‚µ‚Ü‚·B
+	 * ãƒã‚¹ãƒˆå†…å®¹ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
 	 * 
 	 * @since v0.0.1
 	 */
 	public void outputPostInfo(LoginUser loginUser) {
-		// ƒ|ƒXƒg“à—e‚Ì•\¦
+		// ãƒã‚¹ãƒˆå†…å®¹ã®è¡¨ç¤º
 		System.out.println("[keyword: " + keyword + "]");
 		System.out.println("[inReplyToStatusId: " + inReplyToStatusId + "]");
 		System.out.println("[source: " + loginUser.getSource() + "]");

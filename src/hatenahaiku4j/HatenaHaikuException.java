@@ -1,17 +1,17 @@
 package hatenahaiku4j;
 
 /**
- * ‚Í‚Ä‚ÈƒnƒCƒN—áŠO‚ğ•\Œ»‚·‚éƒNƒ‰ƒX
+ * ã¯ã¦ãªãƒã‚¤ã‚¯ä¾‹å¤–ã‚’è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹
  * 
  * @since v0.0.1
  * @author fumokmm
  */
 public class HatenaHaikuException extends Exception {
-	/** ƒVƒŠƒAƒ‹ƒo[ƒWƒ‡ƒ“UID */
+	/** ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ã‚¸ãƒ§ãƒ³UID */
 	private static final long serialVersionUID = 8268709340102051276L;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
 	 * 
 	 * @since v0.0.1
 	 */
@@ -20,9 +20,9 @@ public class HatenaHaikuException extends Exception {
 	}
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
 	 * 
-	 * @param message ƒƒbƒZ[ƒW
+	 * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 	 * @since v0.0.1
 	 */
 	HatenaHaikuException(String message) {
@@ -30,10 +30,10 @@ public class HatenaHaikuException extends Exception {
 	}
 	
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å‚·B
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã™ã€‚
 	 * 
-	 * @param message ƒƒbƒZ[ƒW
-	 * @param cause Œ´ˆö‚Æ‚È‚Á‚½—áŠO
+	 * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+	 * @param cause åŸå› ã¨ãªã£ãŸä¾‹å¤–
 	 * @since v0.0.1
 	 */
 	HatenaHaikuException(String message, Throwable cause) {
