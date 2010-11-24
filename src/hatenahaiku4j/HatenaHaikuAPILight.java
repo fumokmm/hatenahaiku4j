@@ -37,7 +37,7 @@ public class HatenaHaikuAPILight {
 	protected static final String URL_KEYWORD_TIMELINE		= "http://h.hatena.ne.jp/api/statuses/keyword_timeline/";
 	/** URL: アルバムタイムライン(XML) */
 	protected static final String URL_ALBUM_TIMELINE_XML		= "http://h.hatena.ne.jp/api/statuses/album.xml";
-	/** URL: キーワードタイムライン */
+	/** URL: アルバムタイムライン */
 	protected static final String URL_ALBUM_TIMELINE			= "http://h.hatena.ne.jp/api/statuses/album/";
 	/** URL: ステータス情報 */
 	protected static final String URL_STATUS					= "http://h.hatena.ne.jp/api/statuses/show/";
@@ -568,7 +568,7 @@ public class HatenaHaikuAPILight {
 	 * 指定したユーザのidページのタイムラインを取得します。<br/>
 	 * このタイムラインは "id:xxxx" のキーワードタイムラインと同じものです。
 	 * 
-	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int, Date)
+	 * @see HatenaHaikuAPILight#getKeywordTimeline(ReduceOp, String, int, int, Date)
 	 * @param op 集合操作
 	 * @param userId ユーザID
 	 * @param page 取得するページです。最大数は100です。

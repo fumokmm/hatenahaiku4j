@@ -1,5 +1,7 @@
 package hatenahaiku4j;
 
+import hatenahaiku4j.op.ReduceOp;
+
 import java.util.Date;
 import java.util.List;
 
@@ -108,6 +110,23 @@ public class UserAPI extends EntityAPI {
 	}
 	
 	/**
+	 * このユーザのフレンドタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends_timeline/<font color="red">ユーザID</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getFriendsTimeline(ReduceOp, String, int, int, Date)
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return このユーザのフレンドタイムライン
+	 * @throws HatenaHaikuException 
+	 * @since v1.1.1
+	 */
+	public <T> T getFriendsTimeline(ReduceOp<Status, T> op, String userId, int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getFriendsTimeline(op, user.getUserId(), page, count, since);
+	}
+	
+	/**
 	 * このユーザのユーザタイムラインを取得します。最新ページを20件取得します。<br/>
 	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
 	 *
@@ -163,6 +182,23 @@ public class UserAPI extends EntityAPI {
 	 */
 	public List<Status> getTimeline(int page, int count, Date since) throws HatenaHaikuException {
 		return apiLight.getUserTimeline(user.getUserId(), page, count, since);
+	}
+	
+	/**
+	 * このユーザのユーザタイムラインを取得します。<br/>
+	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
+	 *
+	 * @see HatenaHaikuAPILight#getUserTimeline(ReduceOp, String, int, int, Date)
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return このユーザのユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getTimeline(ReduceOp<Status, T> op, int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getUserTimeline(op, user.getUserId(), page, count, since);
 	}
 	
 	/**
@@ -224,6 +260,23 @@ public class UserAPI extends EntityAPI {
 	}
 	
 	/**
+	 * このユーザの人気のユーザタイムラインを取得します。<br/>
+	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
+	 *
+	 * @see HatenaHaikuAPILight#getHotUserTimeline(ReduceOp, String, int, int, Date)
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return このユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getHotTimeline(ReduceOp<Status, T> op, int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getHotUserTimeline(op, user.getUserId(), page, count, since);
+	}
+	
+	/**
 	 * このユーザのidページのタイムラインを取得します。最新ページを20件取得します。<br/>
 	 * このタイムラインは "id:xxxx" のキーワードタイムラインと同じものです。
 	 *
@@ -282,6 +335,23 @@ public class UserAPI extends EntityAPI {
 	}
 	
 	/**
+	 * このユーザのidページのタイムラインを取得します。<br/>
+	 * このタイムラインは "id:xxxx" のキーワードタイムラインと同じものです。
+	 *
+	 * @see HatenaHaikuAPILight#getIdTimeline(ReduceOp, String, int, int, Date)
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return このユーザのidページのタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getIdTimeline(ReduceOp<Status, T> op, int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getIdTimeline(op, user.getUserId(), page, count, since);
+	}
+	
+	/**
 	 * このユーザがフォローしているユーザのリストを100件取得します。（１ページ目）<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/friends/<font color="red">ユーザID</font>.xml</i>
 	 * 
@@ -309,6 +379,21 @@ public class UserAPI extends EntityAPI {
 	}
 
 	/**
+	 * このユーザがフォローしているユーザのリストを100件取得します。（指定ページ）<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/friends/<font color="red">ユーザID</font>.xml&page=<font color="red">ページ</font></i>
+	 * 
+	 * @see HatenaHaikuAPILight#getFollowingList(ReduceOp, String, int)
+	 * @param op 集合操作
+	 * @param page ページ
+	 * @return このユーザがフォローしているユーザのリスト（指定ページ）
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getFollowingList(ReduceOp<User, T> op, int page) throws HatenaHaikuException {
+		return apiLight.getFollowingList(op, user.getUserId(), page);
+	}
+
+	/**
 	 * このユーザをフォローしているユーザのリストを取得します。<br/>
 	 * フォロワーはページ指定できず、一気に全員分取得されるようです。<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/followers/<font color="red">ユーザID</font>.xml</i>
@@ -319,7 +404,22 @@ public class UserAPI extends EntityAPI {
 	 * @since v0.2.0
 	 */
 	public List<User> getFollowersList() throws HatenaHaikuException {
-		return apiLight.getFollowingList(user.getUserId());
+		return apiLight.getFollowersList(user.getUserId());
+	}
+
+	/**
+	 * このユーザをフォローしているユーザのリストを取得します。<br/>
+	 * フォロワーはページ指定できず、一気に全員分取得されるようです。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/followers/<font color="red">ユーザID</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getFollowersList(ReduceOp, String)
+	 * @param op 集合操作
+	 * @return このユーザをフォローしているユーザのリスト
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getFollowersList(ReduceOp<User, T> op) throws HatenaHaikuException {
+		return apiLight.getFollowersList(op, user.getUserId());
 	}
 
 	/**
@@ -335,6 +435,20 @@ public class UserAPI extends EntityAPI {
 		return apiLight.getFollowingKeywordList(user.getUserId());
 	}
 	
+	/**
+	 * このユーザがフォローしているキーワードのリストを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keywords/<font color="red">ユーザID</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getFollowingKeywordList(ReduceOp, String)
+	 * @param op 集合操作
+	 * @return　このユーザがフォローしているキーワードリスト
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getFollowingKeywordList(ReduceOp<Keyword, T> op) throws HatenaHaikuException {
+		return apiLight.getFollowingKeywordList(op, user.getUserId());
+	}
+
 	// ------------------以下、認証が必要なAPI
 	
 	/**

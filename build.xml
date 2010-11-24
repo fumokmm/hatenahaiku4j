@@ -2,7 +2,7 @@
 <project name="HatenaHaiku4J Build" default="main" basedir=".">
 
 	<!-- HatenaHaiku4Jのバージョン -->
-	<property name="version" value="1.1.0"/>
+	<property name="version" value="1.1.1"/>
 
 	<!-- 概要 -->
 	<description>JarやJavadocなどを生成します。</description>
@@ -53,7 +53,7 @@
 			author="true"
 			classpath="."
 			destdir="${doc}"
-			doctitle="HatenaHaiku4J ${version}"
+			doctitle="HatenaHaiku4J v${version}"
 			nodeprecated="false"
 			nodeprecatedlist="false"
 			noindex="false"

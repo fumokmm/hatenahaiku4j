@@ -1,5 +1,6 @@
 package hatenahaiku4j.sample;
 
+import hatenahaiku4j.Config;
 import hatenahaiku4j.HatenaHaikuAPI;
 import hatenahaiku4j.HatenaHaikuAPILight;
 import hatenahaiku4j.HatenaHaikuException;
@@ -33,7 +34,7 @@ public class Sample004 {
 		HatenaHaikuAPILight apiLight = new HatenaHaikuAPILight();
 		apiLight.setNeedHttpLog(true);	// HTTPログを出力する
 
-		printSeparate("#004 Sample START");
+		printSeparate("#004 Sample START (" + Config.getVersion() + ")");
 		try {
 			// エントリ内容を作成
 			StringBuilder entryContents = new StringBuilder();
@@ -106,7 +107,7 @@ public class Sample004 {
 		} catch(HatenaHaikuException e) {
 			e.printStackTrace();
 		}
-		printSeparate("#004 Sample END");
+		printSeparate("#004 Sample END (" + Config.getVersion() + ")");
 	}
 	
 	/**

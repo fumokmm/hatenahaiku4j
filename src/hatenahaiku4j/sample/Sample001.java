@@ -1,5 +1,6 @@
 package hatenahaiku4j.sample;
 
+import hatenahaiku4j.Config;
 import hatenahaiku4j.HatenaHaikuAPI;
 import hatenahaiku4j.HatenaHaikuAPILight;
 import hatenahaiku4j.HatenaHaikuException;
@@ -33,7 +34,7 @@ public class Sample001 {
 		HatenaHaikuAPILight apiLight = new HatenaHaikuAPILight();
 		apiLight.setNeedHttpLog(true);	// HTTPログを出力する
 
-		printSeparate("#001 Sample START");
+		printSeparate("#001 Sample START (" + Config.getVersion() + ")");
 		try {
 			printSeparate("パブリックタイムラインを出力する");
 			List<Status> publicTimeline = apiLight.getPublicTimeline();
@@ -73,7 +74,7 @@ public class Sample001 {
 		} catch(HatenaHaikuException e) {
 			e.printStackTrace();
 		}
-		printSeparate("#001 Sample END");
+		printSeparate("#001 Sample END (" + Config.getVersion() + ")");
 	}
 	
 	/**

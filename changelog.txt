@@ -1,3 +1,7 @@
+HatenaHaiku4J v1.1.1 2009-10-24
+	・Config#getVersion()追加により、バージョン情報を取得できるようにした。
+	・KeywordAPI, UserAPIをRecudeOpに対応させた。
+
 HatenaHaiku4J v1.1.0 2009-10-21
 	・v593kdrg氏による集約操作のインタフェースを追加。
 	・Status, Keyword, UserにComparableを実装させた。

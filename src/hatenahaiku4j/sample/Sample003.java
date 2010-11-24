@@ -1,5 +1,6 @@
 package hatenahaiku4j.sample;
 
+import hatenahaiku4j.Config;
 import hatenahaiku4j.HatenaHaikuAPI;
 import hatenahaiku4j.HatenaHaikuAPILight;
 import hatenahaiku4j.HatenaHaikuException;
@@ -34,7 +35,7 @@ public class Sample003 {
 		HatenaHaikuAPILight apiLight = new HatenaHaikuAPILight();
 		apiLight.setNeedHttpLog(true);	// HTTPログを出力する
 
-		printSeparate("#003 Sample START");
+		printSeparate("#003 Sample START (" + Config.getVersion() + ")");
 		try {
 			Keyword myIdPage = apiAuth.getMyKeyword();
 
@@ -73,7 +74,7 @@ public class Sample003 {
 		} catch(HatenaHaikuException e) {
 			e.printStackTrace();
 		}
-		printSeparate("#003 Sample END");
+		printSeparate("#003 Sample END (" + Config.getVersion() + ")");
 	}
 	
 	/**

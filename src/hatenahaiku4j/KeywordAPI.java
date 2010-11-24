@@ -1,5 +1,7 @@
 package hatenahaiku4j;
 
+import hatenahaiku4j.op.ReduceOp;
+
 import java.io.File;
 import java.util.Date;
 import java.util.List;
@@ -108,6 +110,23 @@ public class KeywordAPI extends EntityAPI {
 	}
 	
 	/**
+	 * このキーワードのキーワードタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getKeywordTimeline(ReduceOp, String, int, int, Date)
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return このキーワードのキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getTimeline(ReduceOp<Status, T> op, int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getKeywordTimeline(op, keyword.getTitle(), page, count, since);
+	}
+	
+	/**
 	 * このキーワードの人気のキーワードタイムラインを取得します。最新ページを20件取得します。<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
 	 * 
@@ -166,6 +185,23 @@ public class KeywordAPI extends EntityAPI {
 	}
 	
 	/**
+	 * このキーワードの人気のキーワードタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getKeywordTimeline(ReduceOp, String, int, int, Date)
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return このキーワードの人気のキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getHotTimeline(ReduceOp<Status, T> op, int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getHotKeywordTimeline(op, keyword.getTitle(), page, count, since);
+	}
+	
+	/**
 	 * このキーワードの画像を含む最新のエントリのキーワードタイムラインを取得します。最新ページを20件取得します。<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">キーワード</font>.xml</i>
 	 * 
@@ -221,6 +257,23 @@ public class KeywordAPI extends EntityAPI {
 	 */
 	public List<Status> getAlbumTimeline(int page, int count, Date since) throws HatenaHaikuException {
 		return apiLight.getAlbumKeywordTimeline(keyword.getTitle(), page, count, since);
+	}
+
+	/**
+	 * このキーワードの画像を含む最新のエントリのキーワードタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getAlbumKeywordTimeline(ReduceOp, String, int, int, Date)
+	 * @param op 集合操作
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 画像を含む最新のエントリのキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.1.1
+	 */
+	public <T> T getAlbumTimeline(ReduceOp<Status, T> op, int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getAlbumKeywordTimeline(op, keyword.getTitle(), page, count, since);
 	}
 
 	// ------------------以下、認証が必要なAPI

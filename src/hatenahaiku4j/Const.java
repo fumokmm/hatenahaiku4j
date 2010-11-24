@@ -9,6 +9,8 @@ package hatenahaiku4j;
 public class Const {
 	/** API名 */
 	public static final String API_NAME = "HatenaHaiku4J";
+	/** バージョン */
+	public static final String VERSION = "v1.1.1";
 
 	/** コロン */
 	public static final String COLON = ":";
