@@ -1,3 +1,6 @@
+HatenaHaiku4J v0.2.2 2009-09-16
+	・HttpUtilでsetUseCaches(false)と、setRequestProperty("Connection", "close")を追加した。
+
 HatenaHaiku4J v0.2.1 2009-09-15
 	・LoginUser#createはあまり意味がなかったため、普通のコンストラクタにした。
 

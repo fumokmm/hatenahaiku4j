@@ -28,6 +28,10 @@ public class HttpUtil {
 	private static enum Method { POST, GET }
 	/** リクエストプロパティ：BASIC認証 */
 	protected static final String REQUEST_PROPERTY_AUTHORIZATION = "Authorization";
+	/** リクエストプロパティ:コネクション */
+	protected static final String REQUEST_PROPERTY_CONNECTION = "Connection";
+	/** リクエストプロパティ:コネクション (値:close) */
+	protected static final String REQUEST_PROPERTY_CONNECTION_CLOSE = "close";
 	
 	/**
 	 * ゲットします。
@@ -68,7 +72,12 @@ public class HttpUtil {
 			if (loginUser != null) {
 				urlconn.setRequestProperty(REQUEST_PROPERTY_AUTHORIZATION, loginUser.toBasicAuthenticationString());
 			}
-			urlconn.setDoOutput(true);
+			// GETだが、outputStreamを取得するたoutputもtrueとする
+			urlconn.setDoInput(true);		// for GET
+			urlconn.setDoOutput(true);		// for POST
+			urlconn.setUseCaches(false);	// disable cache
+			// 最初にして最後の要求
+			urlconn.setRequestProperty(REQUEST_PROPERTY_CONNECTION, REQUEST_PROPERTY_CONNECTION_CLOSE);
 			
 			// ポスト内容の表示
 			if (param != null) {
@@ -141,7 +150,12 @@ public class HttpUtil {
 			if (param.getKeyword() == null || param.getKeyword().equals("")) {
 				param.setKeyword(loginUser.getUserIdNotation());
 			}
-			urlconn.setDoOutput(true);
+			// POSTのため、Input/Outputともにtrue
+			urlconn.setDoInput(true);		// for GET
+			urlconn.setDoOutput(true);		// for POST
+			urlconn.setUseCaches(false);	// disable cache
+			// 最初にして最後の要求
+			urlconn.setRequestProperty(REQUEST_PROPERTY_CONNECTION, REQUEST_PROPERTY_CONNECTION_CLOSE);
 			
 			// ポスト内容の表示
 			if (needLog) {
