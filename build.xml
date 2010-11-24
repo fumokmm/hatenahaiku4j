@@ -5,7 +5,7 @@
 	<description>JarやJavadocなどを生成します。</description>
 	
 	<!-- HatenaHaiku4Jのバージョン -->
-	<property name="version" value="0.0.1"/>
+	<property name="version" value="0.0.2"/>
 	
 	<!-- ディレクトリ -->
 	<property name="src" location="src"/>
@@ -69,7 +69,7 @@
 		<echo message="-----compile-----" />
 		<delete dir="${classes}" quiet="true" />
 		<mkdir dir="${classes}" />
-		<javac srcdir="${src}" destdir="${classes}" debug="on" />
+		<javac srcdir="${src}" destdir="${classes}" debug="on" source="1.5" target="1.5" />
 	</target>
 
 	<!-- 一時ファイル／一時フォルダの削除 -->
