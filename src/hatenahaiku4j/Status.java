@@ -3,6 +3,7 @@ package hatenahaiku4j;
 import hatenahaiku4j.util.Util;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * はてなハイクステータス情報を表現するクラス
@@ -24,12 +25,17 @@ public class Status {
 	private String keyword;
 	/** リンク */
 	private String link;
+	/** このステータスへの返信 */
+	private List<Status> replies;
 	/** ソース（クライアント名） */
 	private String source;
 	/** 投稿内容 */
 	private String text;
 	/** ユーザ情報 */
 	private User user;
+	
+	/** このステータスへの返信として取得した内容かどうか */
+	private boolean shadow;
 	
 	/** @return ステータスID */
 	public String getStatusId() {
@@ -71,6 +77,11 @@ public class Status {
 		return link;
 	}
 
+	/** このステータスへの返信 */
+	public List<Status> getReplies() {
+		return replies;
+	}
+	
 	/** @return ソース（クライアント名） */
 	public String getSource() {
 		return source;
@@ -91,6 +102,18 @@ public class Status {
 		return user.getUserId();
 	}
 
+	/**
+	 * {@link #getShadow()}のエイリアスです。
+	 * @return このステータスへの返信として取得した内容かどうか
+	 */
+	public boolean isShadow() {
+		return shadow;
+	}
+	/** @return このステータスへの返信として取得した内容かどうか */
+	public boolean getShadow() {
+		return shadow;
+	}
+	
 	/**
 	 * @param id the id to set
 	 */
@@ -141,6 +164,13 @@ public class Status {
 	}
 
 	/**
+	 * @param replies the replies to set
+	 */
+	void setReplies(List<Status> replies) {
+		this.replies = replies;
+	}
+	
+	/**
 	 * @param source the source to set
 	 */
 	void setSource(String source) {
@@ -161,8 +191,23 @@ public class Status {
 		this.user = user;
 	}
 	
+	/**
+	 * @param shadow the shadow to set
+	 */
+	void setShadow(boolean shadow) {
+		this.shadow = shadow;
+	}
 	
-	
+	/**
+	 * textの「xxxx=本文」の "xxxx="部分を取り除く。<br/>
+	 * 前提：keyword, textが設定されていること。（keywordはidページの場合id:xxx形式で格納済みであること）
+	 */
+	void removeKeywordEqualOnText() {
+		if (!keyword.equals("") && !isIdPage()) {
+			// 空白でもidページでもない場合、textには「キーワード=」が頭についているので、取り除く
+			text = text.substring(keyword.length() + 1);
+		}
+	}
 }
 
 /* ------ sample xml ---------------------------
@@ -177,6 +222,13 @@ public class Status {
 
     <keyword>はてなデフォルトさん</keyword>
     <link>http://h.hatena.ne.jp/jkondo/12345678901234</link>
+    <replies>                                         |
+    	in_reply_to_status_id, in_reply_to_user_id    | ただし、repliesは
+		keyword, link, replies を除く<status>           | トップレベルstatusにのみ付加される。
+	</replies>                                        |
+		・
+		・以下返信先分、repliesの繰り返し
+		・
     <source>web</source>
     <text>はてなデフォルトさん=こんにちは、かわいいデフォルトさんですね。</text>
     <user>

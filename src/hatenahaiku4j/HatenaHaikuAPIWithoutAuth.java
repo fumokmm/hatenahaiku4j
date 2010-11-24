@@ -15,7 +15,6 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
@@ -832,17 +831,30 @@ public class HatenaHaikuAPIWithoutAuth {
 			// ソース（クライアント名）
 			status.setSource(XmlUtil.getText(elemStatus, "source"));
 			// 投稿内容
-			if (status.isIdPage()) {
-				status.setText(XmlUtil.getText(elemStatus, "text"));
-			} else {
-				// idページでない場合、textには「キーワード=」が頭についているので、取り除く
-				status.setText(XmlUtil.getText(elemStatus, "text").substring(status.getKeyword().length() + 1));
-			}
+			status.setText(XmlUtil.getText(elemStatus, "text"));
 			// ユーザ情報
 			status.setUser(toUser(XmlUtil.getFirstChildElement(elemStatus, "user")));
+			// このステータスへの返信
+			List<Status> replies = new ArrayList<Status>();
+			for (Element replyStatus : XmlUtil.getChildElementsByTagName(elemStatus, "replies")) {
+				Status reply = toStatus(replyStatus);
+				reply.setShadow(true);
+				reply.setInReplyToStatusId(status.getStatusId());
+				reply.setInReplyToUserId(status.getUserId());
+				reply.setKeyword(status.getKeyword());
+				reply.setLink(reply.getUser().getEntriesUrl() + reply.getStatusId());
+				// textの「キーワード=」部分の削除
+				reply.removeKeywordEqualOnText();
+				replies.add(reply);
+			}
+			status.setReplies(replies);
+			
+			// textの「キーワード=」部分の削除
+			status.removeKeywordEqualOnText();
+			
 			return status;
 		} catch (ParseException e) {
-			throw new HatenaHaikuException("", e);
+			throw new HatenaHaikuException("ParseException発生", e);
 		}
 	}
 	
@@ -854,9 +866,8 @@ public class HatenaHaikuAPIWithoutAuth {
 	 */
 	protected List<Status> toStatusList(Element elemStatuses) throws HatenaHaikuException {
 		List<Status> statusList = new ArrayList<Status>();
-		NodeList elemStatusList = elemStatuses.getElementsByTagName("status");
-		for (int i = 0; i < elemStatusList.getLength(); i++) {
-			statusList.add(toStatus((Element)elemStatusList.item(i)));
+		for (Element elemStatus : XmlUtil.getChildElementsByTagName(elemStatuses, "status")) {
+			statusList.add(toStatus(elemStatus));
 		}
 		return statusList;
 	}
@@ -892,9 +903,8 @@ public class HatenaHaikuAPIWithoutAuth {
 	 */
 	protected List<User> toUserList(Element elemUsers) throws HatenaHaikuException {
 		List<User> userList = new ArrayList<User>();
-		NodeList elemUserList = elemUsers.getElementsByTagName("user");
-		for (int i = 0; i < elemUserList.getLength(); i++) {
-			userList.add(toUser((Element)elemUserList.item(i)));
+		for (Element elemUser : XmlUtil.getChildElementsByTagName(elemUsers, "user")) {
+			userList.add(toUser(elemUser));
 		}
 		return userList;
 	}
@@ -928,9 +938,8 @@ public class HatenaHaikuAPIWithoutAuth {
 	 */
 	protected List<Keyword> toKeywordList(Element elemKeywords) throws HatenaHaikuException {
 		List<Keyword> keywordList = new ArrayList<Keyword>();
-		NodeList elemKeywordList = elemKeywords.getElementsByTagName("keyword");
-		for (int i = 0; i < elemKeywordList.getLength(); i++) {
-			keywordList.add(toKeyword((Element)elemKeywordList.item(i)));
+		for (Element elemKeyword : XmlUtil.getChildElementsByTagName(elemKeywords, "keyword")) {
+			keywordList.add(toKeyword(elemKeyword));
 		}
 		return keywordList;
 	}

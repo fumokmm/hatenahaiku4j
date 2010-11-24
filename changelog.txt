@@ -1,3 +1,7 @@
+HatenaHaiku4J v0.1.0 2009-09-13
+	Statusにrepliesを追加した。
+	XmlUtilの不具合を修正した。
+
 HatenaHaiku4J v0.0.3 2009-09-11
 	HatenaHaikuAPI#relateKeywordにて、
 	対象キーワード1と2が同じだった場合、エラーとするよう修正を行った。
