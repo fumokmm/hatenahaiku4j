@@ -1,5 +1,7 @@
 package hatenahaiku4j;
 
+import static hatenahaiku4j.Const.*;
+
 /**
  * 設定ファイル
  * 
@@ -15,6 +17,6 @@ public class Config {
 	 * @since v1.1.1
 	 */
 	public static String getVersion() {
-		return Const.API_NAME + " " + Const.VERSION;
+		return API_NAME + " " + VERSION;
 	}
 }

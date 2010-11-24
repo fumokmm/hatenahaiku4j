@@ -1,6 +1,6 @@
 package hatenahaiku4j.util;
 
-import hatenahaiku4j.Const;
+import static hatenahaiku4j.Const.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -142,7 +142,7 @@ public class HatenaUtil {
 		String result = "";
 		try {
 			// GET:はてなプロフィールのHTML
-			String html = HttpUtil.getText(Const.HATENA_PROFILE_BASE_URL + userId + Const.SLASH);
+			String html = HttpUtil.getText(HATENA_PROFILE_BASE_URL + userId + SLASH);
 			Matcher matcher =  USER_NAME_TITLE_PATTERN.matcher(html);
 			// 最初の一件目のみ取得、なければ空文字のまま
 			if (matcher.find()) {

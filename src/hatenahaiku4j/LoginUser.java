@@ -1,5 +1,6 @@
 package hatenahaiku4j;
 
+import static hatenahaiku4j.Const.*;
 import hatenahaiku4j.util.Base64Util;
 
 /**
@@ -25,7 +26,7 @@ public class LoginUser {
 	 * @since v0.2.1
 	 */
 	public LoginUser(String userId, String password) {
-		this(userId, password, Const.API_NAME);
+		this(userId, password, API_NAME);
 	}
 	
 	/**
@@ -60,7 +61,7 @@ public class LoginUser {
 	 * @since v0.2.0
 	 */
 	public String getUserIdNotation() {
-		return Const.ID_COLON + userId;
+		return ID_COLON + userId;
 	}
 	
 	/**

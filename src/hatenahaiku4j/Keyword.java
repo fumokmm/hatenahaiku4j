@@ -1,5 +1,6 @@
 package hatenahaiku4j;
 
+import static hatenahaiku4j.Const.*;
 import hatenahaiku4j.util.HatenaUtil;
 
 import java.util.List;
@@ -127,7 +128,7 @@ public class Keyword implements Entity<Keyword> {
 	 * @since v1.0.0
 	 */
 	public String getMobileLink() {
-		return link.replace(Const.BASE_URL, Const.MOBILE_BASE_URL);
+		return link.replace(BASE_URL, MOBILE_BASE_URL);
 	}
 
 	/**

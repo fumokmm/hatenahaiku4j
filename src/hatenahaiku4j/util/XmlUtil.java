@@ -1,6 +1,6 @@
 package hatenahaiku4j.util;
 
-import hatenahaiku4j.Const;
+import static hatenahaiku4j.Const.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -52,7 +52,7 @@ public class XmlUtil {
 		// パースを実行してDocumentオブジェクトを取得
 		Document doc = builder.parse(
 			new ByteArrayInputStream(
-				escapeAmp(removeIllegalChar(resultXml)).getBytes(Const.UTF8)
+				escapeAmp(removeIllegalChar(resultXml)).getBytes(UTF8)
 			)
 		);
 

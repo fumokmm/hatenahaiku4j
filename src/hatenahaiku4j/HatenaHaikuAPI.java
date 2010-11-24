@@ -1,5 +1,6 @@
 package hatenahaiku4j;
 
+import static hatenahaiku4j.Const.*;
 import hatenahaiku4j.op.ReduceOp;
 import hatenahaiku4j.util.HttpUtil;
 import hatenahaiku4j.util.StringUtil;
@@ -23,35 +24,35 @@ import org.xml.sax.SAXException;
  */
 public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	/** URL: フレンドタイムライン(XML) */
-	protected static final String URL_FRIENDS_TIMELINE_XML		= Const.API_BASE_URL + "statuses/friends_timeline.xml";
+	protected static final String URL_FRIENDS_TIMELINE_XML		= API_BASE_URL + "statuses/friends_timeline.xml";
 	/** URL: ユーザタイムライン(XML) */
-	protected static final String URL_USER_TIMELINE_XML			= Const.API_BASE_URL + "statuses/user_timeline.xml";
+	protected static final String URL_USER_TIMELINE_XML			= API_BASE_URL + "statuses/user_timeline.xml";
 	/** URL: 投稿(XML) */
-	protected static final String URL_UPDATE_STATUS_XML			= Const.API_BASE_URL + "statuses/update.xml";
+	protected static final String URL_UPDATE_STATUS_XML			= API_BASE_URL + "statuses/update.xml";
 	/** URL: エントリを削除 */
-	protected static final String URL_DELETE_STATUS				= Const.API_BASE_URL + "statuses/destroy/";
+	protected static final String URL_DELETE_STATUS				= API_BASE_URL + "statuses/destroy/";
 	/** URL: エントリにスターを一つ追加 */
-	protected static final String URL_ADD_STAR					= Const.API_BASE_URL + "favorites/create/";
+	protected static final String URL_ADD_STAR					= API_BASE_URL + "favorites/create/";
 	/** URL: エントリのスターを一つ減らす */
-	protected static final String URL_DELETE_STAR					= Const.API_BASE_URL + "favorites/destroy/";
+	protected static final String URL_DELETE_STAR					= API_BASE_URL + "favorites/destroy/";
 	/** URL: ユーザがフォローしているユーザのリスト(XML) */
-	protected static final String URL_FOLLOWING_LIST_XML			= Const.API_BASE_URL + "statuses/friends.xml";
+	protected static final String URL_FOLLOWING_LIST_XML			= API_BASE_URL + "statuses/friends.xml";
 	/** URL: ユーザをフォローしているユーザのリスト(XML) */
-	protected static final String URL_FOLLOWERS_LIST_XML			= Const.API_BASE_URL + "statuses/followers.xml";
+	protected static final String URL_FOLLOWERS_LIST_XML			= API_BASE_URL + "statuses/followers.xml";
 	/** URL: ユーザをフォローする */
-	protected static final String URL_FOLLOW_USER					= Const.API_BASE_URL + "friendships/create/";
+	protected static final String URL_FOLLOW_USER					= API_BASE_URL + "friendships/create/";
 	/** URL: ユーザのフォローをやめる */
-	protected static final String URL_UNFOLLOW_USER				= Const.API_BASE_URL + "friendships/destroy/";
+	protected static final String URL_UNFOLLOW_USER				= API_BASE_URL + "friendships/destroy/";
 	/** URL: ユーザがフォローしているキーワードのリスト(XML) */
-	protected static final String URL_FOLLOWING_KEYWORD_LIST_XML	= Const.API_BASE_URL + "statuses/keywords.xml";
+	protected static final String URL_FOLLOWING_KEYWORD_LIST_XML	= API_BASE_URL + "statuses/keywords.xml";
 	/** URL: キーワードをフォローする */
-	protected static final String URL_FOLLOW_KEYWORD				= Const.API_BASE_URL + "keywords/create/";
+	protected static final String URL_FOLLOW_KEYWORD				= API_BASE_URL + "keywords/create/";
 	/** URL: キーワードのフォローをやめる */
-	protected static final String URL_UNFOLLOW_KEYWORD			= Const.API_BASE_URL + "keywords/destroy/";
+	protected static final String URL_UNFOLLOW_KEYWORD			= API_BASE_URL + "keywords/destroy/";
 	/** URL: 関連キーワードを設定(XML) */
-	protected static final String URL_RELATE_KEYWORD_XML			= Const.API_BASE_URL + "keywords/relation/create.xml";
+	protected static final String URL_RELATE_KEYWORD_XML			= API_BASE_URL + "keywords/relation/create.xml";
 	/** URL: 関連キーワードを解除(XML) */
-	protected static final String URL_UNRELATE_KEYWORD_XML		= Const.API_BASE_URL + "keywords/relation/destroy.xml";
+	protected static final String URL_UNRELATE_KEYWORD_XML		= API_BASE_URL + "keywords/relation/destroy.xml";
 
 	/** ログインユーザ */
 	private LoginUser loginUser;
@@ -630,7 +631,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 */
 	public Status deleteEntry(String statusId) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(loginUser, URL_DELETE_STATUS + statusId + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(loginUser, URL_DELETE_STATUS + statusId + EXT_XML, null, isNeedHttpLog());
 			return toStatus(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -689,7 +690,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 */
 	private Status _modifyStar(boolean isAdd, String statusId) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(loginUser, (isAdd ? URL_ADD_STAR : URL_DELETE_STAR) + statusId + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(loginUser, (isAdd ? URL_ADD_STAR : URL_DELETE_STAR) + statusId + EXT_XML, null, isNeedHttpLog());
 			return toStatus(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -845,7 +846,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 */
 	private User _modifyFollowUser(boolean isFollow, String userId) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(loginUser, (isFollow ? URL_FOLLOW_USER : URL_UNFOLLOW_USER) + userId + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(loginUser, (isFollow ? URL_FOLLOW_USER : URL_UNFOLLOW_USER) + userId + EXT_XML, null, isNeedHttpLog());
 			return toUser(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -955,7 +956,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 */
 	private Keyword _modifyFollowKeyword(boolean isFollow, String keyword) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(loginUser, (isFollow ? URL_FOLLOW_KEYWORD : URL_UNFOLLOW_KEYWORD) + StringUtil.encode(keyword) + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(loginUser, (isFollow ? URL_FOLLOW_KEYWORD : URL_UNFOLLOW_KEYWORD) + StringUtil.encode(keyword) + EXT_XML, null, isNeedHttpLog());
 			return toKeyword(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {

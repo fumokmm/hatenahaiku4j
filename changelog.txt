@@ -1,3 +1,6 @@
+HatenaHaiku4J v1.2.1 2010-05-09
+	・HatenaHaikuAPIHTMLでmp3リンクの対応。(embedタグが閉じられていない)
+
 HatenaHaiku4J v1.2.0 2010-05-07
 	・HatenaHaikuAPIHTML(HTMLスクレイピング版)を追加した。
 

@@ -1,6 +1,8 @@
 package hatenahaiku4j;
 
+import static hatenahaiku4j.Const.*;
 import hatenahaiku4j.op.ReduceOp;
+import hatenahaiku4j.util.HaikuURL;
 import hatenahaiku4j.util.HatenaUtil;
 import hatenahaiku4j.util.HttpUtil;
 import hatenahaiku4j.util.StringUtil;
@@ -29,19 +31,19 @@ import org.xml.sax.SAXException;
  */
 public class HatenaHaikuAPIHTML {
 	/** URL: パブリックタイムライン */
-	protected static final String URL_PUBLIC_TIMELINE		= Const.BASE_URL + ".body";
+	protected static final String URL_PUBLIC_TIMELINE		= BASE_URL + ".body";
 	/** URL: アルバムタイムライン */
-	protected static final String URL_ALBUM_TIMELINE		= Const.BASE_URL + "album.body";
+	protected static final String URL_ALBUM_TIMELINE		= BASE_URL + "album.body";
 	/** URL: フレンドタイムライン */
-	protected static final String URL_FRIENDS_TIMELINE	= Const.BASE_URL + "【ID】/following.body";
+	protected static final String URL_FRIENDS_TIMELINE	= BASE_URL + "【ID】/following.body";
 	/** URL: ユーザタイムライン */
-	protected static final String URL_USER_TIMELINE		= Const.BASE_URL + "【ID】/.body";
+	protected static final String URL_USER_TIMELINE		= BASE_URL + "【ID】/.body";
 	/** URL: キーワードタイムライン */
-	protected static final String URL_KEYWORD_TIMELINE	= Const.BASE_URL + "target.body";
+	protected static final String URL_KEYWORD_TIMELINE	= BASE_URL + "target.body";
 	/** URL: キーワードリスト */
-	protected static final String URL_KEYWORD_LIST		= Const.BASE_URL + "keywords.body";
+	protected static final String URL_KEYWORD_LIST		= BASE_URL + "keywords.body";
 	/** URL: ホットキーワード */
-	protected static final String URL_HOT_KEYWORD_LIST	= Const.BASE_URL + "hotkeywords";
+	protected static final String URL_HOT_KEYWORD_LIST	= BASE_URL + "hotkeywords";
 
 	/** キーワードの投稿数のフォーマット */
 	protected static final MessageFormat KEYWORD_ENTRY_COUNT_FORMAT = new MessageFormat("({0,number,integer})");
@@ -143,7 +145,7 @@ public class HatenaHaikuAPIHTML {
 
 			// 取得して、XMLに加工する
 			String resultXml = HttpUtil.doGet(URL_PUBLIC_TIMELINE, param, isNeedHttpLog());
-			resultXml = Const.XML_HEADER + AddingRootTag.STATUS_LIST.surround(resultXml);
+			resultXml = XML_HEADER + AddingRootTag.STATUS_LIST.surround(getRemovedMp3Tags(resultXml));
 
 			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
@@ -202,7 +204,7 @@ public class HatenaHaikuAPIHTML {
 //			// 取得して、XMLに加工する
 //			String resultXml = HttpUtil.doGet(URL_ALBUM_TIMELINE, param, isNeedHttpLog());
 //			resultXml = StringUtil.removeIllegalChar(resultXml);
-//			resultXml = Const.XML_HEADER + AddingRootTag.STATUS_LIST.surround(resultXml);
+//			resultXml = XML_HEADER + AddingRootTag.STATUS_LIST.surround(resultXml);
 //
 //			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 //
@@ -262,7 +264,7 @@ public class HatenaHaikuAPIHTML {
 
 			// 取得して、XMLに加工する
 			String resultXml = HttpUtil.doGet(StringUtil.lumpReplace(URL_FRIENDS_TIMELINE, "【ID】", userId), param, isNeedHttpLog());
-			resultXml = Const.XML_HEADER + AddingRootTag.STATUS_LIST.surround(resultXml);
+			resultXml = XML_HEADER + AddingRootTag.STATUS_LIST.surround(getRemovedMp3Tags(resultXml));
 
 			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
@@ -384,7 +386,7 @@ public class HatenaHaikuAPIHTML {
 
 			// 取得して、XMLに加工する
 			String resultXml = HttpUtil.doGet(StringUtil.lumpReplace(URL_USER_TIMELINE, "【ID】", userId), param, isNeedHttpLog());
-			resultXml = Const.XML_HEADER + AddingRootTag.STATUS_LIST.surround(resultXml);
+			resultXml = XML_HEADER + AddingRootTag.STATUS_LIST.surround(getRemovedMp3Tags(resultXml));
 
 			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
@@ -499,7 +501,7 @@ public class HatenaHaikuAPIHTML {
 		 * 異なるため、キーワードがid形式だった場合は、#getIdTimelineに処理を移譲する。
 		 */
 		if (HatenaUtil.isIdNotation(keyword)) {
-			return getIdTimeline(keyword.replaceFirst("^" + Const.ID_COLON, ""));
+			return getIdTimeline(keyword.replaceFirst("^" + ID_COLON, ""));
 		}
 		return getKeywordTimeline(keyword, 0);
 	}
@@ -520,7 +522,7 @@ public class HatenaHaikuAPIHTML {
 		 * 異なるため、キーワードがid形式だった場合は、#getIdTimelineに処理を移譲する。
 		 */
 		if (HatenaUtil.isIdNotation(keyword)) {
-			return getIdTimeline(keyword.replaceFirst("^" + Const.ID_COLON, ""), page);
+			return getIdTimeline(keyword.replaceFirst("^" + ID_COLON, ""), page);
 		}
 		return getKeywordTimeline(EntityAPI.<Status>createCollectOp(), keyword, page);
 	}
@@ -542,7 +544,7 @@ public class HatenaHaikuAPIHTML {
 		 * 異なるため、キーワードがid形式だった場合は、#getIdTimelineに処理を移譲する。
 		 */
 		if (HatenaUtil.isIdNotation(keyword)) {
-			return getIdTimeline(op, keyword.replaceFirst("^" + Const.ID_COLON, ""), page);
+			return getIdTimeline(op, keyword.replaceFirst("^" + ID_COLON, ""), page);
 		}
 		return _getKeywordTimeline(op, keyword, page, KeywordTimelineMode.NONE);
 	}
@@ -562,7 +564,7 @@ public class HatenaHaikuAPIHTML {
 		 * 異なるため、キーワードがid形式だった場合は、#getIdTimelineに処理を移譲する。
 		 */
 		if (HatenaUtil.isIdNotation(keyword)) {
-			return getHotIdTimeline(keyword.replaceFirst("^" + Const.ID_COLON, ""));
+			return getHotIdTimeline(keyword.replaceFirst("^" + ID_COLON, ""));
 		}
 		return getHotKeywordTimeline(keyword, 0);
 	}
@@ -583,7 +585,7 @@ public class HatenaHaikuAPIHTML {
 		 * 異なるため、キーワードがid形式だった場合は、#getIdTimelineに処理を移譲する。
 		 */
 		if (HatenaUtil.isIdNotation(keyword)) {
-			return getHotIdTimeline(keyword.replaceFirst("^" + Const.ID_COLON, ""), page);
+			return getHotIdTimeline(keyword.replaceFirst("^" + ID_COLON, ""), page);
 		}
 		return getHotKeywordTimeline(EntityAPI.<Status>createCollectOp(), keyword, page);
 	}
@@ -605,7 +607,7 @@ public class HatenaHaikuAPIHTML {
 		 * 異なるため、キーワードがid形式だった場合は、#getIdTimelineに処理を移譲する。
 		 */
 		if (HatenaUtil.isIdNotation(keyword)) {
-			return getHotIdTimeline(op, keyword.replaceFirst("^" + Const.ID_COLON, ""), page);
+			return getHotIdTimeline(op, keyword.replaceFirst("^" + ID_COLON, ""), page);
 		}
 		return _getKeywordTimeline(op, keyword, page, KeywordTimelineMode.HOT);
 	}
@@ -698,18 +700,18 @@ public class HatenaHaikuAPIHTML {
 			
 				case ID :
 				case HOT_ID :
-					param.setWord(Const.ID_COLON + keyword);
+					param.setWord(ID_COLON + keyword);
 					break;
 
 				default :
-					param.setWord(Const.KEYWORD_COLON + keyword);
+					param.setWord(KEYWORD_COLON + keyword);
 					break;
 			}
 			param.setPage(page);
 
 			// 取得して、XMLに加工する
 			String resultXml = HttpUtil.doGet(URL_KEYWORD_TIMELINE, param, isNeedHttpLog());
-			resultXml = Const.XML_HEADER + AddingRootTag.STATUS_LIST.surround(resultXml);
+			resultXml = XML_HEADER + AddingRootTag.STATUS_LIST.surround(getRemovedMp3Tags(resultXml));
 
 			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 		
@@ -775,9 +777,7 @@ public class HatenaHaikuAPIHTML {
 		try {
 			// 取得して、XMLに加工する
 			String resultXml = HttpUtil.doGet(URL_HOT_KEYWORD_LIST, null, isNeedHttpLog());
-			// <ul class="cloud">と</ul>で囲まれた内容だけ取得
-			resultXml = resultXml.replaceAll("(?s)^(.+<ul class=\"cloud\">)|(</ul>.+)$", "");
-			resultXml = Const.XML_HEADER + AddingRootTag.KEYWORD_LIST.surround(resultXml);
+			resultXml = XML_HEADER + AddingRootTag.KEYWORD_LIST.surround(getCloudUL(resultXml));
 
 			return toKeywordList(op, XmlUtil.getRootElement(resultXml));
 
@@ -886,7 +886,7 @@ public class HatenaHaikuAPIHTML {
 			
 			// 取得して、XMLに加工する
 			String resultXml = HttpUtil.doGet(URL_KEYWORD_LIST, param, isNeedHttpLog());
-			resultXml = Const.XML_HEADER + AddingRootTag.KEYWORD_LIST.surround(resultXml);
+			resultXml = XML_HEADER + AddingRootTag.KEYWORD_LIST.surround(resultXml);
 
 			return toKeywordList(op, XmlUtil.getRootElement(resultXml));
 
@@ -1030,7 +1030,7 @@ public class HatenaHaikuAPIHTML {
 					// ユーザ情報
 					status.setUser(User.create(this, userId));
 					// リンク
-					status.setLink(Const.BASE_URL + userId + Const.SLASH + statusId);
+					status.setLink(BASE_URL + userId + SLASH + statusId);
 					// ステータスID
 					status.setStatusId(statusId);
 				}
@@ -1167,7 +1167,7 @@ public class HatenaHaikuAPIHTML {
 			}
 		} catch (ParseException e) {}
 
-		String link = Const.BASE_URL + anchor.getAttribute("href").substring(1); // 1文字目の "/" は要らない
+		String link = BASE_URL + anchor.getAttribute("href").substring(1); // 1文字目の "/" は要らない
 		String title = anchor.getTextContent();
 		
 		// クラウド
@@ -1221,9 +1221,14 @@ public class HatenaHaikuAPIHTML {
 					}
 					if (nodeName.equals("a")) {
 						if (isKeywordLink(childElem)) {
-							sb.append("[[").append(childElem.getTextContent()).append("]]");
+							sb.append(HaikuURL.byKeyword(childElem.getTextContent()).getLink());
 						} else {
-							sb.append(getTextContent(child));
+							String attrHref = childElem.getAttribute("href");
+							if (attrHref != null && attrHref.endsWith(".mp3")) {
+								sb.append(attrHref);
+							} else {
+								sb.append(getTextContent(child));
+							}
 						}
 						continue;
 					}
@@ -1234,14 +1239,16 @@ public class HatenaHaikuAPIHTML {
 						continue;
 					}
 					if (nodeName.equals("embed")) {
-						if (attrSrc.startsWith("http://www.youtube.com/v/")) {
-							sb.append(attrSrc);
+						if (attrSrc.startsWith(URL_YOUTUBE_V)) {
+							sb.append(HaikuURL.byYouTube(attrSrc.replace(URL_YOUTUBE_V, "")).getLink());
 						}
+						continue;
 					}
 					if (nodeName.equals("script")) {
-						if (attrSrc.startsWith("http://www.nicovideo.jp/thumb_watch/")) {
-							sb.append(attrSrc.split("\\?")[0].replace("thumb_", ""));
+						if (attrSrc.startsWith(URL_NICO2_THUMB_WATCH)) {
+							sb.append(HaikuURL.byNico2(attrSrc.replace(URL_NICO2_THUMB_WATCH, "")).getLink());
 						}
+						continue;
 					}
 					// TODO asin記法の対応
 					
@@ -1288,6 +1295,28 @@ public class HatenaHaikuAPIHTML {
 			&& elem.getAttribute("href") != null
 			&& elem.getAttribute("href").startsWith("/keyword/")
 			&& "keyword".equals(elem.getAttribute("class"));
+	}
+	
+	/**
+	 * &lt;ul class="cloud"&gt;と&lt;/ul&gt;で囲まれた内容だけ取得します。
+	 * 
+	 * @param xmlStr XML文字列
+	 * @return XML文字列
+	 * @since v1.2.1
+	 */
+	protected static String getCloudUL(String xmlStr) {
+		return xmlStr.replaceAll("(?s)^(.+<ul class=\"cloud\">)|(</ul>.+)$", "");
+	}
+	
+	/**
+	 * mp3の時だけ閉じタグがおかしいのでそれらを削除した内容だけ取得します。
+	 * 
+	 * @param xmlStr XML文字列
+	 * @return XML文字列
+	 * @since v1.2.1
+	 */
+	protected static String getRemovedMp3Tags(String xmlStr) {
+		return xmlStr.replaceAll("(?s)<object.*?id=\"mp3_3\".*?</object>|<img src=\"" + URL_IMG_PODCASTING_GIF + "\".*?>", "");
 	}
 	
 	/**

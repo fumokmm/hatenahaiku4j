@@ -1,5 +1,7 @@
 package hatenahaiku4j;
 
+import static hatenahaiku4j.Const.*;
+
 /**
  * はてなハイクユーザ情報を表現するクラス
  * 
@@ -98,13 +100,13 @@ public class User implements Entity<User> {
 		// ユーザ名
 		user.setName(userId);
 		// ユーザプロフィール画像URL
-		user.setProfileImageUrl(Const.HATENA_ST_BASE_URL + "users"
-				+ Const.SLASH + userId.substring(0, 2) + Const.SLASH + userId
-				+ Const.SLASH + "profile.gif");
+		user.setProfileImageUrl(HATENA_ST_BASE_URL + "users"
+				+ SLASH + userId.substring(0, 2) + SLASH + userId
+				+ SLASH + "profile.gif");
 		// ユーザ表示名
 		user.setScreenName(userId);
 		// ユーザのエントリページのURL
-		user.setUrl(Const.BASE_URL + userId + Const.SLASH);
+		user.setUrl(BASE_URL + userId + SLASH);
 		return user;
 	}
 
@@ -145,7 +147,7 @@ public class User implements Entity<User> {
 	 * @since v0.2.0
 	 */
 	public String getUserIdNotation() {
-		return Const.ID_COLON + id;
+		return ID_COLON + id;
 	}
 	
 	/**
@@ -195,7 +197,7 @@ public class User implements Entity<User> {
 	 * @since v1.0.0
 	 */
 	public String getMobileEntriesUrl() {
-		return url.replace(Const.BASE_URL, Const.MOBILE_BASE_URL);
+		return url.replace(BASE_URL, MOBILE_BASE_URL);
 	}
 
 	/**
@@ -205,7 +207,7 @@ public class User implements Entity<User> {
 	 * @since v0.0.1
 	 */
 	public String getFollowingUrl() {
-		return getEntriesUrl() + Const.FOLLOWING;
+		return getEntriesUrl() + FOLLOWING;
 	}
 	
 	/**
@@ -215,7 +217,7 @@ public class User implements Entity<User> {
 	 * @since v0.0.1
 	 */
 	public String getIdUrl() {
-		return Const.ID_BASE_URL + getUserId();
+		return ID_BASE_URL + getUserId();
 	}
 
 	/**
@@ -225,7 +227,7 @@ public class User implements Entity<User> {
 	 * @since v1.0.0
 	 */
 	public String getMobileIdUrl() {
-		return Const.MOBILE_ID_BASE_URL + getUserId();
+		return MOBILE_ID_BASE_URL + getUserId();
 	}
 
 	/**

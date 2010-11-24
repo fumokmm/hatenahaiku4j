@@ -1,6 +1,6 @@
 package hatenahaiku4j.util;
 
-import hatenahaiku4j.Const;
+import static hatenahaiku4j.Const.*;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -54,7 +54,7 @@ public class StringUtil {
 			// 「-」を「%2D」に、
 			// 「*」を「%2A」に、
 			// 「_」を「%5F」に変換する。
-			encoded = URLEncoder.encode(str, Const.UTF8)
+			encoded = URLEncoder.encode(str, UTF8)
 				.replaceAll("\\+", urlEncodeOther(" "))
 				.replaceAll("\\.", urlEncodeOther("."))
 				.replaceAll("-", urlEncodeOther("-"))
@@ -76,7 +76,7 @@ public class StringUtil {
 	 */
 	private static String urlEncodeOther(String str) {
 		try {
-			return "%" + String.format("%02x", str.getBytes(Const.UTF8)[0]).toUpperCase();
+			return "%" + String.format("%02x", str.getBytes(UTF8)[0]).toUpperCase();
 		} catch (UnsupportedEncodingException e) {
 			// ignore it
 		}

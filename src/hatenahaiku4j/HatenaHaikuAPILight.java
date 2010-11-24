@@ -1,5 +1,6 @@
 package hatenahaiku4j;
 
+import static hatenahaiku4j.Const.*;
 import hatenahaiku4j.op.ReduceOp;
 import hatenahaiku4j.util.DateUtil;
 import hatenahaiku4j.util.HttpUtil;
@@ -27,33 +28,33 @@ import org.xml.sax.SAXException;
  */
 public class HatenaHaikuAPILight {
 	/** URL: パブリックタイムライン(XML) */
-	protected static final String URL_PUBLIC_TIMELINE_XML		= Const.API_BASE_URL + "statuses/public_timeline.xml";
+	protected static final String URL_PUBLIC_TIMELINE_XML		= API_BASE_URL + "statuses/public_timeline.xml";
 	/** URL: フレンドタイムライン */
-	protected static final String URL_FRIENDS_TIMELINE		= Const.API_BASE_URL + "statuses/friends_timeline/";
+	protected static final String URL_FRIENDS_TIMELINE		= API_BASE_URL + "statuses/friends_timeline/";
 	/** URL: ユーザタイムライン */
-	protected static final String URL_USER_TIMELINE			= Const.API_BASE_URL + "statuses/user_timeline/";
+	protected static final String URL_USER_TIMELINE			= API_BASE_URL + "statuses/user_timeline/";
 	/** URL: キーワードタイムライン */
-	protected static final String URL_KEYWORD_TIMELINE		= Const.API_BASE_URL + "statuses/keyword_timeline/";
+	protected static final String URL_KEYWORD_TIMELINE		= API_BASE_URL + "statuses/keyword_timeline/";
 	/** URL: アルバムタイムライン(XML) */
-	protected static final String URL_ALBUM_TIMELINE_XML		= Const.API_BASE_URL + "statuses/album.xml";
+	protected static final String URL_ALBUM_TIMELINE_XML		= API_BASE_URL + "statuses/album.xml";
 	/** URL: アルバムタイムライン */
-	protected static final String URL_ALBUM_TIMELINE			= Const.API_BASE_URL + "statuses/album/";
+	protected static final String URL_ALBUM_TIMELINE			= API_BASE_URL + "statuses/album/";
 	/** URL: ステータス情報 */
-	protected static final String URL_STATUS					= Const.API_BASE_URL + "statuses/show/";
+	protected static final String URL_STATUS					= API_BASE_URL + "statuses/show/";
 	/** URL: ユーザがフォローしているユーザのリスト */
-	protected static final String URL_FOLLOWING_LIST			= Const.API_BASE_URL + "statuses/friends/";
+	protected static final String URL_FOLLOWING_LIST			= API_BASE_URL + "statuses/friends/";
 	/** URL: ユーザをフォローしているユーザのリスト */
-	protected static final String URL_FOLLOWERS_LIST			= Const.API_BASE_URL + "statuses/followers/";
+	protected static final String URL_FOLLOWERS_LIST			= API_BASE_URL + "statuses/followers/";
 	/** URL: ユーザ情報 */
-	protected static final String URL_USER					= Const.API_BASE_URL + "friendships/show/";
+	protected static final String URL_USER					= API_BASE_URL + "friendships/show/";
 	/** URL: ホットキーワードのリスト(XML) */
-	protected static final String URL_HOT_KEYWORD_LIST_XML	= Const.API_BASE_URL + "keywords/hot.xml";
+	protected static final String URL_HOT_KEYWORD_LIST_XML	= API_BASE_URL + "keywords/hot.xml";
 	/** URL: キーワードのリスト(XML) */
-	protected static final String URL_KEYWORD_LIST_XML		= Const.API_BASE_URL + "keywords/list.xml";
+	protected static final String URL_KEYWORD_LIST_XML		= API_BASE_URL + "keywords/list.xml";
 	/** URL: ユーザがフォローしているキーワードのリスト */
-	protected static final String URL_FOLLOWING_KEYWORD_LIST	= Const.API_BASE_URL + "statuses/keywords/";
+	protected static final String URL_FOLLOWING_KEYWORD_LIST	= API_BASE_URL + "statuses/keywords/";
 	/** URL: キーワード情報 */
-	protected static final String URL_KEYWORD					= Const.API_BASE_URL + "keywords/show/";
+	protected static final String URL_KEYWORD					= API_BASE_URL + "keywords/show/";
 
 	/** HTTP通信ログ出力要否 */
 	protected boolean needHttpLog;
@@ -292,7 +293,7 @@ public class HatenaHaikuAPILight {
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
-			String resultXml = HttpUtil.doGet(URL_FRIENDS_TIMELINE + userId + Const.EXT_XML, param, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_FRIENDS_TIMELINE + userId + EXT_XML, param, isNeedHttpLog());
 			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -490,7 +491,7 @@ public class HatenaHaikuAPILight {
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
-			String resultXml = HttpUtil.doGet(URL_USER_TIMELINE + userId + Const.EXT_XML, param, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_USER_TIMELINE + userId + EXT_XML, param, isNeedHttpLog());
 			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -581,7 +582,7 @@ public class HatenaHaikuAPILight {
 	 * @since v1.1.0
 	 */
 	public <T> T getIdTimeline(ReduceOp<Status, T> op, String userId, int page, int count, Date since) throws HatenaHaikuException {
-		return getKeywordTimeline(op, Const.ID_COLON + userId, page, count, since);
+		return getKeywordTimeline(op, ID_COLON + userId, page, count, since);
 	}
 
 	/**
@@ -768,7 +769,7 @@ public class HatenaHaikuAPILight {
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
-			String resultXml = HttpUtil.doGet(URL_KEYWORD_TIMELINE + StringUtil.encode(keyword) + Const.EXT_XML, param, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_KEYWORD_TIMELINE + StringUtil.encode(keyword) + EXT_XML, param, isNeedHttpLog());
 			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -955,7 +956,7 @@ public class HatenaHaikuAPILight {
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
-			String resultXml = HttpUtil.doGet(URL_ALBUM_TIMELINE + StringUtil.encode(keyword) + Const.EXT_XML, param, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_ALBUM_TIMELINE + StringUtil.encode(keyword) + EXT_XML, param, isNeedHttpLog());
 			return toStatusList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -985,7 +986,7 @@ public class HatenaHaikuAPILight {
 	 */
 	public Status getStatus(String statusId) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(URL_STATUS + statusId + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_STATUS + statusId + EXT_XML, null, isNeedHttpLog());
 			return toStatus(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -1052,7 +1053,7 @@ public class HatenaHaikuAPILight {
 		try {
 			QueryParameter param = new QueryParameter();
 			param.setPage(page);
-			String resultXml = HttpUtil.doGet(URL_FOLLOWING_LIST + userId + Const.EXT_XML, param, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_FOLLOWING_LIST + userId + EXT_XML, param, isNeedHttpLog());
 			return toUserList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -1095,7 +1096,7 @@ public class HatenaHaikuAPILight {
 	 */
 	public <T> T getFollowersList(ReduceOp<User, T> op, String userId) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(URL_FOLLOWERS_LIST + userId + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_FOLLOWERS_LIST + userId + EXT_XML, null, isNeedHttpLog());
 			return toUserList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -1121,7 +1122,7 @@ public class HatenaHaikuAPILight {
 	 */
 	public User getUser(String userId) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(URL_USER + userId + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_USER + userId + EXT_XML, null, isNeedHttpLog());
 			return toUser(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -1286,7 +1287,7 @@ public class HatenaHaikuAPILight {
 	 */
 	public <T> T getFollowingKeywordList(ReduceOp<Keyword, T> op, String userId) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(URL_FOLLOWING_KEYWORD_LIST + userId + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_FOLLOWING_KEYWORD_LIST + userId + EXT_XML, null, isNeedHttpLog());
 			return toKeywordList(op, XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {
@@ -1312,7 +1313,7 @@ public class HatenaHaikuAPILight {
 	 */
 	public Keyword getKeyword(String keyword) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(URL_KEYWORD + StringUtil.encode(keyword) + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(URL_KEYWORD + StringUtil.encode(keyword) + EXT_XML, null, isNeedHttpLog());
 			return toKeyword(XmlUtil.getRootElement(resultXml));
 
 		} catch (ParserConfigurationException e) {

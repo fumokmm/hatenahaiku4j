@@ -1,6 +1,6 @@
 package hatenahaiku4j.util;
 
-import hatenahaiku4j.Const;
+import static hatenahaiku4j.Const.*;
 
 /**
  * はてなハイクのURLを生成するユーティリティクラスです。
@@ -83,13 +83,13 @@ public class HaikuURL {
 		if (StringUtil.isEmpty(label)) {
 			haikuUrl.link				= toKeywordLink(keyword);
 			haikuUrl.mobileLink			= toKeywordLink(keyword);
-			haikuUrl.escapedLink		= toUrlLink(Const.KEYWORD_BASE_URL,			keyword, keyword, true);
-			haikuUrl.escapedMobileLink	= toUrlLink(Const.MOBILE_KEYWORD_BASE_URL,	keyword, keyword, true);
+			haikuUrl.escapedLink		= toUrlLink(KEYWORD_BASE_URL,			keyword, keyword, true);
+			haikuUrl.escapedMobileLink	= toUrlLink(MOBILE_KEYWORD_BASE_URL,	keyword, keyword, true);
 		} else {
-			haikuUrl.link				= toUrlLink(Const.KEYWORD_BASE_URL,			keyword, label, false);
-			haikuUrl.mobileLink			= toUrlLink(Const.MOBILE_KEYWORD_BASE_URL,	keyword, label, false);
-			haikuUrl.escapedLink		= toUrlLink(Const.KEYWORD_BASE_URL,			keyword, label, true);
-			haikuUrl.escapedMobileLink	= toUrlLink(Const.MOBILE_KEYWORD_BASE_URL,	keyword, label, true);
+			haikuUrl.link				= toUrlLink(KEYWORD_BASE_URL,			keyword, label, false);
+			haikuUrl.mobileLink			= toUrlLink(MOBILE_KEYWORD_BASE_URL,	keyword, label, false);
+			haikuUrl.escapedLink		= toUrlLink(KEYWORD_BASE_URL,			keyword, label, true);
+			haikuUrl.escapedMobileLink	= toUrlLink(MOBILE_KEYWORD_BASE_URL,	keyword, label, true);
 		}
 		return haikuUrl;
 	}
@@ -140,13 +140,13 @@ public class HaikuURL {
 		if (StringUtil.isEmpty(label)) {
 			haikuUrl.link				= toIdLink(userId);
 			haikuUrl.mobileLink			= toIdLink(userId);
-			haikuUrl.escapedLink		= toUrlLink(Const.BASE_URL,			userId, Const.ID_COLON + userId, true);
-			haikuUrl.escapedMobileLink	= toUrlLink(Const.MOBILE_BASE_URL,	userId, Const.ID_COLON + userId, true);
+			haikuUrl.escapedLink		= toUrlLink(BASE_URL,			userId, ID_COLON + userId, true);
+			haikuUrl.escapedMobileLink	= toUrlLink(MOBILE_BASE_URL,	userId, ID_COLON + userId, true);
 		} else {
-			haikuUrl.link				= toUrlLink(Const.BASE_URL,			userId, label, false);
-			haikuUrl.mobileLink			= toUrlLink(Const.MOBILE_BASE_URL,	userId, label, false);
-			haikuUrl.escapedLink		= toUrlLink(Const.BASE_URL,			userId, label, true);
-			haikuUrl.escapedMobileLink	= toUrlLink(Const.MOBILE_BASE_URL,	userId, label, true);
+			haikuUrl.link				= toUrlLink(BASE_URL,			userId, label, false);
+			haikuUrl.mobileLink			= toUrlLink(MOBILE_BASE_URL,	userId, label, false);
+			haikuUrl.escapedLink		= toUrlLink(BASE_URL,			userId, label, true);
+			haikuUrl.escapedMobileLink	= toUrlLink(MOBILE_BASE_URL,	userId, label, true);
 		}
 		return haikuUrl;
 	}
@@ -332,7 +332,7 @@ public class HaikuURL {
 	 * @since v1.0.1
 	 */
 	private static String toIdLink(String userId) {
-		return Const.ID_COLON + userId;
+		return ID_COLON + userId;
 	}
 	
 	/**
@@ -354,7 +354,7 @@ public class HaikuURL {
 	 * @since v1.0.1
 	 */
 	private static String toYouTubeLink(String youtubeId) {
-		return "http://www.youtube.com/watch?v=" + youtubeId;
+		return URL_YOUTUBE_LINK + youtubeId.replaceFirst("\\?.*$", "");
 	}
 	
 	/**
@@ -365,7 +365,7 @@ public class HaikuURL {
 	 * @since v1.0.1
 	 */
 	private static String toNico2Link(String nico2Id) {
-		return "http://www.nicovideo.jp/watch/" + nico2Id;
+		return URL_NICO2_LINK + nico2Id.replaceFirst("\\?.*$", "");
 	}
 	
 	/**

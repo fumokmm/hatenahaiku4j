@@ -1,6 +1,6 @@
 package hatenahaiku4j.util;
 
-import hatenahaiku4j.Const;
+import static hatenahaiku4j.Const.*;
 import hatenahaiku4j.HatenaHaikuException;
 import hatenahaiku4j.ImageMime;
 import hatenahaiku4j.LoginUser;
@@ -160,7 +160,7 @@ public class HttpUtil {
 			urlconn.setRequestProperty(REQUEST_PROPERTY_CONNECTION, REQUEST_PROPERTY_CONNECTION_CLOSE);
 
 			// multipart/form-dataでポストするためのバウンダリ文字列を生成
-			String boundary = "--------------------" + Const.API_NAME + StringUtil.getSerial();
+			String boundary = "--------------------" + API_NAME + StringUtil.getSerial();
 			urlconn.setRequestProperty(REQUEST_PROPERTY_CONTENT_TYPE, "multipart/form-data; boundary=" + boundary);
 			
 			// ポスト内容の表示
@@ -219,7 +219,7 @@ public class HttpUtil {
 			}
 			// ボディ
 			StringBuilder responseBody = new StringBuilder();
-			BufferedReader responseReader = new BufferedReader(new InputStreamReader(urlconn.getInputStream(), Const.UTF8));
+			BufferedReader responseReader = new BufferedReader(new InputStreamReader(urlconn.getInputStream(), UTF8));
 			String line;
 			while((line = responseReader.readLine()) != null) {
 				if (responseBody.length() > 0) {
@@ -335,7 +335,7 @@ public class HttpUtil {
 
 			Writer tmp_wout = null;
 			try {
-				tmp_wout = new OutputStreamWriter(out, Const.UTF8);
+				tmp_wout = new OutputStreamWriter(out, UTF8);
 			} catch (UnsupportedEncodingException e) {
 				// ignore it
 		    } finally {
@@ -358,7 +358,7 @@ public class HttpUtil {
 				if (needDelimeter) {
 					wout.write('&');
 				}
-				String encoded = StringUtil.encode(name) + Const.EQUAL + StringUtil.encode(value);
+				String encoded = StringUtil.encode(name) + EQUAL + StringUtil.encode(value);
 				wout.write(encoded);
 				wout.flush();
 				needDelimeter = true;

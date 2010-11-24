@@ -10,7 +10,7 @@ public class Const {
 	/** API名 */
 	public static final String API_NAME = "HatenaHaiku4J";
 	/** バージョン */
-	public static final String VERSION = "v1.2.0";
+	public static final String VERSION = "v1.2.1";
 
 	/** コロン */
 	public static final String COLON = ":";
@@ -68,4 +68,19 @@ public class Const {
 
 	/** XMLヘッダ */
 	public static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"" + UTF8 + "\" ?>";
+	
+	/** URL: http://www.youtube.com/v/ */
+	public static final String URL_YOUTUBE_V = "http://www.youtube.com/v/";
+	
+	/** URL: http://www.youtube.com/watch?v= */
+	public static final String URL_YOUTUBE_LINK = "http://www.youtube.com/watch?v=";
+	
+	/** URL: http://www.nicovideo.jp/thumb_watch/ */
+	public static final String URL_NICO2_THUMB_WATCH = "http://www.nicovideo.jp/thumb_watch/";
+	
+	/** URL: http://www.nicovideo.jp/watch/ */
+	public static final String URL_NICO2_LINK = "http://www.nicovideo.jp/watch/";
+	
+	/** URL: http://g.hatena.ne.jp/images/podcasting.gif */
+	public static final String URL_IMG_PODCASTING_GIF = "http://g.hatena.ne.jp/images/podcasting.gif";
 }
