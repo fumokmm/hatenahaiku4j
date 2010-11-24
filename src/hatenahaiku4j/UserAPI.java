@@ -166,6 +166,64 @@ public class UserAPI extends EntityAPI {
 	}
 	
 	/**
+	 * このユーザの人気のユーザタイムラインを取得します。最新ページを20件取得します。<br/>
+	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
+	 *
+	 * @see HatenaHaikuAPILight#getHotUserTimeline(String)
+	 * @return このユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotTimeline() throws HatenaHaikuException {
+		return apiLight.getHotUserTimeline(user.getUserId());
+	}
+
+	/**
+	 * このユーザの人気のユーザタイムラインを取得します。取得件数は20件です。<br/>
+	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
+	 *
+	 * @see HatenaHaikuAPILight#getHotUserTimeline(String, int)
+	 * @param page 取得するページです。最大数は100です。
+	 * @return このユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotTimeline(int page) throws HatenaHaikuException {
+		return apiLight.getHotUserTimeline(user.getUserId(), page);
+	}
+
+	/**
+	 * このユーザの人気のユーザタイムラインを取得します。<br/>
+	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
+	 *
+	 * @see HatenaHaikuAPILight#getHotUserTimeline(String, int, int)
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @return このユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotTimeline(int page, int count) throws HatenaHaikuException {
+		return apiLight.getHotUserTimeline(user.getUserId(), page, count);
+	}
+
+	/**
+	 * このユーザの人気のユーザタイムラインを取得します。<br/>
+	 *　<i>http://h.hatena.ne.jp/api/statuses/user_timeline/<font color="red">ユーザID</font>.xml</i>
+	 *
+	 * @see HatenaHaikuAPILight#getHotUserTimeline(String, int, int, Date)
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return このユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotTimeline(int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getHotUserTimeline(user.getUserId(), page, count, since);
+	}
+	
+	/**
 	 * このユーザのidページのタイムラインを取得します。最新ページを20件取得します。<br/>
 	 * このタイムラインは "id:xxxx" のキーワードタイムラインと同じものです。
 	 *

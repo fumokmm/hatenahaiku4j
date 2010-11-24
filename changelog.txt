@@ -1,3 +1,9 @@
+HatenaHaiku4J v1.0.0 2009-09-18
+	・画像をfotolifeにアップロードしつつ投稿するAPI機能を実装。
+	・画像をFileで指定、URLで指定、byte[]で指定する方式を提供。
+	・Status, User, Keywordにモバイル用URL取得用ゲッターを追加。
+	・ユーザタイムライン、およびキーワードタイムラインに人気順を取得できる#getHot～系メソッドを追加。
+
 HatenaHaiku4J v0.2.2 2009-09-16
 	・HttpUtilでsetUseCaches(false)と、setRequestProperty("Connection", "close")を追加した。
 

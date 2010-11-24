@@ -106,6 +106,16 @@ public class Keyword {
 	}
 	
 	/**
+	 * モバイル用キーワードページのリンクを取得します。
+	 * 
+	 * @return キーワードページのリンク 
+	 * @since v1.0.0
+	 */
+	public String getMobileLink() {
+		return link.replace(Const.BASE_URL, Const.BASE_URL + Const.MOBILE + "/");
+	}
+
+	/**
 	 * 関連キーワードのリストを取得します。
 	 * 
 	 * @return 関連キーワードのリスト

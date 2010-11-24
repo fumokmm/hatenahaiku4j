@@ -186,6 +186,16 @@ public class Status {
 	}
 
 	/**
+	 * モバイル用リンクを取得します。
+	 * 
+	 * @return モバイル用リンク 
+	 * @since v1.0.0
+	 */
+	public String getMobileLink() {
+		return link.replace(Const.BASE_URL, Const.BASE_URL + Const.MOBILE + "/");
+	}
+
+	/**
 	 * このステータスへの返信を返却します。
 	 * 
 	 * @return このステータスへの返信

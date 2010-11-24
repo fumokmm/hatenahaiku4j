@@ -108,6 +108,64 @@ public class KeywordAPI extends EntityAPI {
 	}
 	
 	/**
+	 * このキーワードの人気のキーワードタイムラインを取得します。最新ページを20件取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getKeywordTimeline(String)
+	 * @return このキーワードの人気のキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotTimeline() throws HatenaHaikuException {
+		return apiLight.getHotKeywordTimeline(keyword.getTitle());
+	}
+
+	/**
+	 * このキーワードの人気のキーワードタイムラインを取得します。取得件数は20件です。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int)
+	 * @param page 取得するページです。最大数は100です。
+	 * @return このキーワードの人気のキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotTimeline(int page) throws HatenaHaikuException {
+		return apiLight.getHotKeywordTimeline(keyword.getTitle(), page);
+	}
+
+	/**
+	 * このキーワードの人気のキーワードタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int)
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @return このキーワードの人気のキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotTimeline(int page, int count) throws HatenaHaikuException {
+		return apiLight.getHotKeywordTimeline(keyword.getTitle(), page, count);
+	}
+
+	/**
+	 * このキーワードの人気のキーワードタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/keyword_timeline/<font color="red">キーワード</font>.xml</i>
+	 * 
+	 * @see HatenaHaikuAPILight#getKeywordTimeline(String, int, int, Date)
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return このキーワードの人気のキーワードタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotTimeline(int page, int count, Date since) throws HatenaHaikuException {
+		return apiLight.getHotKeywordTimeline(keyword.getTitle(), page, count, since);
+	}
+	
+	/**
 	 * このキーワードの画像を含む最新のエントリのキーワードタイムラインを取得します。最新ページを20件取得します。<br/>
 	 * <i>http://h.hatena.ne.jp/api/statuses/album/<font color="red">キーワード</font>.xml</i>
 	 * 
@@ -185,14 +243,15 @@ public class KeywordAPI extends EntityAPI {
 	}
 
 	/**
-	 * このキーワードに新しくエントリを投稿します。画像付きでエントリします。
+	 * このキーワードに新しくエントリを投稿します。<br/>
+	 * 画像付きでエントリします。
 	 * 
 	 * @see HatenaHaikuAPI#entry(String, String, File)
 	 * @param text 投稿内容
 	 * @param file 画像ファイル
 	 * @return 投稿結果のステータス情報
 	 * @throws HatenaHaikuException
-	 * @since v0.2.0
+	 * @since v1.0.0
 	 */
 	public Status entry(String text, File file) throws HatenaHaikuException {
 		if (isAuth()) {
@@ -202,6 +261,45 @@ public class KeywordAPI extends EntityAPI {
 		}
 	}
 	
+	/**
+	 * このキーワードに新しくエントリを投稿します。<br/>
+	 * URL上にある画像付きでエントリします。
+	 * 
+	 * @see HatenaHaikuAPI#entry(String, String, String)
+	 * @param text 投稿内容
+	 * @param imageUrl 画像のURL
+	 * @return 投稿結果のステータス情報
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public Status entry(String text, String imageUrl) throws HatenaHaikuException {
+		if (isAuth()) {
+			return apiAuth.entry(keyword.getTitle(), text, imageUrl);
+		} else {
+			throw new HatenaHaikuException("認証される必要があります。HatenaHaikuAPIをご利用ください。");
+		}
+	}
+
+	/**
+	 * このキーワードに新しくエントリを投稿します。<br/>
+	 * 画像のバイナリデータとその拡張子を指定し、画像付きでエントリします。
+	 * 
+	 * @see HatenaHaikuAPI#entry(String, String, byte[], ImageExt)
+	 * @param text 投稿内容
+	 * @param imageData 画像のバイナリデータ
+	 * @param imageDataExt 画像の拡張子
+	 * @return 投稿結果のステータス情報
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public Status entry(String text, byte[] imageData, ImageExt imageDataExt) throws HatenaHaikuException {
+		if (isAuth()) {
+			return apiAuth.entry(keyword.getTitle(), text, imageData, imageDataExt);
+		} else {
+			throw new HatenaHaikuException("認証される必要があります。HatenaHaikuAPIをご利用ください。");
+		}
+	}
+
 	/**
 	 * このキーワードをフォローします。<br/>
 	 * <i>http://h.hatena.ne.jp/api/keywords/create/<font color="red">キーワード</font>.xml</i>

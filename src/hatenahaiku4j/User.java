@@ -152,26 +152,43 @@ public class User {
 	}
 	
 	/**
+	 * モバイル用ユーザのエントリページのURLを取得します。
+	 * 
+	 * @return モバイル用ユーザのエントリページのURL
+	 * @since v1.0.0
+	 */
+	public String getMobileEntriesUrl() {
+		return url.replace(Const.BASE_URL, Const.BASE_URL + Const.MOBILE + "/");
+	}
+
+	/**
 	 * ユーザのフォロウィングページのURLを取得します。
 	 * 
 	 * @return ユーザのフォロウィングページのURL
 	 * @since v0.0.1
 	 */
 	public String getFollowingUrl() {
-		return url + FOLLOWING;
+		return getEntriesUrl() + Const.FOLLOWING;
 	}
 	
-	/** URL: following */
-	private static final String FOLLOWING = "following";
-
 	/**
-	 * ユーザのプロフィールページのURLを取得します。
+	 * ユーザのIDページのURLを取得します。
 	 * 
 	 * @return ユーザのプロフィールページのURL
 	 * @since v0.0.1
 	 */
-	public String getProfileUrl() {
+	public String getIdUrl() {
 		return Const.BASE_URL + Const.ID + "/" + getUserId();
+	}
+
+	/**
+	 * モバイル用ユーザのIDページのURLを取得します。
+	 * 
+	 * @return モバイル用ユーザのプロフィールページのURL
+	 * @since v1.0.0
+	 */
+	public String getMobileIdUrl() {
+		return Const.BASE_URL + Const.MOBILE + "/" + Const.ID + "/" + getUserId();
 	}
 
 	/**

@@ -1,12 +1,10 @@
 package hatenahaiku4j;
 
 import hatenahaiku4j.util.DateUtil;
+import hatenahaiku4j.util.HttpUtil.PostStream;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 問い合わせ用パラメータを表現するクラスです。
@@ -23,6 +21,8 @@ public class QueryParameter {
 	private static final int MIN_COUNT = 0;
 	/** カウントの最大値 */
 	private static final int MAX_COUNT = 200;
+	/** 人気順(HOT) */
+	private static final String HOT = "hot";
 	
 	/** その日時よりも新しい投稿のみに絞り込むための日時を指定します。  */
 	private Date since;
@@ -36,13 +36,29 @@ public class QueryParameter {
 	private String word1;
 	/** 関連付けキーワード2 */
 	private String word2;
+	/** 人気順 */
+	private String sort;
 	
 	/**
 	 * コンストラクタです。
 	 * 
 	 * @since v0.0.1
 	 */
-	QueryParameter() {}
+	QueryParameter() {
+		this(false);
+	}
+
+	/**
+	 * コンストラクタです。
+	 * 
+	 * @param isHot 人気順取得用かどうか
+	 * @since v1.0.0
+	 */
+	QueryParameter(boolean isHot) {
+		if (isHot) {
+			this.sort = HOT;
+		}
+	}
 
 	/**
 	 * その日時よりも新しい投稿のみに絞り込むための日時を取得します。
@@ -170,6 +186,26 @@ public class QueryParameter {
 		return this.word2 = word2;
 	}
 
+	/**
+	 * 人気順を取得します。
+	 * 
+	 * @return 人気順
+	 * @since v1.0.0
+	 */
+	public String getSort() {
+		return sort;
+	}
+
+	/** 
+	 * 人気順を設定します。
+	 * 
+	 * @param sort 人気順
+	 * @since v1.0.0
+	 */
+	public String setSort(String sort) {
+		return this.sort = sort;
+	}
+
 	//-----------------------------------
 	/** status */
 	private static final String PARAM_KEY_PAGE = "page";
@@ -183,50 +219,45 @@ public class QueryParameter {
 	private static final String PARAM_KEY_WORD1 = "word1";
 	/** word2 */
 	private static final String PARAM_KEY_WORD2 = "word2";
+	/** sort */
+	private static final String PARAM_KEY_SORT = "sort";
 
 	/**
-	 * パラメータに変換します。
+	 * ポストするパラメータを設定します。
 	 * 
-	 * @return パラメータ文字列
-	 * @throws UnsupportedEncodingException
-	 * @since v0.0.1
+	 * @param ps ポスト処理補助クラス
+	 * @throws IOException 
+	 * @since v1.0.0
 	 */
-	public String toParameter() throws UnsupportedEncodingException {
-		Map<String, String> map = new HashMap<String, String>();
-
+	public void addParameter(PostStream ps) throws IOException {
 		// page
 		if (page > 0) {
-			map.put(PARAM_KEY_PAGE, String.valueOf(page));
+			ps.addProperty(PARAM_KEY_PAGE, String.valueOf(page));
 		}
 		// count
 		if (count > 0) {
-			map.put(PARAM_KEY_COUNT, String.valueOf(count));
+			ps.addProperty(PARAM_KEY_COUNT, String.valueOf(count));
 		}
 		// since
 		if (since != null) {
-			map.put(PARAM_KEY_SINCE, DateUtil.toDefaultTZ(since));
+			ps.addProperty(PARAM_KEY_SINCE, DateUtil.toDefaultTZ(since));
 		}
 		// word
 		if (word != null) {
-			map.put(PARAM_KEY_WORD, word);
+			ps.addProperty(PARAM_KEY_WORD, word);
 		}
 		// word1
 		if (word1 != null) {
-			map.put(PARAM_KEY_WORD1, word1);
+			ps.addProperty(PARAM_KEY_WORD1, word1);
 		}
 		// word2
 		if (word2 != null) {
-			map.put(PARAM_KEY_WORD2, word2);
+			ps.addProperty(PARAM_KEY_WORD2, word2);
 		}
-
-		StringBuilder buffer = new StringBuilder();
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			if (buffer.length() > 0) buffer.append(Const.AMP);
-			buffer.append(entry.getKey())
-			.append(Const.EQUAL)
-			.append(URLEncoder.encode(entry.getValue(), Const.UTF8));
+		// sort
+		if (sort != null) {
+			ps.addProperty(PARAM_KEY_SORT, sort);
 		}
-		return buffer.toString();
 	}
 
 	/**
@@ -242,5 +273,6 @@ public class QueryParameter {
 		System.out.println("[word: " + word + "]");
 		System.out.println("[word1: " + word1 + "]");
 		System.out.println("[word2: " + word2 + "]");
+		System.out.println("[sort: " + sort + "]");
 	}
 }

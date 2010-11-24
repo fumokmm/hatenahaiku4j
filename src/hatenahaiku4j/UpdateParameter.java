@@ -1,10 +1,9 @@
 package hatenahaiku4j;
 
+import hatenahaiku4j.util.HttpUtil.PostStream;
+
 import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 
 /**
  * 更新用パラメータを表現するクラスです。
@@ -21,6 +20,12 @@ public class UpdateParameter {
 	private String keyword;
 	/** 画像ファイル */
 	private File file;
+	/** 画像ファイルURL */
+	private String imageUrl;
+	/** 画像データ */
+	private byte[] imageData;
+	/** 画像データ拡張子 */
+	private ImageExt imageDataExt;
 	
 	/**
 	 * コンストラクタです。
@@ -109,6 +114,66 @@ public class UpdateParameter {
 		this.file = file;
 	}
 
+	/**
+	 * 画像ファイルURL
+	 * 
+	 * @return 画像ファイルURL
+	 * @since v1.0.0
+	 */
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	
+	/**
+	 * 画像ファイルURLを設定します。
+	 * 
+	 * @param imageUrl 画像ファイルURL
+	 * @since v1.0.0
+	 */
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
+	/**
+	 * 画像データ
+	 * 
+	 * @return 画像ファイルURL
+	 * @since v1.0.0
+	 */
+	public byte[] getImageData() {
+		return imageData;
+	}
+	
+	/**
+	 * 画像データを設定します。
+	 * 
+	 * @param imageData 画像データ
+	 * @since v1.0.0
+	 */
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
+	}
+
+	/**
+	 * 画像データ拡張子
+	 * 
+	 * @return 画像データ拡張子
+	 * @since v1.0.0
+	 */
+	public ImageExt getImageDataExt() {
+		return imageDataExt;
+	}
+	
+	/**
+	 * 画像データ拡張子を設定します。
+	 * 
+	 * @param imageDataExt 画像データ拡張子
+	 * @since v1.0.0
+	 */
+	public void setImageDataExt(ImageExt imageDataExt) {
+		this.imageDataExt = imageDataExt;
+	}
+	
 	//-----------------------------------
 	/** status */
 	private static final String PARAM_KEY_STATUS = "status";
@@ -122,44 +187,55 @@ public class UpdateParameter {
 	private static final String PARAM_KEY_SOURCE = "source";
 
 	/**
-	 * パラメータに変換します。
+	 * ポストするパラメータを設定します。
 	 * 
-	 * @return パラメータ文字列
-	 * @throws UnsupportedEncodingException
-	 * @throws HatenaHaikuException
-	 * @since v0.0.1
+	 * @param loginUser ログインユーザ情報
+	 * @param ps ポスト処理補助クラス
+	 * @throws IOException 
+	 * @since v1.0.0
 	 */
-	public String toParameter(LoginUser loginUser) throws UnsupportedEncodingException, HatenaHaikuException {
-		Map<String, String> map = new HashMap<String, String>();
-
+	public void addParameter(LoginUser loginUser, PostStream ps) throws IOException {
 		// status
-		map.put(PARAM_KEY_STATUS, text);
+		ps.addProperty(PARAM_KEY_STATUS, text);
+
 		// keyword
 		if (keyword == null || keyword.equals("")) {
-			map.put(PARAM_KEY_KEYWORD, loginUser.getUserIdNotation());
+			ps.addProperty(PARAM_KEY_KEYWORD, loginUser.getUserIdNotation());
 		} else {
-			map.put(PARAM_KEY_KEYWORD, keyword);
+			ps.addProperty(PARAM_KEY_KEYWORD, keyword);
 		}
+		
 		// source
-		map.put(PARAM_KEY_SOURCE, loginUser.getSource());
+		ps.addProperty(PARAM_KEY_SOURCE, loginUser.getSource());
+		
 		// in_reply_to_status_id
 		if (inReplyToStatusId != null && !inReplyToStatusId.equals("")) {
-			map.put(PARAM_KEY_IN_REPLY_TO_STATUS_ID, inReplyToStatusId);
+			ps.addProperty(PARAM_KEY_IN_REPLY_TO_STATUS_ID, inReplyToStatusId);
 		}
-		// file TODO 実装
+		
+		// file
 		if (file != null) {
-			throw new APINotSupportedException();
-			//map.put(PARAM_KEY_FILE, "");
+			ImageMime mime = ImageMime.getImageMime(file.getName());
+			if (mime != null) {
+				ps.addFile(file, PARAM_KEY_FILE, mime);
+			}
 		}
-
-		StringBuilder buffer = new StringBuilder();
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			if (buffer.length() > 0) buffer.append(Const.AMP);
-			buffer.append(entry.getKey())
-			.append(Const.EQUAL)
-			.append(URLEncoder.encode(entry.getValue(), Const.UTF8));
+		
+		// imageUrl
+		if (imageUrl != null) {
+			ImageMime mime = ImageMime.getImageMime(imageUrl);
+			if (mime != null) {
+				ps.addImageUrl(imageUrl, PARAM_KEY_FILE, mime);
+			}
 		}
-		return buffer.toString();
+		
+		// imageData
+		if (imageData != null && imageDataExt != null) {
+			ImageMime mime = ImageMime.getImageMime(imageDataExt);
+			if (mime != null) {
+				ps.addImageData(imageData, PARAM_KEY_FILE, mime);
+			}
+		}
 	}
 
 	/**
@@ -172,6 +248,9 @@ public class UpdateParameter {
 		System.out.println("[keyword: " + keyword + "]");
 		System.out.println("[inReplyToStatusId: " + inReplyToStatusId + "]");
 		System.out.println("[source: " + loginUser.getSource() + "]");
-		System.out.println("[text: " + text+ "]");
+		System.out.println("[text: " + text + "]");
+		System.out.println("[file: " + (file == null ? "null" : file.getName()) + "]");
+		System.out.println("[imageUrl: " + imageUrl + "]");
+		System.out.println("[imageDataExt: " + imageDataExt + "]");
 	}
 }

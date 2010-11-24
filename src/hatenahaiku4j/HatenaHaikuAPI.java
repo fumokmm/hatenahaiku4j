@@ -6,8 +6,6 @@ import hatenahaiku4j.util.XmlUtil;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 
@@ -135,9 +133,6 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 			String resultXml = HttpUtil.doGet(loginUser, URL_FRIENDS_TIMELINE_XML, param, isNeedHttpLog());
 			return toStatusList(XmlUtil.getRootElement(resultXml));
 
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
-
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
 
@@ -159,7 +154,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline() throws HatenaHaikuException {
-		return getUserTimeline(0, 0, null);
+		return _getUserTimeline(0, 0, null, false);
 	}
 
 	/**
@@ -173,7 +168,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(int page) throws HatenaHaikuException {
-		return getUserTimeline(page, 0, null);
+		return _getUserTimeline(page, 0, null, false);
 	}
 
 	/**
@@ -188,7 +183,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(int page, int count) throws HatenaHaikuException {
-		return getUserTimeline(page, count, null);
+		return _getUserTimeline(page, count, null, false);
 	}
 
 	/**
@@ -204,16 +199,88 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public List<Status> getUserTimeline(int page, int count, Date since) throws HatenaHaikuException {
+		return _getUserTimeline(page, count, since, false);
+	}
+
+	/**
+	 * 認証したユーザの人気のユーザタイムラインを取得します。最新ページを20件取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/user_timeline.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
+	 * @return 認証したユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotUserTimeline() throws HatenaHaikuException {
+		return _getUserTimeline(0, 0, null, true);
+	}
+
+	/**
+	 * 認証したユーザの人気のユーザタイムラインを取得します。取得件数は20件です。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/user_timeline.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
+	 * @param page 取得するページです。最大数は100です。
+	 * @return 認証したユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotUserTimeline(int page) throws HatenaHaikuException {
+		return _getUserTimeline(page, 0, null, true);
+	}
+
+	/**
+	 * 認証したユーザの人気のユーザタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/user_timeline.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @return 認証したユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotUserTimeline(int page, int count) throws HatenaHaikuException {
+		return _getUserTimeline(page, count, null, true);
+	}
+
+	/**
+	 * 認証したユーザの人気のユーザタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/user_timeline.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @return 認証したユーザの人気のユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public List<Status> getHotUserTimeline(int page, int count, Date since) throws HatenaHaikuException {
+		return _getUserTimeline(page, count, since, true);
+	}
+	
+	/**
+	 * 認証したユーザのユーザタイムラインを取得します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/user_timeline.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-user_timeline">statuses/user_timeline</a>
+	 * @param page 取得するページです。最大数は100です。
+	 * @param count 取得数を指定します。最大数は 200 です。
+	 * @param since その日時よりも新しい投稿のみに絞り込むための日時を指定します。
+	 * @param isHot 人気順取得用かどうか
+	 * @return 認証したユーザのユーザタイムライン
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	private List<Status> _getUserTimeline(int page, int count, Date since, boolean isHot) throws HatenaHaikuException {
 		try {
-			QueryParameter param = new QueryParameter();
+			QueryParameter param = new QueryParameter(isHot);
 			param.setPage(page);
 			param.setCount(count);
 			param.setSince(since);
 			String resultXml = HttpUtil.doGet(loginUser, URL_USER_TIMELINE_XML, param, isNeedHttpLog());
 			return toStatusList(XmlUtil.getRootElement(resultXml));
-
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -289,35 +356,6 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	//-------------------------------------------------------------
 
 	/**
-	 * はてなハイクに投稿します。<br/>
-	 * <i>http://h.hatena.ne.jp/api/statuses/update.xml</i>
-	 * 
-	 * @see <a href="http://h.hatena.ne.jp/api#statuses-update">statuses/update</a>
-	 * @param params 更新パラメータ
-	 * @return 投稿結果のステータス情報
-	 * @throws HatenaHaikuException 
-	 * @since v0.0.1
-	 */
-	protected Status updateStatus(UpdateParameter param) throws HatenaHaikuException {
-		try {
-			String resultXml = HttpUtil.doPost(loginUser, URL_UPDATE_STATUS_XML, param, isNeedHttpLog());
-			return toStatus(XmlUtil.getRootElement(resultXml));
-
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
-
-		} catch (ParserConfigurationException e) {
-			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
-
-		} catch (SAXException e) {
-			throw new HatenaHaikuException("SAXException発生。", e);
-
-		} catch (IOException e) {
-			throw new HatenaHaikuException("IOException発生。", e);
-		}
-	}
-
-	/**
 	 * 新しくエントリを投稿します。（ログインユーザのプロフィールページに投稿されます）
 	 * 
 	 * @param text 投稿内容
@@ -328,7 +366,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	public Status entry(String text) throws HatenaHaikuException {
 		UpdateParameter params = new UpdateParameter();
 		params.setText(text);
-		return updateStatus(params);
+		return _updateStatus(params);
 	}
 
 	/**
@@ -344,27 +382,68 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 		UpdateParameter params = new UpdateParameter();
 		params.setKeyword(keyword);
 		params.setText(text);
-		return updateStatus(params);
+		return _updateStatus(params);
 	}
 
 	/**
-	 * 新しくエントリを投稿します。画像付きでエントリします。
+	 * 新しくエントリを投稿します。<br/>
+	 * 画像付きでエントリします。
 	 * 
 	 * @param keyword キーワード
 	 * @param text 投稿内容
 	 * @param file 画像ファイル
 	 * @return 投稿結果のステータス情報
 	 * @throws HatenaHaikuException
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public Status entry(String keyword, String text, File file) throws HatenaHaikuException {
 		UpdateParameter params = new UpdateParameter();
 		params.setKeyword(keyword);
 		params.setText(text);
 		params.setFile(file);
-		return updateStatus(params);
+		return _updateStatus(params);
 	}
 	
+	/**
+	 * 新しくエントリを投稿します。<br/>
+	 * URL上にある画像付きでエントリします。
+	 * 
+	 * @param keyword キーワード
+	 * @param text 投稿内容
+	 * @param imageUrl 画像のURL
+	 * @return 投稿結果のステータス情報
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public Status entry(String keyword, String text, String imageUrl) throws HatenaHaikuException {
+		UpdateParameter params = new UpdateParameter();
+		params.setKeyword(keyword);
+		params.setText(text);
+		params.setImageUrl(imageUrl);
+		return _updateStatus(params);
+	}
+
+	/**
+	 * 新しくエントリを投稿します。<br/>
+	 * 画像のバイナリデータとその拡張子を指定し、画像付きでエントリします。
+	 * 
+	 * @param keyword キーワード
+	 * @param text 投稿内容
+	 * @param imageData 画像のバイナリデータ
+	 * @param imageDataExt 画像の拡張子
+	 * @return 投稿結果のステータス情報
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public Status entry(String keyword, String text, byte[] imageData, ImageExt imageDataExt) throws HatenaHaikuException {
+		UpdateParameter params = new UpdateParameter();
+		params.setKeyword(keyword);
+		params.setText(text);
+		params.setImageData(imageData);
+		params.setImageDataExt(imageDataExt);
+		return _updateStatus(params);
+	}
+
 	/**
 	 * 新しく返信エントリを投稿します。
 	 * 
@@ -378,21 +457,92 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 		UpdateParameter params = new UpdateParameter();
 		params.setInReplyToStatusId(inReplyToStatusId);
 		params.setText(text);
-		return updateStatus(params);
+		return _updateStatus(params);
 	}
 
 	/**
-	 * 新しく返信エントリを投稿します。画像付きでエントリします。
+	 * 新しく返信エントリを投稿します。<br/>
+	 * 画像付きでエントリします。
 	 * 
 	 * @param inReplyToStatusId 返信元ステータスID
 	 * @param text 投稿内容
 	 * @param file 画像ファイル
 	 * @return 投稿結果のステータス情報
 	 * @throws HatenaHaikuException
-	 * @since v0.0.1
+	 * @since v1.0.0
 	 */
 	public Status reply(String inReplyToStatusId, String text, File file) throws HatenaHaikuException {
-		throw new APINotSupportedException();
+		UpdateParameter params = new UpdateParameter();
+		params.setInReplyToStatusId(inReplyToStatusId);
+		params.setText(text);
+		params.setFile(file);
+		return _updateStatus(params);
+	}
+
+	/**
+	 * 新しく返信エントリを投稿します。<br/>
+	 * URL上にある画像付きでエントリします。
+	 * 
+	 * @param inReplyToStatusId 返信元ステータスID
+	 * @param text 投稿内容
+	 * @param imageUrl 画像のURL
+	 * @return 投稿結果のステータス情報
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public Status reply(String inReplyToStatusId, String text, String imageUrl) throws HatenaHaikuException {
+		UpdateParameter params = new UpdateParameter();
+		params.setInReplyToStatusId(inReplyToStatusId);
+		params.setText(text);
+		params.setImageUrl(imageUrl);
+		return _updateStatus(params);
+	}
+
+	/**
+	 * 新しく返信エントリを投稿します。<br/>
+	 * 画像のバイナリデータとその拡張子を指定し、画像付きでエントリします。
+	 * 
+	 * @param inReplyToStatusId 返信元ステータスID
+	 * @param text 投稿内容
+	 * @param imageData 画像のバイナリデータ
+	 * @param imageDataExt 画像の拡張子
+	 * @return 投稿結果のステータス情報
+	 * @throws HatenaHaikuException
+	 * @since v1.0.0
+	 */
+	public Status reply(String inReplyToStatusId, String text, byte[] imageData, ImageExt imageDataExt) throws HatenaHaikuException {
+		UpdateParameter params = new UpdateParameter();
+		params.setInReplyToStatusId(inReplyToStatusId);
+		params.setText(text);
+		params.setImageData(imageData);
+		params.setImageDataExt(imageDataExt);
+		return _updateStatus(params);
+	}
+
+	/**
+	 * はてなハイクに投稿します。<br/>
+	 * <i>http://h.hatena.ne.jp/api/statuses/update.xml</i>
+	 * 
+	 * @see <a href="http://h.hatena.ne.jp/api#statuses-update">statuses/update</a>
+	 * @param params 更新パラメータ
+	 * @return 投稿結果のステータス情報
+	 * @throws HatenaHaikuException 
+	 * @since v0.0.1
+	 */
+	private Status _updateStatus(UpdateParameter param) throws HatenaHaikuException {
+		try {
+			String resultXml = HttpUtil.doPost(loginUser, URL_UPDATE_STATUS_XML, param, isNeedHttpLog());
+			return toStatus(XmlUtil.getRootElement(resultXml));
+
+		} catch (ParserConfigurationException e) {
+			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
+
+		} catch (SAXException e) {
+			throw new HatenaHaikuException("SAXException発生。", e);
+
+		} catch (IOException e) {
+			throw new HatenaHaikuException("IOException発生。", e);
+		}
 	}
 
 	/**
@@ -409,9 +559,6 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 		try {
 			String resultXml = HttpUtil.doGet(loginUser, URL_DELETE_STATUS + statusId + Const.EXT_XML, null, isNeedHttpLog());
 			return toStatus(XmlUtil.getRootElement(resultXml));
-
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -439,7 +586,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public Status addStar(String statusId) throws HatenaHaikuException {
-		return modifyStar(true, statusId);
+		return _modifyStar(true, statusId);
 	}
 
 	/**
@@ -453,7 +600,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public Status deleteStar(String statusId) throws HatenaHaikuException {
-		return modifyStar(false, statusId);
+		return _modifyStar(false, statusId);
 	}
 	
 	/**
@@ -467,13 +614,10 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
-	private Status modifyStar(boolean isAdd, String statusId) throws HatenaHaikuException {
+	private Status _modifyStar(boolean isAdd, String statusId) throws HatenaHaikuException {
 		try {
 			String resultXml = HttpUtil.doGet(loginUser, (isAdd ? URL_ADD_STAR : URL_DELETE_STAR) + statusId + Const.EXT_XML, null, isNeedHttpLog());
 			return toStatus(XmlUtil.getRootElement(resultXml));
-
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -520,9 +664,6 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 			String resultXml = HttpUtil.doGet(loginUser, URL_FOLLOWING_LIST_XML, param, isNeedHttpLog());
 			return toUserList(XmlUtil.getRootElement(resultXml));
 
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
-
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
 
@@ -549,9 +690,6 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 			String resultXml = HttpUtil.doGet(loginUser, URL_FOLLOWERS_LIST_XML, null, isNeedHttpLog());
 			return toUserList(XmlUtil.getRootElement(resultXml));
 
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
-
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
 
@@ -574,7 +712,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public User followUser(String userId) throws HatenaHaikuException {
-		return modifyFollowUser(true, userId);
+		return _modifyFollowUser(true, userId);
 	}
 
 	/**
@@ -588,7 +726,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public User unfollowUser(String userId) throws HatenaHaikuException {
-		return modifyFollowUser(false, userId);
+		return _modifyFollowUser(false, userId);
 	}
 	
 	/**
@@ -602,13 +740,10 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @throws HatenaHaikuException 
 	 * @since v0.0.1
 	 */
-	private User modifyFollowUser(boolean isFollow, String userId) throws HatenaHaikuException {
+	private User _modifyFollowUser(boolean isFollow, String userId) throws HatenaHaikuException {
 		try {
 			String resultXml = HttpUtil.doGet(loginUser, (isFollow ? URL_FOLLOW_USER : URL_UNFOLLOW_USER) + userId + Const.EXT_XML, null, isNeedHttpLog());
 			return toUser(XmlUtil.getRootElement(resultXml));
-
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -651,9 +786,6 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 			String resultXml = HttpUtil.doGet(loginUser, URL_FOLLOWING_KEYWORD_LIST_XML, null, isNeedHttpLog());
 			return toKeywordList(XmlUtil.getRootElement(resultXml));
 
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
-
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
 
@@ -676,7 +808,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public Keyword followKeyword(String keyword) throws HatenaHaikuException {
-		return modifyFollowKeyword(true, keyword);
+		return _modifyFollowKeyword(true, keyword);
 	}
 
 	/**
@@ -690,7 +822,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public Keyword unfollowKeyword(String keyword) throws HatenaHaikuException {
-		return modifyFollowKeyword(false, keyword);
+		return _modifyFollowKeyword(false, keyword);
 	}
 
 	/**
@@ -704,13 +836,10 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
-	private Keyword modifyFollowKeyword(boolean isFollow, String keyword) throws HatenaHaikuException {
+	private Keyword _modifyFollowKeyword(boolean isFollow, String keyword) throws HatenaHaikuException {
 		try {
-			String resultXml = HttpUtil.doGet(loginUser, (isFollow ? URL_FOLLOW_KEYWORD : URL_UNFOLLOW_KEYWORD) + URLEncoder.encode(keyword, Const.UTF8) + Const.EXT_XML, null, isNeedHttpLog());
+			String resultXml = HttpUtil.doGet(loginUser, (isFollow ? URL_FOLLOW_KEYWORD : URL_UNFOLLOW_KEYWORD) + StringUtil.encode(keyword) + Const.EXT_XML, null, isNeedHttpLog());
 			return toKeyword(XmlUtil.getRootElement(resultXml));
-
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);
@@ -735,7 +864,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public Keyword relateKeyword(String keyword1, String keyword2) throws HatenaHaikuException {
-		return modifyRelateKeyword(true, keyword1, keyword2);
+		return _modifyRelateKeyword(true, keyword1, keyword2);
 	}
 
 	/**
@@ -751,7 +880,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @since v0.0.1
 	 */
 	public Keyword unrelateKeyword(String keyword1, String keyword2) throws HatenaHaikuException {
-		return modifyRelateKeyword(false, keyword1, keyword2);
+		return _modifyRelateKeyword(false, keyword1, keyword2);
 	}
 		
 	/**
@@ -764,7 +893,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 * @throws HatenaHaikuException
 	 * @since v0.0.1
 	 */
-	private Keyword modifyRelateKeyword(boolean isRelate, String keyword1, String keyword2) throws HatenaHaikuException {
+	private Keyword _modifyRelateKeyword(boolean isRelate, String keyword1, String keyword2) throws HatenaHaikuException {
 		if (StringUtil.isSame(keyword1, keyword2)) {
 			throw new HatenaHaikuException("対象キーワードに同じキーワードは指定できません。");
 		}
@@ -774,9 +903,6 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 			param.setWord2(keyword2);
 			String resultXml = HttpUtil.doGet(loginUser, (isRelate ? URL_RELATE_KEYWORD_XML : URL_UNRELATE_KEYWORD_XML), param, isNeedHttpLog());
 			return toKeyword(XmlUtil.getRootElement(resultXml));
-
-		} catch (UnsupportedEncodingException e) {
-			throw new HatenaHaikuException("UnsupportedEncodingException発生。", e);
 
 		} catch (ParserConfigurationException e) {
 			throw new HatenaHaikuException("ParserConfigurationException発生。", e);

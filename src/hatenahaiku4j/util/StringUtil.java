@@ -1,5 +1,10 @@
 package hatenahaiku4j.util;
 
+import hatenahaiku4j.Const;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 /**
  * 文字列処理に関するユーティリティクラス
  * 
@@ -29,6 +34,36 @@ public class StringUtil {
 	 */
 	public static boolean isSame(String str1, String str2) {
 		return str1 == null ? str2 == null : str1.equals(str2);
+	}
+
+	/**
+	 * 引数の文字列をUTF-8でURLEncodeします。<br/>
+	 * UTF-8でエンコードできないことはないはずなので、エラー処理は省略しています。
+	 * 
+	 * @param str URLEncodeする文字列
+	 * @return エンコードされた文字列
+	 * @since v1.0.0
+	 */
+	public static String encode(String str) {
+		String encoded = "";
+		try {
+			encoded = URLEncoder.encode(str, Const.UTF8);
+		} catch ( UnsupportedEncodingException e ) {
+			// ignore it
+		}
+		return encoded;
+	}
+	
+	/**
+	 * シリアル値を取得します。<br/>
+	 * シリアル値＝現在時刻のミリ秒＋ランダム値
+	 * 
+	 * @return シリアル値を取得します。
+	 * @since v1.0.0
+	 */
+	public static String getSerial() {
+		return String.valueOf(System.currentTimeMillis())
+		+ String.valueOf(Math.random()).replaceAll("[-.]", "");
 	}
 
 }

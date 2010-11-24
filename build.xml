@@ -2,7 +2,7 @@
 <project name="HatenaHaiku4J Build" default="main" basedir=".">
 
 	<!-- HatenaHaiku4Jのバージョン -->
-	<property name="version" value="0.2.2"/>
+	<property name="version" value="1.0.0"/>
 
 	<!-- 概要 -->
 	<description>JarやJavadocなどを生成します。</description>
@@ -61,6 +61,7 @@
 			<zipfileset dir="${src}" prefix="src" />
 			<zipfileset dir="." includes="build.xml" fullpath="/build.xml" />
 			<zipfileset dir="." includes="changelog.txt" fullpath="/changelog.txt" />
+			<zipfileset dir="." includes="LICENSE.txt" fullpath="/LICENSE.txt"></zipfileset>
 		</zip>
 	</target>
 
