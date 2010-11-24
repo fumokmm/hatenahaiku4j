@@ -1,3 +1,6 @@
+HatenaHaiku4J v0.2.1 2009-09-15
+	・LoginUser#createはあまり意味がなかったため、普通のコンストラクタにした。
+
 HatenaHaiku4J v0.2.0 2009-09-15
 	・クラス名変更 HatenaHaikuAPIWithoutAuth -> HatenaHaikuAPILight。
 	・Keyword, User, Statusに#apiを付属させ、各インスタンスからapiを利用できるようにした。

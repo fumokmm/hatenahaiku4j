@@ -1,7 +1,5 @@
 package hatenahaiku4j.sample;
 
-import java.util.List;
-
 import hatenahaiku4j.HatenaHaikuAPI;
 import hatenahaiku4j.HatenaHaikuAPILight;
 import hatenahaiku4j.HatenaHaikuException;
@@ -10,6 +8,8 @@ import hatenahaiku4j.LoginUser;
 import hatenahaiku4j.Status;
 import hatenahaiku4j.util.HatenaUtil;
 import hatenahaiku4j.util.StringUtil;
+
+import java.util.List;
 
 /**
  * HatenaHaiku4J 動作サンプルクラスです
@@ -26,7 +26,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// ログインユーザ
-		LoginUser loginUser = LoginUser.create("userid", "password");
+		LoginUser loginUser = new LoginUser("userid", "password");
 		// 認証ありAPI
 		HatenaHaikuAPI api = new HatenaHaikuAPI(loginUser);
 		// 認証なしAPI
@@ -34,7 +34,7 @@ public class Main {
 
 		try {
 //			demo_v0_0_1(api, apiLight);	// v0.0.1デモ
-			demo_v0_2_0(api, apiLight);	// v0.2.0デモ
+			demo_v0_2_1(api, apiLight);	// v0.2.1デモ
 			
 		} catch(HatenaHaikuException e) {
 			e.printStackTrace();
@@ -80,14 +80,14 @@ public class Main {
 	}
 	
 	/**
-	 * v0.2.0時点でのデモです。<br/>
+	 * v0.2.1時点でのデモです。<br/>
 	 * v0.2.0からより柔軟に取得結果から色々できるようになりました。<br/>
 	 * デモ内容はv0.0.1時点と同じことした後に、ユーザのIDページのタイムラインを取得しています。
 	 * 
 	 * @param api 認証ありAPI
 	 * @param apiLight 認証なしAPI
 	 */
-	private static void demo_v0_2_0(HatenaHaikuAPI api, HatenaHaikuAPILight apiLight)
+	private static void demo_v0_2_1(HatenaHaikuAPI api, HatenaHaikuAPILight apiLight)
 		throws HatenaHaikuException {
 
 		printSeparate("パブリックタイムラインを出力する");

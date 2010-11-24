@@ -65,8 +65,7 @@ public class HatenaHaikuAPI extends HatenaHaikuAPILight {
 	 */
 	public HatenaHaikuAPI(LoginUser loginUser) {
 		super();
-		if (loginUser == null) this.loginUser = LoginUser.NULL;
-		else this.loginUser = loginUser;
+		this.loginUser = loginUser;
 	}
 
 	//-------------------------------------------------------------
